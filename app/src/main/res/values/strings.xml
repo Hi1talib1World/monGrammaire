@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Mon Grammaire</string>
+    <string name="parametres">Parametres</string>
+    <string name="entrer">ENTRER</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about">Info</string>
+
+    <string name="menu_home">Acceuil</string>
+    <string name="menu_gallery">List de cours</string>
+    <string name="menu_slideshow">Exsercises</string>
+    <string name="menu_tools">mot du jour</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_navdrawer">NAVDRAWER</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="txt1">Leçon 1</string>
+    <string name="les_pronons_relatives">Les pronons relatives !</string>
+    <string name="todo">TODO</string>
+    <string name="btm">btm launcher</string>
+    <string name="partie_numero_1">partie numero 1</string>
+    <string name="textview">TextView</string>
+    <string name="title_activity_level1">level1</string>
+    <string name="d_marrer">démarrer</string>
+    <string name="title_activity_level2">level2</string>
+    <string name="title_activity_level3">level3</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_testi">testi</string>
+    <string name="recents">Recents</string>
+    <string name="favorites">Favorites</string>
+    <string name="nearby">Nearby</string>
+    <string name="title_activity_teeeeeeeeeeeeee">teeeeeeeeeeeeee</string>
+    <string name="hello_blank_fragment_2">Hello blank fragment 2</string>
+    <string name="txt_details">La grammaire1 est l\'étude systématique des éléments constitutifs d\'une langue2. Par extension, on nomme aussi grammaire un manuel ou un ensemble de documents décrivant des règles grammaticales.</string>
+
+
+</resources>

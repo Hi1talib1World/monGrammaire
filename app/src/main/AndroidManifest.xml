@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mongrammaire">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".btm_launcher"
+            android:label="@string/btm">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".level3"
+            android:label="@string/title_activity_level3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".level2"
+            android:label="@string/title_activity_level2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".level1"
+            android:label="@string/title_activity_level1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NAVDRAWER"
+            android:label="@string/title_activity_navdrawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".parametres" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+    </application>
+
+</manifest>
