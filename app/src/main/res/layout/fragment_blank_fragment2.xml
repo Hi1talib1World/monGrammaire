@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#fff"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    >
 
-    tools:context=".BlankFragment2">
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/txt_details"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:textSize="25dp"
-        />
-</FrameLayout>
+        android:fillViewport="true"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/RelativeLayout"
+            android:layout_height="match_parent"
+            tools:context="com.learn2crack.recyclerview.MainActivity">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="150dp"
+
+                app:srcCompat="@drawable/galaxy" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="220dp"
+                android:layout_marginLeft="150dp"
+                android:text="TextView" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

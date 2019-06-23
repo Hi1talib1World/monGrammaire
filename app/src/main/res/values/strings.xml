@@ -36,9 +36,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_testi">testi</string>
-    <string name="recents">Recents</string>
-    <string name="favorites">Favorites</string>
-    <string name="nearby">Nearby</string>
+    <string name="recents">Acceuil</string>
+    <string name="favorites">Rapport</string>
+    <string name="nearby">Info !</string>
     <string name="title_activity_teeeeeeeeeeeeee">teeeeeeeeeeeeee</string>
     <string name="hello_blank_fragment_2">Hello blank fragment 2</string>
     <string name="txt_details">La grammaire1 est l\'étude systématique des éléments constitutifs d\'une langue2. Par extension, on nomme aussi grammaire un manuel ou un ensemble de documents décrivant des règles grammaticales.</string>
