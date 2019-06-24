@@ -17,7 +17,7 @@ import org.jsoup.nodes.Element;
 
 import java.util.Calendar;
 
-import mehdi.sakout.aboutpage.AboutPage;
+
 
 
 public class BlankFragment2 extends Fragment {

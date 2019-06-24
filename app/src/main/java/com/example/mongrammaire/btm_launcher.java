@@ -100,4 +100,13 @@ public class btm_launcher extends AppCompatActivity {
 
 
     }
+    public void buttonB (View v){
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cow);
+        mp.start();
+        Intent intent = new Intent(btm_launcher.this, MainGameActivity.class);
+        startActivity(intent);
+        Toast.makeText(getApplicationContext(),"Bienvenue !",Toast.LENGTH_LONG).show();
+
+
+    }
 }

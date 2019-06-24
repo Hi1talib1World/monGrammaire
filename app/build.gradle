@@ -22,8 +22,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.github.vipulasri:timelineview:1.1.0'
-    implementation 'com.github.medyo:android-about-page:1.2.5'
+
+    implementation 'info.hoang8f:fbutton:1.0.5'
 
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'

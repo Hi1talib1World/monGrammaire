@@ -14,10 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".MainGameActivity"></activity>
+        <activity
+            android:name=".Time_Up"
+            android:label="@string/title_activity_time__up"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".btm_launcher"
             android:label="@string/btm">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,9 +45,10 @@
             android:label="@string/title_activity_navdrawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".parametres" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PlayAgain" />
+        <activity android:name=".GameWon" />
 
-        </activity>
     </application>
 
 </manifest>
