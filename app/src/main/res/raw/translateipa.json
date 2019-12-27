@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "planar-leaf-260308",
+  "private_key_id": "47d413a77fc83eb063be144620611aa760c395d2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDRmkS4wWn5OKhK\nke88qBB4su314S1we81BxqJ+BeKAd5Ny/hj5/8AMT7302eNRcdu9GKKT6YZElm+t\nhv+6upOscqIkQtG67YjWYYT4FjxDKTn+UlYPuVMTu6eGjM5W6mHP2XBwUjONUrfn\n0UJFSBOnRdR6T+lzOZnvR1GjeynJckS6GoSsgpoDJxUwl109lOsilMawr/u6KAj6\na9u2nB2B9i6QqZqef0rYjLsn2hOnOTI2go6Xwu+pKousnAJMBf6B8Ifn0QGqLb5u\nMj4VxjImBZs53bsdmPp5SoWcaCC5eT1nUF96hmGuvSG0ew4tFbsbdckiAe0NsIen\nTUivO4YRAgMBAAECggEAETiMCeP2OYAyr4HC9qhWRhxpWajJC3NYf117D0CbhfON\nHUcMNUoSdNB+amYWe6QPqj8iaGWo3uy/OzIaw7Q9ms8GTFVjFukaM4bqnllxVRFH\njwIjyQHwdfAWiQL7lv+FzsZuKwRN8QAJVRYHzFpqJvWhSfVT2GA0qgihh/2ABuli\n7RYEC0AurhIAFmWXO5/JOEUKzQytw8k20bTGS+dkqGytomH+TmZPk5dhVPTems+W\nNWNyk/vfvRpbd/XqrsNFdiTJNctWzWmngEL/4U2xfFSZVy4qtSTa0RwgUfpud1BK\nJ6i5HY9NdlrwoqhGAq6zsHCYXi8wIDogBi/Tv31aEwKBgQDxCkn7FOnOh+76MD0k\n3u86nuH+QZoBVb8rQR0MYEIy2zqMg8bofPKbqbDrs5+Wt5PGp83g4NVa5+t3UTp7\n73sw1Ii6LXUHYZj5NPeuBH2JwoHqE7UhbQWiEPECnw+gNOd9h4c/o50M9wT9bmzD\ntRHrRRlyRHmr7ZRUw/tSSnsOdwKBgQDenH2jd5bNIiMbe1DxZnegfVCmJoLWsD48\n7yusw7FxI0grfyzIshnkCF+5eQVUwMJBLFqVowiBDI0kpj6Glzap88I3Gusmxco8\n0vxSMtKRnTRztYbchYufDzs6w/jYrSLImdSkBZRkitGaFS9fmqoOHPMoWqpB3cxc\nVNaW1s4JtwKBgAQn80KbB7UB7wLtVgCOv305RBhINUmUmuk6BDA0cK/Dy+ykUQet\nL9mzQVOvEy9cFvYz6n7YIZWhrhOumN2OMYeUAo+DPSNVcXfKjAK6HRgE/Ix2robX\nBGPY+u7ao0BV6S/m6FQWlBynHbTo9IMjWh2+YUPxHk/ylr4nauvuUNTdAoGAEWsd\nSZUp75MkPBpCEyF5as1jahzJUBMqS4pLWJFXaQrhssWYs3t8GyOsmc6mZCNRD9hw\nnhTLrY1V3fBEJDPgyxuPrtAkZjxDvs6jf6sKXup2GDez/b1VV3TRpZ9/8TRa7Gdd\nBBiLq/JQxEW0Fz7632/UduvhNpYsT20z/UmBhbECgYBVA2xKGVs+9fR3i8xhmbWZ\nVURdKn6iX22UAEdqoNvBJuAAbhScO3x7TdgGHq13FxVbvFDzxq42AzDdbYTZlYrR\nN2MS9r8GWHpp9L6C1ESphIknLjAHSFz3ze6TD2L8V5MlSZw7P4Vu1PwhRgMis0u+\nJdXzGJnli04bjOrCrBcX8A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "denzo-698@planar-leaf-260308.iam.gserviceaccount.com",
+  "client_id": "108925918106725463789",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/denzo-698%40planar-leaf-260308.iam.gserviceaccount.com"
+}
