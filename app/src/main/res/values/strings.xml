@@ -53,6 +53,9 @@
     <string name="quit">Quit</string>
     <string name="next">Next</string>
     <string name="cancel">✖</string>
+    <string name="d">d</string>
+    <string name="c">c</string>
+    <string name="e">e</string>
 
 
 </resources>
