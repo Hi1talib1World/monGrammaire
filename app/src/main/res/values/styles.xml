@@ -72,4 +72,5 @@
         <item name="android:textSize">@dimen/about_group_item_text_size</item>
     </style>
 
+    <string name="about_page_description">att</string>
 </resources>
