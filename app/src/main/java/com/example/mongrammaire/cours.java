@@ -114,6 +114,38 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         4.3,
                         60000,
                         R.drawable.ufo));
+        productList.add(
+                new product(
+                        1,
+                        "Niveau 4",
+                        "statut :",
+                        4.3,
+                        60000,
+                        R.drawable.ufo));
+        productList.add(
+                new product(
+                        1,
+                        "Niveau 5",
+                        "statut :",
+                        4.3,
+                        60000,
+                        R.drawable.ufo));
+        productList.add(
+                new product(
+                        1,
+                        "Niveau 6",
+                        "statut :",
+                        4.3,
+                        60000,
+                        R.drawable.ufo));
+        productList.add(
+                new product(
+                        1,
+                        "Niveau 7",
+                        "statut :",
+                        4.3,
+                        60000,
+                        R.drawable.ufo));
 
         //creating recyclerview adapter
         adapter = new ProductAdapter(getActivity(), productList);
