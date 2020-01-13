@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/inputToTranslate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="141dp"
         android:layout_gravity="center"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="16dp"
@@ -25,10 +25,10 @@
         android:layout_marginBottom="32dp"
         android:text="Translate" />
 
-    <TextView
+    <EditText
         android:id="@+id/translatedTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="269dp"
+        android:layout_height="139dp"
         android:layout_gravity="center"
         android:textSize="16sp" />
 </LinearLayout>
