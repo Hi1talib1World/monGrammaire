@@ -30,6 +30,7 @@ public class Translatetool extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translatetool);
+
         inputToTranslate = findViewById(R.id.inputToTranslate);
         translatedTv = findViewById(R.id.translatedTv);
         Button translateButton = findViewById(R.id.translateButton);
@@ -53,6 +54,7 @@ public class Translatetool extends AppCompatActivity {
             }
         });
     }
+
     public void getTranslateService() {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -77,7 +79,7 @@ public class Translatetool extends AppCompatActivity {
 
         //Get input text to be translated:
         originalText = inputToTranslate.getText().toString();
-        Translation translation = translate.translate(originalText, Translate.TranslateOption.targetLanguage("ar"), Translate.TranslateOption.model("base"));
+        Translation translation = translate.translate(originalText, Translate.TranslateOption.targetLanguage("tr"), Translate.TranslateOption.model("base"));
         translatedText = translation.getTranslatedText();
 
         //Translated text and original text are set to TextViews:

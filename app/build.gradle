@@ -26,9 +26,7 @@ android {
         }
     }
     packagingOptions {
-
         exclude 'project.properties'
-        exclude 'META-INF/INDEX.LIST'
     }
 }
 
@@ -39,6 +37,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:preference-v7:28.0.0'
     implementation 'info.hoang8f:fbutton:1.0.5'
+
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation('com.google.cloud:google-cloud-translate:1.12.0') {

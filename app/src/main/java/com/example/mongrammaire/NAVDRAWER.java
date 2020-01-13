@@ -70,8 +70,8 @@ public class NAVDRAWER extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            startActivity(new Intent(getApplicationContext(),Translatetool.class));
-            return true;
+            Intent intent = new Intent(this, Translatetool.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
