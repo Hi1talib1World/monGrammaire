@@ -1,4 +1,7 @@
 package com.example.mongrammaire;
 
-public class itemClickListener {
+import android.view.View;
+
+public interface itemClickListener {
+    void onItemClick(View v , int pos);
 }
