@@ -16,7 +16,7 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
     itemClickListener itemClickListener ;
     public mycardsHolder(@NonNull View itemView) {
         super(itemView);
-        this.mImageIv = itemView.findViewById(R.id.mo);
+        this.mImageIv = itemView.findViewById(R.id.mo);//
         this.mTitleTV = itemView.findViewById(R.id.mo);
         this.mDescrTV = itemView.findViewById(R.id.mo);
 
