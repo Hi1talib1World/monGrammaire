@@ -14,16 +14,21 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
     ImageView mImageIv;
     TextView mTitleTV,mDescrTV;
     itemClickListener itemClickListener ;
+
     public mycardsHolder(@NonNull View itemView) {
         super(itemView);
         this.mImageIv = itemView.findViewById(R.id.mo);//
         this.mTitleTV = itemView.findViewById(R.id.mo);
         this.mDescrTV = itemView.findViewById(R.id.mo);
+        itemView.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-
+        this.itemClickListener.onItemClick(v, getLayoutPosition());
+    }
+    public void setItemClickListener(itemClickListener ic){
+        this.itemClickListener = ic;
     }
 }
