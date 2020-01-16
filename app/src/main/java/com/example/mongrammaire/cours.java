@@ -111,11 +111,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        getActivity().getMenuInflater().inflate(R.menu.main2, menu);
-        return super.onOptionsItemSelected(item);
-    }
+    
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
