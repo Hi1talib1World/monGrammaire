@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -110,6 +111,11 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        getActivity().getMenuInflater().inflate(R.menu.main2, menu);
+        return super.onOptionsItemSelected(item);
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
