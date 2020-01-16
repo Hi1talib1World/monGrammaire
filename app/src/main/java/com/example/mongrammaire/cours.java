@@ -65,7 +65,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         adapter = new MyAdapter(this.getPlayesr())
-        recyclerView.setAdapter();
+        recyclerView.setAdapter(adapter);
         //initializing the productlist
         models = new ArrayList<>();
 
@@ -136,7 +136,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
 
-        return v;
+        return models;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
