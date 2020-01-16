@@ -64,12 +64,12 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        adapter = new MyAdapter(this.getPlayesr())
+        adapter = new MyAdapter(getActivity(),getPlayesr());
         recyclerView.setAdapter(adapter);
         //initializing the productlis
 
 
-
+        return v;
     }
     private ArrayList<Model> getPlayesr(){
         models = new ArrayList<>();
