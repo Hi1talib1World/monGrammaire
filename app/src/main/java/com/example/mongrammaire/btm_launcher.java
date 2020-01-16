@@ -28,40 +28,9 @@ public class btm_launcher extends AppCompatActivity {
 
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int itemId = menuItem.getItemId();
-                switch (itemId){
-                    case R.id.action_recents:
-                        addFragment(new HomeFragment());
-                        viewIsAtHome = true;
-                        break;
-                    case R.id.action_favorites:
-                        addFragment(new BlankFragment1());
-                        viewIsAtHome = false;
-                        break;
-                    case R.id.action_nearby:
-                        addFragment(new BlankFragment2());
-                        viewIsAtHome = false;
-                        break;
-                }
-                return true;
-            }
-        });
+    }
 
-        bottomNavigationView.setSelectedItemId(R.id.home);
-    }
-    private void addFragment(Fragment fragment){
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(null)
-                .commit();
-    }
     @Override
     public void onBackPressed() {
 

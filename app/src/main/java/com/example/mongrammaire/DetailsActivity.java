@@ -33,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes, 0,mBytes.length);
 
-       
+
         mTitleTv.setText(mTitle);
         iImageTV.setImageBitmap(bitmap);
         mDescTv.setText(mDescr);
