@@ -61,6 +61,20 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> {
         mycardsHolder.setItemClickListener(new itemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
+                if (models.get(pos).getTitle().equals("a")){
+
+                }
+                if (models.get(pos).getTitle().equals("b")){
+
+                }if (models.get(pos).getTitle().equals("c")){
+
+                }if (models.get(pos).getTitle().equals("d")){
+
+                }if (models.get(pos).getTitle().equals("e")){
+
+                }if (models.get(pos).getTitle().equals("f")){
+
+                }
 
             }
         });

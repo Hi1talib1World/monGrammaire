@@ -1,6 +1,9 @@
 package com.example.mongrammaire;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,8 +27,15 @@ public class DetailsActivity extends AppCompatActivity {
         iImageTV = findViewById(R.id.dimg1);
 
         Intent intent = getIntent();
-        intent.getStringExtra("mTitleTV");
-        intent.getStringExtra("mDescTV");
+        String mTitle = intent.getStringExtra("mTitleTV");
+        String mDescr = intent.getStringExtra("mDescTV");
+        byte[] mBytes = getIntent().getByteArrayExtra("mImgTV");
 
+        Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes, 0,mBytes.length);
+
+        actionBar.setTitle(mTitle);
+        mTitleTv.setText(mTitle);
+        iImageTV.setImageBitmap(bitmap);
+        mDescTv.setText(mDescr);
     }
 }

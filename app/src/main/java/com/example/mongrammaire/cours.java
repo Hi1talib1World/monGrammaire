@@ -95,6 +95,24 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         p.setImg(R.drawable.satellite);
         models.add(p);
 
+        p = new Model();
+        p.setTitle("d");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("e");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("f");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
         return models;
     }
     // TODO: Rename method, update argument and hook method into UI event
