@@ -13,10 +13,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainGameActivity">
-
-        </activity>
+        <activity android:name=".DetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
+        <activity android:name=".MainGameActivity"></activity>
         <activity
             android:name=".Time_Up"
             android:label="@string/title_activity_time__up"
@@ -24,15 +24,13 @@
         <activity
             android:name=".btm_launcher"
             android:label="@string/btm"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".level3"
             android:label="@string/title_activity_level3"
@@ -48,14 +46,11 @@
         <activity
             android:name=".NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".parametres" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlayAgain" />
         <activity android:name=".GameWon" />
-
     </application>
 
 </manifest>

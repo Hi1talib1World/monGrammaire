@@ -111,7 +111,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
     }
 
-    
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

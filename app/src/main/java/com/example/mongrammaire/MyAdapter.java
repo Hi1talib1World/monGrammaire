@@ -32,6 +32,13 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> {
         mycardsHolder.mDescrTV.setText(models.get(i).getTitle());
         mycardsHolder.mImageIv.setImageResource(models.get(i).getImg());
 
+        mycardsHolder.setItemClickListener(new itemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                
+            }
+        });
+
     }
 
     @Override
