@@ -33,7 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> {
     @Override
     public void onBindViewHolder(@NonNull final mycardsHolder mycardsHolder, int i) {
         mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
-        mycardsHolder.mDescrTV.setText(models.get(i).getTitle());
+        mycardsHolder.mDescrTV.setText(models.get(i).getDescription());
         mycardsHolder.mImageIv.setImageResource(models.get(i).getImg());
 
         mycardsHolder.setItemClickListener(new itemClickListener() {
@@ -50,34 +50,15 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> {
                 byte[] bytes = stream.toByteArray();
 
                 Intent intent = new Intent(c,DetailsActivity.class);
-                intent.putExtra("mTitleTV",title);
-                intent.putExtra("mDescTV",descr);
-                intent.putExtra("mImgTV",bytes);
+                intent.putExtra("iTitleTv",title);
+                intent.putExtra("iDescTv",descr);
+                intent.putExtra("iImgTv",bytes);
                 c.startActivity(intent);
 
             }
         });
 
-        mycardsHolder.setItemClickListener(new itemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
-                if (models.get(pos).getTitle().equals("a")){
 
-                }
-                if (models.get(pos).getTitle().equals("b")){
-
-                }if (models.get(pos).getTitle().equals("c")){
-
-                }if (models.get(pos).getTitle().equals("d")){
-
-                }if (models.get(pos).getTitle().equals("e")){
-
-                }if (models.get(pos).getTitle().equals("f")){
-
-                }
-
-            }
-        });
 
     }
 

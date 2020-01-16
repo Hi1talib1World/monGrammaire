@@ -27,13 +27,13 @@ public class DetailsActivity extends AppCompatActivity {
         iImageTV = findViewById(R.id.dimg1);
 
         Intent intent = getIntent();
-        String mTitle = intent.getStringExtra("mTitleTV");
-        String mDescr = intent.getStringExtra("mDescTV");
-        byte[] mBytes = getIntent().getByteArrayExtra("mImgTV");
+        String mTitle = intent.getStringExtra("iTitleTv");
+        String mDescr = intent.getStringExtra("iDescTv");
+        byte[] mBytes = getIntent().getByteArrayExtra("iImgTv");
 
         Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes, 0,mBytes.length);
 
-        actionBar.setTitle(mTitle);
+       
         mTitleTv.setText(mTitle);
         iImageTV.setImageBitmap(bitmap);
         mDescTv.setText(mDescr);
