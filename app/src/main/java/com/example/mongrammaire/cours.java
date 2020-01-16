@@ -66,79 +66,36 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         adapter = new MyAdapter(this.getPlayesr())
         recyclerView.setAdapter(adapter);
-        //initializing the productlist
-        models = new ArrayList<>();
+        //initializing the productlis
 
+
+
+    }
+    private ArrayList<Model> getPlayesr(){
+        models = new ArrayList<>();
+        ArrayList<Model> models = new ArrayList<>();
 
         //adding some items to our list
-        models.add(
-                new model(
-                        1,
-                        "Niveau 1",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.galaxy));
+        Model p = new Model();
+        p.setTitle("a");
+        p.setDescription("a");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
 
-        models.add(
-                new product(
-                        1,
-                        "Niveau 2",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.satellite));
+        p = new Model();
+        p.setTitle("b");
+        p.setDescription("b");
+        p.setImg(R.drawable.ufo);
+        models.add(p);
 
-        models.add(
-                new product(
-                        1,
-                        "Niveau 3",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.ufo));
-        models.add(
-                new product(
-                        1,
-                        "Niveau 4",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.ufo));
-        models.add(
-                new product(
-                        1,
-                        "Niveau 5",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.ufo));
-        models.add(
-                new product(
-                        1,
-                        "Niveau 6",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.ufo));
-        models.add(
-                new product(
-                        1,
-                        "Niveau 7",
-                        "statut :",
-                        4.3,
-                        60000,
-                        R.drawable.ufo));
-
-        //creating recyclerview adapter
-        adapter = new MyAdapter(getActivity(), models);
-
-        //setting adapter to recyclerview
-        recyclerView.setAdapter(adapter);
+        p = new Model();
+        p.setTitle("c");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
 
         return models;
     }
-
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
