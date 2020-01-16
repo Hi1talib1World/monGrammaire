@@ -3,6 +3,7 @@ package com.example.mongrammaire;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,15 +24,9 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class cours extends Fragment implements AdapterView.OnItemClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    public ProductAdapter adapter;
+
+    public MyAdapter adapter;
     private OnFragmentInteractionListener mListener;
 
 
@@ -48,13 +43,11 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
     public static cours newInstance(String param1, String param2) {
         cours fragment = new cours();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
     //a list to store all the products
-    List<product> productList;
+    List<Model> models;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -62,10 +55,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
 
 
     }
@@ -82,14 +72,15 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        
         //initializing the productlist
-        productList = new ArrayList<>();
+        models = new ArrayList<>();
 
 
         //adding some items to our list
-        productList.add(
-                new product(
+        models.add(
+                new model(
                         1,
                         "Niveau 1",
                         "statut :",
@@ -97,7 +88,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         60000,
                         R.drawable.galaxy));
 
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 2",
@@ -106,7 +97,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         60000,
                         R.drawable.satellite));
 
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 3",
@@ -114,7 +105,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         4.3,
                         60000,
                         R.drawable.ufo));
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 4",
@@ -122,7 +113,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         4.3,
                         60000,
                         R.drawable.ufo));
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 5",
@@ -130,7 +121,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         4.3,
                         60000,
                         R.drawable.ufo));
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 6",
@@ -138,7 +129,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         4.3,
                         60000,
                         R.drawable.ufo));
-        productList.add(
+        models.add(
                 new product(
                         1,
                         "Niveau 7",
@@ -148,7 +139,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
                         R.drawable.ufo));
 
         //creating recyclerview adapter
-        adapter = new ProductAdapter(getActivity(), productList);
+        adapter = new MyAdapter(getActivity(), models);
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
