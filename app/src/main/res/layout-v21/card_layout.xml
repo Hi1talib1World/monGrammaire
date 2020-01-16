@@ -18,7 +18,7 @@
         android:layout_width="422dp"
         android:layout_height="166dp"
         android:orientation="vertical"
-        android:background="@drawable/bg1"
+        android:background="@drawable/bgg"
 
         >
 

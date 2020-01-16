@@ -78,37 +78,85 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
         //adding some items to our list
         Model p = new Model();
-        p.setTitle("a");
+        p.setTitle("accords au pluriel");
         p.setDescription("a");
         p.setImg(R.drawable.satellite);
         models.add(p);
 
         p = new Model();
-        p.setTitle("b");
+        p.setTitle("prépositions");
         p.setDescription("b");
         p.setImg(R.drawable.ufo);
         models.add(p);
 
         p = new Model();
-        p.setTitle("c");
+        p.setTitle("adjectifs possessifs");
         p.setDescription("b");
         p.setImg(R.drawable.satellite);
         models.add(p);
 
         p = new Model();
-        p.setTitle("d");
+        p.setTitle("impératif");
         p.setDescription("b");
         p.setImg(R.drawable.satellite);
         models.add(p);
 
         p = new Model();
-        p.setTitle("e");
+        p.setTitle("articles (indéfinis, définis, partitifs)");
         p.setDescription("b");
         p.setImg(R.drawable.satellite);
         models.add(p);
 
         p = new Model();
-        p.setTitle("f");
+        p.setTitle("passé composé");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("négation");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("imparfait");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("phrases conditionnelles avec \"si\"");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("temps du passé");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("pronoms relatifs, simples");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("passif");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("discours rapporté au passé");
+        p.setDescription("b");
+        p.setImg(R.drawable.satellite);
+        models.add(p);
+
+        p = new Model();
+        p.setTitle("subjonctif/indicatif");
         p.setDescription("b");
         p.setImg(R.drawable.satellite);
         models.add(p);
