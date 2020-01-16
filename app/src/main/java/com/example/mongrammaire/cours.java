@@ -28,17 +28,9 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
     public MyAdapter adapter;
     private OnFragmentInteractionListener mListener;
+    //the recyclerview
+    RecyclerView recyclerView;
 
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment cours.
-     */
     // TODO: Rename and change types and number of parameters
     public static cours newInstance(String param1, String param2) {
         cours fragment = new cours();
@@ -49,8 +41,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
     //a list to store all the products
     List<Model> models;
 
-    //the recyclerview
-    RecyclerView recyclerView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,7 +64,8 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        
+        adapter = new MyAdapter(this.getPlayesr())
+        recyclerView.setAdapter();
         //initializing the productlist
         models = new ArrayList<>();
 
