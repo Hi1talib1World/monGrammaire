@@ -29,11 +29,13 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> {
     @Override
     public void onBindViewHolder(@NonNull mycardsHolder mycardsHolder, int i) {
         mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
+        mycardsHolder.mDescrTV.setText(models.get(i).getTitle());
+        mycardsHolder.mImageIv.setImageResource(models.get(i).getImg());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return models.size();
     }
 }
