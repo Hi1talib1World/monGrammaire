@@ -52,7 +52,10 @@ dependencies {
     annotationProcessor 'com.google.cloud:google-cloud-translate:1.94.1'
     implementation 'com.android.support:multidex:1.0.3'
 
-
+    // universal image loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    // circular image view library
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:design:28.0.0'
