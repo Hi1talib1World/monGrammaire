@@ -4,6 +4,8 @@ package com.example.mongrammaire;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,4 +33,6 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
     public void setItemClickListener(itemClickListener ic){
         this.itemClickListener = ic;
     }
+
+
 }
