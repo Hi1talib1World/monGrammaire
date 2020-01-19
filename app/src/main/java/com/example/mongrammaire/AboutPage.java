@@ -55,7 +55,7 @@ public class AboutPage {
     public AboutPage(Context context) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
-        this.mView = mInflater.inflate(R.layout.fragment_blank_fragment2, null);
+        this.mView = mInflater.inflate(R.layout.about_page, null);
     }
 
     /**
