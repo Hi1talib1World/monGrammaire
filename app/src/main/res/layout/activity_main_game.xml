@@ -4,14 +4,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/bg01"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/lightGreen"
+        android:background="@color/colorPrimary"
         android:minHeight="?actionBarSize">
 
         <RelativeLayout
@@ -23,7 +23,7 @@
                 android:id="@+id/coinImage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ufo" />
+                android:src="@drawable/logo" />
 
             <TextView
                 android:id="@+id/coinText"
@@ -43,7 +43,7 @@
                 android:layout_toLeftOf="@+id/timeText"
                 android:layout_toRightOf="@+id/coinText"
                 android:gravity="center"
-                android:text="@string/app_name"
+                android:text="@string/le_quiz"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
@@ -108,7 +108,7 @@
             android:layout_margin="10dp"
             android:onClick="buttonA"
             android:text=""
-            android:textColor="@color/grey"></info.hoang8f.widget.FButton>
+            android:textColor="@color/colorAccent"></info.hoang8f.widget.FButton>
 
         <info.hoang8f.widget.FButton
             android:id="@+id/buttonB"
@@ -117,7 +117,7 @@
             android:layout_margin="10dp"
             android:onClick="buttonB"
             android:text=""
-            android:textColor="@color/grey" />
+            android:textColor="@color/colorAccent" />
 
 
         <info.hoang8f.widget.FButton
@@ -127,7 +127,7 @@
             android:layout_margin="10dp"
             android:onClick="buttonC"
             android:text=""
-            android:textColor="@color/grey" />
+            android:textColor="@color/colorAccent" />
 
         <info.hoang8f.widget.FButton
             android:id="@+id/buttonD"
@@ -136,7 +136,7 @@
             android:layout_margin="10dp"
             android:onClick="buttonD"
             android:text=""
-            android:textColor="@color/grey" />
+            android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 
