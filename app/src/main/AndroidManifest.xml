@@ -19,7 +19,9 @@
             android:parentActivityName=".NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
-        <activity android:name=".MainGameActivity" />
+        <activity android:name=".MainGameActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity
             android:name=".Time_Up"
             android:label="@string/title_activity_time__up"
