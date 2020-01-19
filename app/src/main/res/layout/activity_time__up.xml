@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/bg01"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Time_Up">
@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/ufo"
+        android:src="@drawable/logo"
         />
 
     <View
