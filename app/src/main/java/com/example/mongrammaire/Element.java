@@ -10,7 +10,6 @@ import android.view.View;
 
 /**
  * Element class represents an about item in the about page.
- * Use {@link AboutPage#addItem(mehdi.sakout.aboutpage.Element)} to add your
  * custom items to the AboutPage. This class can be constructed in a builder pattern type fashion.
  */
 public class Element {

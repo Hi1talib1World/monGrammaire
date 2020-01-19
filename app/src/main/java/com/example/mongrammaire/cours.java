@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -175,25 +175,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
     }
 
 
-    public boolean onOptionsItemSelected(Menu menu) {
-        getActivity().getMenuInflater().inflate(R.menu.main2, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView sv = (SearchView) MenuItemCompat.getActionView(item);
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                MyAdapter.getFilter().filter(query);
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                MyAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

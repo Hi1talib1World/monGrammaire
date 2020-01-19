@@ -30,7 +30,6 @@ import android.widget.TextView;
  * The main class of this library with many predefined methods to add Elements for common items in
  * an About page. This class creates a {@link android.view.View} that can be passed as the root view
  * in {@link Fragment#onCreateView(LayoutInflater, ViewGroup, Bundle)} or passed to the {@link android.app.Activity#setContentView(View)}
- * in an activity's {@link android.app.Activity#onCreate(Bundle)} method
  * <p>
  * To create a custom item in the about page, pass an instance of {@link com.example.mongrammaire.Element}
  * to the {@link AboutPage#addItem(Element)} method.
