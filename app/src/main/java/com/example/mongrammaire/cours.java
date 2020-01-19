@@ -182,11 +182,13 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                MyAdapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                MyAdapter.getFilter().filter(newText);
                 return false;
             }
         });

@@ -18,7 +18,7 @@ public class CustomFilter extends Filter {
         FilterResults results = new FilterResults();
         if (constraint != null && constraint.length()>0){
 
-            constraint constraint.toString().toUpperCase();
+            constraint = constraint.toString().toUpperCase();
 
             ArrayList<Model> filtredModels = new ArrayList<>();
 
