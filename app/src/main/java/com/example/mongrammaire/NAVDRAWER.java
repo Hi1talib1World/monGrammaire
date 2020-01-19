@@ -68,28 +68,7 @@ public class NAVDRAWER extends AppCompatActivity
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navdrawer, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView sv = (SearchView) MenuItemCompat.getActionView(item);
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                
-                adapter.getFilter().filter(query);
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }
 
 
     @Override
@@ -120,7 +99,8 @@ public class NAVDRAWER extends AppCompatActivity
         } else if (id == R.id.nav_tools) {
             fragment = new word();
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(NAVDRAWER.this,recherche.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
 
         }

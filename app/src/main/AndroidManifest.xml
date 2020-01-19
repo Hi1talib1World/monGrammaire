@@ -13,11 +13,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailsActivity"
-
-            android:parentActivityName=".NAVDRAWER"
-            ></activity>
-        <activity android:name=".MainGameActivity"></activity>
+        <activity android:name=".recherche"></activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:parentActivityName=".NAVDRAWER" />
+        <activity android:name=".MainGameActivity" />
         <activity
             android:name=".Time_Up"
             android:label="@string/title_activity_time__up"
@@ -47,7 +47,7 @@
         <activity
             android:name=".NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".parametres" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlayAgain" />

@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,6 +32,8 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
 
     public MyAdapter adapter;
+    SearchView searchView;
+
     private OnFragmentInteractionListener mListener;
     //the recyclerview
     RecyclerView recyclerView;
@@ -72,7 +74,6 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         adapter = new MyAdapter(getActivity(),getPlayesr());
         recyclerView.setAdapter(adapter);
         //initializing the productlis
-
 
         return v;
     }
@@ -166,6 +167,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
         models.add(p);
 
         return models;
+
     }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -173,6 +175,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
 
 
