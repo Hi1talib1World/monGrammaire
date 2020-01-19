@@ -3,7 +3,7 @@
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/bg01"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -18,7 +18,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/ufo" />
+        android:src="@drawable/logo" />
 
     <info.hoang8f.widget.FButton
         android:id="@+id/playAgainButton"
@@ -26,5 +26,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="@string/play_again"
-        fbutton:buttonColor="@color/lightGreen" />
+        fbutton:buttonColor="@color/bg01" />
 </LinearLayout>
