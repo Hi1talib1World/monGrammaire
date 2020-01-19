@@ -102,7 +102,8 @@ public class NAVDRAWER extends AppCompatActivity
             Intent intent = new Intent(NAVDRAWER.this,recherche.class);
             startActivity(intent);
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(NAVDRAWER.this,MainGameActivity.class);
+            startActivity(intent);
         }
 
         if (fragment != null){
