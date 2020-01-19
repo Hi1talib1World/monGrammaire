@@ -13,8 +13,8 @@
 
     <string name="menu_home">Acceuil</string>
     <string name="menu_gallery">List de cours</string>
-    <string name="menu_slideshow">Exsercises</string>
-    <string name="menu_tools">mot du jour</string>
+    <string name="menu_slideshow">Favories</string>
+    <string name="menu_tools">sur nous !</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

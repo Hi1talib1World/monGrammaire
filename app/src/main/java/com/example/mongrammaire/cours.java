@@ -2,6 +2,7 @@ package com.example.mongrammaire;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
+import com.google.api.client.util.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,7 @@ import java.util.Objects;
  * Use the {@link cours#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class cours extends Fragment implements AdapterView.OnItemClickListener {
+public class cours extends Fragment implements AdapterView.OnItemClickListener,SearchView.OnQueryTextListener {
 
 
     public MyAdapter adapter;
@@ -77,6 +80,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
 
         return v;
     }
+
     private ArrayList<Model> getPlayesr(){
         models = new ArrayList<>();
         ArrayList<Model> models = new ArrayList<>();
@@ -193,6 +197,16 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
     }
 
     public interface OnFragmentInteractionListener {
