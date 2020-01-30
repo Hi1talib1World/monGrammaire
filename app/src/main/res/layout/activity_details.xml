@@ -22,11 +22,6 @@
             android:background="@drawable/pikachu"
             android:scaleType="centerCrop" />
 
-
-
-
-
-
         <TextView
             android:id="@+id/dtxt1"
             android:layout_width="match_parent"
@@ -50,6 +45,13 @@
             android:paddingRight="16dp"
             android:textColor="#fff"
             android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="More" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
