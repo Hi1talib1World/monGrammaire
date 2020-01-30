@@ -46,17 +46,16 @@
             android:textColor="#fff"
             android:textSize="15sp"
             android:textStyle="bold" />
-
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="More"
+            android:textColor="@color/about_background_color" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="More"
-        android:textColor="@color/about_background_color"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="684dp" />
+
+
 
 </android.support.constraint.ConstraintLayout>
