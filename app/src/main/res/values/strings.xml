@@ -73,5 +73,7 @@
     <string name="search">Search</string>
     <string name="le_quiz">Le Quiz</string>
     <string name="plus">Plus</string>
+    <string name="recherche">Recherche</string>
+    <string name="quiz">Quiz</string>
 
 </resources>
