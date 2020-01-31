@@ -21,6 +21,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemTextAppearance="@style/MenuItems"
+
         app:headerLayout="@layout/nav_header_navdrawer"
         app:menu="@menu/activity_navdrawer_drawer" />
 
