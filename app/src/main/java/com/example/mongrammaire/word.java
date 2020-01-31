@@ -30,14 +30,14 @@ public class word extends Fragment {
                 .isRTL(false)
                 .addItem(versionElement)
                 .addItem(adsElement)
-                .addGroup("Connect with us")
-                .addEmail("elmehdi.sakout@gmail.com")
-                .addFacebook("the.medy")
-                .addTwitter("medyo80")
+                .addGroup("Connecte-toi avec nous")
+                .addEmail("hichamoutaleb7@gmail.com")
+                .addFacebook("hichamtalib8")
+                .addTwitter("hicham_talib")
                 .addYoutube("UCdPQtdWIsg7_pi4mrRu46vA")
-                .addPlayStore("com.ideashower.readitlater.pro")
-                .addInstagram("medyo80")
-                .addGitHub("medyo")
+                .addPlayStore("DENZO")
+                .addInstagram("hicham_talib1")
+                .addGitHub("Hi1talib1World")
                 .create();
 
         viewGroup.addView(aboutPage);
