@@ -5,6 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_ac"
+            android:icon="@drawable/house"
+            android:title="@string/acceuil" />
+
+        <item
             android:id="@+id/nav_home"
             android:icon="@drawable/alphabetical"
             android:title="@string/menu_home" />
@@ -27,11 +32,11 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/star"
+                android:icon="@drawable/search"
                 android:title="@string/recherche" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/search"
+                android:icon="@drawable/star"
                 android:title="@string/quiz" />
         </menu>
     </item>
