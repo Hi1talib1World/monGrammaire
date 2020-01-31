@@ -90,7 +90,9 @@ public class NAVDRAWER extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_ac) {
+            
+        }else if (id == R.id.nav_home) {
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
             fragment = new cours();
