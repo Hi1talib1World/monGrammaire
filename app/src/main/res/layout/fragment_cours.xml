@@ -7,14 +7,7 @@
     android:background="@color/bg01"
     android:layout_height="match_parent"
     tools:context=".cours">
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:queryHint="Search Here"
-        android:iconifiedByDefault="false"
-        android:layout_alignParentTop="true"
-        />
+    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
