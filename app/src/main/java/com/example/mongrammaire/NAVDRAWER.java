@@ -91,7 +91,7 @@ public class NAVDRAWER extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         if (id == R.id.nav_ac) {
-
+        //home screen
         }else if (id == R.id.nav_home) {
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
