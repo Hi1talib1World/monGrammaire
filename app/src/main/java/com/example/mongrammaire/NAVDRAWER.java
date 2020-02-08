@@ -2,6 +2,7 @@ package com.example.mongrammaire;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -31,6 +32,8 @@ import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NAVDRAWER extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
