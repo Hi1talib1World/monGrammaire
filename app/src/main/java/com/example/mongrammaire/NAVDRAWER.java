@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.view.Menu;
 
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class NAVDRAWER extends AppCompatActivity
@@ -35,7 +37,14 @@ public class NAVDRAWER extends AppCompatActivity
     private cours.OnFragmentInteractionListener mListener;
     //the recyclerview
     RecyclerView recyclerView;
+    private static ViewPager mPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private ArrayList<ImageModel> imageModelArrayList;
 
+    private int[] myImageList = new int[]{R.drawable.harley2, R.drawable.benz2,
+            R.drawable.vecto,R.drawable.webshots
+            ,R.drawable.bikess,R.drawable.img1};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
