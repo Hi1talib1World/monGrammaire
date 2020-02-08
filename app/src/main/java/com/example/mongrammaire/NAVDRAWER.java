@@ -51,7 +51,10 @@ public class NAVDRAWER extends AppCompatActivity
         setContentView(R.layout.activity_navdrawer);
 
 
+        imageModelArrayList = new ArrayList<>();
+        imageModelArrayList = populateList();
 
+        init();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,6 +70,18 @@ public class NAVDRAWER extends AppCompatActivity
     }
 
 
+    private ArrayList<ImageModel> populateList(){
+
+        ArrayList<ImageModel> list = new ArrayList<>();
+
+        for(int i = 0; i < 6; i++){
+            ImageModel imageModel = new ImageModel();
+            imageModel.setImage_drawable(myImageList[i]);
+            list.add(imageModel);
+        }
+
+        return list;
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
