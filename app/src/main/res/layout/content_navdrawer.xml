@@ -22,10 +22,10 @@
         android:layout_gravity="start"
         tools:ignore="MissingConstraints">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/screen_area" />
+        <FrameLayout
+            android:id="@+id/screen_area"
+            android:layout_width="411dp"
+            android:layout_height="match_parent" />
 
     </android.support.design.widget.NavigationView>
 
