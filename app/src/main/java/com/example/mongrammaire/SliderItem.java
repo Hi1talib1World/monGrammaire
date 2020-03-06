@@ -1,4 +1,4 @@
-package com.example.mongrammaire.Model;
+package com.example.mongrammaire;
 
 public class SliderItem {
 
