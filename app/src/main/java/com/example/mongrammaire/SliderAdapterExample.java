@@ -8,7 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import com.smarteist.autoimageslider.SliderViewAdapter;
+import com.smarteist.imageslider.Model.SliderItem;
+import java.util.ArrayList;
+import java.util.List;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
