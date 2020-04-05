@@ -1,4 +1,4 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.Quiz;
 
 import android.content.ContentValues;
 import android.content.Context;

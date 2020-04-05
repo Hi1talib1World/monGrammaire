@@ -1,4 +1,4 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.aboutpage;
 
 
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.Quiz;
 
 
 import android.app.Activity;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.mongrammaire.MainGameActivity;
+import com.example.mongrammaire.R;
 
 public class PlayAgain extends Activity {
 

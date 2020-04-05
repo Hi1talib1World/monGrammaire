@@ -1,4 +1,4 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.aboutpage;
 
 
 import android.app.Fragment;
@@ -25,6 +25,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.mongrammaire.AboutPageUtils;
+import com.example.mongrammaire.Element;
+import com.example.mongrammaire.R;
 
 /**
  * The main class of this library with many predefined methods to add Elements for common items in

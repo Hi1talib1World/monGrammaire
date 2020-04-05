@@ -1,9 +1,12 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.Quiz;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.mongrammaire.MainGameActivity;
+import com.example.mongrammaire.R;
 
 public class GameWon extends Activity {
 

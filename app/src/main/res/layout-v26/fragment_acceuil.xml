@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#EAE8FF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".acceuil">
+    tools:context=".Alphabets.acceuil">
 
     <ScrollView
         android:layout_width="match_parent"
