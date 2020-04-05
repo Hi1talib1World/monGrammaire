@@ -18,13 +18,13 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="301dp"
+                android:layout_width="377dp"
                 android:layout_height="315dp"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="42dp"
-                android:text="TextView"
+                android:text="@string/welcome"
                 android:textColor="#2D3142"
-                android:textSize="44dp"
+                android:textSize="26dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
