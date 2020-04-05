@@ -8,6 +8,8 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.mongrammaire.courslist.cours;
+
 public class recherche extends AppCompatActivity {
     public MyAdapter adapter;
     private cours.OnFragmentInteractionListener mListener;
