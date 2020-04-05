@@ -1,4 +1,4 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.aboutpage;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.mongrammaire.Element;
+import com.example.mongrammaire.R;
 import com.example.mongrammaire.aboutpage.AboutPage;
 
 import java.util.Calendar;
