@@ -2,6 +2,9 @@ package com.example.mongrammaire;
 
 import android.widget.Filter;
 
+import com.example.mongrammaire.cards.Model;
+import com.example.mongrammaire.cards.MyAdapter;
+
 import java.util.ArrayList;
 
 public class CustomFilter extends Filter {
