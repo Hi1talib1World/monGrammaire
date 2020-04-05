@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.mongrammaire.Alphabets.acceuil;
+import com.example.mongrammaire.courslist.cours;
 
 import java.util.ArrayList;
 
