@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.mongrammaire.Alphabets.acceuil;
+import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.courslist.cours;
 
 import java.util.ArrayList;
@@ -120,7 +121,7 @@ public class NAVDRAWER extends AppCompatActivity
             Intent intent = new Intent(NAVDRAWER.this,recherche.class);
             startActivity(intent);
         } else if (id == R.id.nav_send) {
-            Intent intent = new Intent(NAVDRAWER.this,MainGameActivity.class);
+            Intent intent = new Intent(NAVDRAWER.this, MainGameActivity.class);
             startActivity(intent);
         }
 
