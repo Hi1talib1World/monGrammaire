@@ -76,5 +76,6 @@
     <string name="recherche">Recherche</string>
     <string name="quiz">Quiz</string>
     <string name="acceuil">Acceuil</string>
+    <string name="welcome">Bienvenue dans l\'application Mon Grammaire</string>
 
 </resources>
