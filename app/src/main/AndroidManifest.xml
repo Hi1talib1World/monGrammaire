@@ -29,7 +29,7 @@
             android:label="@string/title_activity_time__up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".btm_launcher"
+            android:name=".home"
             android:label="@string/btm"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
