@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +22,7 @@ import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
+import com.example.mongrammaire.horisontal_cardv.Adapter;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,12 @@ public class NAVDRAWER extends AppCompatActivity
 
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
+        imageModelArrayList = eatFruits();
+        adapter = new Adapter(this, imageModelArrayList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
 
