@@ -19,25 +19,24 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="377dp"
-                android:layout_height="315dp"
+                android:layout_height="wrap_content"
                 android:paddingHorizontal="16dp"
-                android:paddingVertical="42dp"
+                android:paddingVertical="22dp"
                 android:text="@string/welcome"
                 android:textColor="#2D3142"
                 android:textSize="26dp"
                 android:textStyle="bold" />
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/screen_area"
+                android:layout_width="411dp"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
         </LinearLayout>
-
-
-
-
-        <FrameLayout
-            android:id="@+id/screen_area"
-            android:layout_width="411dp"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>
