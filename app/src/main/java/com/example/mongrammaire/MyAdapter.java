@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.example.mongrammaire.courslist.DetailsActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
                 bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
                 byte[] bytes = stream.toByteArray();
 
-                Intent intent = new Intent(c,DetailsActivity.class);
+                Intent intent = new Intent(c, DetailsActivity.class);
                 intent.putExtra("iTitleTv",title);
                 intent.putExtra("iDescTv",descr);
                 intent.putExtra("iImgTv",bytes);
