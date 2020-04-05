@@ -269,7 +269,7 @@ public class MainGameActivity extends AppCompatActivity {
     //On BackPressed
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, btm_launcher.class);
+        Intent intent = new Intent(this, home.class);
         startActivity(intent);
         finish();
     }
