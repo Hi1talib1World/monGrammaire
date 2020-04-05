@@ -17,7 +17,7 @@
             android:parentActivityName=".NAVDRAWER"
             ></activity>
         <activity
-            android:name=".DetailsActivity"
+            android:name=".courslist.DetailsActivity"
             android:parentActivityName=".NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
