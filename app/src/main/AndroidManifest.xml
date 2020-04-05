@@ -56,8 +56,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".parametres" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".PlayAgain" />
-        <activity android:name=".GameWon" />
+        <activity android:name=".Quiz.PlayAgain" />
+        <activity android:name=".Quiz.GameWon" />
     </application>
 
 </manifest>
