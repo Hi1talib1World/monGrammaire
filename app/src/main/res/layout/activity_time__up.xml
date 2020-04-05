@@ -7,7 +7,7 @@
     android:background="@color/bg01"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Time_Up">
+    tools:context=".Quiz.Time_Up">
 
     <TextView
         android:id="@+id/timeUpText"
