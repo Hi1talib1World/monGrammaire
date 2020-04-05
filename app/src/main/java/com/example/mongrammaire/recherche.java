@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 
 public class recherche extends AppCompatActivity {
