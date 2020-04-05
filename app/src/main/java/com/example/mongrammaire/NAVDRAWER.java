@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,6 +22,7 @@ import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
+import com.example.mongrammaire.horisontal_cardv.Model;
 
 import java.util.ArrayList;
 
@@ -32,29 +32,24 @@ public class NAVDRAWER extends AppCompatActivity
     public MyAdapter adapter;
     private cours.OnFragmentInteractionListener mListener;
     //the recyclerview
-    RecyclerView recyclerView;
+
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    private ArrayList<ImageModel> imageModelArrayList;
 
-    private int[] myImageList = new int[]{R.drawable.harley2, R.drawable.benz2,
-            R.drawable.vecto,R.drawable.webshots
-            ,R.drawable.bikess,R.drawable.img1};
+    private RecyclerView recyclerView;
+    private ArrayList<Model> imageModelArrayList;
+    private Adapter adapter;
+
+    private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
+    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
 
 
-        imageModelArrayList = new ArrayList<>();
-        imageModelArrayList = populateList();
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
-
-        imageModelArrayList = eatFruits();
-        adapter = new Adapter(this, imageModelArrayList);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
 
@@ -72,18 +67,7 @@ public class NAVDRAWER extends AppCompatActivity
     }
 
 
-    private ArrayList<ImageModel> populateList(){
 
-        ArrayList<ImageModel> list = new ArrayList<>();
-
-        for(int i = 0; i < 6; i++){
-            ImageModel imageModel = new ImageModel();
-            imageModel.setImage_drawable(myImageList[i]);
-            list.add(imageModel);
-        }
-
-        return list;
-    }
 
     @Override
     public void onBackPressed() {
