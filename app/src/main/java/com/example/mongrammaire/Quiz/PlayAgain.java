@@ -35,7 +35,7 @@ public class PlayAgain extends Activity {
         });
 
         //Setting typefaces for textview and button - this will give stylish fonts on textview and button
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/shablagooital.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "font/shablagooital.ttf");
         playAgain.setTypeface(typeface);
         wrongAnsText.setTypeface(typeface);
     }
