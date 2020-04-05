@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.mongrammaire.Quiz.MainGameActivity;
+
 public class home extends AppCompatActivity {
 
 
