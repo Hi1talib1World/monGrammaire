@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/bg01"
     android:layout_height="match_parent"
-    tools:context=".cours">
+    tools:context=".courslist.cours">
 
     <ScrollView
         android:layout_width="match_parent"
