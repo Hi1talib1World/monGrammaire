@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.Quiz.MainGameActivity;
+import com.example.mongrammaire.aboutpage.word;
+import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 
 import java.util.ArrayList;
