@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.mongrammaire.AboutPageUtils;
+
 import com.example.mongrammaire.Element;
 import com.example.mongrammaire.R;
 
