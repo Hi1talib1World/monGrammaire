@@ -9,11 +9,7 @@
     tools:context=".NAVDRAWER"
     tools:showIn="@layout/app_bar_navdrawer">
 
-    <android.support.design.internal.ScrimInsetsFrameLayout
-        android:id="@+id/mainContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,12 +18,17 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_width="301dp"
+                android:layout_height="315dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="42dp"
+                android:text="TextView"
+                android:textColor="#2D3142"
+                android:textSize="44dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-    </android.support.design.internal.ScrimInsetsFrameLayout>
+
 
 
         <FrameLayout
