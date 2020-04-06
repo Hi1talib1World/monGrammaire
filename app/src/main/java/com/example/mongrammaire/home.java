@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.mongrammaire.Quiz.MainGameActivity;
+import com.example.mongrammaire.horisontal_cardv.NAVDRAWER;
 
 public class home extends AppCompatActivity {
 
