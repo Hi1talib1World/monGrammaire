@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".recherche"
-            android:parentActivityName=".NAVDRAWER"
+            android:parentActivityName=".horisontal_cardv.NAVDRAWER"
             ></activity>
         <activity
             android:name=".courslist.DetailsActivity"
-            android:parentActivityName=".NAVDRAWER"
+            android:parentActivityName=".horisontal_cardv.NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity android:name=".Quiz.MainGameActivity"
@@ -51,7 +51,7 @@
             android:label="@string/title_activity_level1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NAVDRAWER"
+            android:name=".horisontal_cardv.NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".parametres" />
