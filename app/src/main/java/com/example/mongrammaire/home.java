@@ -32,30 +32,9 @@ public class home extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
-        builder.setTitle(R.string.app_name);
-        builder.setIcon(R.mipmap.ic_launcher);
-        builder.setMessage("Voulez-vous sortir?")
-                .setCancelable(false)
-                .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("NON", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
 
-        if (!viewIsAtHome) { //if the current view is not the News fragment
-            BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
-            bottomNavigationView.setSelectedItemId(R.id.home); //display the News fragment
-        } else {
             moveTaskToBack(true);
-        }
+
     }
 
     public void buton (View v){
