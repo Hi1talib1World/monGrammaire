@@ -41,12 +41,6 @@ public class NAVDRAWER extends AppCompatActivity
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
 
-    private RecyclerView recyclerView;
-    private ArrayList<Model> imageModelArrayList;
-    private Adapter sadapter;
-
-    private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
-    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,28 +58,10 @@ public class NAVDRAWER extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
-
-        imageModelArrayList = eatFruits();
-        adapter = new Adapter(this, imageModelArrayList);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
     }
 
-    private ArrayList<Model> eatFruits(){
 
-        ArrayList<Model> list = new ArrayList<>();
-
-        for(int i = 0; i < 7; i++){
-            Model fruitModel = new Model();
-            fruitModel.setName(myImageNameList[i]);
-            fruitModel.setImage_drawable(myImageList[i]);
-            list.add(fruitModel);
-        }
-
-        return list;
-    }
 
 
     @Override
@@ -125,8 +101,10 @@ public class NAVDRAWER extends AppCompatActivity
             fragment = new HomeFragment();
 
         }else if (id == R.id.nav_home) {
+            //alphabets
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
+            //cours list
             fragment = new cours();
         } else if (id == R.id.nav_slideshow) {
             fragment = new Exsercises();
