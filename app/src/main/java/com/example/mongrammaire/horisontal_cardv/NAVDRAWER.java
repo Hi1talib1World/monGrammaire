@@ -1,11 +1,14 @@
 package com.example.mongrammaire.horisontal_cardv;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,6 +28,7 @@ import com.example.mongrammaire.Translatetool;
 import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
+import com.example.mongrammaire.home;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
 import com.example.mongrammaire.recherche;
@@ -37,7 +41,7 @@ public class NAVDRAWER extends AppCompatActivity
     public MyAdapter adapter;
     private cours.OnFragmentInteractionListener mListener;
     //the recyclerview
-
+    private boolean viewIsAtHome;
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
@@ -60,6 +64,7 @@ public class NAVDRAWER extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Mon Grammaire");
+        //make fragment in the opener
         if (savedInstanceState == null) {
             Fragment newFragment = new HomeFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -81,12 +86,25 @@ public class NAVDRAWER extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(NAVDRAWER.this);
+        builder.setTitle(R.string.app_name);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setMessage("Voulez-vous sortir Des cours?")
+                .setCancelable(false)
+                .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("NON", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
     }
 
 
