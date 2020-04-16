@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler);
 
         imageModelArrayList = eatFruits();
-        adapter = new Adapter(this, imageModelArrayList);
+        adapter = new Adapter(getActivity(), imageModelArrayList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
