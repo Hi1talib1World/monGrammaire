@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.R;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private LayoutInflater inflater;
     private ArrayList<Model> imageModelArrayList;
 
+    Context ctx;
     public Adapter(Context ctx, ArrayList<Model> imageModelArrayList){
 
         inflater = LayoutInflater.from(ctx);
