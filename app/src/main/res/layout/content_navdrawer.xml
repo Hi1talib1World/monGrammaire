@@ -11,6 +11,9 @@
 
 
 
-
+    <FrameLayout
+        android:id="@+id/screen_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>
