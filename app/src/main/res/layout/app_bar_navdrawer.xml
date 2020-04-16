@@ -22,7 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
+    <include layout="@layout/content_navdrawer" />
 
 
 </android.support.design.widget.CoordinatorLayout>
