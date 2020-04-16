@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.Exsercises;
+import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.Translatetool;
@@ -121,6 +122,8 @@ public class NAVDRAWER extends AppCompatActivity
         Fragment fragment = null;
         if (id == R.id.nav_ac) {
         //home screen
+            fragment = new HomeFragment();
+
         }else if (id == R.id.nav_home) {
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
