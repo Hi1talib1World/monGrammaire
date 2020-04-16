@@ -32,45 +32,51 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
+                android:layout_height="295dp"
+                android:layout_gravity="center"
                 android:cardCornerRadius="25dp"
-
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="3dp">
 
                 <android.support.v7.widget.GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="246dp">
+                    android:layout_height="match_parent"
+
+                    >
 
                     <Button
                         android:id="@+id/a"
-                        android:layout_width="190dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="6dp"
-                        android:background="@drawable/ess"
+                        android:layout_width="169dp"
+                        android:layout_height="115dp"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/buttonshape"
                         android:text="@string/a"
                         android:textColor="@color/white"
                         android:textSize="63sp"
+
                         app:layout_row="0" />
 
                     <Button
                         android:id="@+id/b"
-                        android:layout_width="190dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="6dp"
-                        android:background="@drawable/ess"
+                        android:layout_width="169dp"
+
+                        android:layout_height="115dp"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/buttonshape"
                         android:text="@string/a"
                         android:textColor="@color/white"
                         android:textSize="63sp"
+                        app:layout_column="1"
                         app:layout_row="0" />
 
                     <Button
                         android:id="@+id/c"
-                        android:layout_width="190dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="6dp"
-                        android:background="@drawable/ess"
+                        android:layout_width="169dp"
+                        android:layout_height="115dp"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/buttonshape"
                         android:text="@string/a"
+
                         android:textColor="@color/white"
                         android:textSize="63sp"
                         app:layout_column="0"
@@ -78,10 +84,11 @@
 
                     <Button
                         android:id="@+id/d"
-                        android:layout_width="190dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="6dp"
-                        android:background="@drawable/ess"
+                        android:layout_width="169dp"
+
+                        android:layout_height="115dp"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/buttonshape"
                         android:text="@string/a"
                         android:textColor="@color/white"
                         android:textSize="63sp"
