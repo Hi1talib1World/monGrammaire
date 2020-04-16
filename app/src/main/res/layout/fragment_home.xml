@@ -1,31 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/bg01"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/welcome"
+            android:textColor="#2D3142"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="buton"
-            android:text="@string/entrer"
-            tools:ignore="MissingConstraints" />
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            <android.support.v7.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/a"
+                    android:layout_width="169dp"
+                    android:layout_height="115dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="@string/a"
+                    android:textColor="@color/white"
+                    android:textSize="63sp"
+
+                    app:layout_column="0"
+                    app:layout_row="0" />
+
+                <Button
+                    android:id="@+id/b"
+                    android:layout_width="169dp"
+
+                    android:layout_height="115dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="@string/a"
+                    android:textColor="@color/white"
+                    android:textSize="63sp"
+                    app:layout_column="1"
+                    app:layout_row="0" />
+
+                <Button
+                    android:id="@+id/c"
+                    app:layout_column="0"
+                    app:layout_row="1"
+                    android:layout_width="168dp"
+                    android:layout_height="115dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="@string/a"
+                    android:textColor="@color/white"
+                    android:textSize="63sp"
+                    />
+
+                <Button
+                    android:id="@+id/d"
+                    android:layout_width="169dp"
+
+                    android:layout_height="115dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="@string/a"
+                    android:textColor="@color/white"
+                    android:textSize="63sp"
+                    app:layout_column="1"
+                    app:layout_row="1" />
+            </android.support.v7.widget.GridLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/parametres"
+            android:paddingHorizontal="10dp"
+
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="407dp"
+                android:layout_height="174dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/white" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/screen_area"
+            android:layout_width="411dp"
+            android:layout_height="match_parent"
             tools:ignore="MissingConstraints" />
-
-
     </LinearLayout>
-</LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
