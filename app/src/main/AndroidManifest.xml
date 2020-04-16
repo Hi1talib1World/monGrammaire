@@ -13,17 +13,20 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recherche"
-            android:parentActivityName=".horisontal_cardv.NAVDRAWER"
-            ></activity>
+        <activity android:name=".horisontal_cardv.categories.PhrasesActivity"></activity>
+        <activity android:name=".horisontal_cardv.categories.subordonnes" />
+        <activity android:name=".horisontal_cardv.categories.Conjugaison" />
+        <activity android:name=".horisontal_cardv.categories.MotsActivity" />
+        <activity
+            android:name=".recherche"
+            android:parentActivityName=".horisontal_cardv.NAVDRAWER" />
         <activity
             android:name=".courslist.DetailsActivity"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
-        <activity android:name=".Quiz.MainGameActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Quiz.MainGameActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Quiz.Time_Up"
             android:label="@string/title_activity_time__up"
