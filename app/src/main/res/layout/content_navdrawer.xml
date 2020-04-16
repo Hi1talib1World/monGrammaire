@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/lib/packageselect.app.co"
+    xmlns:app2="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@color/bg01"
     tools:context=".horisontal_cardv.NAVDRAWER"
@@ -32,17 +33,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="295dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:cardCornerRadius="25dp"
-                android:orientation="vertical"
-                android:paddingHorizontal="3dp">
+                android:orientation="vertical">
 
                 <android.support.v7.widget.GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    >
+                    android:layout_height="match_parent">
 
                     <Button
                         android:id="@+id/a"
@@ -71,16 +68,16 @@
 
                     <Button
                         android:id="@+id/c"
-                        android:layout_width="169dp"
+                        android:layout_width="168dp"
                         android:layout_height="115dp"
                         android:layout_margin="15dp"
                         android:background="@drawable/buttonshape"
                         android:text="@string/a"
-
                         android:textColor="@color/white"
                         android:textSize="63sp"
-                        app:layout_column="0"
-                        app:layout_row="1" />
+                        app2:layout_column="0"
+                        app2:layout_row="1"
+                        app:layout_row="2" />
 
                     <Button
                         android:id="@+id/d"
@@ -100,7 +97,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
-                android:cardCornerRadius="25dp"
 
                 android:orientation="vertical">
 
