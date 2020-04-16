@@ -111,6 +111,7 @@ public class NAVDRAWER extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
+        Bundle bundle = new Bundle();
         if (id == R.id.nav_ac) {
             //home screen
             fragment = new HomeFragment();
