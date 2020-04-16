@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,6 +25,8 @@ import com.example.mongrammaire.Translatetool;
 import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
+import com.example.mongrammaire.horisontal_cardv.Adapter;
+import com.example.mongrammaire.horisontal_cardv.Model;
 import com.example.mongrammaire.recherche;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 public class NAVDRAWER extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public Adapter adapter;
+    public MyAdapter adapter;
     private cours.OnFragmentInteractionListener mListener;
     //the recyclerview
 
@@ -41,11 +42,21 @@ public class NAVDRAWER extends AppCompatActivity
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
 
+    private RecyclerView recyclerView;
+    private ArrayList<Model> imageModelArrayList;
+
+    private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
+    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
+
+
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Mon Grammaire");
@@ -57,8 +68,6 @@ public class NAVDRAWER extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
 
@@ -97,14 +106,11 @@ public class NAVDRAWER extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         if (id == R.id.nav_ac) {
-        //home screen
+            //home screen
             fragment = new HomeFragment();
-
         }else if (id == R.id.nav_home) {
-            //alphabets
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
-            //cours list
             fragment = new cours();
         } else if (id == R.id.nav_slideshow) {
             fragment = new Exsercises();
