@@ -60,7 +60,13 @@ public class NAVDRAWER extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Mon Grammaire");
-
+        if (savedInstanceState == null) {
+            Fragment newFragment = new HomeFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.screen_area, newFragment);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
