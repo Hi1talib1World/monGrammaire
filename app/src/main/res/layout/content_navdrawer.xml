@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/lib/packageselect.app.co"
     xmlns:app2="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/bg01"
     tools:context=".horisontal_cardv.NAVDRAWER"
     tools:showIn="@layout/app_bar_navdrawer">
