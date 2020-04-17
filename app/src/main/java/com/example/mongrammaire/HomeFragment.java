@@ -4,20 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
+import com.example.mongrammaire.horisontal_cardv.NAVDRAWER;
+import com.example.mongrammaire.horisontal_cardv.categories.Conjugaison;
 
 import java.util.ArrayList;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private ArrayList<Model> imageModelArrayList;
@@ -39,6 +43,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
+        Button conjBtn = (Button) v.findViewById(R.id.a);
+        conjBtn.setOnClickListener(this);
         return v;
     }
     private ArrayList<Model> eatFruits(){
@@ -55,5 +61,22 @@ public class HomeFragment extends Fragment {
         return list;
     }
 
+
+    @Override
+    public void onClick(View v) {
+        Fragment fragment = null;
+        switch (view.getId()) {
+            case R.id.aboutusButton:
+                fragment = new AboutFragment();
+                replaceFragment(fragment);
+                break;
+
+            case R.id.phbookButton:
+                fragment = new PhoneBookFragment();
+                replaceFragment(fragment);
+                break;
+        }
+
+    }
 
 }
