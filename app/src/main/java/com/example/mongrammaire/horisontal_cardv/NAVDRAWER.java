@@ -2,6 +2,7 @@ package com.example.mongrammaire.horisontal_cardv;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.BottomNavigationView;
@@ -19,8 +20,10 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.Exsercises;
@@ -34,6 +37,7 @@ import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.home;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
+import com.example.mongrammaire.horisontal_cardv.categories.Conjugaison;
 import com.example.mongrammaire.recherche;
 
 import java.util.ArrayList;
@@ -64,30 +68,6 @@ public class NAVDRAWER extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
-
-
-        androidProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
-        textView = (TextView) findViewById(R.id.textView);
-        //Start progressing
-        new Thread(new Runnable() {
-            public void run() {
-                while (progressStatusCounter < 100) {
-                    progressStatusCounter += 2;
-                    progressHandler.post(new Runnable() {
-                        public void run() {
-                            androidProgressBar.setProgress(progressStatusCounter);
-
-                        }
-                    });
-                    try {
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -188,6 +168,7 @@ public class NAVDRAWER extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }
