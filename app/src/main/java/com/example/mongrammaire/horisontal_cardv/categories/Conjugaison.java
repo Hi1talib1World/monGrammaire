@@ -74,7 +74,7 @@ public class Conjugaison extends AppCompatActivity  implements verbesAdapter.ver
     /**
      * fetches json by making http calls
      */
-    private void fetchContacts() {
+    private void fetchverbes() {
         JsonArrayRequest request = new JsonArrayRequest(URL,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -104,6 +104,36 @@ public class Conjugaison extends AppCompatActivity  implements verbesAdapter.ver
         });
 
         MyApplication.getInstance().addToRequestQueue(request);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cat_menu, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
+        return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
