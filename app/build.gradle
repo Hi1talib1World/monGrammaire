@@ -34,6 +34,7 @@ android {
 
 dependencies {
     annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
