@@ -15,7 +15,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".horisontal_cardv.categories.PhrasesActivity"></activity>
         <activity android:name=".horisontal_cardv.categories.subordonnes" />
-        <activity android:name=".horisontal_cardv.categories.Conjugaison" />
+        <activity android:name=".horisontal_cardv.categories.Conjugaison" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
         <activity android:name=".horisontal_cardv.categories.MotsActivity" />
         <activity
             android:name=".recherche"
