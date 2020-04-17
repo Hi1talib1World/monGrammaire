@@ -38,22 +38,21 @@
 
                 <Button
                     android:id="@+id/a"
-                    android:layout_width="169dp"
-                    android:layout_height="115dp"
+                    android:layout_width="133dp"
+                    android:layout_height="100dp"
                     android:layout_margin="16dp"
                     android:background="@drawable/buttonshape"
                     android:text="@string/a"
                     android:textColor="@color/white"
                     android:textSize="63sp"
-
+                    android:onClick="Conjugaison"
                     app:layout_column="0"
                     app:layout_row="0" />
 
                 <Button
                     android:id="@+id/b"
-                    android:layout_width="169dp"
-
-                    android:layout_height="115dp"
+                    android:layout_width="133dp"
+                    android:layout_height="100dp"
                     android:layout_margin="16dp"
                     android:background="@drawable/buttonshape"
                     android:text="@string/a"
@@ -66,8 +65,8 @@
                     android:id="@+id/c"
                     app:layout_column="0"
                     app:layout_row="1"
-                    android:layout_width="168dp"
-                    android:layout_height="115dp"
+                    android:layout_width="133dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
                     android:background="@drawable/buttonshape"
                     android:text="@string/a"
@@ -77,9 +76,8 @@
 
                 <Button
                     android:id="@+id/d"
-                    android:layout_width="169dp"
-
-                    android:layout_height="115dp"
+                    android:layout_width="133dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
                     android:background="@drawable/buttonshape"
                     android:text="@string/a"
