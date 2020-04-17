@@ -4,12 +4,17 @@
     <color name="colorPrimaryDark">#2D3142</color>
     <color name="colorAccent">#00C9FD</color>
 
+
+    <color name="contact_name">#333333</color>
+    <color name="contact_number">#8c8c8c</color>
+
     <color name="white">#ffffff</color>
     <color name="grey">#757171</color>
     <color name="backgroundColor">#3E454F</color>
     <color name="lightGreen">#8BC34A</color>
     <color name="green">#008000</color>
     <color name="red">#FF0000</color>
+
     <color name="about_item_icon_color">#313131</color>
     <color name="about_background_color">#FFFFFF</color>
     <color name="about_separator_color">#e1e1e1</color>
