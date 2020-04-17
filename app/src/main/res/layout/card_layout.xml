@@ -61,18 +61,7 @@
             android:textColor="#fff"
             android:textSize="15sp"/>
 
-        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-            android:layout_width="dimension"
-            android:layout_height="dimension"
-            app:rcProgress="float"
-            app:rcSecondaryProgress="float"
-            app:rcMax="float"
-            app:rcRadius="dimension"
-            app:rcBackgroundPadding="dimension"
-            app:rcReverse="boolean"
-            app:rcProgressColor="color"
-            app:rcSecondaryProgressColor="color"
-            app:rcBackgroundColor="color" />
+
         <ProgressBar
 
             android:id="@+id/horizontal_progress_bar"
