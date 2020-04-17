@@ -3,6 +3,7 @@ package com.example.mongrammaire.horisontal_cardv;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,8 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.Exsercises;
@@ -52,12 +55,38 @@ public class NAVDRAWER extends AppCompatActivity
     private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
     private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
 
+
+    ProgressBar androidProgressBar;
+    int progressStatusCounter = 0;
+    TextView textView;
+    Handler progressHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
 
 
+        androidProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
+        textView = (TextView) findViewById(R.id.textView);
+        //Start progressing
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatusCounter < 100) {
+                    progressStatusCounter += 2;
+                    progressHandler.post(new Runnable() {
+                        public void run() {
+                            androidProgressBar.setProgress(progressStatusCounter);
+
+                        }
+                    });
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
 
 
 
