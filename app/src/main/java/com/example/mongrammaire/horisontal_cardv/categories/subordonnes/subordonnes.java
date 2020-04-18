@@ -20,8 +20,8 @@ public class subordonnes extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private List<subs> callsList;
-    private subsAdapter callsAdapter;
+    private List<subs> subsList;
+    private subsAdapter subsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +63,7 @@ public class subordonnes extends AppCompatActivity {
             subsList.add(new subs("Scott","10:45 AM"));
 
         // Set items to adapter
-            subsAdapter.setsubsFeed(callsList);
+            subsAdapter.setCallsFeed(subsList);
             subsAdapter.notifyDataSetChanged();
         }
 }
