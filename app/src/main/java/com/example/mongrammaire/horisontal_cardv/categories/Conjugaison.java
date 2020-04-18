@@ -44,7 +44,7 @@ public class Conjugaison extends AppCompatActivity  implements verbesAdapter.ver
     private SearchView searchView;
 
     // url to fetch contacts json
-    private static final String URL = "https://api.androidhive.info/json/contacts.json";
+    private static final String URL = "https://api.npoint.io/77b984a8ccad8c7503ed";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
