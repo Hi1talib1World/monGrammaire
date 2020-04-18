@@ -3,7 +3,9 @@ package com.example.mongrammaire;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,12 +57,13 @@ public class Translatetool extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void getTranslateService() {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        try (InputStream is = getResources().openRawResource(R.raw.translateipa)) {
+        try (InputStream is = getResources().openRawResource(R.raw.transipa)) {
 
             //Get credentials:
             final GoogleCredentials myCredentials = GoogleCredentials.fromStream(is);
