@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".verbeDetails"
+            android:name=".horisontal_cardv.categories.verbeDetails"
             android:label="@string/title_activity_verbe_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".horisontal_cardv.categories.PhrasesActivity" />
