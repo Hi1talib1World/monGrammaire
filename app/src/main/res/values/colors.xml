@@ -14,7 +14,9 @@
     <color name="lightGreen">#8BC34A</color>
     <color name="green">#008000</color>
     <color name="red">#FF0000</color>
-
+    <color name="transparent">#00000000</color>
+    <color name="product_list_item_bg">#ffffff</color>
+    <color name="view_divider_color">#BABABA</color>
     <color name="about_item_icon_color">#313131</color>
     <color name="about_background_color">#FFFFFF</color>
     <color name="about_separator_color">#e1e1e1</color>
