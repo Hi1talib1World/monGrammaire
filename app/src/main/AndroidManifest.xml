@@ -13,12 +13,16 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".horisontal_cardv.categories.PhrasesActivity"></activity>
+        <activity
+            android:name=".verbeDetails"
+            android:label="@string/title_activity_verbe_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".horisontal_cardv.categories.PhrasesActivity" />
         <activity android:name=".horisontal_cardv.categories.subordonnes" />
-        <activity android:name=".horisontal_cardv.categories.Conjugaison"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-
-            >
+        <activity
+            android:name=".horisontal_cardv.categories.Conjugaison"
+            android:parentActivityName=".horisontal_cardv.NAVDRAWER"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
