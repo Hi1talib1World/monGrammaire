@@ -22,7 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.mongrammaire.Alphabets.acceuil;
-import com.example.mongrammaire.Exsercises;
+import com.example.mongrammaire.cards.favorites.Exsercises;
 import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.R;
