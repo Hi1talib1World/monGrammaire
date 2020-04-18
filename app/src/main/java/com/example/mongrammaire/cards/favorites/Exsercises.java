@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.cards.Model;
+import com.example.mongrammaire.cards.MyAdapter;
 
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Exsercises extends Fragment {
     List<Model> favorites;
 
     Activity activity;
-    ProductListAdapter productListAdapter;
+    MyAdapter productListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
