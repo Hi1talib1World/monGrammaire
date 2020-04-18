@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
     implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     // glide image library
