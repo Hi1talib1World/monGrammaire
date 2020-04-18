@@ -21,7 +21,7 @@ import com.example.mongrammaire.horisontal_cardv.categories.Conjugaison;
 import java.util.ArrayList;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment  {
 
     private RecyclerView recyclerView;
     private ArrayList<Model> imageModelArrayList;
@@ -44,7 +44,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
         Button conjBtn = (Button) v.findViewById(R.id.a);
-        conjBtn.setOnClickListener(this);
+        conjBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Conjugaison.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
     private ArrayList<Model> eatFruits(){
@@ -62,21 +69,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    @Override
-    public void onClick(View v) {
-        Fragment fragment = null;
-        switch (view.getId()) {
-            case R.id.aboutusButton:
-                fragment = new AboutFragment();
-                replaceFragment(fragment);
-                break;
 
-            case R.id.phbookButton:
-                fragment = new PhoneBookFragment();
-                replaceFragment(fragment);
-                break;
-        }
-
-    }
 
 }
