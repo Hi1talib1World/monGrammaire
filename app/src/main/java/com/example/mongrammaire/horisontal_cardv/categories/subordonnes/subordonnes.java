@@ -63,7 +63,7 @@ public class subordonnes extends AppCompatActivity {
             subsList.add(new subs("Scott","10:45 AM"));
 
         // Set items to adapter
-            subsAdapter.setCallsFeed(subsList);
+            subsAdapter.setsubsFeed(subsList);
             subsAdapter.notifyDataSetChanged();
         }
 }
