@@ -32,7 +32,7 @@ public class subsAdapter extends RecyclerView.Adapter<subsAdapter.ViewHolder>{
     // Invoked by layout manager to replace the contents of the views
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        subs call = subsFeed.get(position);
+        subs subs = subsFeed.get(position);
         holder.showCallDetails(subs);
     }
 
@@ -53,22 +53,22 @@ public class subsAdapter extends RecyclerView.Adapter<subsAdapter.ViewHolder>{
     // Reference to the views for each items to display desired information
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView callerNameTextView,callTimeTextView;
+        private TextView subsNameTextView,descTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             // Initiate view
-            callerNameTextView=(TextView)itemView.findViewById(R.id.subsName);
-            callTimeTextView=(TextView)itemView.findViewById(R.id.subsTime);
+            subsNameTextView=(TextView)itemView.findViewById(R.id.subsName);
+            descTextView=(TextView)itemView.findViewById(R.id.subsTime);
         }
 
 
         public void showCallDetails(subs subs){
             // Attach values for each item
-            String callerName   =subs.getsubName();
-            String callTime     =subs.getsubTime();
-            callerNameTextView.setText(callerName);
-            callTimeTextView.setText(callTime);
+            String subsName   =subs.getsubsName();
+            String desc     =subs.getdesc();
+            subsNameTextView.setText(subsName);
+            descTextView.setText(desc);
         }
     }
 }
