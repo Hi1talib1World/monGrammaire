@@ -10,47 +10,60 @@ import com.example.mongrammaire.cards.MyAdapter;
 
 public class subsAdapter {
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
-        public MyViewHolder(TextView v) {
-            super(v);
-            textView = v;
+    private List<Call> callsFeed=new ArrayList();
+    // Context is not used here but may be required to
+    // perform complex operations or call methods from outside
+    private Context context;
+
+    // Constructor
+    public CallsAdapter(Context context){
+        this.context=context;
+    }
+
+    public void setCallsFeed(List<Call> callsFeed){
+        this.callsFeed=callsFeed;
+    }
+
+    // Invoked by layout manager to replace the contents of the views
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        Call call = callsFeed.get(position);
+        holder.showCallDetails(call);
+    }
+
+    @Override
+    public int getItemCount(){return callsFeed.size();}
+
+    // Invoked by layout manager to create new views
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // Attach layout for single cell
+        int layout = R.layout.calls_feed_layout;
+        View v = LayoutInflater
+                .from(parent.getContext())
+                .inflate(layout, parent, false);
+        return new ViewHolder(v);
+    }
+
+    // Reference to the views for each items to display desired information
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView callerNameTextView,callTimeTextView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            // Initiate view
+            callerNameTextView=(TextView)itemView.findViewById(R.id.callerName);
+            callTimeTextView=(TextView)itemView.findViewById(R.id.callTime);
         }
-    }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public subsAdapter(String[] myDataset) {
-        mDataset = myDataset;
-    }
 
-    // Create new views (invoked by the layout manager)
-    @Override
-    public subsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
-        // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
-
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
-
-    }
-
-    // Return the size of your dataset (invoked by the layout manager)
-    @Override
-    public int getItemCount() {
-        return mDataset.length;
+        public void showCallDetails(Call call){
+            // Attach values for each item
+            String callerName   =call.getCallerName();
+            String callTime     =call.getCallTime();
+            callerNameTextView.setText(callerName);
+            callTimeTextView.setText(callTime);
+        }
     }
 }
