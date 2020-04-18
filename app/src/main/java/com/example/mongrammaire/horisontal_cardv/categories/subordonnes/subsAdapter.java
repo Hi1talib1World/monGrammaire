@@ -25,7 +25,7 @@ public class subsAdapter extends RecyclerView.Adapter<subsAdapter.ViewHolder>{
         this.context=context;
     }
 
-    public void setCallsFeed(List<subs> callsFeed){
+    public void setsubsFeed(List<subs> callsFeed){
         this.subsFeed=callsFeed;
     }
 
