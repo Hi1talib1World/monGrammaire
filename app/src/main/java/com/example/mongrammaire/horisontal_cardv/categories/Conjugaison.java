@@ -14,7 +14,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -55,6 +54,7 @@ public class Conjugaison extends AppCompatActivity  implements verbesAdapter.ver
         // toolbar fancy stuff
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.toolbar_title);
+        toolbar.setBackgroundColor(Color.parseColor("#00C9FD"));
 
         recyclerView = findViewById(R.id.recycler_view);
         verbesList = new ArrayList<>();
@@ -69,7 +69,7 @@ public class Conjugaison extends AppCompatActivity  implements verbesAdapter.ver
         recyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
         recyclerView.setAdapter(mAdapter);
 
-        fetchverbes();
+
     }
 
     /**
