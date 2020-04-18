@@ -65,8 +65,8 @@ public class subsAdapter extends RecyclerView.Adapter<subsAdapter.ViewHolder>{
 
         public void showCallDetails(subs subs){
             // Attach values for each item
-            String callerName   =subs.getCallerName();
-            String callTime     =subs.getCallTime();
+            String callerName   =subs.getsubName();
+            String callTime     =subs.getsubTime();
             callerNameTextView.setText(callerName);
             callTimeTextView.setText(callTime);
         }
