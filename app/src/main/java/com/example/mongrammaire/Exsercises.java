@@ -1,8 +1,10 @@
 package com.example.mongrammaire;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -17,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,7 +81,7 @@ public class Exsercises extends Fragment {
                 });
 
                 favoriteList
-                        .setOnItemLongClickListener(new OnItemLongClickListener() {
+                        .setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
                             @Override
                             public boolean onItemLongClick(
@@ -98,7 +102,7 @@ public class Exsercises extends Fragment {
                                             Toast.LENGTH_SHORT).show();
 
                                     button.setTag("red");
-                                    button.setImageResource(R.drawable.heart_red);
+                                    button.setImageResource(R.drawable.red_heart);
                                 } else {
                                     sharedPreference.removeFavorite(activity,
                                             favorites.get(position));
@@ -120,5 +124,33 @@ public class Exsercises extends Fragment {
         return view;
     }
 
+    public void showAlert(String title, String message) {
+        if (activity != null && !activity.isFinishing()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(activity)
+                    .create();
+            alertDialog.setTitle(title);
+            alertDialog.setMessage(message);
+            alertDialog.setCancelable(false);
+
+            // setting OK Button
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                    new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            // activity.finish();
+                            getFragmentManager().popBackStackImmediate();
+                        }
+                    });
+            alertDialog.show();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        getActivity().setTitle(R.string.favorites);
+        getActivity().getActionBar().setTitle(R.string.favorites);
+        super.onResume();
+    }
 
 }
