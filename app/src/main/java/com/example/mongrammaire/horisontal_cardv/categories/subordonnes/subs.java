@@ -8,11 +8,11 @@ public class subs {
         this.desc = desc;
     }
 
-    public String getCallerName() {
+    public String getsubName() {
         return subName;
     }
 
-    public String getCallTime() {
+    public String getsubTime() {
         return desc;
     }
 }
