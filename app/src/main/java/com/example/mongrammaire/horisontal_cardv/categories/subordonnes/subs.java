@@ -1,18 +1,18 @@
 package com.example.mongrammaire.horisontal_cardv.categories.subordonnes;
 
 public class subs {
-    private String subName,desc;
+    private String subsName,desc;
 
-    public subs(String subName, String desc) {
-        this.subName = subName;
+    public subs(String subsName, String desc) {
+        this.subsName = subsName;
         this.desc = desc;
     }
 
-    public String getsubName() {
-        return subName;
+    public String getsubsName() {
+        return subsName;
     }
 
-    public String getsubTime() {
+    public String getdesc() {
         return desc;
     }
 }
