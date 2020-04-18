@@ -1,4 +1,4 @@
-package com.example.mongrammaire.horisontal_cardv.categories;
+package com.example.mongrammaire.horisontal_cardv.categories.conjugaison;
 
 import android.content.Context;
 import android.content.res.Resources;

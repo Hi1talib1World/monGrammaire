@@ -1,4 +1,4 @@
-package com.example.mongrammaire.horisontal_cardv.categories;
+package com.example.mongrammaire.horisontal_cardv.categories.subordonnes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

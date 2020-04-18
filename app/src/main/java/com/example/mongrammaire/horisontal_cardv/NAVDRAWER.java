@@ -2,10 +2,8 @@ package com.example.mongrammaire.horisontal_cardv;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,10 +18,8 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.Exsercises;
@@ -34,10 +30,6 @@ import com.example.mongrammaire.Translatetool;
 import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
-import com.example.mongrammaire.home;
-import com.example.mongrammaire.horisontal_cardv.Adapter;
-import com.example.mongrammaire.horisontal_cardv.Model;
-import com.example.mongrammaire.horisontal_cardv.categories.Conjugaison;
 import com.example.mongrammaire.recherche;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.mongrammaire.horisontal_cardv.categories.main;
+package com.example.mongrammaire.horisontal_cardv.categories.conjugaison.main;
 
 import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;

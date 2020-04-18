@@ -4,7 +4,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".horisontal_cardv.categories.main.PlaceholderFragment">
+    tools:context=".horisontal_cardv.categories.conjugaison.main.PlaceholderFragment">
 
     <TextView
         android:id="@+id/section_label"

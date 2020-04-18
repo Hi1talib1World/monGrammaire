@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".horisontal_cardv.categories.verbeDetails"
+            android:name=".horisontal_cardv.categories.conjugaison.verbeDetails"
             android:label="@string/title_activity_verbe_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".horisontal_cardv.categories.PhrasesActivity" />
-        <activity android:name=".horisontal_cardv.categories.subordonnes" />
+        <activity android:name=".horisontal_cardv.categories.subordonnes.subordonnes" />
         <activity
-            android:name=".horisontal_cardv.categories.Conjugaison"
+            android:name=".horisontal_cardv.categories.conjugaison.Conjugaison"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
