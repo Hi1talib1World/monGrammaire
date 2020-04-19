@@ -73,7 +73,7 @@ public class Exsercises extends Fragment {
 
             favoriteList = (ListView) view.findViewById(R.id.list_product);
             if (favorites != null) {
-                productListAdapter = new ProductListAdapter(activity, favorites);
+                productListAdapter = new MyAdapter(activity, favorites);
                 favoriteList.setAdapter(productListAdapter);
 
                 favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
