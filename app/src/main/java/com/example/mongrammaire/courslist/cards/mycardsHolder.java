@@ -1,18 +1,14 @@
-package com.example.mongrammaire.cards;
+package com.example.mongrammaire.courslist.cards;
 
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.itemClickListener;
-
-import org.w3c.dom.Text;
 
 public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

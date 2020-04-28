@@ -1,4 +1,4 @@
-package com.example.mongrammaire.cards;
+package com.example.mongrammaire.courslist.cards;
 
 import android.content.Context;
 import android.content.Intent;

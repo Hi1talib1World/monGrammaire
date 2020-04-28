@@ -1,38 +1,24 @@
-package com.example.mongrammaire.cards.favorites;
+package com.example.mongrammaire.courslist.cards.favorites;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mongrammaire.R;
-import com.example.mongrammaire.cards.Model;
-import com.example.mongrammaire.cards.MyAdapter;
+import com.example.mongrammaire.courslist.cards.Model;
+import com.example.mongrammaire.courslist.cards.MyAdapter;
 
-import java.util.Collections;
 import java.util.List;
-
-import info.hoang8f.widget.FButton;
 
 public class Exsercises extends Fragment {
 
