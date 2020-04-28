@@ -67,8 +67,8 @@
         <ProgressBar
 
             android:id="@+id/horizontal_progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="fill_parent"
+            style="@style/MyProgressBar"
             android:layout_height="wrap_content"
             android:layout_margin="44dp"
             android:indeterminate="false"
