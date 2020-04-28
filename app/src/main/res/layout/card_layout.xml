@@ -67,20 +67,15 @@
         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
 
             android:id="@+id/horizontal_progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="44dp"
-            android:indeterminate="false"
-            android:max="100"
-            android:minHeight="100dp"
             app:rcBackgroundColor="#0A000000"
             app:rcBackgroundPadding="4dp"
             app:rcMax="100"
             app:rcProgress="50"
             app:rcProgressColors="@array/sample_progress_gradient"
             app:rcRadius="30dp"
-            android:progress="30"
  />
 
 
