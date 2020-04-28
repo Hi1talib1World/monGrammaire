@@ -31,7 +31,7 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".horisontal_cardv.categories.MotsActivity" />
+        <activity android:name=".horisontal_cardv.categories.Mots.MotsActivity" />
         <activity
             android:name=".recherche"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER" />
