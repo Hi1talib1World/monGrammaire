@@ -7,12 +7,7 @@
 
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
-    <resources>
-        <array name="sample_progress_gradient">
-            <item>#009688</item>
-            <item>#80CBC4</item>
-        </array>
-    </resources>
+
     <color name="white">#ffffff</color>
     <color name="grey">#757171</color>
     <color name="backgroundColor">#3E454F</color>
