@@ -10,7 +10,14 @@
     <dimen name="about_text_padding">8dp</dimen>
     <dimen name="about_group_text_padding">16dp</dimen>
     <dimen name="about_separator_height">0.5dp</dimen>
-
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="slide_title">30dp</dimen>
+    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="thumbnail">40dp</dimen>
     <dimen name="row_padding">10dp</dimen>
