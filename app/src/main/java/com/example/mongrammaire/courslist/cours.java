@@ -96,7 +96,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener,S
                             handler.post(new Runnable() {
                                 public void run() {
                                     pbar.setProgress(a);
-                                    
+
 
                                 }
                             });
