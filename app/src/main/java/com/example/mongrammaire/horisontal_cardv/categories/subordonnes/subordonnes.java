@@ -4,17 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
-import com.example.mongrammaire.R;
-import com.example.mongrammaire.cards.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.mongrammaire.R;
 
 public class subordonnes extends AppCompatActivity {
 

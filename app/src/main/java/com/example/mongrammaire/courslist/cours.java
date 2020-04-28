@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.example.mongrammaire.cards.Model;
-import com.example.mongrammaire.cards.MyAdapter;
+import com.example.mongrammaire.courslist.cards.Model;
+import com.example.mongrammaire.courslist.cards.MyAdapter;
 import com.example.mongrammaire.R;
 
 import java.util.ArrayList;

@@ -22,13 +22,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.mongrammaire.Alphabets.acceuil;
-import com.example.mongrammaire.cards.favorites.Exsercises;
+import com.example.mongrammaire.courslist.cards.favorites.Exsercises;
 import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.Translatetool;
 import com.example.mongrammaire.aboutpage.word;
-import com.example.mongrammaire.cards.MyAdapter;
+import com.example.mongrammaire.courslist.cards.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.recherche;
 
