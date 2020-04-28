@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mongrammaire.R;
+import com.example.mongrammaire.courslist.DetailsActivity;
 
 public class SliderActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -118,7 +119,7 @@ public class SliderActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(SliderActivity.this, MainActivity.class));
+        startActivity(new Intent(SliderActivity.this, DetailsActivity.class));
         finish();
     }
 
