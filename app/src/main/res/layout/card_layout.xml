@@ -78,7 +78,7 @@
             app:rcBackgroundPadding="4dp"
             app:rcMax="100"
             app:rcProgress="50"
-            app:rcProgressColors="@color/sample_progress_gradient"
+            app:rcProgressColors="@array/sample_progress_gradient"
             app:rcRadius="30dp"
             android:progress="30"
  />
