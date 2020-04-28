@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.example.mongrammaire.R;
 import com.example.mongrammaire.courslist.cards.Model;
 import com.example.mongrammaire.courslist.cards.MyAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exsercises extends Fragment {
@@ -59,8 +61,8 @@ public class Exsercises extends Fragment {
 
             favoriteList = (ListView) view.findViewById(R.id.list_product);
             if (favorites != null) {
-                productListAdapter = new MyAdapter(activity, favorites);
-                favoriteList.setAdapter(productListAdapter);
+                productListAdapter = new MyAdapter(activity, (ArrayList<Model>) favorites);
+                favoriteList.setAdapter((ListAdapter) productListAdapter);
 
                 favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
