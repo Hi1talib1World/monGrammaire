@@ -2,6 +2,7 @@ package com.example.mongrammaire.courslist;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mongrammaire.courslist.cards.Model;
@@ -34,7 +38,10 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener,S
 
     public MyAdapter adapter;
     SearchView searchView;
-
+    private ProgressBar pbar;
+    private int a = 0;
+    private TextView textView;
+    private Handler handler = new Handler();
     private OnFragmentInteractionListener mListener;
     //the recyclerview
     RecyclerView recyclerView;
@@ -76,6 +83,36 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener,S
         recyclerView.setAdapter(adapter);
         //initializing the productlis
 
+        textView = v.findViewById(R.id.tv);
+        pbar = v.findViewById(R.id.horizontal_progress_bar);
+        Button button = v.findViewById(R.id.show_btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a = pbar.getProgress();
+                new Thread(new Runnable() {
+                    public void run() {
+                        while (a < 100) {
+                            a += 1;
+                            handler.post(new Runnable() {
+                                public void run() {
+                                    pbar.setProgress(a);
+                                    textView.setText(a + "/" + pbar.getMax());
+                                    if (a == 100)
+                                        textView.setText(" Your Progess has been Completed");
+                                }
+                            });
+                            try {
+                                // Sleep for 50 ms to show progress you can change it as well.
+                                Thread.sleep(50);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+            }
+        });
         return v;
     }
 
