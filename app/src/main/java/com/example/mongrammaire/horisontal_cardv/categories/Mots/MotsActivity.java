@@ -26,7 +26,12 @@ public class MotsActivity extends AppCompatActivity implements RecyclerViewAdapt
         arrayList.add(new DataModel("Item 4", R.drawable.jetpack_joyride, "#4BAA50"));
         arrayList.add(new DataModel("Item 5", R.drawable.three_d, "#F94336"));
         arrayList.add(new DataModel("Item 6", R.drawable.terraria, "#0A9B88"));
-
+        arrayList.add(new DataModel("Item 7", R.drawable.battle, "#09A9FF"));
+        arrayList.add(new DataModel("Item 8", R.drawable.beer, "#3E51B1"));
+        arrayList.add(new DataModel("Item 9", R.drawable.ferrari, "#673BB7"));
+        arrayList.add(new DataModel("Item 10", R.drawable.jetpack_joyride, "#4BAA50"));
+        arrayList.add(new DataModel("Item 11", R.drawable.three_d, "#F94336"));
+        arrayList.add(new DataModel("Item 12", R.drawable.terraria, "#0A9B88"));
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, arrayList, this);
         recyclerView.setAdapter(adapter);
 
