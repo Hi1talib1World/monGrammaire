@@ -11,7 +11,7 @@ public class MotsLine extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.);
         StoryView storyView = findViewById(R.id.storyView);
         storyView.resetStoryVisits();
         ArrayList<StoryModel> uris = new ArrayList<>();
