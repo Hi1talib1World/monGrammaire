@@ -84,7 +84,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener,S
 
 
         pbar = v.findViewById(R.id.horizontal_progress_bar);
-        Button button = v.findViewById(R.id.show_btn);
+        Button button = v.findViewById(R.id.RelativeLayout);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
