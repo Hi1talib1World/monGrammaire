@@ -4,6 +4,11 @@ public class Model {
     private String Title,Description;
     private int img;
 
+    public Model() {
+        super();
+    }
+
+
     public String getTitle() {
         return Title;
     }
@@ -27,4 +32,7 @@ public class Model {
     public void setImg(int img) {
         this.img = img;
     }
+
+
+
 }
