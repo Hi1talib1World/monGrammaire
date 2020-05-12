@@ -93,7 +93,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
 
     public boolean checkFavoriteItem(Model checkModel) {
         boolean check = false;
-        List<Model> favorites = sharedPreference.getFavorites(context);
+        List<Model> favorites = sharedPreference.getFavorites(c);
         if (favorites != null) {
             for (Model Model : favorites) {
                 if (Model.equals(checkModel)) {
@@ -107,8 +107,8 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
 
     @Override
     public void add(Model Model) {
-        super.add(product);
-        products.add(product);
+        super.add(Model);
+        products.add(Model);
         notifyDataSetChanged();
     }
 
