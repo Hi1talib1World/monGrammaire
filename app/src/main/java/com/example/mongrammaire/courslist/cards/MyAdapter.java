@@ -108,14 +108,14 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     @Override
     public void add(Model Model) {
         super.add(Model);
-        products.add(Model);
+        models.add(Model);
         notifyDataSetChanged();
     }
 
     @Override
     public void remove(Model Model) {
         super.remove(Model);
-        products.remove(Model);
+        models.remove(Model);
         notifyDataSetChanged();
     }
 }
