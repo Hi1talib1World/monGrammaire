@@ -33,6 +33,8 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         this.c = c;
         this.models = models;
         this.filterList = models;
+        sharedPreference = new SharedPreference();
+
     }
 
     @NonNull
