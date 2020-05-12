@@ -20,6 +20,7 @@ import com.example.mongrammaire.itemClickListener;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable {
     Context c;
@@ -88,5 +89,33 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
             filter = new CustomFilter(filterList,this);
         }
         return filter;
+    }
+
+    public boolean checkFavoriteItem(Model checkModel) {
+        boolean check = false;
+        List<Model> favorites = sharedPreference.getFavorites(context);
+        if (favorites != null) {
+            for (Model Model : favorites) {
+                if (Model.equals(checkModel)) {
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return check;
+    }
+
+    @Override
+    public void add(Model Model) {
+        super.add(product);
+        products.add(product);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void remove(Model Model) {
+        super.remove(Model);
+        products.remove(Model);
+        notifyDataSetChanged();
     }
 }
