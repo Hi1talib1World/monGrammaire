@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SharedPreference {
+
     public static final String PREFS_NAME = "PRODUCT_APP";
     public static final String FAVORITES = "Product_Favorite";
 
@@ -35,18 +36,18 @@ public class SharedPreference {
         editor.commit();
     }
 
-    public void addFavorite(Context context, Model Model) {
+    public void addFavorite(Context context, Model product) {
         List<Model> favorites = getFavorites(context);
         if (favorites == null)
             favorites = new ArrayList<Model>();
-        favorites.add(Model);
+        favorites.add(product);
         saveFavorites(context, favorites);
     }
 
-    public void removeFavorite(Context context, Model Model) {
+    public void removeFavorite(Context context, Model product) {
         ArrayList<Model> favorites = getFavorites(context);
         if (favorites != null) {
-            favorites.remove(Model);
+            favorites.remove(product);
             saveFavorites(context, favorites);
         }
     }
