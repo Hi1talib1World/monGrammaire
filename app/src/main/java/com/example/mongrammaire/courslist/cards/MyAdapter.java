@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.example.mongrammaire.courslist.cards.favorites.SharedPreference;
 import com.example.mongrammaire.horisontal_cardv.CustomFilter;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.courslist.DetailsActivity;
@@ -25,6 +26,8 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     public ArrayList<Model> models;
     ArrayList<Model> filterList;
     CustomFilter filter;
+    SharedPreference sharedPreference;
+
 
     public MyAdapter(Context c, ArrayList<Model> models) {
         this.c = c;
