@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 
 import com.example.mongrammaire.courslist.cards.favorites.SharedPreference;
 import com.example.mongrammaire.horisontal_cardv.CustomFilter;
@@ -42,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     @Override
     public mycardsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
+        ImageView favoriteImg;
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_layout, null);
         return new mycardsHolder(v);
     }
@@ -75,8 +77,9 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         });
 
 
+
         if (checkFavoriteItem(Model)) {
-            mycardsHolder.favoriteImg.setImageResource(R.drawable.heart_red);
+            mycardsHolder.favoriteImg.setImageResource(R.drawable.red_heart);
             mycardsHolder.favoriteImg.setTag("red");
         } else {
             mycardsHolder.favoriteImg.setImageResource(R.drawable.heart_grey);
