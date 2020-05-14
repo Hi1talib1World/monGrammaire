@@ -1,6 +1,7 @@
 package com.example.mongrammaire.courslist.cards;
 
 public class Model {
+
     private String Title,Description;
     private int img;
 
