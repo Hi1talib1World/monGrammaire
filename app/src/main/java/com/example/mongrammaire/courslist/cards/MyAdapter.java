@@ -75,6 +75,13 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         });
 
 
+        if (checkFavoriteItem(Model)) {
+            mycardsHolder.favoriteImg.setImageResource(R.drawable.heart_red);
+            mycardsHolder.favoriteImg.setTag("red");
+        } else {
+            mycardsHolder.favoriteImg.setImageResource(R.drawable.heart_grey);
+            mycardsHolder.favoriteImg.setTag("grey");
+        }
 
     }
 
