@@ -32,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
 
 
     public MyAdapter(Context c, ArrayList<Model> models) {
-        super(c, models);
+        super(c, models, R.layout.card_layout);
         this.c = c;
         this.models = models;
         this.filterList = models;
