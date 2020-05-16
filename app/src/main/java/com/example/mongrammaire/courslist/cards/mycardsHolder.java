@@ -23,7 +23,7 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
         this.mImageIv = itemView.findViewById(R.id.img1);//
         this.mTitleTV = itemView.findViewById(R.id.txt1);
         this.mDescrTV = itemView.findViewById(R.id.txt2);
-        this.favoriteImg = itemView.findViewById(R.id.)
+        this.favoriteImg = itemView.findViewById(R.id.heart);
         itemView.setOnClickListener(this);
 
     }
