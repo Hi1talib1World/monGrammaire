@@ -3,7 +3,6 @@ package com.example.mongrammaire.courslist.cards.favorites;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.mongrammaire.courslist.cards.Model;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
