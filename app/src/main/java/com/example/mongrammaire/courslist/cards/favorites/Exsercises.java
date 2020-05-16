@@ -16,8 +16,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mongrammaire.R;
-import com.example.mongrammaire.courslist.cards.Model;
-import com.example.mongrammaire.courslist.cards.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
