@@ -8,6 +8,13 @@ public class Model {
     public Model() {
         super();
     }
+    public Model(String Title, String Description, int img, int heart) {
+        super();
+        this.Title = Title;
+        this.Description = Description;
+        this.img = img;
+        this.heart = heart;
+    }
 
 
     public String getTitle() {
