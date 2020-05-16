@@ -2,8 +2,8 @@ package com.example.mongrammaire.horisontal_cardv;
 
 import android.widget.Filter;
 
-import com.example.mongrammaire.courslist.cards.Model;
-import com.example.mongrammaire.courslist.cards.MyAdapter;
+import com.example.mongrammaire.courslist.cards.favorites.Model;
+import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 
 import java.util.ArrayList;
 
