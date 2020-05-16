@@ -28,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     public ArrayList<Model> models;
     ArrayList<Model> filterList;
     CustomFilter filter;
+
     SharedPreference sharedPreference;
 
 
