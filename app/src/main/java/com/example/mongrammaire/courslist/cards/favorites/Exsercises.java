@@ -81,7 +81,7 @@ public class Exsercises extends Fragment {
                                     int position, long id) {
 
                                 ImageView button = (ImageView) view
-                                        .findViewById(R.id.);
+                                        .findViewById(R.id.imgbtn_favorite);
 
                                 String tag = button.getTag().toString();
                                 if (tag.equalsIgnoreCase("grey")) {
