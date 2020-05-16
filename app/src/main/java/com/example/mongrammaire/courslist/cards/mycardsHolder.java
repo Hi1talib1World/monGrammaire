@@ -14,6 +14,8 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     ImageView mImageIv;
     TextView mTitleTV,mDescrTV;
+    ImageView favoriteImg;
+
     com.example.mongrammaire.itemClickListener itemClickListener ;
 
     public mycardsHolder(@NonNull View itemView) {
@@ -21,6 +23,7 @@ public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnCli
         this.mImageIv = itemView.findViewById(R.id.img1);//
         this.mTitleTV = itemView.findViewById(R.id.txt1);
         this.mDescrTV = itemView.findViewById(R.id.txt2);
+        this.favoriteImg = itemView.findViewById(R.id.)
         itemView.setOnClickListener(this);
 
     }
