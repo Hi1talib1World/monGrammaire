@@ -2,15 +2,22 @@ package com.example.mongrammaire.courslist.cards.favorites;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.mongrammaire.R;
+
+import java.util.List;
 
 public class FavoriteListFragment  extends Fragment {
 
@@ -18,10 +25,10 @@ public class FavoriteListFragment  extends Fragment {
 
     ListView favoriteList;
     SharedPreference sharedPreference;
-    List<Product> favorites;
+    List<Model> favorites;
 
     Activity activity;
-    ProductListAdapter productListAdapter;
+    MyAdapter productListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,10 +58,10 @@ public class FavoriteListFragment  extends Fragment {
 
             favoriteList = (ListView) view.findViewById(R.id.list_product);
             if (favorites != null) {
-                productListAdapter = new ProductListAdapter(activity, favorites);
+                productListAdapter = new MyAdapter(activity, favorites);
                 favoriteList.setAdapter(productListAdapter);
 
-                favoriteList.setOnItemClickListener(new OnItemClickListener() {
+                favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                     public void onItemClick(AdapterView<?> parent, View arg1,
                                             int position, long arg3) {
@@ -63,7 +70,7 @@ public class FavoriteListFragment  extends Fragment {
                 });
 
                 favoriteList
-                        .setOnItemLongClickListener(new OnItemLongClickListener() {
+                        .setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
                             @Override
                             public boolean onItemLongClick(
@@ -84,7 +91,7 @@ public class FavoriteListFragment  extends Fragment {
                                             Toast.LENGTH_SHORT).show();
 
                                     button.setTag("red");
-                                    button.setImageResource(R.drawable.heart_red);
+                                    button.setImageResource(R.drawable.red_heart);
                                 } else {
                                     sharedPreference.removeFavorite(activity,
                                             favorites.get(position));
