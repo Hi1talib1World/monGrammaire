@@ -99,7 +99,13 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         return models.size();
     }
 
-    
+    @Override
+    public Filter getFilter() {
+        if (filter ==null){
+            filter = new CustomFilter(filterList,this);
+        }
+        return filter;
+    }
 
     public boolean checkFavoriteItem(Model checkModel) {
         boolean check = false;
