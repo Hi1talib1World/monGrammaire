@@ -9,9 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mongrammaire.courslist.cards.mycardsHolder;
 import com.example.mongrammaire.horisontal_cardv.CustomFilter;
@@ -23,7 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable {
+public class MyAdapter extends ArrayAdapter<Model> {
     private Context c;
     List<Model> models;
     CustomFilter filter;
@@ -32,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
 
 
     public MyAdapter(Context c, List<Model> models) {
-        super(c, models, R.layout.card_layout);
+        super(c , R.layout.card_layout, models);
         this.c = c;
         this.models = models;
         sharedPreference = new SharedPreference();
@@ -40,7 +42,6 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     }
 
     @NonNull
-    @Override
     public mycardsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         ImageView favoriteImg;
@@ -52,7 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     public Model getItem(int i) {
         return models.get(i);
     }
-    @Override
+    
     public void onBindViewHolder(@NonNull final mycardsHolder mycardsHolder, int i) {
         mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
         mycardsHolder.mDescrTV.setText(models.get(i).getDescription());
@@ -92,20 +93,11 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
             mycardsHolder.favoriteImg.setTag("grey");
         }
 
+
     }
 
-    @Override
-    public int getItemCount() {
-        return models.size();
-    }
 
-    @Override
-    public Filter getFilter() {
-        if (filter ==null){
-            filter = new CustomFilter(models,this);
-        }
-        return filter;
-    }
+
 
     public boolean checkFavoriteItem(Model checkModel) {
         boolean check = false;
