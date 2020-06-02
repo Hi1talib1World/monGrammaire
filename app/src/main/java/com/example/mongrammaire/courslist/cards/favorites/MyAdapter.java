@@ -25,14 +25,14 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable {
     Context c;
-    public ArrayList<Model> models;
-    ArrayList<Model> filterList;
+    public List<Model> models;
+    List<Model> filterList;
     CustomFilter filter;
 
     SharedPreference sharedPreference;
 
 
-    public MyAdapter(Context c, ArrayList<Model> models) {
+    public MyAdapter(Context c, List<Model> models) {
         super(c, models, R.layout.card_layout);
         this.c = c;
         this.models = models;
