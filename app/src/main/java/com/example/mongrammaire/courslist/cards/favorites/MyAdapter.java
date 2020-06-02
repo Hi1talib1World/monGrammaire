@@ -50,6 +50,10 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         return new mycardsHolder(v);
     }
 
+
+    public Model getItem(int i) {
+        return models.get(i);
+    }
     @Override
     public void onBindViewHolder(@NonNull final mycardsHolder mycardsHolder, int i) {
         mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
@@ -79,6 +83,8 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         });
 
 
+
+        Model model = (Model) getItem(i);
 
         if (checkFavoriteItem(model)) {
             mycardsHolder.favoriteImg.setImageResource(R.drawable.red_heart);
