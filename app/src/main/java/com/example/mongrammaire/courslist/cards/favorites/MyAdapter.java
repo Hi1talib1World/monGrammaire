@@ -53,7 +53,7 @@ public class MyAdapter extends ArrayAdapter<Model> {
     public Model getItem(int i) {
         return models.get(i);
     }
-    
+
     public void onBindViewHolder(@NonNull final mycardsHolder mycardsHolder, int i) {
         mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
         mycardsHolder.mDescrTV.setText(models.get(i).getDescription());
