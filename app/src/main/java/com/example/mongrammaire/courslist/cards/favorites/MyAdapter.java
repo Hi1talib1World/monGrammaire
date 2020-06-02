@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 
 import com.example.mongrammaire.courslist.cards.mycardsHolder;
 import com.example.mongrammaire.horisontal_cardv.CustomFilter;
@@ -23,7 +24,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable {
+public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable, ListAdapter {
     Context c;
     public ArrayList<Model> models;
     ArrayList<Model> filterList;
