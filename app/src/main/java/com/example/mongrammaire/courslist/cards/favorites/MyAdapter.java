@@ -102,7 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
     @Override
     public Filter getFilter() {
         if (filter ==null){
-            filter = new CustomFilter(filterList,this);
+            filter = new CustomFilter(models,this);
         }
         return filter;
     }
