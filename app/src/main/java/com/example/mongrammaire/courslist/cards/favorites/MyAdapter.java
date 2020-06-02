@@ -24,9 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Filterable {
-    Context c;
-    public List<Model> models;
-    List<Model> filterList;
+    private Context c;
+    List<Model> models;
     CustomFilter filter;
 
     SharedPreference sharedPreference;
@@ -36,7 +35,6 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         super(c, models, R.layout.card_layout);
         this.c = c;
         this.models = models;
-        this.filterList = models;
         sharedPreference = new SharedPreference();
 
     }
@@ -101,13 +99,7 @@ public class MyAdapter extends RecyclerView.Adapter<mycardsHolder> implements Fi
         return models.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        if (filter ==null){
-            filter = new CustomFilter(filterList,this);
-        }
-        return filter;
-    }
+    
 
     public boolean checkFavoriteItem(Model checkModel) {
         boolean check = false;
