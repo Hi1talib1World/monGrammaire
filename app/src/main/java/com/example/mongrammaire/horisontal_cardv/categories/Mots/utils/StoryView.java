@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -500,4 +499,4 @@ public class StoryView extends DialogFragment implements StoriesProgressView.Sto
             return storyView;
         }
 
-    }
+    }}
