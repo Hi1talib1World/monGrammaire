@@ -12,9 +12,9 @@ import com.example.mongrammaire.itemClickListener;
 
 public class mycardsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    ImageView mImageIv;
-    TextView mTitleTV,mDescrTV;
-    ImageView favoriteImg;
+    public ImageView mImageIv;
+    public TextView mTitleTV,mDescrTV;
+    public ImageView favoriteImg;
 
     com.example.mongrammaire.itemClickListener itemClickListener ;
 
