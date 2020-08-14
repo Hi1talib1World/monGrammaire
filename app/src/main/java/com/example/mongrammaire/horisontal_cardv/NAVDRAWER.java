@@ -62,7 +62,7 @@ public class NAVDRAWER extends AppCompatActivity
         setContentView(R.layout.activity_navdrawer);
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Mon Grammaire");
         //make fragment in the opener
@@ -73,8 +73,8 @@ public class NAVDRAWER extends AppCompatActivity
             ft.addToBackStack(null);
             ft.commit();
         }
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -156,7 +156,7 @@ public class NAVDRAWER extends AppCompatActivity
             ft.replace(R.id.screen_area, fragment);
             ft.commit();
         }
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
