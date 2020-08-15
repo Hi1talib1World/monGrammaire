@@ -1,8 +1,10 @@
-package com.example.mongrammaire;
+package com.example.mongrammaire.splashScreen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.mongrammaire.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
