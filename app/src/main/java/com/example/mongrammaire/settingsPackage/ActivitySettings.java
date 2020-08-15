@@ -29,7 +29,7 @@ public class ActivitySettings extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        LinearLayout container = findViewById(R.id.settingsContainer);
+        LinearLayout container = (LinearLayout) findViewById(R.id.settingsContainer);
 
         //no need to check the casting.
         //i know the type i put in the intent
