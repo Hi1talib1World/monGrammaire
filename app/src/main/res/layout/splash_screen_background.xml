@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/splashBackground">
 
-    <item android:drawable="@color/colorPrimary"/>
+    <ImageView
+        android:id="@+id/logo_id"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/abhiandroid"/>
 
-    <!-- Set the Background Image-->
-    <item android:gravity="center" android:width="500dp" android:height="700dp">
-        <bitmap
-            android:gravity="fill_horizontal|fill_vertical"
-            android:src="@drawable/logo"/>
-    </item>
-</layer-list>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo_id"
+        android:layout_centerHorizontal="true"
+        android:text="Splash Screen"
+        android:textSize="30dp"
+        android:textColor="@color/blue"/>
+
+</RelativeLayout>
