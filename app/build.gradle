@@ -58,8 +58,8 @@ dependencies {
     implementation 'com.github.or-dvir.EasySettings:easysettings-basic:[latest release]'
     implementation 'com.github.or-dvir.EasySettings:easysettings-dialogs:[latest release]'
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation('com.google.cloud:google-cloud-translate:1.12.0') {
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation('com.google.cloud:google-cloud-translate:1.94.1') {
         exclude group: 'org.apache.httpcomponents'
         exclude group: 'org.json', module: 'json'
     }
