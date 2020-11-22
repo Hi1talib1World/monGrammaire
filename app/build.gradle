@@ -30,6 +30,10 @@ android {
         exclude 'project.properties'
         exclude 'META-INF/INDEX.LIST'
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
