@@ -1,12 +1,13 @@
 package com.example.mongrammaire;
 
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
