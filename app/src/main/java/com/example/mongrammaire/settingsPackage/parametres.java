@@ -1,11 +1,17 @@
 package com.example.mongrammaire.settingsPackage;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mongrammaire.R;
+
+import java.util.ArrayList;
 
 public class parametres extends AppCompatActivity {
 //todo next version try to remove dependencies from other libraries!!!
