@@ -2,11 +2,11 @@ package com.example.mongrammaire;
 
 
 import android.content.Intent;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
 
 /**
  * Element class represents an about item in the about page.
@@ -183,17 +183,7 @@ public class Element {
         return intent;
     }
 
-    /**
-     * Set the intent to pass to the
-     * {@link android.content.Context#startActivity(android.content.Intent)} method when this item
-     * is clicked. This method has lower priority than
-     * {@link mehdi.sakout.aboutpage.Element#setOnClickListener(android.view.View.OnClickListener)}
-     * when both are used.
-     *
-     * @param intent the intent to be used
-     * @return this Element instance for builder pattern support
-     * @see android.content.Intent
-     */
+
     public Element setIntent(Intent intent) {
         this.intent = intent;
         return this;
