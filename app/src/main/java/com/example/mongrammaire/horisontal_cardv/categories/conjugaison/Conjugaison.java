@@ -1,22 +1,24 @@
 package com.example.mongrammaire.horisontal_cardv.categories.conjugaison;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.mongrammaire.R;
 
-public class Conjugaison extends AppCompatActivity  implements verbesAdapter.verbesAdapterListener{
+public class Conjugaison extends AppCompatActivity implements verbesAdapter.verbesAdapterListener{
 
     private static final String TAG = Conjugaison.class.getSimpleName();
     private RecyclerView recyclerView;
