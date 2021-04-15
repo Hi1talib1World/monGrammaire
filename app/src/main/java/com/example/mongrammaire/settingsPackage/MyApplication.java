@@ -2,6 +2,8 @@ package com.example.mongrammaire.settingsPackage;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 public class MyApplication  extends Application
 {
     @Override
