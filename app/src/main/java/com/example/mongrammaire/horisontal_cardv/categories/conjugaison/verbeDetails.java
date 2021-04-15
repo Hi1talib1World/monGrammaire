@@ -1,12 +1,14 @@
 package com.example.mongrammaire.horisontal_cardv.categories.conjugaison;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.horisontal_cardv.categories.conjugaison.main.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 public class verbeDetails extends AppCompatActivity {
 
