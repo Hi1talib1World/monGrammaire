@@ -1,7 +1,8 @@
 package com.example.mongrammaire.horisontal_cardv.categories.Mots;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mongrammaire.R;
 
