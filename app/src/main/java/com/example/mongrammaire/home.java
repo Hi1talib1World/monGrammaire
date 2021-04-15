@@ -4,11 +4,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.horisontal_cardv.NAVDRAWER;
