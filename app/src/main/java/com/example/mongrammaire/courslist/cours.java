@@ -3,10 +3,6 @@ package com.example.mongrammaire.courslist;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mongrammaire.courslist.cards.favorites.Model;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
@@ -32,7 +33,7 @@ import java.util.List;
  * Use the {@link cours#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class cours extends Fragment implements AdapterView.OnItemClickListener,SearchView.OnQueryTextListener {
+public class cours extends Fragment implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
 
 
     public MyAdapter adapter;
