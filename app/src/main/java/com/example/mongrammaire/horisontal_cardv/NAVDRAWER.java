@@ -4,22 +4,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.mongrammaire.Alphabets.acceuil;
 import com.example.mongrammaire.courslist.cards.favorites.Exsercises;
@@ -31,6 +32,7 @@ import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.recherche;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
