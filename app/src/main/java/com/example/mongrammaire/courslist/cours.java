@@ -36,7 +36,7 @@ import java.util.List;
 public class cours extends Fragment implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
 
 
-    public MyAdapter myadapter;
+    public MyAdapter adapter;
     SearchView searchView;
     private ProgressBar pbar;
     private int a = 0;
@@ -79,7 +79,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         adapter = new MyAdapter(getActivity(),getPlayesr());
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
         //initializing the productlis
 
 
