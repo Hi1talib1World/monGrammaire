@@ -79,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder Vholder, int position) {
-        Vholder.setData(mValues.get(position));
+       // Vholder.setData(mValues.get(position));
 
     }
 
