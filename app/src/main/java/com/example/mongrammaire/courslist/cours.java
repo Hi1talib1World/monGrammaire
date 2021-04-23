@@ -36,7 +36,7 @@ import java.util.List;
 public class cours extends Fragment implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
 
 
-    public MyAdapter adapter;
+    public MyAdapter myadapter;
     SearchView searchView;
     private ProgressBar pbar;
     private int a = 0;
