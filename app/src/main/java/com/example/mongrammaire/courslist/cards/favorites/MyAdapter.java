@@ -28,7 +28,7 @@ import java.util.List;
 
 public class MyAdapter extends ArrayAdapter<Model> {
     private Context c;
-    List<Model> models;
+    public List<Model> models;
     CustomFilter filter;
 
     SharedPreference sharedPreference;
