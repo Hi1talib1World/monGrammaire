@@ -72,7 +72,7 @@
             android:name=".horisontal_cardv.NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".settingsPackage.parametres" />
+
         <activity android:name=".Quiz.PlayAgain" />
         <activity android:name=".Quiz.GameWon" />
     </application>
