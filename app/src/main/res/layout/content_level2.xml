@@ -9,4 +9,4 @@
     tools:context=".level2"
     tools:showIn="@layout/activity_level2">
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
