@@ -55,18 +55,12 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     //a list to store all the products
     List<Model> models;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +68,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         View v = inflater.inflate(R.layout.fragment_cours, container, false);
 
         //getting the recyclerview from xml
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -84,33 +78,33 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
 
 
         pbar = v.findViewById(R.id.horizontal_progress_bar);
-        Button button = v.findViewById(R.id.RelativeLayout);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                a = pbar.getProgress();
-                new Thread(new Runnable() {
-                    public void run() {
-                        while (a < 100) {
-                            a += 1;
-                            handler.post(new Runnable() {
-                                public void run() {
-                                    pbar.setProgress(a);
-
-
-                                }
-                            });
-                            try {
-                                // Sleep for 50 ms to show progress you can change it as well.
-                                Thread.sleep(50);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }).start();
-            }
-        });
+        //Button button = v.findViewById(R.id.RelativeLayout1);
+        //button.setOnClickListener(new View.OnClickListener() {
+        //  @Override
+        //  public void onClick(View v) {
+        //      a = pbar.getProgress();
+        //      new Thread(new Runnable() {
+        //          public void run() {
+        //              while (a < 100) {
+        //                  a += 1;
+        //                  handler.post(new Runnable() {
+        //                      public void run() {
+        //                          pbar.setProgress(a);
+        //
+        //
+        //                      }
+        //                  });
+        //                  try {
+        //                      // Sleep for 50 ms to show progress you can change it as well.
+        //                      Thread.sleep(50);
+        //                  } catch (InterruptedException e) {
+        //                      e.printStackTrace();
+        //                  }
+        //              }
+        //          }
+        //      }).start();
+        //  }
+        //});
         return v;
     }
 
@@ -212,12 +206,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
             mListener.onFragmentInteraction(uri);
         }
     }
-
-
-
-
-
-    @Override
+     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
