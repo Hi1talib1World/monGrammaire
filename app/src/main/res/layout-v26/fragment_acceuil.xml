@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:fillViewport="false">
 
-        <android.support.v7.widget.GridLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="12dp">
@@ -379,7 +379,7 @@
                 app:layout_row="8" />
 
 
-        </android.support.v7.widget.GridLayout>
+        </GridLayout>
     </ScrollView>
 
 
