@@ -66,4 +66,5 @@
     <color name="about_item_text_color">#7c7c7c</color>
     <color name="about_text_color">#595959</color>
     <color name="bg01">#EAE8FF</color>
+    <color name="Black">#000000</color>
 </resources>
