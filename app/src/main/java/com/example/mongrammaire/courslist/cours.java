@@ -45,6 +45,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     //the recyclerview
     RecyclerView recyclerView;
 
+
     // TODO: Rename and change types and number of parameters
     public static cours newInstance(String param1, String param2) {
         cours fragment = new cours();
@@ -73,7 +74,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         adapter = new MyAdapter(getActivity(),getPlayesr());
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         //initializing the productlis
 
 
