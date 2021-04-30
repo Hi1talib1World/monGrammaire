@@ -40,7 +40,7 @@ import java.util.ArrayList;
 public class NAVDRAWER extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public MyAdapter adapter;
+    public Adapter adapter;
     private cours.OnFragmentInteractionListener mListener;
     //the recyclerview
     private boolean viewIsAtHome;
