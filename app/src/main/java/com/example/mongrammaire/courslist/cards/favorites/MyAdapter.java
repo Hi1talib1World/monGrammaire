@@ -89,7 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return models.size();
     }
 
     public boolean checkFavoriteItem(Model checkModel) {
