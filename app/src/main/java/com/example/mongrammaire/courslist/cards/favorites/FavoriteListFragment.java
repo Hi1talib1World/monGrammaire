@@ -57,7 +57,7 @@ public class FavoriteListFragment  extends Fragment {
             }
 
             favoriteList = (ListView) view.findViewById(R.id.list_product);
-            if (favorites != null) {
+            /*if (favorites != null) {
                 productListAdapter = new MyAdapter(activity, favorites);
                 favoriteList.setAdapter(productListAdapter);
 
@@ -108,7 +108,7 @@ public class FavoriteListFragment  extends Fragment {
                                 return true;
                             }
                         });
-            }
+            }*/
         }
         return view;
     }
