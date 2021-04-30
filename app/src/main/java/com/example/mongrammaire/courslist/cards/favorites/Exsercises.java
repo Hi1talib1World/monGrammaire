@@ -61,7 +61,7 @@ public class Exsercises extends Fragment {
 
             favoriteList = (ListView) view.findViewById(R.id.list_product);
             if (favorites != null) {
-                productListAdapter = new MyAdapter(activity, (ArrayList<Model>) favorites);
+                //productListAdapter = new MyAdapter(activity, (ArrayList<Model>) favorites);
                 favoriteList.setAdapter((ListAdapter) productListAdapter);
 
                 favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +95,7 @@ public class Exsercises extends Fragment {
 
                                     button.setTag("red");
                                     button.setImageResource(R.drawable.red_heart);
-                                } else {
+                                } /*else {
                                     sharedPreference.removeFavorite(activity,
                                             favorites.get(position));
                                     button.setTag("grey");
@@ -107,7 +107,7 @@ public class Exsercises extends Fragment {
                                             activity.getResources().getString(
                                                     R.string.remove_favr),
                                             Toast.LENGTH_SHORT).show();
-                                }
+                                }*/
                                 return true;
                             }
                         });
