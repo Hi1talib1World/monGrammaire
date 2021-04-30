@@ -68,7 +68,6 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
 
         //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         adapter = new MyAdapter(models);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //initializing the productlis
