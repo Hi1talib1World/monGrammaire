@@ -8,15 +8,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mongrammaire.courslist.cards.mycardsHolder;
 import com.example.mongrammaire.horisontal_cardv.CustomFilter;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.courslist.DetailsActivity;
@@ -26,7 +24,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends ArrayAdapter<Model> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     private Context c;
     public List<Model> models;
     CustomFilter filter;
@@ -34,39 +32,32 @@ public class MyAdapter extends ArrayAdapter<Model> {
     SharedPreference sharedPreference;
 
 
-    public MyAdapter(Context c, List<Model> models) {
-        super(c , R.layout.card_layout, models);
-        this.c = c;
-        this.models = models;
-        sharedPreference = new SharedPreference();
 
+
+    public MyAdapter(List<Model> model) {
+        this.models = model;
     }
 
+
     @NonNull
-    public mycardsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         ImageView favoriteImg;
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_layout, null);
-        return new mycardsHolder(v);
+        return new ViewHolder(v);
     }
+    public void onBindViewHolder(MyAdapter.ViewHolder holder, int i) {
+        holder.mTitleTV.setText(models.get(i).getTitle());
+        holder.mDescrTV.setText(models.get(i).getDescription());
+        holder.mImageIv.setImageResource(models.get(i).getImg());
 
-
-    public Model getItem(int i) {
-        return models.get(i);
-    }
-
-    public void onBindViewHolder(@NonNull final mycardsHolder mycardsHolder, int i) {
-        mycardsHolder.mTitleTV.setText(models.get(i).getTitle());
-        mycardsHolder.mDescrTV.setText(models.get(i).getDescription());
-        mycardsHolder.mImageIv.setImageResource(models.get(i).getImg());
-
-        mycardsHolder.setItemClickListener(new itemClickListener() {
+        /*holder.setItemClickListener(new itemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
 
                 String title = models.get(pos).getTitle();
                 String descr = models.get(pos).getDescription();
-                BitmapDrawable bitmapDrawable = (BitmapDrawable)mycardsHolder.mImageIv.getDrawable();
+                BitmapDrawable bitmapDrawable = (BitmapDrawable)holder.mImageIv.getDrawable();
 
                 Bitmap bitmap = bitmapDrawable.getBitmap();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -80,25 +71,27 @@ public class MyAdapter extends ArrayAdapter<Model> {
                 c.startActivity(intent);
 
             }
-        });
+        });*/
 
 
 
-        Model model = (Model) getItem(i);
+       /* Model model = (Model) getItem(i);
 
         if (checkFavoriteItem(model)) {
-            mycardsHolder.favoriteImg.setImageResource(R.drawable.red_heart);
-            mycardsHolder.favoriteImg.setTag("red");
+            holder.favoriteImg.setImageResource(R.drawable.red_heart);
+            holder.favoriteImg.setTag("red");
         } else {
-            mycardsHolder.favoriteImg.setImageResource(R.drawable.heart_grey);
-            mycardsHolder.favoriteImg.setTag("grey");
-        }
+            holder.favoriteImg.setImageResource(R.drawable.heart_grey);
+            holder.favoriteImg.setTag("grey");
+        }*/
 
 
     }
 
-
-
+    @Override
+    public int getItemCount() {
+        return models.size();
+    }
 
     public boolean checkFavoriteItem(Model checkModel) {
         boolean check = false;
@@ -114,17 +107,26 @@ public class MyAdapter extends ArrayAdapter<Model> {
         return check;
     }
 
-    @Override
-    public void add(Model model) {
-        super.add(model);
-        models.add(model);
-        notifyDataSetChanged();
-    }
 
-    @Override
-    public void remove(Model model) {
-        super.remove(model);
-        models.remove(model);
-        notifyDataSetChanged();
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        // Your holder should contain a member variable
+        // for any view that will be set as you render a row
+        public ImageView mImageIv;
+        public TextView mTitleTV,mDescrTV;
+        public ImageView favoriteImg;
+
+        // We also create a constructor that accepts the entire item row
+        // and does the view lookups to find each subview
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            this.mImageIv = itemView.findViewById(R.id.img1);//
+            this.mTitleTV = itemView.findViewById(R.id.txt1);
+            this.mDescrTV = itemView.findViewById(R.id.txt2);
+            this.favoriteImg = itemView.findViewById(R.id.heart);
+            //itemView.setOnClickListener(this);
+
+        }
+
     }
 }
