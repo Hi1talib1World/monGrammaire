@@ -33,7 +33,7 @@ public class recherche extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                adapter.getFilter().filter(query);
+                //adapter.getFilter().filter(query);
                 return false;
             }
 
@@ -41,7 +41,7 @@ public class recherche extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
 
 
-                adapter.getFilter().filter(newText);
+                //adapter.getFilter().filter(newText);
                 return false;
 
             }
