@@ -73,7 +73,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //initializing the productlis
         pbar = v.findViewById(R.id.horizontal_progress_bar);
-        /*Button button = v.findViewById(R.id.RelativeLayout1);
+        Button button = v.findViewById(R.id.star);
         button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -99,7 +99,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
                   }
               }).start();
           }
-        });*/
+        });
         return v;
     }
 
