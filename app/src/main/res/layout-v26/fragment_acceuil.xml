@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,13 +10,17 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="false">
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="12dp">
+            android:rowCount="13"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
+            >
 
             <Button
                 android:id="@+id/a"
@@ -28,7 +31,8 @@
                 android:text="@string/a"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_row="0" />
+                android:layout_column="0"
+                android:layout_row="0" />
 
             <Button
                 android:id="@+id/b"
@@ -39,9 +43,9 @@
                 android:gravity="center"
                 android:text="@string/b"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_row="0" />
+                android:layout_column="1"
+                android:layout_row="0"  />
 
             <Button
                 android:id="@+id/c"
@@ -54,7 +58,8 @@
                 android:text="@string/c"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_row="0" />
+                android:layout_column="2"
+                android:layout_row="0"  />
 
             <Button
                 android:id="@+id/d"
@@ -66,9 +71,8 @@
                 android:text="@string/d"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-
-                app:layout_column="0"
-                app:layout_row="1" />
+                android:layout_column="0"
+                android:layout_row="1" />
 
             <Button
                 android:id="@+id/e"
@@ -81,8 +85,8 @@
 
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="1" />
+                android:layout_column="1"
+                android:layout_row="1" />
 
             <Button
                 android:id="@+id/f"
@@ -93,10 +97,9 @@
                 android:gravity="center"
                 android:text="F"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="2"
-                app:layout_row="1" />
+                android:layout_column="2"
+                android:layout_row="1" />
 
             <Button
                 android:id="@+id/g"
@@ -109,8 +112,8 @@
 
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="2" />
+                android:layout_column="0"
+                android:layout_row="2"  />
 
             <Button
                 android:id="@+id/h"
@@ -123,8 +126,8 @@
 
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="2" />
+                android:layout_column="1"
+                android:layout_row="2" />
 
             <Button
                 android:id="@+id/i"
@@ -134,11 +137,10 @@
                 android:background="@drawable/round_button"
                 android:gravity="center"
                 android:text="I"
-
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="2"
-                app:layout_row="2" />
+                android:layout_column="2"
+                android:layout_row="2" />
 
             <Button
                 android:id="@+id/j"
@@ -149,10 +151,9 @@
                 android:gravity="center"
                 android:text="@string/j"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="3" />
+                android:layout_column="0"
+                android:layout_row="3" />
 
             <Button
                 android:id="@+id/k"
@@ -165,8 +166,8 @@
                 android:textColor="@color/white"
 
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="3" />
+                android:layout_column="1"
+                android:layout_row="3" />
 
             <Button
                 android:id="@+id/l"
@@ -177,10 +178,9 @@
                 android:gravity="center"
                 android:text="L"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="2"
-                app:layout_row="3" />
+                android:layout_column="2"
+                android:layout_row="3" />
 
             <Button
                 android:id="@+id/m"
@@ -188,13 +188,12 @@
                 android:layout_height="100dp"
                 android:layout_margin="6dp"
                 android:background="@drawable/round_button"
-
                 android:gravity="center"
                 android:text="M"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="4" />
+                android:layout_column="0"
+                android:layout_row="4" />
 
             <Button
                 android:id="@+id/n"
@@ -204,16 +203,14 @@
                 android:background="@drawable/round_button"
                 android:gravity="center"
                 android:text="N"
-
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="4" />
+                android:layout_column="1"
+                android:layout_row="4" />
 
             <Button
                 android:id="@+id/o"
                 android:layout_width="100dp"
-
                 android:layout_height="100dp"
                 android:layout_margin="6dp"
                 android:background="@drawable/round_button"
@@ -221,8 +218,8 @@
                 android:text="O"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="2"
-                app:layout_row="4" />
+                android:layout_column="2"
+                android:layout_row="4" />
 
             <Button
                 android:id="@+id/p"
@@ -235,8 +232,8 @@
                 android:text="p"
                 android:textColor="@color/white"
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="5" />
+                android:layout_column="0"
+                android:layout_row="5" />
 
             <Button
                 android:id="@+id/q"
@@ -263,7 +260,6 @@
                 android:textColor="@color/white"
                 android:textSize="63sp"
                 app:layout_column="2"
-
                 app:layout_row="5" />
 
             <Button
@@ -277,8 +273,8 @@
                 android:textColor="@color/white"
 
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="6" />
+                android:layout_column="0"
+                android:layout_row="6" />
 
             <Button
                 android:id="@+id/T"
@@ -291,8 +287,8 @@
                 android:textColor="@color/white"
 
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="6" />
+                android:layout_column="1"
+                android:layout_row="6" />
 
             <Button
                 android:id="@+id/u"
@@ -319,8 +315,8 @@
                 android:textColor="@color/white"
 
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="7" />
+                android:layout_column="0"
+                android:layout_row="7" />
 
             <Button
                 android:id="@+id/w"
@@ -331,10 +327,9 @@
                 android:gravity="center"
                 android:text="W"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="7" />
+                android:layout_column="1"
+                android:layout_row="7" />
 
             <Button
                 android:id="@+id/x"
@@ -345,10 +340,9 @@
                 android:gravity="center"
                 android:text="X"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="2"
-                app:layout_row="7" />
+                android:layout_column="2"
+                android:layout_row="7" />
 
             <Button
                 android:id="@+id/y"
@@ -359,10 +353,9 @@
                 android:gravity="center"
                 android:text="Y"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="0"
-                app:layout_row="8" />
+                android:layout_column="0"
+                android:layout_row="8" />
 
             <Button
                 android:id="@+id/z"
@@ -373,10 +366,9 @@
                 android:gravity="center"
                 android:text="Z"
                 android:textColor="@color/white"
-
                 android:textSize="63sp"
-                app:layout_column="1"
-                app:layout_row="8" />
+                android:layout_column="1"
+                android:layout_row="8" />
 
 
         </GridLayout>
