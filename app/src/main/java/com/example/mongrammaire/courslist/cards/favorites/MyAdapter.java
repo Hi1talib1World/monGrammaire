@@ -31,13 +31,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     SharedPreference sharedPreference;
 
+    public MyAdapter( List<Model> model) {
 
-
-
-    public MyAdapter(List<Model> model) {
         this.models = model;
     }
-
 
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -87,6 +84,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
 
     }
+
+
 
     @Override
     public int getItemCount() {
