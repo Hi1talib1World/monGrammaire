@@ -141,7 +141,6 @@ public class Exsercises extends Fragment {
     @Override
     public void onResume() {
         getActivity().setTitle(R.string.favorites);
-        getActivity().getActionBar().setTitle(R.string.favorites);
         super.onResume();
     }
 
