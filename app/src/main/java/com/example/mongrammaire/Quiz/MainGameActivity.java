@@ -53,8 +53,8 @@ public class MainGameActivity extends AppCompatActivity {
 
         //Setting typefaces for textview and buttons - this will give stylish fonts on textview and button etc
 
-        tb = Typeface.createFromAsset(getAssets(), "font/TitilliumWeb-Bold.ttf");
-        sb = Typeface.createFromAsset(getAssets(), "font/shablagooital.ttf");
+        //tb = Typeface.createFromAsset(getAssets(), "font/TitilliumWeb-Bold.ttf");
+        //sb = Typeface.createFromAsset(getAssets(), "font/shablagooital.ttf");
         triviaQuizText.setTypeface(sb);
         questionText.setTypeface(tb);
         buttonA.setTypeface(tb);
