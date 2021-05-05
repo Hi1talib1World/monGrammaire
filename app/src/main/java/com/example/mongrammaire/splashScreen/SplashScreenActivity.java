@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mongrammaire.R;
+import com.example.mongrammaire.home;
 import com.example.mongrammaire.horisontal_cardv.NAVDRAWER;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashScreenActivity.this, NAVDRAWER.class);
+                Intent intent=new Intent(SplashScreenActivity.this, home.class);
                 startActivity(intent);
                 finish();
             }
