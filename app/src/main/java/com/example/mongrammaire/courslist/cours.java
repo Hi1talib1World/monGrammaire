@@ -67,12 +67,12 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         recyclerView.setHasFixedSize(true);
 
         //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        adapter = new MyAdapter(models);
+        adapter = new MyAdapter(getPlayers());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //initializing the productlis
         pbar = v.findViewById(R.id.horizontal_progress_bar);
-        Button button = v.findViewById(R.id.star);
+        /*Button button = v.findViewById(R.id.star);
         button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -99,7 +99,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
               }).start();
           }
         });
-        return v;
+*/        return v;
     }
 
     private ArrayList<Model> getPlayers(){
