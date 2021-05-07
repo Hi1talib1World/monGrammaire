@@ -128,4 +128,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         }
 
     }
+    public interface OnCardListener{
+        void onCardClick(int position);
+    }
 }
