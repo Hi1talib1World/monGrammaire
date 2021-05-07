@@ -103,5 +103,6 @@
     <string name="title_activity_verbe_details">verbeDetails</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="SplashScreenActivity">SplashScreenActivity</string>
 
 </resources>
