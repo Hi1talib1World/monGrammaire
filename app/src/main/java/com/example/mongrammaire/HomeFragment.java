@@ -41,15 +41,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        Button conjBtn = (Button) v.findViewById(R.id.a);
-        conjBtn.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Conjugaison.class);
-                startActivity(intent);
-            }
-        });
         return v;
     }
     private ArrayList<Model> eatFruits(){
