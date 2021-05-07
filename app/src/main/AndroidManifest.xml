@@ -13,10 +13,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".courslist.CourActivity"></activity>
         <activity
             android:name=".horisontal_cardv.categories.conjugaison.verbeDetails"
             android:label="@string/title_activity_verbe_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".horisontal_cardv.categories.PhrasesActivity" />
         <activity android:name=".horisontal_cardv.categories.subordonnes.subordonnes" />
         <activity
@@ -49,13 +50,7 @@
         <activity
             android:name=".home"
             android:label="@string/btm"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".level3"
             android:label="@string/title_activity_level3"
@@ -69,10 +64,19 @@
             android:label="@string/title_activity_level1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".splashScreen.SplashScreenActivity"
+            android:label="@string/SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".horisontal_cardv.NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".Quiz.PlayAgain" />
         <activity android:name=".Quiz.GameWon" />
     </application>
