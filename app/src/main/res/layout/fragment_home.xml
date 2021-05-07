@@ -41,81 +41,77 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical">
-
-                <GridLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
 
-                    <Button
-                        android:id="@+id/a"
-                        android:layout_width="133dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/buttonshape"
-                        android:onClick="Conjugaison"
-                        android:text="1AEP"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        app:layout_column="0"
-                        app:layout_row="0" />
+                    <TextView
+                        style="@style/viewParent.headerText"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:text="Tutorials" />
 
-                    <Button
-                        android:id="@+id/b"
-                        android:layout_width="133dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/buttonshape"
-                        android:text="2AEP"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        app:layout_column="1"
-                        app:layout_row="0" />
+                    <TextView
+                        style="@style/viewParent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="See All"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="@dimen/headerMoreTextSize"
+                        android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/c"
-                        android:layout_width="133dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/buttonshape"
-                        android:text="3AEP"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        app:layout_column="2"
-                        app:layout_row="0" />
+                </RelativeLayout>
 
-                    <Button
-                        android:id="@+id/d"
-                        android:layout_width="133dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/buttonshape"
-                        android:text="4AEP"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        app:layout_column="3"
-                        app:layout_row="0" />
-                    <Button
-                        android:id="@+id/e"
-                        android:layout_width="133dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="15dp"
-                        android:background="@drawable/buttonshape"
-                        android:text="@string/a"
-                        android:textColor="@color/white"
-                        android:textSize="63sp"
-                        app:layout_column="4"
-                        app:layout_row="0" />
-                </GridLayout>
-            </LinearLayout>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/card_1eap" />
+
+                        <include layout="@layout/card_2eap" />
+
+                        <include layout="@layout/card_3eap" />
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>            </LinearLayout>
         </HorizontalScrollView>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    style="@style/viewParent.headerText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Popular Courses" />
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="See All"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/headerMoreTextSize"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
