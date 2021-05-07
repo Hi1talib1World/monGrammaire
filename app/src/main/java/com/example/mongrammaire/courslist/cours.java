@@ -1,6 +1,7 @@
 package com.example.mongrammaire.courslist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     private int a = 0;
     private Handler handler = new Handler();
     private OnFragmentInteractionListener mListener;
+    private ArrayList<Model> mCours = new ArrayList<>();
     //the recyclerview
     RecyclerView recyclerView;
 
@@ -224,6 +226,8 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     public boolean onQueryTextChange(String s) {
         return false;
     }
+
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
