@@ -38,7 +38,7 @@
     <dimen name="headerMoreTextSize">18sp</dimen>
     <dimen name="card_margin">5dp</dimen>
     <dimen name="frutorial_title">15sp</dimen>
-    <dimen name="card_image_elevation">ok</dimen>
+    <dimen name="card_image_elevation">5dp</dimen>
     <dimen name="top_text_card">14dp</dimen>
     <dimen name="top_text_subtitle_card">4dp</dimen>
 </resources>
