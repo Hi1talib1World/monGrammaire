@@ -98,4 +98,6 @@
     <color name="gradientOrange3">#F7A23C</color>
     <color name="gradientLightBlue">#376DF6</color>
     <color name="gradientLightGreen">#21E8AC</color>
+    <color name="nav_bar_color">#33CFCFCF</color>
+    <color name="black_transparent">#CC003366</color>
 </resources>
