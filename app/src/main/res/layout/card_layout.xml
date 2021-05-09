@@ -11,6 +11,8 @@
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true"
+    android:layout_marginTop="40dp"
+    android:layout_marginBottom="20dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -22,7 +24,13 @@
         >
 
         <ImageView
-            android:maxHeight="90dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:elevation="@dimen/card_image_elevation"
             android:id="@+id/img1"
             android:src="@drawable/ufo"
             style="@style/homeCardImage"
