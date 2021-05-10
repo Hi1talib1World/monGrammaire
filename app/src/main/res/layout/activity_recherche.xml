@@ -21,29 +21,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/normalPadding"
-
             android:paddingRight="@dimen/normalPadding">
 
-            <com.arlib.floatingsearchview.FloatingSearchView
-                android:id="@+id/floating_search_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
-                app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
-                app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
-                app:floatingSearch_searchHint="Search..."
-                app:floatingSearch_suggestionsListAnimDuration="250"
-                app:floatingSearch_showSearchKey="false"
-                app:floatingSearch_leftActionMode="showHamburger"
-                app:floatingSearch_menu="@menu/menu_main"
-                app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
 
             <TextView
                 android:id="@+id/tv_find_title"
+
                 style="@style/viewParent.headerText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+
                 android:text="Find your \nmatches courses"
                 android:textSize="28sp"
 
@@ -71,18 +59,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_find_title" />
 
-            <!--            <com.yarolegovich.discretescrollview.DiscreteScrollView-->
-            <!--                android:id="@+id/item_picker"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="@dimen/normalPadding"-->
-            <!--                android:layout_marginBottom="@dimen/normalPadding"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
 
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-            <!--                tools:listitem="@layout/item_shop_card" />-->
-            <!--            &lt;!&ndash; orientation is optional, default is horizontal &ndash;&gt;-->
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
