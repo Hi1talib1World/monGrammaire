@@ -91,10 +91,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <SearchView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/search_bar"
+                        />
+
                     <TextView
                         style="@style/viewParent.headerText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/search_bar"
                         android:layout_marginTop="@dimen/activity_horizontal_margin"
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
                         android:text="Popular Courses" />
