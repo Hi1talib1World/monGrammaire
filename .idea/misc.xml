@@ -3,8 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-v26/fragment_acceuil.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_conjugaison.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.11503623188405797" />
+        <entry key="app/src/main/res/layout/activity_level1.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_level2.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_level3.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_main_game.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_mots.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_navdrawer.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_parametres.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_phrases.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_recherche.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_verbe_details.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/content_level3.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/content_navdrawer.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/fragment_acceuil.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/fragment_word.xml" value="0.20729166666666668" />
       </map>
     </option>
   </component>
@@ -54,7 +72,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
