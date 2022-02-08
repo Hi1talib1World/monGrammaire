@@ -122,7 +122,7 @@
 
                 <include layout="@layout/card_3eap" />
 
-                <include layout="@layout/card_1eap" />
+                <include layout="@layout/card_3eap" />
 
             </LinearLayout>
 
