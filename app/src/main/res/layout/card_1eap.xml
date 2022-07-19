@@ -19,7 +19,7 @@
         android:padding="12dp"
         android:layout_width = "150dp"
         android:layout_height= "150dp"
-        android:src="@drawable/mongrammaire"
+        android:src="@drawable/bookstack"
          />
 
     <LinearLayout
@@ -35,6 +35,7 @@
             android:fontFamily="@font/bariol_regular"
             android:textSize="20sp"
             android:text="Les champs lexicaux"
+            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
