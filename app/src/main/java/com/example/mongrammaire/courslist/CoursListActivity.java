@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.mongrammaire.R;
 
-public class CourActivity extends AppCompatActivity {
+public class CoursListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
