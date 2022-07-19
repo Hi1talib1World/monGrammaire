@@ -5,17 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mongrammaire.courslist.CourActivity;
+import com.example.mongrammaire.courslist.CoursListActivity;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
-import com.example.mongrammaire.horisontal_cardv.categories.conjugaison.Conjugaison;
 
 import java.util.ArrayList;
 
@@ -61,7 +59,7 @@ public class HomeFragment extends Fragment {
 
     public void onClick(View v) {
 
-        Intent i= new Intent(getActivity(), CourActivity.class);
+        Intent i= new Intent(getActivity(), CoursListActivity.class);
         startActivity(i);
     }
 

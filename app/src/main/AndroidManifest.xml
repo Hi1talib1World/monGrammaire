@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".courslist.CourActivity"></activity>
+        <activity android:name=".courslist.CoursListActivity"></activity>
         <activity
             android:name=".horisontal_cardv.categories.conjugaison.verbeDetails"
             android:label="@string/title_activity_verbe_details"

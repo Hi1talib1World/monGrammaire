@@ -48,16 +48,16 @@
                         style="@style/viewParent.headerText"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:text="Tutorials" />
+                        android:text="Nouveaux Cours" />
 
                     <TextView
                         style="@style/viewParent"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:text="See All"
+                        android:onClick="onClick"
+                        android:text="Regarder Tous"
                         android:textColor="@color/primaryTextColor"
                         android:textSize="@dimen/headerMoreTextSize"
-                        android:onClick="onClick"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
@@ -65,6 +65,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="11dp"
                     android:scrollbars="none">
 
                     <LinearLayout
@@ -98,13 +99,13 @@
                     style="@style/viewParent.headerText"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="Popular Courses" />
+                    android:text="Populaire Courss" />
 
                 <TextView
                     style="@style/viewParent"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="See All"
+                    android:text="Regarder Tous"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="@dimen/headerMoreTextSize"
                     android:textStyle="bold" />
@@ -117,7 +118,7 @@
                 android:layout_width="407dp"
                 android:layout_height="174dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/white" />
+                 />
         </LinearLayout>
 
         <FrameLayout
