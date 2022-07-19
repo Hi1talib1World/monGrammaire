@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        card_view:cardElevation="1dp"
-        card_view:cardCornerRadius="7dp"
-        card_view:cardBackgroundColor="@color/colorAccent"
-        card_view:cardPreventCornerOverlap="false"
-        android:layout_margin="@dimen/card_margin">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-        <RelativeLayout
+    <ImageView
+
+        android:background="@drawable/result_card"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/top_text_subtitle_card"
+        android:layout_marginEnd="@dimen/top_text_subtitle_card"
+        android:layout_marginBottom="@dimen/top_text_subtitle_card"
+        android:padding="12dp"
+        android:layout_width = "150dp"
+        android:layout_height= "150dp"
+        android:src="@drawable/bookstack"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/viewParent.headerText"
+            android:fontFamily="@font/bariol_regular"
+            android:textSize="20sp"
+            android:text="Les figures de style"
+            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/youtubeThubnail"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/ufo"
-                android:scaleType="centerCrop" />
+        <TextView
+            android:fontFamily="@font/bariol_regular"
+            android:text="Demarer maintenant ..."
+            android:textColor="@color/bottomNavigationTextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/youtubeThubnail"
-                android:textColor="@color/frutorial_title"
-                android:layout_margin="5dp"
-                android:text="Sample"
-                android:textSize="@dimen/frutorial_title" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_play"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/youtubeThubnail"
-                android:layout_marginTop="-40dp"/>
-
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
+        <View
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:background="@color/nav_bar_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
 </LinearLayout>
