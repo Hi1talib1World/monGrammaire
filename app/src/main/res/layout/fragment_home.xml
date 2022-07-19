@@ -7,6 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,7 +70,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="11dp"
+
                     android:scrollbars="none">
 
                     <LinearLayout
@@ -121,11 +126,7 @@
                  />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/screen_area"
-            android:layout_width="411dp"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints" />
+        
     </LinearLayout>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
