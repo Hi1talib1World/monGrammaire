@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/button_task_continue.xml" value="0.142" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/mybutton2.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/result_card.xml" value="0.1425" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_btm_launcher.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour.xml" value="0.1" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour1.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_details.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_navdrawer.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_1eap.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_2eap.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_exsercises.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_home.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout-v26/fragment_acceuil.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_conjugaison.xml" value="0.1" />
