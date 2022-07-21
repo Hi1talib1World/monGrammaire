@@ -56,7 +56,7 @@ public class FavoriteListFragment  extends Fragment {
                         getResources().getString(R.string.no_favorites_msg));
             }
 
-            favoriteList = (ListView) view.findViewById(R.id.list_product);
+
             /*if (favorites != null) {
                 productListAdapter = new MyAdapter(activity, favorites);
                 favoriteList.setAdapter(productListAdapter);
