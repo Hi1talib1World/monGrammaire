@@ -113,7 +113,6 @@
     <color name="button_task_check">#757575</color>
 
     <color name="blue_pair">#00c2ed</color>
-
     <!-- Progress Bar -->
     <array name="gradient_colors">
         <item name="progress_start">#fff953</item>
@@ -135,4 +134,6 @@
 
     <color name="blue_background">#00abe4</color>
     <color name="default_light_grey_bg">#f5f5f5</color>
+
+
 </resources>
