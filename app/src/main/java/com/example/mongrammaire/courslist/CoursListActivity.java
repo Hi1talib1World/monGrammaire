@@ -20,16 +20,6 @@ public class CoursListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cour);
 
-        listView = (ListView) findViewById(R.id.list);
-        String[] values = new String[]{"Android1", "Android ListView Item 2",
-                "Simple List View In Android", "List View onClick Event","Android List View OnItemClickListener",
-                "Open New Activity When ListView item Clicked", "List View onClick Source Code", "List View Array Adapter Item Click",
-        };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
-        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
