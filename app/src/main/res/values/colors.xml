@@ -113,6 +113,7 @@
     <color name="button_task_check">#757575</color>
     <color name="miniTitle">#0F0101</color>
     <color name="miniDescription">#707070</color>
+    <color name="designMainColor">#13D3B4</color>
     <color name="blue_pair">#00c2ed</color>
     <!-- Progress Bar -->
     <array name="gradient_colors">
