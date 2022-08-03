@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class MainGameActivity extends AppCompatActivity {
     int qid = 0;
     int timeValue = 20;
     int coinValue = 0;
+    Button playAgain;
     CountDownTimer countDownTimer;
     Typeface tb, sb;
 
@@ -42,6 +44,7 @@ public class MainGameActivity extends AppCompatActivity {
 
         //Initializing variables
         questionText =  findViewById(R.id.triviaQuestion);
+        playAgain = (Button) findViewById(R.id.playAgainBtn);
         buttonA = findViewById(R.id.buttonA);
         buttonB =  findViewById(R.id.buttonB);
         buttonC =  findViewById(R.id.buttonC);
@@ -64,6 +67,15 @@ public class MainGameActivity extends AppCompatActivity {
         timeText.setTypeface(tb);
         resultText.setTypeface(sb);
         coinText.setTypeface(tb);
+
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainGameActivity.this, MainGameActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //Our database helper class
         triviaQuizHelper = new TriviaQuizHelper(this);
