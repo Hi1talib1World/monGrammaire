@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hicham/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_list_item_1.xml" value="0.1" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable-v21/ic_right_icon.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/button_task_continue.xml" value="0.142" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/circle.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/mybutton2.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/result_card.xml" value="0.1425" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_btm_launcher.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour.xml" value="0.1" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour1.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_details.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_main_game.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_navdrawer.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_1eap.xml" value="0.17074275362318841" />
