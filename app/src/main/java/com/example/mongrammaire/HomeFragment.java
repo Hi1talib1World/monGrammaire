@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ArrayList<Model> imageModelArrayList;
-    TextView listView;
+    TextView listView, listView2;
     public Adapter adapter;
     private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
     private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
@@ -53,6 +53,20 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
+        listView = (TextView) v.findViewById(R.id.listView2);
+
+        listView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), CoursListActivity.class);
+                v.getContext().startActivity(intent);
+
+            }
+        });
+
 
         return v;
     }
