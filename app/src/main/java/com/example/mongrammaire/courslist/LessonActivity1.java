@@ -1,12 +1,18 @@
 package com.example.mongrammaire.courslist;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mongrammaire.Data.Repository;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.Utils.CustomProgressBar;
+import com.orhanobut.hawk.Hawk;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class LessonActivity1 extends AppCompatActivity {
 
