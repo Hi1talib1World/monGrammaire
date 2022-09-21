@@ -1,6 +1,8 @@
 package com.example.mongrammaire.Data;
 
 
+import androidx.annotation.NonNull;
+
 public class Repository implements DataSource.Local, DataSource.Remote {
 
     private static Repository INSTANCE;
