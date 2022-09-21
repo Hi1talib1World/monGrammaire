@@ -76,6 +76,8 @@ dependencies {
     //ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+//Hawk
+    implementation 'com.orhanobut:hawk:2.0.1'
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation('com.google.cloud:google-cloud-translate:1.94.1') {
