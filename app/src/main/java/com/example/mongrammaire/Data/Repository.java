@@ -1,7 +1,14 @@
 package com.example.mongrammaire.Data;
 
 
+import android.service.autofill.UserData;
+
 import androidx.annotation.NonNull;
+
+import com.example.mongrammaire.Model.PairModel;
+import com.example.mongrammaire.Model.QuestionModel;
+
+import java.util.ArrayList;
 
 public class Repository implements DataSource.Local, DataSource.Remote {
 
@@ -75,6 +82,8 @@ public class Repository implements DataSource.Local, DataSource.Remote {
     public void setDailyGoal(int dailyGoal) {
         dataSourceRemote.setDailyGoal(dailyGoal);
     }
+
+
 
     @Override
     public void setUserInfo(UserData userData) {
