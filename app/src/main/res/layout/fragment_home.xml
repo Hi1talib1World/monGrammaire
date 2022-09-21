@@ -56,8 +56,8 @@
                         android:text="Nouveaux Cours" />
 
                     <TextView
-                        style="@style/viewParent"
                         android:id="@+id/listView"
+                        style="@style/viewParent"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:onClick="onClick"
@@ -112,6 +112,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="Regarder Tous"
+                    android:id="@+id/listView2"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="@dimen/headerMoreTextSize"
                     android:textStyle="bold" />
