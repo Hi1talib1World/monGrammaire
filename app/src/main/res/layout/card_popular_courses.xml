@@ -20,7 +20,8 @@
             android:cropToPadding="true"
             android:maxWidth="70dp"
             android:layout_margin="10dp"
-            android:src="@drawable/android_developer" />
+            android:src="@drawable/android_developer"
+            />
 
     </androidx.cardview.widget.CardView>
 
