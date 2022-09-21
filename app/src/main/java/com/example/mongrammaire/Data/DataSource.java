@@ -3,6 +3,11 @@ package com.example.mongrammaire.Data;
 
 import android.service.autofill.UserData;
 
+import com.example.mongrammaire.Model.PairModel;
+import com.example.mongrammaire.Model.QuestionModel;
+
+import java.util.ArrayList;
+
 public interface DataSource {
 
     interface Local{
