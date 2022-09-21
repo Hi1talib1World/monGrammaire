@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mongrammaire.courslist.Cours2ListActivity;
 import com.example.mongrammaire.courslist.CoursListActivity;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
@@ -43,12 +44,23 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
         listView = (TextView) v.findViewById(R.id.listView);
+        listView = (TextView) v.findViewById(R.id.listView2);
 
         listView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), CoursListActivity.class);
+                v.getContext().startActivity(intent);
+
+            }
+        });
+
+        listView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), Cours2ListActivity.class);
                 v.getContext().startActivity(intent);
 
             }
