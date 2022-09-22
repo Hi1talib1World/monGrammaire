@@ -1,6 +1,8 @@
 package com.example.mongrammaire.Utils;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class FirebaseAuthHelper {
 
     public static FirebaseAuthHelper INSTANCE;
