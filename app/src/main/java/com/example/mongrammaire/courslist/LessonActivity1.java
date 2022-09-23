@@ -79,7 +79,7 @@ public class LessonActivity1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(LessonActivity1.this, LessonListActivity.class);
+                Intent intent = new Intent(LessonActivity1.this, LessonActivity1.class);
                 startActivity(intent);
             }
         });
