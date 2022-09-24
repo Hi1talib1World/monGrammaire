@@ -51,7 +51,7 @@
                 <com.example.mongrammaire.Utils.CustomProgressBar
                     android:id="@+id/basic_bar"
                     style="@style/lesson_bar"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true" />
 
                 <TextView
                     style="@style/lesson_bar_text"
