@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp">
 
-                <e.rick.duolingoclone.Utils.CustomProgressBar
+                <com.example.mongrammaire.Utils.CustomProgressBar
                     android:id="@+id/basic_bar"
                     style="@style/lesson_bar"
                     android:layout_centerInParent="true"/>
@@ -74,7 +74,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp">
 
-                    <e.rick.duolingoclone.Utils.CustomProgressBar
+                    <com.example.mongrammaire.Utils.CustomProgressBar
                         android:id="@+id/phrases_bar"
                         style="@style/lesson_bar"
                         android:layout_alignParentEnd="true" />
@@ -95,7 +95,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp">
 
-                    <e.rick.duolingoclone.Utils.CustomProgressBar
+                    <com.example.mongrammaire.Utils.CustomProgressBar
                         android:id="@+id/greeting_bar"
                         style="@style/lesson_bar"
                         android:layout_alignParentStart="true" />
@@ -124,7 +124,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp">
 
-                    <e.rick.duolingoclone.Utils.CustomProgressBar
+                    <com.example.mongrammaire.Utils.CustomProgressBar
                         android:id="@+id/food_bar"
                         style="@style/lesson_bar"
                         android:layout_alignParentEnd="true"/>
@@ -145,7 +145,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp">
 
-                    <e.rick.duolingoclone.Utils.CustomProgressBar
+                    <com.example.mongrammaire.Utils.CustomProgressBar
                         android:id="@+id/animal_bar"
                         style="@style/lesson_bar"
                         android:layout_alignParentStart="true"/>
@@ -165,7 +165,7 @@
                 android:layout_height="130dp"
                 android:layout_marginTop="8dp">
 
-                <e.rick.duolingoclone.Utils.CustomProgressBar
+                <com.example.mongrammaire.Utils.CustomProgressBar
                     android:id="@+id/clothing_bar"
                     style="@style/lesson_bar"
                     android:layout_centerInParent="true"/>
