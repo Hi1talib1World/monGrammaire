@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mongrammaire.Data.Repository;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.Utils.CustomProgressBar;
+import com.example.mongrammaire.Utils.Injection;
 import com.orhanobut.hawk.Hawk;
 
 import butterknife.BindView;
