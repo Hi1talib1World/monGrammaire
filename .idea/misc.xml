@@ -9,19 +9,56 @@
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/circle.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/mybutton2.xml" value="0.142" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/drawable/result_card.xml" value="0.1425" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/about_page.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/about_page_separator.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_btm_launcher.xml" value="0.16893115942028986" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_conjugaison.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour.xml" value="0.1" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour1.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_cour2list.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_details.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_level1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_level2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_level3.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_main_game.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_mots.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_navdrawer.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_parametres.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_phrases.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_recherche.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_settings.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_subordonnes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_time__up.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_translatetool.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_verbe_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/activity_welcome.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/app_bar_navdrawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_1eap.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_2eap.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/card_popular_courses.xml" value="0.25" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/content_level1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/content_level3.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/content_navdrawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/dialog_correct.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_blank_fragment1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_blank_fragment2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_cours.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_exsercises.xml" value="0.16893115942028986" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_favorite_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_gallery.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_home.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_send.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_share.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_slideshow.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_third.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_tools.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/fragment_verbe_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/monGrammaire/app/src/main/res/layout/week_progress_bar.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout-v26/fragment_acceuil.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_conjugaison.xml" value="0.1" />
