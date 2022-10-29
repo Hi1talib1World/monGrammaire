@@ -141,12 +141,7 @@ public class Element {
         return this;
     }
 
-    /**
-     * Get the color resource identifier for this Elements icon when in night mode
-     *
-     * @return
-     * @see AppCompatDelegate#setDefaultNightMode(int)
-     */
+
     @ColorRes
     public Integer getIconNightTint() {
         return colorNight;
