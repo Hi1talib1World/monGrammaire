@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.mongrammaire.Model.PairModel;
 import com.example.mongrammaire.Model.QuestionModel;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
