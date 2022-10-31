@@ -39,6 +39,8 @@
         <TextView
             android:id="@+id/txt1"
             android:text="Maths"
+            android:layout_marginTop="31dp"
+            android:layout_marginLeft="11dp"
             style="@style/viewParent.headerText.HomeCardTitle"
             />
 
@@ -46,6 +48,7 @@
             android:id="@+id/txt2"
             android:text="Study nature, love nature,\nclose to nature"
             android:layout_below="@+id/txt1"
+            android:layout_marginLeft="11dp"
             style="@style/viewParent.headerText.homeCardContent"
 
             />
@@ -73,20 +76,21 @@
             android:contentDescription="@string/favorites" />
 
 
-
         <ProgressBar
 
             android:id="@+id/horizontal_progress_bar"
-            android:layout_width="fill_parent"
             style="@style/MyProgressBar"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="44dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="44dp"
+
+            android:layout_marginBottom="44dp"
             android:indeterminate="false"
             android:max="100"
             android:minHeight="100dp"
-
-            android:progress="30"
- />
+            android:progress="30" />
 
 
     </RelativeLayout>
