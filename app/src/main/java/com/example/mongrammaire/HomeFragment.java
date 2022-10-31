@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
         listView = (TextView) v.findViewById(R.id.listView);
-        listView = (TextView) v.findViewById(R.id.listView2);
+        listView2 = (TextView) v.findViewById(R.id.listView2);
 
         listView.setOnClickListener(new View.OnClickListener() {
             @Override
