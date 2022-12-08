@@ -105,5 +105,6 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="SplashScreenActivity">SplashScreenActivity</string>
     <string name="action_example_with_sliding_list">Search ...</string>
+    <string name="tous_les_cours">Tous les cours</string>
 
 </resources>
