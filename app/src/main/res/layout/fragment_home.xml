@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:layout_gravity="center"
-            android:background="@color/white"
+            android:background="@drawable/bg_white_rounded"
+
             />
 
         <TextView
@@ -105,7 +106,7 @@
                     style="@style/viewParent.headerText"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="Populaire Courss" />
+                    android:text="Cours par Niveaux" />
 
                 <TextView
                     style="@style/viewParent"
