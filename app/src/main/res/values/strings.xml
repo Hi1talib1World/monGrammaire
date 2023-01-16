@@ -83,7 +83,7 @@
     <string name="b">b</string>
     <string name="j">j</string>
     <string name="no_connection">Pas de connexion Internet! Ne peut être traduit!</string>
-    <string name="about_page_description" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vehicula ligula tortor, in pellentesque dui congue ac. Vestibulum lacinia urna magna, quis cursus ante iaculis nec. Nunc ut ligula sit amet odio ultrices euismod vel vel purus. Sed lacus mauris, aliquam et placerat id</string>
+    <string name="about_page_description" translatable="false">Bienvenue dans notre application de grammaire ! Nous avons conçu cette application pour vous aider à améliorer vos compétences en grammaire. Vous trouverez des exercices interactifs, des explications détaillées des règles grammaticales et des exemples pour vous aider à comprendre comment utiliser correctement les différents éléments de la grammaire. Nous espérons que vous apprécierez cette application et que vous progresserez rapidement dans votre maîtrise de la grammaire.</string>
     <string name="copy_right" translatable="false">Copyrights © %1$d</string>
     <string name="about_contact_us">Contact us</string>
     <string name="about_instagram">Follow us on Instagram</string>
