@@ -27,8 +27,8 @@ public class HomeFragment extends Fragment {
     private ArrayList<Model> imageModelArrayList;
     TextView listView, listView2;
     public Adapter adapter;
-    private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
-    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
+    private int[] myImageList = new int[]{R.drawable.n1, R.drawable.n2,R.drawable.n3, R.drawable.n4,R.drawable.n5,R.drawable.n6,R.drawable.n7,R.drawable.n8};
+    private String[] myImageNameList = new String[]{"Niveau 1","Niveau 2" ,"Niveau 3","Niveau 4","Niveau 5","Niveau 6","Niveau 7","Niveau 8"};
 
     @Nullable
     @Override
