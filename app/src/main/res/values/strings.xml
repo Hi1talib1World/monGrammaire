@@ -67,15 +67,17 @@
     <string name="txt_details">La grammaire1 est l\'étude systématique des éléments constitutifs d\'une langue2. Par extension, on nomme aussi grammaire un manuel ou un ensemble de documents décrivant des règles grammaticales.</string>
     <string name="title_activity_time__up">Time_Up</string>
     <string name="question">Question</string>
-    <string name="play_again">Play again</string>
+    <string name="play_again">Rejouer</string>
     <string name="time">15</string>
     <string name="correct">Correct</string>
-    <string name="wrongans">Opps the ans was wrong</string>
-    <string name="timeup">Time Up</string>
-    <string name="play_game">Play Game</string>
-    <string name="quit">Quit</string>
-    <string name="next">Next</string>
+    <string name="wrongans">Oups, la réponse était incorrecte</string>
+
+    <string name="timeup">Temps écoulé</string>
+    <string name="play_game">Jouer</string>
+    <string name="quit">Quitter</string>
+    <string name="next">Suivant</string>
     <string name="cancel">✖</string>
+
     <string name="d">d</string>
     <string name="c">c</string>
     <string name="e">e</string>
