@@ -51,8 +51,16 @@ public class NAVDRAWER extends AppCompatActivity
     private RecyclerView recyclerView;
     private ArrayList<Model> imageModelArrayList;
 
-    private int[] myImageList = new int[]{R.drawable.house, R.drawable.house,R.drawable.house, R.drawable.house,R.drawable.house,R.drawable.house,R.drawable.house};
-    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
+    private int[] myImageList = new int[]{R.drawable.play, R.drawable.play,R.drawable.play, R.drawable.play,R.drawable.play,R.drawable.play,R.drawable.play};
+    private String[] myImageNameList = new String[]{
+            "Sujet", // Subject
+            "Verbe", // Verb
+            "Complément d'objet direct", // Direct Object
+            "Complément d'objet indirect", // Indirect Object
+            "Adverbe", // Adverb
+            "Préposition", // Preposition
+            "Conjonction" // Conjunction
+    };
 
 
     ProgressBar androidProgressBar;
