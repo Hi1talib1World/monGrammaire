@@ -39,9 +39,9 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler);
 
         imageModelArrayList = eatFruits();
-        adapter = new Adapter(getActivity(), imageModelArrayList);
+        adapter = new Adapter(getContext(), imageModelArrayList);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         listView = (TextView) v.findViewById(R.id.listView);
         listView2 = (TextView) v.findViewById(R.id.listView2);
@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
 
     public void onClick(View v) {
 
-        Intent i= new Intent(getActivity(), CoursListActivity.class);
+        Intent i= new Intent(getContext(), CoursListActivity.class);
         startActivity(i);
     }
 
