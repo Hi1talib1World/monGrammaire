@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.jsoup.nodes.Element;
 
 import java.util.Calendar;
 
