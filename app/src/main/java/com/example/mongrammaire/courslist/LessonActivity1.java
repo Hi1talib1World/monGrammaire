@@ -17,6 +17,7 @@ import com.orhanobut.hawk.Hawk;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class LessonActivity1 extends AppCompatActivity {
 
     @BindView(R.id.main_layout)

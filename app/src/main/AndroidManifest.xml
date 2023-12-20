@@ -24,7 +24,7 @@
             android:name=".horisontal_cardv.categories.conjugaison.Conjugaison"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true"> <!-- Add this line -->
+            >
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -68,7 +68,6 @@
             android:name=".splashScreen.SplashScreenActivity"
             android:label="@string/SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

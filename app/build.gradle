@@ -2,10 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 34
-    buildToolsVersion '23.0.1'
     defaultConfig {
         applicationId "com.Denzo.mongrammaire"
-        minSdkVersion 20
+        minSdkVersion 26
         targetSdkVersion 34
 
         versionCode 1
@@ -43,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.squareup.leakcanary:leakcanary-android:latest_version'
+
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0' // Update to the latest version
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -56,9 +57,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation "androidx.gridlayout:gridlayout:1.0.0"
     implementation 'com.android.support:multidex:1.0.3'
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.5.4"
     // volley http library
     implementation 'com.android.volley:volley:1.2.1'
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.google.code.gson:gson:2.9.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.orhanobut:hawk:2.0.1'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
@@ -73,9 +76,14 @@ dependencies {
     // universal image loader
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     // circular image view library
+    //implementation 'com.squareup.leakcanary:leakcanary-android:2.0.0' // Replace with the actual version number
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.fragment:fragment-testing:1.6.2"
+    androidTestImplementation "androidx.test:core:1.5.0"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -86,24 +94,25 @@ dependencies {
     api 'org.greenrobot:eventbus:3.1.1'
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
-    implementation 'com.github.smarteist:autoimageslider:1.3.2'
-    implementation 'com.github.smarteist:autoimageslider:1.3.2'
+    //implementation 'com.github.smarteist:autoimageslider:v1.4.0'
+
+
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
     implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
     implementation 'com.android.support:cardview-v7:'
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     // To use constraintlayout in compose
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha04"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha13"
 //Flow Layout
     implementation 'com.nex3z:flow-layout:1.2.2'
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-auth:22.3.0'
     implementation 'com.google.android.gms:play-services-gcm:17.0.0'
-    implementation 'com.google.firebase:firebase-analytics:21.2.0'
-    implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.firebase:firebase-analytics:21.5.0'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+
+    implementation 'org.objenesis:objenesis:3.2'
 
 
-    // Remove duplicate dependencies
-    // implementation 'com.android.support:appcompat-v7:33.0.0'
      implementation 'info.hoang8f:fbutton:1.0.5'
 
     configurations.all {
