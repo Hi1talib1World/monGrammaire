@@ -15,6 +15,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".courslist.CoursListActivity"></activity>
         <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".horisontal_cardv.categories.conjugaison.verbeDetails"
             android:label="@string/title_activity_verbe_details"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -24,7 +28,7 @@
             android:name=".horisontal_cardv.categories.conjugaison.Conjugaison"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
+            android:exported="true">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -68,13 +72,13 @@
             android:name=".splashScreen.SplashScreenActivity"
             android:label="@string/SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".horisontal_cardv.NAVDRAWER"
             android:label="@string/title_activity_navdrawer"
