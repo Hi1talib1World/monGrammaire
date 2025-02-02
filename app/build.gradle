@@ -19,8 +19,9 @@ android {
         }
     }
     packagingOptions {
-        exclude 'project.properties'
-        exclude 'META-INF/INDEX.LIST'
+        resources {
+            excludes += ['project.properties', 'META-INF/INDEX.LIST']
+        }
     }
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
