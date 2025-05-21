@@ -17,18 +17,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="363dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
-                android:layout_gravity="center"
-                android:background="@drawable/bg_white_rounded"
-                android:queryHint="Rechercher..."
-                app:iconifiedByDefault="false"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
@@ -40,6 +28,26 @@
                 android:textColor="#2D3142"
                 android:textSize="26dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/circle"
+                >
+
+            </ImageView>
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="363dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_white_rounded"
+                android:queryHint="Rechercher..."
+                app:iconifiedByDefault="false"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
