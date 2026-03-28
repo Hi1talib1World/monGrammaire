@@ -9,7 +9,6 @@
     android:background="@drawable/home"
     tools:context=".home">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,35 +19,32 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
             android:background="@drawable/logo" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonA"
             android:layout_width="333dp"
             android:layout_height="wrap_content"
-            android:onClick="buton"
             android:text="@string/entrer"
             android:textSize="14sp"
             android:textStyle="bold"
             android:paddingEnd="20dp"
             android:paddingStart="20dp"
             android:textColor="@color/white"
-            android:background="@drawable/mybutton"            />
+            android:background="@drawable/mybutton" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonB"
             android:layout_width="333dp"
             android:layout_height="wrap_content"
             android:text="@string/quiz"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:onClick="buttonB"
             android:layout_marginTop="15dp"
             android:background="@drawable/mybutton2" />
 
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

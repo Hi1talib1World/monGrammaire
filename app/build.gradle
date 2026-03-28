@@ -2,116 +2,92 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 34
+    namespace 'com.example.mongrammaire'
+
     defaultConfig {
         applicationId "com.Denzo.mongrammaire"
         minSdkVersion 26
-        targetSdkVersion 31
+        targetSdkVersion 34
 
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     packagingOptions {
         resources {
             excludes += ['project.properties', 'META-INF/INDEX.LIST']
         }
     }
+
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.example.mongrammaire'
-
-
 }
 
 dependencies {
-    implementation 'com.squareup.leakcanary:leakcanary-android:latest_version'
-
-    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0' // Update to the latest version
+    // AndroidX Core & Lifecycle
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.11.0' // Update to the latest version
-    implementation 'androidx.appcompat:appcompat:1.6.1' // Update to the latest version
-    implementation 'androidx.annotation:annotation:1.7.1' // Update to the latest version
-    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    implementation 'androidx.multidex:multidex:2.0.1' // Update to the latest version
-    implementation 'com.android.volley:volley:1.2.1' // Consider replacing with a more modern networking library
-    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation "androidx.gridlayout:gridlayout:1.0.0"
-    implementation 'com.android.support:multidex:1.0.3'
-    androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.6.0"
-    // volley http library
+
+    // Networking & Data
     implementation 'com.android.volley:volley:1.2.1'
-    implementation 'com.google.code.gson:gson:2.9.0'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.orhanobut:hawk:2.0.1'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation 'org.jsoup:jsoup:1.14.3'
+    implementation "com.itextpdf:itext7-core:7.1.15"
+
+    // Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // UI Components
+    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+    implementation 'com.nex3z:flow-layout:1.2.2'
+    implementation 'info.hoang8f:fbutton:1.0.5'
+
+    // Firebase & Services
+    implementation 'com.google.firebase:firebase-auth:22.3.1'
+    implementation 'com.google.firebase:firebase-analytics:21.5.0'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+
+    // Translation API
     implementation('com.google.cloud:google-cloud-translate:1.94.1') {
         exclude group: 'org.apache.httpcomponents'
         exclude group: 'org.json', module: 'json'
     }
-    annotationProcessor 'com.google.cloud:google-cloud-translate:1.94.1'
-    implementation 'com.android.support:multidex:1.0.3'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    // universal image loader
-    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    // circular image view library
-    //implementation 'com.squareup.leakcanary:leakcanary-android:2.0.0' // Replace with the actual version number
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
-    androidTestImplementation "androidx.test.ext:junit:1.1.5"
-    androidTestImplementation "androidx.fragment:fragment-testing:1.6.2"
-    androidTestImplementation "androidx.test:core:1.5.0"
+
+    // Tools & Utils
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    api 'org.greenrobot:eventbus:3.3.1'
+    implementation 'org.objenesis:objenesis:3.3'
+
+    // Testing
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'org.jsoup:jsoup:1.13.1'
-    implementation "com.itextpdf:itext7-core:7.1.10"
-    implementation 'com.android.support:support-annotations:28.0.0'
-    api 'org.greenrobot:eventbus:3.1.1'
-    implementation 'info.hoang8f:fbutton:1.0.5'
-    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
-
-
-    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
-    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
-    implementation 'com.android.support:cardview-v7:'
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    // To use constraintlayout in compose
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha13"
-//Flow Layout
-    implementation 'com.nex3z:flow-layout:1.2.2'
-    implementation 'com.google.firebase:firebase-auth:22.3.1'
-    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
-    implementation 'com.google.firebase:firebase-analytics:21.5.0'
-    implementation 'com.google.firebase:firebase-database:20.3.0'
-
-    implementation 'org.objenesis:objenesis:3.2'
-
-
-     implementation 'info.hoang8f:fbutton:1.0.5'
-
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'com.android.support') {
-                if (!requested.name.startsWith("multidex")) {
-                    details.useVersion '25.3.0'
-                }
-            }
-        }
-    }
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.test:core:1.5.0"
+    androidTestImplementation "androidx.fragment:fragment-testing:1.6.2"
 }
