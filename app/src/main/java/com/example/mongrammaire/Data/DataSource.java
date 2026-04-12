@@ -38,7 +38,11 @@ public interface DataSource {
 
         void setLessonComplete(String lesson, boolean completeness);
 
+        void setLessonProgress(String lesson, int progress);
+
         void setLessonCompleteDate(String lesson);
+
+        void setStreak(int streak);
 
         void getDailyGoal();
 
@@ -47,5 +51,9 @@ public interface DataSource {
         void getWeekXp();
 
         void getLessonCompleted();
+
+        void getOverallProgress();
+
+        void getStreak();
     }
 }

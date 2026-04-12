@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,6 +62,8 @@ public class LessonActivity1 extends AppCompatActivity {
             sundayProgress;
 
     int dailyGoal;
+    String currentLesson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,32 +75,55 @@ public class LessonActivity1 extends AppCompatActivity {
     private void initData() {
 
         Hawk.init(this).build();
-
         repository = Injection.provideRepository();
-
-        dailyGoal = Hawk.get("dailyGoal");
+        dailyGoal = Hawk.get("dailyGoal", 100);
+        currentLesson = Hawk.get("lesson", "basics");
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(LessonActivity1.this, LessonActivity1.class);
-                startActivity(intent);
+                // Logic for moving to next lesson can be added here
+                finish();
             }
         });
 
+        updateLessonProgress();
         setupProgressBar();
         setupWeekBar();
+    }
+
+    private void updateLessonProgress() {
+        int progress = Hawk.get(currentLesson.toLowerCase() + "_progress", 0);
+        progress += 20; // Increment progress by 20% each time for this example
+        
+        if (progress >= 100) {
+            progress = 100;
+            repository.setLessonComplete(currentLesson, true);
+            Hawk.put(currentLesson.toLowerCase() + "_completed", true);
+            Toast.makeText(this, "Lesson Completed!", Toast.LENGTH_SHORT).show();
+        }
+        
+        Hawk.put(currentLesson.toLowerCase() + "_progress", progress);
+        repository.setLessonProgress(currentLesson, progress);
+        
+        // Update overall progress (simple average for this example)
+        updateOverallProgress();
+    }
+
+    private void updateOverallProgress() {
+        String[] lessons = {"basics", "phrases", "greeting", "food", "animal", "clothing"};
+        int total = 0;
+        for (String l : lessons) {
+            total += Hawk.get(l.toLowerCase() + "_progress", 0);
+        }
+        int overall = total / lessons.length;
+        Hawk.put("overallProgress", overall);
+        // Assuming repository has a way to set overall progress, or it's calculated server-side
     }
 
     private void setupProgressBar() {
 
         int dailyXp;
-
-        String lesson = Hawk.get("lesson");
-
-        repository.setLessonComplete(lesson, true);
-        repository.getWeekXp();
 
         if (Hawk.get("dailyXp") != null) {
 

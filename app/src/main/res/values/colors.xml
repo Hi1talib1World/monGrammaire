@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2D3142</color>
-    <color name="colorPrimaryDark">#2D3142</color>
-    <color name="colorAccent">#00C9FD</color>
-    <!-- Screens background color-->
+    <!-- Base Colors -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!-- Modern Color Palette -->
+    <color name="surface">#FFFFFF</color>
+    <color name="background">#F8F9FA</color>
+    <color name="onSurface">#1A1C1E</color>
+    <color name="onSurfaceVariant">#44474E</color>
+    <color name="primary">#6750A4</color>
+    <color name="secondary">#625B71</color>
+    <color name="tertiary">#7D5260</color>
+
+    <!-- Original Project Colors (Restored for compatibility) -->
     <color name="bg_screen1">#f64c73</color>
     <color name="bg_screen2">#20d2bb</color>
     <color name="bg_screen3">#3395ff</color>
     <color name="bg_screen4">#c873f4</color>
     <color name="splashBackground">#fff</color>
     <color name="blue">#00FFFF</color>
-    <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#d1395c</color>
     <color name="dot_dark_screen2">#14a895</color>
     <color name="dot_dark_screen3">#2278d4</color>
     <color name="dot_dark_screen4">#a854d4</color>
-
-    <!-- dots active colors -->
     <color name="dot_light_screen1">#f98da5</color>
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
@@ -28,7 +36,6 @@
         <item>@color/dot_light_screen3</item>
         <item>@color/dot_light_screen4</item>
     </array>
-
     <array name="array_dot_inactive">
         <item>@color/dot_dark_screen1</item>
         <item>@color/dot_dark_screen2</item>
@@ -38,7 +45,6 @@
 
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
-
     <color name="white">#ffffff</color>
     <color name="grey">#757171</color>
     <color name="backgroundColor">#3E454F</color>
@@ -51,17 +57,12 @@
     <color name="about_item_icon_color">#313131</color>
     <color name="about_background_color">#FFFFFF</color>
     <color name="about_separator_color">#e1e1e1</color>
-
-    <!-- Social -->
     <color name="about_facebook_color">#3b5998</color>
     <color name="about_twitter_color">#55acee</color>
     <color name="about_instagram_color">#3f729b</color>
     <color name="about_play_store_color">#689F38</color>
     <color name="about_youtube_color">#cd201f</color>
     <color name="about_github_color">#333333</color>
-
-
-    <!-- Text -->
     <color name="about_description_text_color">#595959</color>
     <color name="about_item_text_color">#7c7c7c</color>
     <color name="about_text_color">#595959</color>
@@ -69,9 +70,6 @@
     <color name="Black">#000000</color>
     <color name="green1">#9FFF7C</color>
     <color name="green2">#95FF8A</color>
-
-
-
     <color name="bottomNavigationTextColor">#B2B2B2</color>
     <color name="bottomNavigationTintColor">#B2B2B2</color>
     <color name="bottomNavigationSelectedColor">#FC4926</color>
@@ -81,14 +79,10 @@
     <color name="primaryTextColor">#019AE8</color>
     <color name="whiteTextColor">#fff</color>
     <color name="frutorial_title">#4c4c4c</color>
-
-    <!--colors for light mode-->
     <color name="contentBodyColor">#FCFCFC</color>
     <color name="contentTextColor">#020000</color>
     <color name="miniTitleColor">#6F6A6A</color>
     <color name="bottomNavigationBackground">#F7F7F7</color>
-
-    <!--gradient colors-->
     <color name="gradientOrange">#FF416C</color>
     <color name="gradientViolet">#8A52E9</color>
     <color name="gradientLightYellow">#FFA72F</color>
@@ -100,13 +94,8 @@
     <color name="gradientLightGreen">#21E8AC</color>
     <color name="nav_bar_color">#33CFCFCF</color>
     <color name="black_transparent">#F7F7F7</color>
-
-
-    <!--Custom view-->
     <color name="empty_view">#848484</color>
     <color name="custom_view_text_color">#000000</color>
-
-    <!--Button-->
     <color name="green_button">#CDFF00</color>
     <color name="grey_button">#e1e1e1</color>
     <color name="button_task_continue">#fff</color>
@@ -115,27 +104,19 @@
     <color name="miniDescription">#707070</color>
     <color name="designMainColor">#13D3B4</color>
     <color name="blue_pair">#00c2ed</color>
-    <!-- Progress Bar -->
+
     <array name="gradient_colors">
-        <item name="progress_start">#fff953</item>
-        <item name="progress_center">#ff8000</item>
-        <item name="progress_end">#ff5100</item>
+        <item>#fff953</item>
+        <item>#ff8000</item>
+        <item>#ff5100</item>
     </array>
 
     <color name="default_bar_background_color">#cfd8dc</color>
-
     <color name="progress_start">#fff953</color>
     <color name="progress_center">#ff8000</color>
     <color name="progress_end">#ff5100</color>
-
-    <!-- Text -->
     <color name="week_letter">#757575</color>
     <color name="white_text">#fff</color>
-
-    <!-- Background -->
-
     <color name="blue_background">#00abe4</color>
     <color name="default_light_grey_bg">#f5f5f5</color>
-
-
 </resources>

@@ -4,6 +4,8 @@ package com.example.mongrammaire.Data.Remote;
 import android.service.autofill.UserData;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.mongrammaire.Data.DataSource;
 import com.example.mongrammaire.Utils.Injection;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -205,7 +207,8 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child("course")
                     .child(language)
                     .child("lessons")
-                    .child(lesson)
+                    .child(lesson.toLowerCase())
+                    .child("completed")
                     .setValue(completeness)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -214,6 +217,23 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                             Log.d(TAG, "User has completed this lesson");
                         }
                     });
+        }
+    }
+
+    @Override
+    public void setLessonProgress(String lesson, int progress) {
+        if (Injection.providesAuthHelper().getAuthInstance().getCurrentUser() != null) {
+            String userID = Injection.providesAuthHelper().getAuthInstance().getCurrentUser().getUid();
+            String language = Hawk.get("currentLanguage");
+
+            myRef.child("user")
+                    .child(userID)
+                    .child("course")
+                    .child(language)
+                    .child("lessons")
+                    .child(lesson.toLowerCase())
+                    .child("progress")
+                    .setValue(progress);
         }
     }
 
@@ -246,6 +266,14 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                             Log.d(TAG, "User's data has been updated");
                         }
                     });
+        }
+    }
+
+    @Override
+    public void setStreak(int streak) {
+        if (Injection.providesAuthHelper().getAuthInstance().getCurrentUser() != null) {
+            String userID = Injection.providesAuthHelper().getAuthInstance().getCurrentUser().getUid();
+            myRef.child("user").child(userID).child("streak").setValue(streak);
         }
     }
 
@@ -409,8 +437,8 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-                                Hawk.put(ds.getKey().toString(), ds.getValue());
+                                Hawk.put(ds.getKey().toLowerCase() + "_completed", ds.child("completed").getValue(Boolean.class));
+                                Hawk.put(ds.getKey().toLowerCase() + "_progress", ds.child("progress").getValue(Integer.class));
                             }
                         }
 
@@ -419,6 +447,51 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
 
                         }
                     });
+        }
+    }
+
+    @Override
+    public void getOverallProgress() {
+        if (Injection.providesAuthHelper().getAuthInstance().getCurrentUser() != null) {
+            String userID = Injection.providesAuthHelper().getAuthInstance().getCurrentUser().getUid();
+            String language = Hawk.get("currentLanguage");
+
+            myRef.child("user")
+                    .child(userID)
+                    .child("course")
+                    .child(language)
+                    .child("overall_progress")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                Hawk.put("overallProgress", snapshot.getValue(Integer.class));
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void getStreak() {
+        if (Injection.providesAuthHelper().getAuthInstance().getCurrentUser() != null) {
+            String userID = Injection.providesAuthHelper().getAuthInstance().getCurrentUser().getUid();
+            myRef.child("user").child(userID).child("streak").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        Hawk.put("userStreak", snapshot.getValue(Integer.class));
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
         }
     }
 }

@@ -97,8 +97,18 @@ public class Repository implements DataSource.Local, DataSource.Remote {
     }
 
     @Override
+    public void setLessonProgress(String lesson, int progress) {
+        dataSourceRemote.setLessonProgress(lesson, progress);
+    }
+
+    @Override
     public void setLessonCompleteDate(String lesson) {
         dataSourceRemote.setLessonCompleteDate(lesson);
+    }
+
+    @Override
+    public void setStreak(int streak) {
+        dataSourceRemote.setStreak(streak);
     }
 
     @Override
@@ -119,5 +129,15 @@ public class Repository implements DataSource.Local, DataSource.Remote {
     @Override
     public void getLessonCompleted() {
         dataSourceRemote.getLessonCompleted();
+    }
+
+    @Override
+    public void getOverallProgress() {
+        dataSourceRemote.getOverallProgress();
+    }
+
+    @Override
+    public void getStreak() {
+        dataSourceRemote.getStreak();
     }
 }

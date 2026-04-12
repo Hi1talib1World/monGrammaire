@@ -13,10 +13,10 @@
         android:background="@drawable/bg1">
 
         <TextView
-            android:id="@+id/current_language"
+            android:id="@+id/streak_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Spanish"
+            android:text="🔥 0"
             android:textSize="17sp"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
@@ -26,7 +26,7 @@
             android:id="@+id/overall_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Overall Progress: 23%"
+            android:text="Progress: 0%"
             android:textSize="17sp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
@@ -53,7 +53,17 @@
                     style="@style/lesson_bar"
                     android:layout_centerInParent="true" />
 
+                <ImageView
+                    android:id="@+id/basic_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone"
+                    android:layout_alignTop="@id/basic_bar"
+                    android:layout_alignEnd="@id/basic_bar" />
+
                 <TextView
+                    android:id="@+id/basic_text"
                     style="@style/lesson_bar_text"
                     android:layout_below="@id/basic_bar"
                     android:layout_centerHorizontal="true"
@@ -79,7 +89,17 @@
                         style="@style/lesson_bar"
                         android:layout_alignParentEnd="true" />
 
+                    <ImageView
+                        android:id="@+id/phrases_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="gone"
+                        android:layout_alignTop="@id/phrases_bar"
+                        android:layout_alignEnd="@id/phrases_bar" />
+
                     <TextView
+                        android:id="@+id/phrases_text"
                         style="@style/lesson_bar_text"
                         android:layout_below="@id/phrases_bar"
                         android:layout_alignParentEnd="true"
@@ -100,7 +120,17 @@
                         style="@style/lesson_bar"
                         android:layout_alignParentStart="true" />
 
+                    <ImageView
+                        android:id="@+id/greeting_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="gone"
+                        android:layout_alignTop="@id/greeting_bar"
+                        android:layout_alignEnd="@id/greeting_bar" />
+
                     <TextView
+                        android:id="@+id/greeting_text"
                         style="@style/lesson_bar_text"
                         android:layout_below="@id/greeting_bar"
                         android:layout_alignParentStart="true"
@@ -129,7 +159,17 @@
                         style="@style/lesson_bar"
                         android:layout_alignParentEnd="true"/>
 
+                    <ImageView
+                        android:id="@+id/food_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="gone"
+                        android:layout_alignTop="@id/food_bar"
+                        android:layout_alignEnd="@id/food_bar" />
+
                     <TextView
+                        android:id="@+id/food_text"
                         style="@style/lesson_bar_text"
                         android:layout_alignStart="@+id/food_bar"
                         android:layout_below="@+id/food_bar"
@@ -150,7 +190,17 @@
                         style="@style/lesson_bar"
                         android:layout_alignParentStart="true"/>
 
+                    <ImageView
+                        android:id="@+id/animal_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="gone"
+                        android:layout_alignTop="@id/animal_bar"
+                        android:layout_alignEnd="@id/animal_bar" />
+
                     <TextView
+                        android:id="@+id/animal_text"
                         style="@style/lesson_bar_text"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/animal_bar"
@@ -170,7 +220,17 @@
                     style="@style/lesson_bar"
                     android:layout_centerInParent="true"/>
 
+                <ImageView
+                    android:id="@+id/clothing_check"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone"
+                    android:layout_alignTop="@id/clothing_bar"
+                    android:layout_alignEnd="@id/clothing_bar" />
+
                 <TextView
+                    android:id="@+id/clothing_text"
                     style="@style/lesson_bar_text"
                     android:layout_below="@id/clothing_bar"
                     android:layout_centerHorizontal="true"
