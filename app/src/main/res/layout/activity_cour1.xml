@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lesson Completed!"
+            android:text="Lesson Overview"
             android:textColor="#000"
             android:textSize="24sp" />
 
@@ -30,20 +30,23 @@
 
     <com.example.mongrammaire.Utils.CustomProgressBar
         android:id="@+id/user_progress_bar"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/linear_layout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        app:foreground_progress_thickness="60"
-        app:background_progress_thickness="60"
+        android:layout_marginTop="16dp"
+        app:foreground_progress_thickness="20"
+        app:background_progress_thickness="20"
         style="@style/week_progress_bars"/>
 
-    <include layout="@layout/week_progress_bar"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sub_lesson_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_below="@id/user_progress_bar"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/user_progress_bar"
+        android:layout_above="@id/continue_button"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/continue_button"
