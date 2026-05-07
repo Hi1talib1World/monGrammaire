@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".courslist.CoursListActivity"></activity>
+        <activity android:name=".courslist.LessonActivity1" />
         <activity
             android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
             android:exported="false">
