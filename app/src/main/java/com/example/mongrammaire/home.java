@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mongrammaire.Quiz.MainGameActivity;
+import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.databinding.ActivityBtmLauncherBinding;
 import com.example.mongrammaire.horisontal_cardv.NAVDRAWER;
 
@@ -46,6 +47,29 @@ public class home extends AppCompatActivity {
         // Set click listeners using binding
         binding.buttonA.setOnClickListener(this::onButtonAClicked);
         binding.buttonB.setOnClickListener(this::onButtonBClicked);
+
+        startAnimations();
+    }
+
+    private void startAnimations() {
+        // Initial state
+        binding.logo.setAlpha(0f);
+        binding.logo.setTranslationY(-50f);
+        binding.title.setAlpha(0f);
+        binding.title.setTranslationY(30f);
+        binding.subtitle.setAlpha(0f);
+        binding.subtitle.setTranslationY(30f);
+        binding.buttonA.setAlpha(0f);
+        binding.buttonA.setTranslationY(50f);
+        binding.buttonB.setAlpha(0f);
+        binding.buttonB.setTranslationY(50f);
+
+        // Animate
+        binding.logo.animate().alpha(1f).translationY(0f).setDuration(800).setStartDelay(200).start();
+        binding.title.animate().alpha(1f).translationY(0f).setDuration(700).setStartDelay(400).start();
+        binding.subtitle.animate().alpha(1f).translationY(0f).setDuration(700).setStartDelay(500).start();
+        binding.buttonA.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(700).start();
+        binding.buttonB.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(850).start();
     }
 
     @Override
@@ -57,14 +81,14 @@ public class home extends AppCompatActivity {
         playSound();
         Intent intent = new Intent(home.this, NAVDRAWER.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(), "Bienvenue !", Toast.LENGTH_LONG).show();
+        ToastHelper.showCustomToast(this, "Bienvenue !");
     }
 
     private void onButtonBClicked(View v) {
         playSound();
         Intent intent = new Intent(home.this, MainGameActivity.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(), "Bienvenue !", Toast.LENGTH_LONG).show();
+        ToastHelper.showCustomToast(this, "Bonne chance pour le Quiz !");
     }
 
     private void playSound() {

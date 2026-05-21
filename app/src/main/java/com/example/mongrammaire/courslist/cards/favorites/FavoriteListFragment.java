@@ -45,6 +45,12 @@ public class FavoriteListFragment  extends Fragment {
         sharedPreference = new SharedPreference();
         favorites = sharedPreference.getFavorites(activity);
 
+        view.findViewById(R.id.btn_back).setOnClickListener(v -> {
+            if (getActivity() != null) {
+                getActivity().onBackPressed();
+            }
+        });
+
         if (favorites == null) {
             showAlert(getResources().getString(R.string.no_favorites_items),
                     getResources().getString(R.string.no_favorites_msg));

@@ -20,9 +20,13 @@ public class subordonnes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subordonnes);
+
+        recyclerView = findViewById(R.id.my_recycler_view);
         // Set Layout Manager
         linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
 
         // Limiting the size
         recyclerView.setHasFixedSize(true);

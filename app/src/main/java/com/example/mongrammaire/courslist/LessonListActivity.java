@@ -67,6 +67,11 @@ public class LessonListActivity extends AppCompatActivity {
     @BindView(R.id.clothing_text)
     TextView clothingText;
 
+    @OnClick(R.id.btn_back)
+    public void onBackClicked() {
+        onBackPressed();
+    }
+
     private Repository repository;
     private String[] lessons = {"basics", "phrases", "greeting", "food", "animal", "clothing"};
     private CustomProgressBar[] progressBars;

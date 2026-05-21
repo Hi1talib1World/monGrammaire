@@ -8,6 +8,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        app:icon="@drawable/ic_back"
+        app:iconSize="24dp"
+        app:iconTint="@color/onSurface"
+        android:elevation="4dp"
+        android:contentDescription="Retour" />
+
     <androidx.core.widget.NestedScrollView
 
         android:layout_width="match_parent"

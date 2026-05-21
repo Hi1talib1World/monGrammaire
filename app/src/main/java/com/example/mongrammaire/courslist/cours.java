@@ -1,236 +1,167 @@
 package com.example.mongrammaire.courslist;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.SearchView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.courslist.cards.favorites.Model;
 
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class cours extends Fragment implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
 
-
     public MyAdapter adapter;
-    Context c;
-    SearchView searchView;
-    private ProgressBar pbar;
-    private int a = 0;
-    private Handler handler = new Handler();
     private OnFragmentInteractionListener mListener;
-    private ArrayList<Model> mCours = new ArrayList<>();
-    //the recyclerview
+    private List<Model> allModels;
+    private String currentCategory = "all";
+    private String currentSearchQuery = "";
     RecyclerView recyclerView;
 
-
-    // TODO: Rename and change types and number of parameters
-    public static cours newInstance(String param1, String param2) {
-        cours fragment = new cours();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public cours() {
+        // Required empty public constructor
     }
-    //a list to store all the products
-    List<Model> models;
 
+    public static cours newInstance() {
+        return new cours();
+    }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cours, container, false);
 
-        //getting the recyclerview from xml
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view1);
+        recyclerView = v.findViewById(R.id.recycler_view1);
         recyclerView.setHasFixedSize(true);
 
-        //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        adapter = new MyAdapter(getPlayers());
+        allModels = getPlayers();
+        adapter = new MyAdapter(new ArrayList<>(allModels));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //initializing the productlis
-        pbar = v.findViewById(R.id.horizontal_progress_bar);
-        /*Button button = v.findViewById(R.id.star);
-        button.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              a = pbar.getProgress();
-              new Thread(new Runnable() {
-                  public void run() {
-                      while (a < 100) {
-                          a += 1;
-                          handler.post(new Runnable() {
-                              public void run() {
-                                  pbar.setProgress(a);
 
-
-                              }
-                          });
-                          try {
-                              // Sleep for 50 ms to show progress you can change it as well.
-                              Thread.sleep(50);
-                          } catch (InterruptedException e) {
-                              e.printStackTrace();
-                          }
-                      }
-                  }
-              }).start();
-          }
+        v.findViewById(R.id.btn_back).setOnClickListener(view -> {
+            if (getActivity() != null) {
+                getActivity().onBackPressed();
+            }
         });
-*/        return v;
+
+        MaterialButton btnFilter = v.findViewById(R.id.btn_filter);
+        btnFilter.setOnClickListener(view -> {
+            PopupMenu popup = new PopupMenu(requireContext(), view);
+            popup.getMenu().add("Tous");
+            popup.getMenu().add("Grammaire");
+            popup.getMenu().add("Verbe");
+            
+            popup.setOnMenuItemClickListener(item -> {
+                String title = item.getTitle().toString();
+                btnFilter.setText(title);
+                currentCategory = title.equals("Tous") ? "all" : title;
+                applyFilters();
+                return true;
+            });
+            popup.show();
+        });
+
+        SearchView searchView = v.findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(this);
+
+        return v;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        currentSearchQuery = newText;
+        applyFilters();
+        return true;
+    }
+
+    private void applyFilters() {
+        List<Model> filteredList = new ArrayList<>();
+        for (Model model : allModels) {
+            boolean matchesCategory = currentCategory.equals("all") || model.getCategory().equals(currentCategory);
+            boolean matchesSearch = model.getTitle().toLowerCase().contains(currentSearchQuery.toLowerCase());
+            
+            if (matchesCategory && matchesSearch) {
+                filteredList.add(model);
+            }
+        }
+        adapter.updateList(filteredList);
     }
 
     private ArrayList<Model> getPlayers(){
-        models = new ArrayList<>();
         ArrayList<Model> models = new ArrayList<>();
 
-        //adding some items to our list
-        Model p = new Model();
-        p.setTitle("accords au pluriel");
-        p.setDescription("a");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
+        // Grammaire Category
+        models.add(new Model("Accords au pluriel", "Règles d'accord du pluriel", R.drawable.n1, 0, "Grammaire", 45));
+        models.add(new Model("Prépositions", "Utilisation des prépositions", R.drawable.ufo, 0, "Grammaire", 60));
+        models.add(new Model("Adjectifs possessifs", "Mon, ton, son...", R.drawable.n2, 0, "Grammaire", 30));
+        models.add(new Model("Articles", "Définis, indéfinis, partitifs", R.drawable.satellite, 0, "Grammaire", 100));
+        models.add(new Model("Négation", "Ne... pas, ne... plus...", R.drawable.n3, 0, "Grammaire", 15));
+        models.add(new Model("Phrases conditionnelles", "Si j'avais...", R.drawable.star, 0, "Grammaire", 0));
+        models.add(new Model("Pronoms relatifs", "Qui, que, dont, où", R.drawable.n4, 0, "Grammaire", 0));
+        models.add(new Model("Discours rapporté", "Il a dit que...", R.drawable.house, 0, "Grammaire", 0));
+        models.add(new Model("Les Adverbes", "Modificateurs de verbes et adjectifs", R.drawable.n5, 0, "Grammaire", 20));
+        models.add(new Model("Comparatifs & Superlatifs", "Plus que, moins que, le meilleur", R.drawable.star, 0, "Grammaire", 10));
 
-        p = new Model();
-        p.setTitle("prépositions");
-        p.setDescription("b");
-        p.setImg(R.drawable.ufo);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("adjectifs possessifs");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("impératif");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("articles (indéfinis, définis, partitifs)");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("passé composé");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("négation");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("imparfait");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("phrases conditionnelles avec \"si\"");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("temps du passé");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("pronoms relatifs, simples");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("passif");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("discours rapporté au passé");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
-
-        p = new Model();
-        p.setTitle("subjonctif/indicatif");
-        p.setDescription("b");
-        p.setImg(R.drawable.satellite);
-        models.add(p);
+        // Verbe Category
+        models.add(new Model("Impératif", "Donner des ordres", R.drawable.n6, 0, "Verbe", 80));
+        models.add(new Model("Passé composé", "Le passé composé avec avoir et être", R.drawable.n7, 0, "Verbe", 50));
+        models.add(new Model("Imparfait", "L'imparfait de l'indicatif", R.drawable.n8, 0, "Verbe", 40));
+        models.add(new Model("Temps du passé", "Comparaison des temps du passé", R.drawable.logo, 0, "Verbe", 10));
+        models.add(new Model("Le Passif", "La voix passive", R.drawable.ufo, 0, "Verbe", 0));
+        models.add(new Model("Subjonctif présent", "Exprimer le doute ou le souhait", R.drawable.n1, 0, "Verbe", 5));
+        models.add(new Model("Futur simple", "Actions à venir", R.drawable.n2, 0, "Verbe", 90));
+        models.add(new Model("Conditionnel présent", "Le mode de l'imaginaire", R.drawable.n3, 0, "Verbe", 0));
+        models.add(new Model("Plus-que-parfait", "L'antériorité dans le passé", R.drawable.n4, 0, "Verbe", 0));
+        models.add(new Model("Verbes pronominaux", "Se laver, se lever...", R.drawable.n5, 0, "Verbe", 75));
 
         return models;
-
     }
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.action_settings){
-            Toast.makeText(getActivity(), "Parametres", Toast.LENGTH_SHORT).show();
+            ToastHelper.showCustomToast(getContext(), "Paramètres");
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-        return false;
-    }
-
-
-
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

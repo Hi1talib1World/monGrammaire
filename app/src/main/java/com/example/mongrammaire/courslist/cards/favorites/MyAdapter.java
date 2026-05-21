@@ -2,9 +2,6 @@ package com.example.mongrammaire.courslist.cards.favorites;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,123 +9,74 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mongrammaire.horisontal_cardv.CustomFilter;
 import com.example.mongrammaire.R;
+import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.courslist.DetailsActivity;
-import com.example.mongrammaire.itemClickListener;
 
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
-    private Context c;
+    private Context context;
     public List<Model> models;
-    CustomFilter filter;
 
-    SharedPreference sharedPreference;
+    public MyAdapter(List<Model> models) {
+        this.models = models;
+    }
 
-    public MyAdapter( List<Model> model) {
-
-        this.models = model;
+    public void updateList(List<Model> newList) {
+        this.models = newList;
+        notifyDataSetChanged();
     }
 
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-        ImageView favoriteImg;
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_layout, null);
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        View v = LayoutInflater.from(context).inflate(R.layout.card_layout, parent, false);
         return new ViewHolder(v);
     }
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int i) {
-        holder.mTitleTV.setText(models.get(i).getTitle());
-        holder.mDescrTV.setText(models.get(i).getDescription());
-        holder.mImageIv.setImageResource(models.get(i).getImg());
 
-        /*holder.setItemClickListener(new itemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Model model = models.get(position);
+        holder.mTitleTV.setText(model.getTitle());
+        holder.mDescrTV.setText(model.getDescription());
+        holder.mImageIv.setImageResource(model.getImg());
+        holder.progressIndicator.setProgress(model.getProgress());
+        holder.categoryChip.setText(model.getCategory());
 
-                String title = models.get(pos).getTitle();
-                String descr = models.get(pos).getDescription();
-                BitmapDrawable bitmapDrawable = (BitmapDrawable)holder.mImageIv.getDrawable();
-
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-                byte[] bytes = stream.toByteArray();
-
-                Intent intent = new Intent(c, DetailsActivity.class);
-                intent.putExtra("iTitleTv",title);
-                intent.putExtra("iDescTv",descr);
-                intent.putExtra("iImgTv",bytes);
-                c.startActivity(intent);
-
-            }
-        });*/
-
-
-
-       /* Model model = (Model) getItem(i);
-
-        if (checkFavoriteItem(model)) {
-            holder.favoriteImg.setImageResource(R.drawable.red_heart);
-            holder.favoriteImg.setTag("red");
-        } else {
-            holder.favoriteImg.setImageResource(R.drawable.heart_grey);
-            holder.favoriteImg.setTag("grey");
-        }*/
-
-
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("iTitleTv", model.getTitle());
+            intent.putExtra("iDescTv", model.getDescription());
+            intent.putExtra("iImgTv", model.getImg()); // Passing resource ID instead of byte array for simplicity
+            context.startActivity(intent);
+            ToastHelper.showCustomToast(context, "Ouverture de : " + model.getTitle());
+        });
     }
-
-
 
     @Override
     public int getItemCount() {
         return models.size();
     }
 
-    public boolean checkFavoriteItem(Model checkModel) {
-        boolean check = false;
-        List<Model> favorites = sharedPreference.getFavorites(c);
-        if (favorites != null) {
-            for (Model Model : favorites) {
-                if (Model.equals(checkModel)) {
-                    check = true;
-                    break;
-                }
-            }
-        }
-        return check;
-    }
-
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageIv;
-        public TextView mTitleTV,mDescrTV;
+        public TextView mTitleTV, mDescrTV;
         public ImageView favoriteImg;
+        public com.google.android.material.progressindicator.LinearProgressIndicator progressIndicator;
+        public com.google.android.material.chip.Chip categoryChip;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.mImageIv = itemView.findViewById(R.id.img1);//
+            this.mImageIv = itemView.findViewById(R.id.img1);
             this.mTitleTV = itemView.findViewById(R.id.txt1);
             this.mDescrTV = itemView.findViewById(R.id.txt2);
             this.favoriteImg = itemView.findViewById(R.id.heart);
-            //itemView.setOnClickListener(this);
-
+            this.progressIndicator = itemView.findViewById(R.id.horizontal_progress_bar);
+            this.categoryChip = itemView.findViewById(R.id.chip_category);
         }
-
-    }
-    public interface OnCardListener{
-        void onCardClick(int position);
     }
 }

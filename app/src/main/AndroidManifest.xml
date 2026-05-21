@@ -27,7 +27,7 @@
         <activity
             android:name=".horisontal_cardv.categories.conjugaison.Conjugaison"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true">
             <meta-data
                 android:name="android.app.searchable"
@@ -44,10 +44,10 @@
         <activity
             android:name=".courslist.DetailsActivity"
             android:parentActivityName=".horisontal_cardv.NAVDRAWER"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Quiz.MainGameActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Quiz.Time_Up"
             android:label="@string/title_activity_time__up"
@@ -55,7 +55,7 @@
         <activity
             android:name=".home"
             android:label="@string/btm"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".level3"
             android:label="@string/title_activity_level3"

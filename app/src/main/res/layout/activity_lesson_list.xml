@@ -9,8 +9,18 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:padding="16dp"
+        android:padding="8dp"
         android:background="@drawable/bg1">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:layout_centerVertical="true"
+            app:tint="#000"
+            android:contentDescription="Retour" />
 
         <TextView
             android:id="@+id/streak_text"
@@ -19,7 +29,8 @@
             android:text="🔥 0"
             android:textSize="17sp"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
+            android:layout_toEndOf="@id/btn_back"
+            android:layout_marginStart="8dp"
             android:textColor="#000"/>
 
         <TextView

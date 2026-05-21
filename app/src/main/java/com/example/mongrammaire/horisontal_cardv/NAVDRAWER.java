@@ -75,7 +75,9 @@ public class NAVDRAWER extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Mon Grammaire");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         //make fragment in the opener
         if (savedInstanceState == null) {
             Fragment newFragment = new HomeFragment();

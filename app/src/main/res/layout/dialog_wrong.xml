@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E8F5E9"
+        android:background="#FFEBEE"
         android:orientation="vertical"
         android:padding="24dp"
         android:gravity="center_horizontal">
@@ -19,18 +19,17 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:background="@drawable/circle"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#F44336"
             android:gravity="center"
-            android:text="😄"
+            android:text="😟"
             android:textSize="32sp"
             android:layout_marginBottom="16dp" />
 
         <TextView
-            android:id="@+id/correctText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Excellent !"
-            android:textColor="#2E7D32"
+            android:text="Pas tout à fait !"
+            android:textColor="#C62828"
             android:textSize="24sp"
             android:fontFamily="sans-serif-black"
             android:layout_marginBottom="8dp" />
@@ -38,14 +37,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vous avez trouvé la bonne réponse."
-            android:textColor="#388E3C"
-            android:textSize="16sp"
+            android:text="La bonne réponse était :"
+            android:textColor="#D32F2F"
+            android:textSize="14sp"
+            android:alpha="0.8" />
+
+        <TextView
+            android:id="@+id/correctAnswerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correct Answer"
+            android:textColor="#B71C1C"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="24dp"
             android:gravity="center" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/dialogNext"
+            android:id="@+id/dialogRetry"
             style="@style/Widget.Material3.Button"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -53,7 +62,7 @@
             android:textAllCaps="false"
             android:textSize="18sp"
             app:cornerRadius="16dp"
-            app:backgroundTint="#4CAF50" />
+            app:backgroundTint="#F44336" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

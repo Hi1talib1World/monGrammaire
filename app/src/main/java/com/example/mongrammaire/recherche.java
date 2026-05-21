@@ -22,6 +22,8 @@ public class recherche extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recherche);
+        
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

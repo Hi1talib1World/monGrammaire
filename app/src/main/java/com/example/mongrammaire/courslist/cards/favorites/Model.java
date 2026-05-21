@@ -2,8 +2,8 @@ package com.example.mongrammaire.courslist.cards.favorites;
 
 public class Model {
 
-    private String Title,Description;
-    private int img ,heart;
+    private String Title,Description,category;
+    private int img ,heart, progress;
 
     public Model() {
         super();
@@ -14,6 +14,32 @@ public class Model {
         this.Description = Description;
         this.img = img;
         this.heart = heart;
+    }
+
+    public Model(String Title, String Description, int img, int heart, String category) {
+        this(Title, Description, img, heart);
+        this.category = category;
+    }
+
+    public Model(String Title, String Description, int img, int heart, String category, int progress) {
+        this(Title, Description, img, heart, category);
+        this.progress = progress;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 

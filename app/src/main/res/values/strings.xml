@@ -78,12 +78,12 @@
     <string name="next">Suivant</string>
     <string name="cancel">✖</string>
 
-    <string name="d">d</string>
-    <string name="c">c</string>
-    <string name="e">e</string>
-    <string name="a">a</string>
-    <string name="b">b</string>
-    <string name="j">j</string>
+    <string name="d">D</string>
+    <string name="c">C</string>
+    <string name="e">E</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="j">J</string>
     <string name="no_connection">Pas de connexion Internet! Ne peut être traduit!</string>
     <string name="about_page_description" translatable="false">Bienvenue dans notre application de grammaire ! Nous avons conçu cette application pour vous aider à améliorer vos compétences en grammaire. Vous trouverez des exercices interactifs, des explications détaillées des règles grammaticales et des exemples pour vous aider à comprendre comment utiliser correctement les différents éléments de la grammaire. Nous espérons que vous apprécierez cette application et que vous progresserez rapidement dans votre maîtrise de la grammaire.</string>
     <string name="copy_right" translatable="false">Copyrights © %1$d</string>
@@ -102,6 +102,9 @@
     <string name="quiz">Quiz</string>
     <string name="acceuil">Acceuil</string>
     <string name="welcome">Bienvenue dans votre Grammaire</string>
+    <string name="streak_format">Bienvenue !\n🔥 Streak: %1$d jours</string>
+    <string name="level_format">%1$d/8</string>
+    <string name="menu_desc">Ouvrir le menu de navigation</string>
     <string name="title_activity_verbe_details">verbeDetails</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

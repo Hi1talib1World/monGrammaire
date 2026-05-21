@@ -1,13 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Alphabets.acceuil">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:icon="@drawable/ic_back"
+            app:iconSize="24dp"
+            app:iconTint="@color/onSurface"
+            android:contentDescription="Retour" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alphabets"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/onSurface"
+            android:layout_marginStart="8dp" />
 
+    </LinearLayout>
 
-</FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/alphabet_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="3"
+            app:alignmentMode="alignMargins"
+            app:useDefaultMargins="true">
+
+            <Button
+                android:id="@+id/btn_a"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/a"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_b"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/b"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_c"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/c"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_d"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/d"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_e"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/e"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_f"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="F"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_g"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="G"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_h"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="H"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_i"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="I"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_j"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="@string/j"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_k"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="K"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_l"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="L"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_m"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="M"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_n"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="N"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_o"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="O"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_p"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="P"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_q"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="Q"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_r"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="R"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_s"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="S"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_t"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="T"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_u"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="U"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_v"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="V"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_w"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="W"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_x"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="X"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_y"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="Y"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_z"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:text="Z"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-black"
+                app:layout_columnWeight="1"
+                app:cornerRadius="20dp" />
+
+        </androidx.gridlayout.widget.GridLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

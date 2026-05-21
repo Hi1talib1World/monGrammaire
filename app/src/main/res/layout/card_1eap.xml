@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="280dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="1dp"
+    app:cardBackgroundColor="@color/secondaryContainer"
+    app:strokeWidth="0dp">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp"
-
-    android:gravity="center_vertical"
-    android:orientation="horizontal">
-
-    <ImageView
-
-        android:background="@drawable/result_card"
-        android:adjustViewBounds="true"
-
-        android:layout_marginTop="@dimen/top_text_subtitle_card"
-        android:layout_marginEnd="@dimen/top_text_subtitle_card"
-        android:layout_marginBottom="@dimen/top_text_subtitle_card"
-        android:padding="12dp"
-        android:layout_width = "150dp"
-        android:layout_height= "150dp"
-        android:src="@drawable/bookstack"
-         />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-
-        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/card_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/bookstack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
-            style="@style/viewParent.headerText"
-            android:fontFamily="@font/bariol_regular"
-            android:textSize="20sp"
+            android:id="@+id/card_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Les champs lexicaux"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/onSecondaryContainer"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/card_subtitle"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:fontFamily="@font/bariol_regular"
-            android:text="Demarer maintenant ..."
-            android:textColor="@color/bottomNavigationTextColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/card_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Commencer le cours"
+            android:textColor="@color/onSecondaryContainer"
+            android:alpha="0.7"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/card_title"
+            app:layout_constraintTop_toBottomOf="@id/card_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <View
-            android:layout_gravity="bottom"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:background="@color/nav_bar_color"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-    </LinearLayout>
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -39,6 +39,8 @@ public class MotsActivity extends AppCompatActivity implements RecyclerViewAdapt
         GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
+
     }
     @Override
     public void onItemClick(DataModel item) {

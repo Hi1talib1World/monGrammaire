@@ -1,153 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg01"
-    android:orientation="vertical">
+    android:background="@color/background">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- Top Header with Progress Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:minHeight="?actionBarSize">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cancel"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/outline" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/quiz_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:trackThickness="12dp"
+            app:trackCornerRadius="6dp"
+            android:progress="30"
+            app:indicatorColor="@color/primary"
+            app:trackColor="@color/surfaceVariant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/timeText"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20s"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Question Section -->
+    <ScrollView
+        android:id="@+id/question_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/options_container"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="0dp">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <ImageView
-                android:id="@+id/coinImage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/logo" />
-
-            <TextView
-                android:id="@+id/coinText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/coinImage"
-                android:gravity="center"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:text=""
-                android:textSize="20sp" />
+                android:id="@+id/question_icon"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo"
+                android:layout_marginBottom="24dp"
+                app:tint="@color/primary"
+                android:alpha="0.8"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/triviaQuizText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/timeText"
-                android:layout_toRightOf="@+id/coinText"
-                android:gravity="center"
-                android:text="@string/le_quiz"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Traduisez cette phrase"
+                android:textColor="@color/onSurfaceVariant"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
 
             <TextView
-                android:id="@+id/timeText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
+                android:id="@+id/triviaQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/time"
-                android:textSize="20sp" />
+                android:text="Je bois et mange"
+                android:textColor="@color/onSurface"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-black" />
 
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"></View>
+        </LinearLayout>
+    </ScrollView>
 
+    <!-- Options Section -->
     <LinearLayout
+        android:id="@+id/options_container"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_weight=".5"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/triviaQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:gravity="center"
-            android:text="@string/question"
-            android:textColor="@color/grey"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/resultText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text=""
-            android:textColor="@color/green"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <info.hoang8f.widget.FButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonA"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="buttonA"
-            android:text=""
-            android:textColor="@color/colorPrimary"></info.hoang8f.widget.FButton>
+            android:layout_height="64dp"
+            android:layout_marginBottom="12dp"
+            android:text="Option A"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="1dp" />
 
-        <info.hoang8f.widget.FButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonB"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="buttonB"
-            android:text=""
-            android:textColor="@color/colorPrimary" />
+            android:layout_height="64dp"
+            android:layout_marginBottom="12dp"
+            android:text="Option B"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="1dp" />
 
-
-        <info.hoang8f.widget.FButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonC"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="buttonC"
-            android:text=""
-            android:textColor="@color/colorPrimary" />
+            android:layout_height="64dp"
+            android:layout_marginBottom="12dp"
+            android:text="Option C"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="1dp" />
 
-        <info.hoang8f.widget.FButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonD"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="buttonD"
-            android:text=""
-            android:textColor="@color/colorPrimary" />
+            android:layout_height="64dp"
+            android:layout_marginBottom="24dp"
+            android:text="Option D"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 
+    <!-- Hidden Views for Legacy Support -->
     <Button
         android:id="@+id/playAgainBtn"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/circle"
-        android:text="0"
-        android:layout_gravity="center"
-        android:textColor="#fff" />
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/coinText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

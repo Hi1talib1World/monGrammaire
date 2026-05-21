@@ -22,5 +22,7 @@ public class verbeDetails extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
+
     }
 }
