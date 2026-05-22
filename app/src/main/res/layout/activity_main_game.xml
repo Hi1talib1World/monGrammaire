@@ -73,10 +73,10 @@
 
             <ImageView
                 android:id="@+id/question_icon"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/logo"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 app:tint="@color/primary"
                 android:alpha="0.8"
                 tools:ignore="ContentDescription" />
@@ -107,7 +107,8 @@
                 android:layout_marginTop="16dp"
                 android:text=""
                 android:textSize="18sp"
-                android:fontFamily="sans-serif-medium"/>
+                android:fontFamily="sans-serif-medium"
+                android:visibility="gone"/>
 
         </LinearLayout>
     </ScrollView>
@@ -119,61 +120,92 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/footer">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonA"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:text="Option A"
             android:textAllCaps="false"
             android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingHorizontal="24dp"
             app:cornerRadius="16dp"
             app:strokeColor="@color/outline"
             app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonB"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:text="Option B"
             android:textAllCaps="false"
             android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingHorizontal="24dp"
             app:cornerRadius="16dp"
             app:strokeColor="@color/outline"
             app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonC"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:text="Option C"
             android:textAllCaps="false"
             android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingHorizontal="24dp"
             app:cornerRadius="16dp"
             app:strokeColor="@color/outline"
             app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonD"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:text="Option D"
             android:textAllCaps="false"
             android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingHorizontal="24dp"
             app:cornerRadius="16dp"
             app:strokeColor="@color/outline"
             app:strokeWidth="1dp" />
 
     </LinearLayout>
+
+    <!-- Footer with Check Button -->
+    <FrameLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/surface"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_check"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="VÉRIFIER"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-black"
+            app:cornerRadius="16dp"
+            android:enabled="false" />
+
+    </FrameLayout>
 
     <!-- Hidden Views for Legacy Support -->
     <Button

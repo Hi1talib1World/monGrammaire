@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.Gravity;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,16 +27,16 @@ import java.util.ArrayList;
 import com.example.mongrammaire.Utils.ProgressionManager;
 
 public class MainGameActivity extends AppCompatActivity {
-    MaterialButton buttonA, buttonB, buttonC, buttonD;
-    TextView questionText, triviaQuizText, timeText, resultText, coinText;
+    MaterialButton buttonA, buttonB, buttonC, buttonD, btnCheck;
+    TextView questionText, timeText;
     LinearProgressIndicator quizProgress;
     TriviaQuizHelper triviaQuizHelper;
     TriviaQuestion currentQuestion;
     List<TriviaQuestion> list;
     int qid = 0;
     int timeValue = 20;
-    int coinValue = 0;
     CountDownTimer countDownTimer;
+    MaterialButton selectedButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +52,29 @@ public class MainGameActivity extends AppCompatActivity {
         buttonB = findViewById(R.id.buttonB);
         buttonC = findViewById(R.id.buttonC);
         buttonD = findViewById(R.id.buttonD);
-        triviaQuizText = findViewById(R.id.triviaQuizText);
+        btnCheck = findViewById(R.id.btn_check);
         timeText = findViewById(R.id.timeText);
-        resultText = findViewById(R.id.resultText);
-        coinText = findViewById(R.id.coinText);
         quizProgress = findViewById(R.id.quiz_progress);
 
         findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
 
-        // Button Click Listeners
-        buttonA.setOnClickListener(this::onOptionClicked);
-        buttonB.setOnClickListener(this::onOptionClicked);
-        buttonC.setOnClickListener(this::onOptionClicked);
-        buttonD.setOnClickListener(this::onOptionClicked);
+        // Option Click Listeners
+        View.OnClickListener optionListener = v -> {
+            if (selectedButton != null) {
+                resetButtonStyle(selectedButton);
+            }
+            selectedButton = (MaterialButton) v;
+            highlightButtonStyle(selectedButton);
+            btnCheck.setEnabled(true);
+        };
+
+        buttonA.setOnClickListener(optionListener);
+        buttonB.setOnClickListener(optionListener);
+        buttonC.setOnClickListener(optionListener);
+        buttonD.setOnClickListener(optionListener);
+
+        // Check Button Listener
+        btnCheck.setOnClickListener(v -> checkAnswer());
 
         // Database
         triviaQuizHelper = new TriviaQuizHelper(this);
@@ -77,7 +86,6 @@ public class MainGameActivity extends AppCompatActivity {
         list = new ArrayList<>(allQuestions);
         Collections.shuffle(list);
 
-        // Limit to 10 questions for a session
         if (list.size() > 10) {
             list = list.subList(0, 10);
         }
@@ -91,30 +99,22 @@ public class MainGameActivity extends AppCompatActivity {
                 timeText.setText(timeValue + "s");
                 timeValue -= 1;
                 if (timeValue == -1) {
-                    disableButton();
                     showWrongDialog();
                 }
             }
-
-            public void onFinish() {
-                // Logic moved to dialog
-            }
+            public void onFinish() {}
         }.start();
     }
 
-    private void onOptionClicked(View view) {
-        MaterialButton clickedButton = (MaterialButton) view;
-        String selectedAnswer = clickedButton.getText().toString();
-
+    private void checkAnswer() {
+        if (selectedButton == null) return;
+        
+        String selectedAnswer = selectedButton.getText().toString();
         if (selectedAnswer.equals(currentQuestion.getAnswer())) {
             updateProgression(true);
-            clickedButton.setBackgroundColor(ContextCompat.getColor(this, R.color.lightGreen));
-            disableButton();
             showCorrectDialog();
         } else {
             updateProgression(false);
-            clickedButton.setBackgroundColor(ContextCompat.getColor(this, R.color.red));
-            disableButton();
             showWrongDialog();
         }
     }
@@ -126,27 +126,39 @@ public class MainGameActivity extends AppCompatActivity {
         buttonC.setText(currentQuestion.getOptC());
         buttonD.setText(currentQuestion.getOptD());
 
-        resetButtonStyles();
+        resetAllButtonStyles();
+        selectedButton = null;
+        btnCheck.setEnabled(false);
 
         timeValue = 20;
         countDownTimer.cancel();
         countDownTimer.start();
 
-        // Update Progress Bar
         int progress = (int) (((float) (qid) / list.size()) * 100);
         quizProgress.setProgress(progress);
     }
 
-    private void resetButtonStyles() {
-        MaterialButton[] buttons = {buttonA, buttonB, buttonC, buttonD};
-        for (MaterialButton btn : buttons) {
-            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.surfaceVariant));
-            btn.setEnabled(true);
-        }
+    private void resetAllButtonStyles() {
+        resetButtonStyle(buttonA);
+        resetButtonStyle(buttonB);
+        resetButtonStyle(buttonC);
+        resetButtonStyle(buttonD);
+    }
+
+    private void resetButtonStyle(MaterialButton btn) {
+        btn.setStrokeColor(ContextCompat.getColorStateList(this, R.color.outline));
+        btn.setStrokeWidth(Math.round(1 * getResources().getDisplayMetrics().density));
+        btn.setBackgroundColor(Color.TRANSPARENT);
+        btn.setTextColor(ContextCompat.getColor(this, R.color.onSurface));
+    }
+
+    private void highlightButtonStyle(MaterialButton btn) {
+        btn.setStrokeColor(ContextCompat.getColorStateList(this, R.color.primary));
+        btn.setStrokeWidth(Math.round(2 * getResources().getDisplayMetrics().density));
+        btn.setBackgroundColor(ContextCompat.getColor(this, R.color.primaryContainer));
     }
 
     private void updateProgression(boolean correct) {
-        // ... (legacy progression logic kept for sync)
         if (correct) {
             ProgressionManager.addScore(10);
         }
@@ -204,13 +216,6 @@ public class MainGameActivity extends AppCompatActivity {
             startActivity(new Intent(this, GameWon.class));
             finish();
         }
-    }
-
-    private void disableButton() {
-        buttonA.setEnabled(false);
-        buttonB.setEnabled(false);
-        buttonC.setEnabled(false);
-        buttonD.setEnabled(false);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class MotsActivity extends AppCompatActivity implements RecyclerViewAdapt
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, arrayList, this);
         recyclerView.setAdapter(adapter);
 
-        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
         findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
