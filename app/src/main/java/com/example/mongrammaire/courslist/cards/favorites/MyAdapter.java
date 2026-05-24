@@ -20,9 +20,16 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     private Context context;
     public List<Model> models;
+    private SharedPreference sharedPreference;
+    private boolean isFavoriteList = false;
 
     public MyAdapter(List<Model> models) {
         this.models = models;
+    }
+
+    public MyAdapter(List<Model> models, boolean isFavoriteList) {
+        this.models = models;
+        this.isFavoriteList = isFavoriteList;
     }
 
     public void updateList(List<Model> newList) {
@@ -34,7 +41,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View v = LayoutInflater.from(context).inflate(R.layout.card_layout, parent, false);
+        sharedPreference = new SharedPreference();
+        int layoutId = isFavoriteList ? R.layout.item_favorite_lesson : R.layout.card_layout;
+        View v = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return new ViewHolder(v);
     }
 
@@ -42,19 +51,69 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Model model = models.get(position);
         holder.mTitleTV.setText(model.getTitle());
-        holder.mDescrTV.setText(model.getDescription());
+        holder.mDescrTV.setText(isFavoriteList ? model.getCategory() : model.getDescription());
         holder.mImageIv.setImageResource(model.getImg());
-        holder.progressIndicator.setProgress(model.getProgress());
-        holder.categoryChip.setText(model.getCategory());
+        
+        if (!isFavoriteList) {
+            holder.progressIndicator.setProgress(model.getProgress());
+            holder.categoryChip.setText(model.getCategory());
+        }
+
+        // Favorite logic
+        boolean isFavorite = checkFavoriteItem(model);
+        if (isFavorite) {
+            holder.favoriteImg.setImageResource(R.drawable.red_heart);
+            holder.favoriteImg.setTag("red");
+        } else {
+            holder.favoriteImg.setImageResource(R.drawable.heart_grey);
+            holder.favoriteImg.setTag("grey");
+        }
+
+        holder.favoriteImg.setOnClickListener(v -> {
+            String tag = (String) holder.favoriteImg.getTag();
+            if (tag.equalsIgnoreCase("grey")) {
+                sharedPreference.addFavorite(context, model);
+                ToastHelper.showCustomToast(context, "Ajouté aux favoris");
+                holder.favoriteImg.setTag("red");
+                holder.favoriteImg.setImageResource(R.drawable.red_heart);
+            } else {
+                sharedPreference.removeFavorite(context, model);
+                ToastHelper.showCustomToast(context, "Retiré des favoris");
+                
+                if (isFavoriteList) {
+                    models.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, models.size());
+                    
+                    // If list becomes empty, we should notify the fragment to show empty state
+                    // But for now, let's just update the list.
+                } else {
+                    holder.favoriteImg.setTag("grey");
+                    holder.favoriteImg.setImageResource(R.drawable.heart_grey);
+                }
+            }
+        });
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
             intent.putExtra("iTitleTv", model.getTitle());
             intent.putExtra("iDescTv", model.getDescription());
-            intent.putExtra("iImgTv", model.getImg()); // Passing resource ID instead of byte array for simplicity
+            intent.putExtra("iImgTv", model.getImg()); 
             context.startActivity(intent);
             ToastHelper.showCustomToast(context, "Ouverture de : " + model.getTitle());
         });
+    }
+
+    public boolean checkFavoriteItem(Model checkProduct) {
+        List<Model> favorites = sharedPreference.getFavorites(context);
+        if (favorites != null) {
+            for (Model product : favorites) {
+                if (product.getTitle().equals(checkProduct.getTitle())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -75,8 +134,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             this.mTitleTV = itemView.findViewById(R.id.txt1);
             this.mDescrTV = itemView.findViewById(R.id.txt2);
             this.favoriteImg = itemView.findViewById(R.id.heart);
-            this.progressIndicator = itemView.findViewById(R.id.horizontal_progress_bar);
-            this.categoryChip = itemView.findViewById(R.id.chip_category);
+            
+            View progressView = itemView.findViewById(R.id.horizontal_progress_bar);
+            if (progressView instanceof com.google.android.material.progressindicator.LinearProgressIndicator) {
+                this.progressIndicator = (com.google.android.material.progressindicator.LinearProgressIndicator) progressView;
+            }
+            
+            View chipView = itemView.findViewById(R.id.chip_category);
+            if (chipView instanceof com.google.android.material.chip.Chip) {
+                this.categoryChip = (com.google.android.material.chip.Chip) chipView;
+            }
         }
     }
 }

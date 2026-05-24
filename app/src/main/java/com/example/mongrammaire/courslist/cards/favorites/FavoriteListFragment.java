@@ -1,34 +1,26 @@
 package com.example.mongrammaire.courslist.cards.favorites;
 
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mongrammaire.R;
 
 import java.util.List;
 
-public class FavoriteListFragment  extends Fragment {
+public class FavoriteListFragment extends Fragment {
 
-    public static final String ARG_ITEM_ID = "favorite_list";
-
-    ListView favoriteList;
-    SharedPreference sharedPreference;
-    List<Model> favorites;
-
-    Activity activity;
-    MyAdapter productListAdapter;
+    private RecyclerView recyclerView;
+    private View emptyState;
+    private SharedPreference sharedPreference;
+    private Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,114 +29,70 @@ public class FavoriteListFragment  extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_favorite_list, container,
-                false);
-        // Get favorite items from SharedPreferences.
-        sharedPreference = new SharedPreference();
-        favorites = sharedPreference.getFavorites(activity);
+        View view = inflater.inflate(R.layout.fragment_favorite_list, container, false);
+
+        recyclerView = view.findViewById(R.id.favorite_recycler_view);
+        emptyState = view.findViewById(R.id.empty_state);
 
         view.findViewById(R.id.btn_back).setOnClickListener(v -> {
-            if (getActivity() != null) {
-                getActivity().onBackPressed();
+            if (getFragmentManager() != null) {
+                getFragmentManager().popBackStack();
             }
         });
 
-        if (favorites == null) {
-            showAlert(getResources().getString(R.string.no_favorites_items),
-                    getResources().getString(R.string.no_favorites_msg));
-        } else {
+        sharedPreference = new SharedPreference();
+        refreshList();
 
-            if (favorites.size() == 0) {
-                showAlert(
-                        getResources().getString(R.string.no_favorites_items),
-                        getResources().getString(R.string.no_favorites_msg));
+        view.findViewById(R.id.btn_explore).setOnClickListener(v -> {
+            if (getFragmentManager() != null) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.screen_area, new com.example.mongrammaire.courslist.cours())
+                        .commit();
             }
+        });
 
-
-            /*if (favorites != null) {
-                productListAdapter = new MyAdapter(activity, favorites);
-                favoriteList.setAdapter(productListAdapter);
-
-                favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                    public void onItemClick(AdapterView<?> parent, View arg1,
-                                            int position, long arg3) {
-
-                    }
-                });
-
-                favoriteList
-                        .setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-                            @Override
-                            public boolean onItemLongClick(
-                                    AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                                ImageView button = (ImageView) view
-                                        .findViewById(R.id.imgbtn_favorite);
-
-                                String tag = button.getTag().toString();
-                                if (tag.equalsIgnoreCase("grey")) {
-                                    sharedPreference.addFavorite(activity,
-                                            favorites.get(position));
-                                    Toast.makeText(
-                                            activity,
-                                            activity.getResources().getString(
-                                                    R.string.add_favr),
-                                            Toast.LENGTH_SHORT).show();
-
-                                    button.setTag("red");
-                                    button.setImageResource(R.drawable.red_heart);
-                                } else {
-                                    sharedPreference.removeFavorite(activity,
-                                            favorites.get(position));
-                                    button.setTag("grey");
-                                    button.setImageResource(R.drawable.heart_grey);
-                                    productListAdapter.remove(favorites
-                                            .get(position));
-                                    Toast.makeText(
-                                            activity,
-                                            activity.getResources().getString(
-                                                    R.string.remove_favr),
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                                return true;
-                            }
-                        });
-            }*/
-        }
         return view;
     }
 
-    public void showAlert(String title, String message) {
-        if (activity != null && !activity.isFinishing()) {
-            AlertDialog alertDialog = new AlertDialog.Builder(activity)
-                    .create();
-            alertDialog.setTitle(title);
-            alertDialog.setMessage(message);
-            alertDialog.setCancelable(false);
+    private void refreshList() {
+        List<Model> favorites = sharedPreference.getFavorites(activity);
+        recyclerView.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(activity, 1)); // Keeping 1 for now but with different card design maybe?
+        
+        if (favorites == null || favorites.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptyState.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyState.setVisibility(View.GONE);
+            
+            MyAdapter adapter = new MyAdapter(favorites, true);
+            adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onChanged() {
+                    checkEmpty(adapter);
+                }
 
-            // setting OK Button
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                    new DialogInterface.OnClickListener() {
+                @Override
+                public void onItemRangeRemoved(int positionStart, int itemCount) {
+                    checkEmpty(adapter);
+                }
+            });
+            recyclerView.setAdapter(adapter);
+        }
+    }
 
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            // activity.finish();
-                            getFragmentManager().popBackStackImmediate();
-                        }
-                    });
-            alertDialog.show();
+    private void checkEmpty(MyAdapter adapter) {
+        if (adapter.getItemCount() == 0) {
+            recyclerView.setVisibility(View.GONE);
+            emptyState.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onResume() {
-        getActivity().setTitle(R.string.favorites);
-        getActivity().getActionBar().setTitle(R.string.favorites);
         super.onResume();
+        refreshList();
     }
 }

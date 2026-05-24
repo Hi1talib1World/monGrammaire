@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.Model.Lesson;
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.Utils.ProgressionManager;
@@ -56,7 +56,7 @@ public class CoursListActivity extends AppCompatActivity implements LessonAdapte
     @Override
     public void onLessonClick(Lesson lesson) {
         if (lesson.isLocked()) {
-            Toast.makeText(this, "Niveau verrouillé ! Obtenez un meilleur score en Quiz pour le débloquer.", Toast.LENGTH_SHORT).show();
+            ToastHelper.showCustomToast(this, "Niveau verrouillé ! Complétez les quiz précédents.");
         } else {
             Intent intent = new Intent(this, LessonActivity1.class);
             startActivity(intent);

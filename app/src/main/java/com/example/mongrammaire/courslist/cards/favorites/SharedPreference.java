@@ -18,27 +18,24 @@ public class SharedPreference {
         super();
     }
 
-    // This four methods are used for maintaining favorites.
     public void saveFavorites(Context context, List<Model> favorites) {
-        SharedPreferences settings;
-        SharedPreferences.Editor editor;
-
-        settings = context.getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE);
-        editor = settings.edit();
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
 
         Gson gson = new Gson();
         String jsonFavorites = gson.toJson(favorites);
-
         editor.putString(FAVORITES, jsonFavorites);
-
-        editor.commit();
+        editor.apply();
     }
 
     public void addFavorite(Context context, Model product) {
-        List<Model> favorites = getFavorites(context);
-        if (favorites == null)
-            favorites = new ArrayList<Model>();
+        ArrayList<Model> favorites = getFavorites(context);
+        if (favorites == null) favorites = new ArrayList<>();
+        
+        for (Model m : favorites) {
+            if (m.getTitle().equals(product.getTitle())) return;
+        }
+        
         favorites.add(product);
         saveFavorites(context, favorites);
     }
@@ -46,29 +43,32 @@ public class SharedPreference {
     public void removeFavorite(Context context, Model product) {
         ArrayList<Model> favorites = getFavorites(context);
         if (favorites != null) {
-            favorites.remove(product);
-            saveFavorites(context, favorites);
+            Model toRemove = null;
+            for (Model m : favorites) {
+                if (m.getTitle().equals(product.getTitle())) {
+                    toRemove = m;
+                    break;
+                }
+            }
+            if (toRemove != null) {
+                favorites.remove(toRemove);
+                saveFavorites(context, favorites);
+            }
         }
     }
 
     public ArrayList<Model> getFavorites(Context context) {
-        SharedPreferences settings;
-        List<Model> favorites;
-
-        settings = context.getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         if (settings.contains(FAVORITES)) {
             String jsonFavorites = settings.getString(FAVORITES, null);
             Gson gson = new Gson();
-            Model[] favoriteItems = gson.fromJson(jsonFavorites,
-                    Model[].class);
+            Model[] favoriteItems = gson.fromJson(jsonFavorites, Model[].class);
 
-            favorites = Arrays.asList(favoriteItems);
-            favorites = new ArrayList<Model>(favorites);
-        } else
-            return null;
-
-        return (ArrayList<Model>) favorites;
+            if (favoriteItems == null) return new ArrayList<>();
+            return new ArrayList<>(Arrays.asList(favoriteItems));
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

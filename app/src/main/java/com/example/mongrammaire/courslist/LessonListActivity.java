@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import com.example.mongrammaire.Utils.ToastHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -140,7 +140,7 @@ public class LessonListActivity extends AppCompatActivity {
         overallProgressText.setText("Progress: " + overall + "%");
         
         if (!suggestedLesson.isEmpty() && overall < 100) {
-            Toast.makeText(this, "Next up: " + suggestedLesson, Toast.LENGTH_SHORT).show();
+            ToastHelper.showCustomToast(this, "Prochaine étape : " + suggestedLesson);
         }
     }
 
@@ -159,7 +159,7 @@ public class LessonListActivity extends AppCompatActivity {
             Hawk.put("lesson", lessons[index]);
             startActivity(intent);
         } else {
-            Toast.makeText(this, "Complete previous lesson to unlock " + lessons[index], Toast.LENGTH_SHORT).show();
+            ToastHelper.showCustomToast(this, "Leçon verrouillée !");
         }
     }
 

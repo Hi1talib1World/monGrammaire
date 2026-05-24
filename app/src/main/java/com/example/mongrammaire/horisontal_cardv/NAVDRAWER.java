@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mongrammaire.Alphabets.acceuil;
-import com.example.mongrammaire.courslist.cards.favorites.Exsercises;
+import com.example.mongrammaire.courslist.cards.favorites.FavoriteListFragment;
 import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.Quiz.MainGameActivity;
 import com.example.mongrammaire.R;
@@ -144,7 +144,7 @@ public class NAVDRAWER extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             fragment = new cours();
         } else if (id == R.id.nav_slideshow) {
-            fragment = new Exsercises();
+            fragment = new FavoriteListFragment();
         } else if (id == R.id.nav_tools) {
             fragment = new word();
         } else if (id == R.id.nav_share) {

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
-import android.widget.Toast;
+import com.example.mongrammaire.Utils.ToastHelper;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -80,7 +80,7 @@ public class Conjugaison extends AppCompatActivity implements verbesAdapter.verb
                     @Override
                     public void onResponse(JSONArray response) {
                         if (response == null) {
-                            Toast.makeText(getApplicationContext(), "Couldn't fetch the contacts! Pleas try again.", Toast.LENGTH_LONG).show();
+                            ToastHelper.showCustomToast(Conjugaison.this, "Erreur de chargement.");
                             return;
                         }
 
@@ -99,7 +99,7 @@ public class Conjugaison extends AppCompatActivity implements verbesAdapter.verb
             public void onErrorResponse(VolleyError error) {
                 // error in getting json
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastHelper.showCustomToast(Conjugaison.this, "Erreur réseau");
             }
         });
 
@@ -169,6 +169,6 @@ public class Conjugaison extends AppCompatActivity implements verbesAdapter.verb
     }
     @Override
     public void onverbesSelected(verbes verbes) {
-        Toast.makeText(getApplicationContext(), "Selected: " + verbes.getverbe() + ", " + verbes.getdesc(), Toast.LENGTH_LONG).show();
+        ToastHelper.showCustomToast(this, "Sélectionné: " + verbes.getverbe());
     }
 }

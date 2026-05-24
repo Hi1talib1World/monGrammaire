@@ -1,8 +1,7 @@
 package com.example.mongrammaire.horisontal_cardv.categories.Mots;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
+import com.example.mongrammaire.Utils.ToastHelper;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,8 +43,6 @@ public class MotsActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
     @Override
     public void onItemClick(DataModel item) {
-
-        Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
-
+        ToastHelper.showCustomToast(this, item.text + " sélectionné");
     }
 }

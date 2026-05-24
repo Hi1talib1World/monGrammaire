@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
-import android.widget.Toast;
+import com.example.mongrammaire.Utils.ToastHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,7 +63,7 @@ public class LessonActivity1 extends AppCompatActivity {
     private void setupRecyclerView() {
         List<LessonModel> lessons = dbHelper.getLessonsByCategory(currentLesson);
         SubLessonAdapter adapter = new SubLessonAdapter(lessons, lesson ->
-            Toast.makeText(this, "Focusing on: " + lesson.getTitle(), Toast.LENGTH_SHORT).show()
+            ToastHelper.showCustomToast(this, lesson.getTitle())
         );
         binding.subLessonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         
@@ -82,7 +82,7 @@ public class LessonActivity1 extends AppCompatActivity {
             progress = 100;
             repository.setLessonComplete(currentLesson, true);
             Hawk.put(currentLesson.toLowerCase() + "_completed", true);
-            Toast.makeText(this, "Module Completed!", Toast.LENGTH_SHORT).show();
+            ToastHelper.showCustomToast(this, "Module terminé !");
         }
         
         Hawk.put(currentLesson.toLowerCase() + "_progress", progress);
