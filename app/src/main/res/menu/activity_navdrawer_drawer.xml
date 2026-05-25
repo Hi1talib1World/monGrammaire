@@ -17,10 +17,15 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/list"
             android:title="@string/menu_gallery" />
+
+        <item
+            android:id="@+id/nav_tcf"
+            android:icon="@drawable/ic_book"
+            android:title="Préparation TCF" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/favorite"
-
             android:title="@string/menu_slideshow" />
         <item
             android:id="@+id/nav_tools"
@@ -38,6 +43,10 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/star"
                 android:title="@string/quiz" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_close"
+                android:title="Déconnexion" />
         </menu>
     </item>
 

@@ -58,7 +58,19 @@ public class CoursListActivity extends AppCompatActivity implements LessonAdapte
         if (lesson.isLocked()) {
             ToastHelper.showCustomToast(this, "Niveau verrouillé ! Complétez les quiz précédents.");
         } else {
+            String category;
+            switch (lesson.getLevel()) {
+                case 1: category = "basics"; break;
+                case 2: category = "phrases"; break;
+                case 3: category = "greeting"; break;
+                case 4: category = "food"; break;
+                case 5: category = "animal"; break;
+                case 6: category = "clothing"; break;
+                default: category = "advanced"; break;
+            }
+            
             Intent intent = new Intent(this, LessonActivity1.class);
+            com.orhanobut.hawk.Hawk.put("lesson", category);
             startActivity(intent);
         }
     }

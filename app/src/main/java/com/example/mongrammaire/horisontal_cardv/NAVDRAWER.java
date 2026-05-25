@@ -33,7 +33,10 @@ import com.example.mongrammaire.aboutpage.word;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.recherche;
+import com.example.mongrammaire.auth.LoginActivity;
+import com.example.mongrammaire.TcfFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -143,6 +146,8 @@ public class NAVDRAWER extends AppCompatActivity
             fragment = new acceuil();
         } else if (id == R.id.nav_gallery) {
             fragment = new cours();
+        } else if (id == R.id.nav_tcf) {
+            fragment = new TcfFragment();
         } else if (id == R.id.nav_slideshow) {
             fragment = new FavoriteListFragment();
         } else if (id == R.id.nav_tools) {
@@ -153,6 +158,10 @@ public class NAVDRAWER extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent intent = new Intent(NAVDRAWER.this, MainGameActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(NAVDRAWER.this, LoginActivity.class));
+            finish();
         }
 
         if (fragment != null){

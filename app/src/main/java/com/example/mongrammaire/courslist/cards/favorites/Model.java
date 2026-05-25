@@ -2,7 +2,7 @@ package com.example.mongrammaire.courslist.cards.favorites;
 
 public class Model {
 
-    private String Title,Description,category;
+    private String Title,Description,category,content;
     private int img ,heart, progress;
 
     public Model() {
@@ -24,6 +24,19 @@ public class Model {
     public Model(String Title, String Description, int img, int heart, String category, int progress) {
         this(Title, Description, img, heart, category);
         this.progress = progress;
+    }
+
+    public Model(String title, String description, String content, int img, String category, int progress) {
+        this(title, description, img, 0, category, progress);
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getProgress() {

@@ -98,6 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             Intent intent = new Intent(context, DetailsActivity.class);
             intent.putExtra("iTitleTv", model.getTitle());
             intent.putExtra("iDescTv", model.getDescription());
+            intent.putExtra("iContent", model.getContent());
             intent.putExtra("iImgTv", model.getImg()); 
             context.startActivity(intent);
             ToastHelper.showCustomToast(context, "Ouverture de : " + model.getTitle());

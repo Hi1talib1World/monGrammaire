@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-class TriviaQuizHelper extends SQLiteOpenHelper {
+public class TriviaQuizHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DB_NAME = "TQuiz.db";
@@ -44,7 +44,7 @@ class TriviaQuizHelper extends SQLiteOpenHelper {
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    TriviaQuizHelper(Context context) {
+    public TriviaQuizHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
     }
@@ -112,7 +112,7 @@ class TriviaQuizHelper extends SQLiteOpenHelper {
         }
     }
 
-    List<TriviaQuestion> getAllOfTheQuestions() {
+    public List<TriviaQuestion> getAllOfTheQuestions() {
         List<TriviaQuestion> questionsList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();

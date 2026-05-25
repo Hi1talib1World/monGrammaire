@@ -39,7 +39,7 @@ public class SubLessonAdapter extends RecyclerView.Adapter<SubLessonAdapter.View
         LessonModel lesson = lessons.get(position);
         holder.title.setText(lesson.getTitle());
         holder.content.setText(lesson.getContent());
-        holder.difficulty.setText("Difficulty: " + getDifficultyString(lesson.getDifficulty()));
+        holder.difficulty.setText("Difficulté : " + getDifficultyString(lesson.getDifficulty()));
 
         holder.itemView.setOnLongClickListener(v -> {
             if (listener != null) {
@@ -51,10 +51,10 @@ public class SubLessonAdapter extends RecyclerView.Adapter<SubLessonAdapter.View
 
     private String getDifficultyString(int difficulty) {
         switch (difficulty) {
-            case 1: return "Easy";
-            case 2: return "Medium";
-            case 3: return "Hard";
-            default: return "Unknown";
+            case 1: return "Facile";
+            case 2: return "Moyen";
+            case 3: return "Difficile";
+            default: return "Inconnu";
         }
     }
 

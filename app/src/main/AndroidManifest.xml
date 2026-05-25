@@ -85,6 +85,23 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Quiz.PlayAgain" />
         <activity android:name=".Quiz.GameWon" />
+        <activity
+            android:name=".TimeAttackActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FullSimulationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name=".GrammarWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/rule_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
