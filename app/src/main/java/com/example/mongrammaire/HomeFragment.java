@@ -18,6 +18,9 @@ import com.example.mongrammaire.courslist.CoursListActivity;
 import com.example.mongrammaire.horisontal_cardv.Adapter;
 import com.example.mongrammaire.horisontal_cardv.Model;
 import com.example.mongrammaire.Utils.ProgressionManager;
+import com.example.mongrammaire.Utils.AdManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -50,6 +53,14 @@ public class HomeFragment extends Fragment {
         btnStartQuiz = v.findViewById(R.id.btnStartQuiz);
         btnMenu = v.findViewById(R.id.btnMenu);
 
+        // Load Banner Ad
+        AdView adView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        // Preload Interstitial
+        AdManager.INSTANCE.loadInterstitialAd(requireContext());
+
         updateStats();
 
         // Setup Recycler
@@ -76,8 +87,11 @@ public class HomeFragment extends Fragment {
         });
 
         btnStartQuiz.setOnClickListener(view -> {
-            Intent intent = new Intent(getContext(), MainGameActivity.class);
-            startActivity(intent);
+            AdManager.INSTANCE.showInterstitial(requireActivity(), () -> {
+                Intent intent = new Intent(getContext(), MainGameActivity.class);
+                startActivity(intent);
+                return null;
+            });
         });
 
         startAnimations(v);

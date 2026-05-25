@@ -101,6 +101,9 @@ dependencies {
     androidTestImplementation "androidx.test:core:1.5.0"
     androidTestImplementation "androidx.fragment:fragment-testing:1.6.2"
 
+    // AdMob
+    implementation 'com.google.android.gms:play-services-ads:23.0.0'
+
     // Kotlin & Coroutines
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
