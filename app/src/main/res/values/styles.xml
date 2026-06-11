@@ -10,9 +10,33 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorTertiary">@color/tertiary</item>
         <item name="colorOnTertiary">@color/white</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
+        <item name="colorOutline">@color/outline</item>
+
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MonGrammaire.MaterialAlertDialog</item>
+        <item name="navigationViewStyle">@style/Widget.MonGrammaire.NavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.MonGrammaire.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MonGrammaire.LargeComponent</item>
+    </style>
+
+    <style name="Widget.MonGrammaire.NavigationView" parent="Widget.Material3.NavigationView">
+        <item name="itemShapeAppearance">@style/ShapeAppearance.MonGrammaire.MediumComponent</item>
+        <item name="itemShapeFillColor">@color/secondaryContainer</item>
+    </style>
+
+    <style name="ShapeAppearance.MonGrammaire.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme" />
