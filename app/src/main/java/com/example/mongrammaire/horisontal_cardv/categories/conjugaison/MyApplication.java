@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.color.DynamicColors;
 
 public class MyApplication extends Application {
 
@@ -22,6 +23,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        
+        // Apply Material 3 Dynamic Colors
+        DynamicColors.applyToActivitiesIfAvailable(this);
         
         // Initialize AdMob SDK
         new Thread(() -> {
