@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -35,6 +34,7 @@ import com.example.mongrammaire.courslist.cours;
 import com.example.mongrammaire.recherche;
 import com.example.mongrammaire.auth.LoginActivity;
 import com.example.mongrammaire.TcfFragment;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -100,25 +100,14 @@ public class NAVDRAWER extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(NAVDRAWER.this);
-        builder.setTitle(R.string.app_name);
-        builder.setIcon(R.mipmap.ic_launcher);
-        builder.setMessage("Voulez-vous sortir Des cours?")
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.app_name)
+                .setIcon(R.mipmap.ic_launcher)
+                .setMessage("Voulez-vous sortir des cours ?")
                 .setCancelable(false)
-                .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("NON", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-
-
+                .setPositiveButton("OUI", (dialog, id) -> finish())
+                .setNegativeButton("NON", (dialog, id) -> dialog.cancel())
+                .show();
     }
 
     @Override
