@@ -30,8 +30,12 @@ class HomeViewModel : ViewModel() {
             // Mocking data fetch delay (Point 2)
             delay(800)
 
-            val user = FirebaseAuth.getInstance().currentUser
-            val name = user?.displayName ?: "Ami"
+            val name = try {
+                val user = FirebaseAuth.getInstance().currentUser
+                user?.displayName ?: "Ami"
+            } catch (e: Exception) {
+                "Apprenant"
+            }
             
             _uiState.value = HomeUiState(
                 userName = name,
