@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Mode Design System Tokens -->
+    <color name="primary">#D5E3FF</color>
+    <color name="onPrimary">#001C3B</color>
+    <color name="primaryContainer">#2C3E50</color>
+    <color name="onPrimaryContainer">#D5E3FF</color>
+
+    <color name="secondary">#C6C5D0</color>
+    <color name="onSecondary">#2E3039</color>
+    <color name="secondaryContainer">#44474E</color>
+    <color name="onSecondaryContainer">#E2E1EC</color>
+
+    <color name="background">#1A1C1E</color>
+    <color name="surface">#1A1C1E</color>
+    <color name="onSurface">#E2E2E6</color>
+    <color name="surfaceVariant">#44474E</color>
+    <color name="onSurfaceVariant">#C4C6D0</color>
+    <color name="outline">#8E9199</color>
+
+    <!-- Glassmorphism Tokens (Dark) -->
+    <color name="glass_white_80">#1AFFFFFF</color> <!-- Translucent Dark -->
+    <color name="glass_border">#1AFFFFFF</color>
+</resources>
