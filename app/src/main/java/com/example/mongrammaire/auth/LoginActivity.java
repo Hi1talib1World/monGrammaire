@@ -29,7 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
+        try {
+            mAuth = FirebaseAuth.getInstance();
+        } catch (Exception e) {
+            Toast.makeText(this, "Erreur d'initialisation Firebase. Vérifiez google-services.json", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
