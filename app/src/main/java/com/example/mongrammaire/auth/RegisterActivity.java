@@ -30,7 +30,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth = FirebaseAuth.getInstance();
+        try {
+            mAuth = FirebaseAuth.getInstance();
+        } catch (Exception e) {
+            Toast.makeText(this, "Erreur d'initialisation Firebase. Vérifiez google-services.json", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
         etName = findViewById(R.id.et_name);
         etEmail = findViewById(R.id.et_email);
