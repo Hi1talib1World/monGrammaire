@@ -13,11 +13,12 @@ import java.util.List;
 
 public class OnboardingViewModel extends AndroidViewModel {
 
-    private static final String PREF_NAME = "onboarding_prefs";
-    private static final String KEY_IS_FIRST_RUN_COMPLETED = "is_first_run_completed";
+    public static final String PREF_NAME = "onboarding_prefs";
+    public static final String KEY_IS_FIRST_RUN_COMPLETED = "is_first_run_completed";
 
     private final MutableLiveData<Integer> currentStepIndex = new MutableLiveData<>(0);
     private final MutableLiveData<Boolean> isLoadingTransition = new MutableLiveData<>(false);
+    private final MutableLiveData<Boolean> onboardingFinished = new MutableLiveData<>(false);
     private final List<OnboardingStep> steps = new ArrayList<>();
     private final SharedPreferences sharedPreferences;
 
@@ -31,17 +32,17 @@ public class OnboardingViewModel extends AndroidViewModel {
         steps.add(new OnboardingStep(
                 "Welcome to monGrammaire",
                 "The ultimate companion for mastering French grammar with ease.",
-                R.drawable.ic_onboarding_welcome // Assuming these exist or will be added
+                R.drawable.ic_book
         ));
         steps.add(new OnboardingStep(
                 "Interactive Lessons",
                 "Learn through engaging cards and interactive exercises designed for all levels.",
-                R.drawable.ic_onboarding_lessons
+                R.drawable.ic_quiz
         ));
         steps.add(new OnboardingStep(
                 "Track Your Progress",
                 "Stay motivated by tracking your daily achievements and mastering new levels.",
-                R.drawable.ic_onboarding_progress
+                R.drawable.ic_trophy
         ));
     }
 
@@ -53,6 +54,10 @@ public class OnboardingViewModel extends AndroidViewModel {
         return isLoadingTransition;
     }
 
+    public LiveData<Boolean> getOnboardingFinished() {
+        return onboardingFinished;
+    }
+
     public List<OnboardingStep> getSteps() {
         return steps;
     }
@@ -62,38 +67,40 @@ public class OnboardingViewModel extends AndroidViewModel {
     }
 
     public void nextStep() {
+        if (Boolean.TRUE.equals(isLoadingTransition.getValue())) return;
+
         Integer current = currentStepIndex.getValue();
         if (current != null && current < steps.size() - 1) {
-            setLoading(true);
-            currentStepIndex.setValue(current + 1);
+            startTransition(() -> currentStepIndex.setValue(current + 1));
         } else {
             completeOnboarding();
         }
     }
 
     public void previousStep() {
+        if (Boolean.TRUE.equals(isLoadingTransition.getValue())) return;
+
         Integer current = currentStepIndex.getValue();
         if (current != null && current > 0) {
-            setLoading(true);
-            currentStepIndex.setValue(current - 1);
+            startTransition(() -> currentStepIndex.setValue(current - 1));
         }
     }
 
     public void completeOnboarding() {
-        setLoading(true);
-        sharedPreferences.edit().putBoolean(KEY_IS_FIRST_RUN_COMPLETED, true).apply();
-        // The View will observe the loading/state to trigger navigation
+        if (Boolean.TRUE.equals(isLoadingTransition.getValue())) return;
+
+        startTransition(() -> {
+            sharedPreferences.edit().putBoolean(KEY_IS_FIRST_RUN_COMPLETED, true).apply();
+            onboardingFinished.setValue(true);
+        });
     }
 
-    private void setLoading(boolean loading) {
-        isLoadingTransition.setValue(loading);
-        if (loading) {
-            // Simulate transition delay
-            new android.os.Handler().postDelayed(() -> isLoadingTransition.setValue(false), 400);
-        }
-    }
-
-    public boolean isFirstRunCompleted() {
-        return sharedPreferences.getBoolean(KEY_IS_FIRST_RUN_COMPLETED, false);
+    private void startTransition(Runnable action) {
+        isLoadingTransition.setValue(true);
+        // Simulate a smooth transition delay as requested (300ms-500ms)
+        new android.os.Handler().postDelayed(() -> {
+            action.run();
+            isLoadingTransition.setValue(false);
+        }, 400);
     }
 }
