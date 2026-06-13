@@ -41,4 +41,10 @@
     <dimen name="card_image_elevation">5dp</dimen>
     <dimen name="top_text_card">14dp</dimen>
     <dimen name="top_text_subtitle_card">4dp</dimen>
+
+    <!-- Onboarding Semantic Tokens -->
+    <dimen name="dot_size_inactive">8dp</dimen>
+    <dimen name="dot_size_active">12dp</dimen>
+    <dimen name="onboarding_card_corner">32dp</dimen>
+    <dimen name="onboarding_button_height">64dp</dimen>
 </resources>
