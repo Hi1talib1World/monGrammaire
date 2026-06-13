@@ -1,36 +1,61 @@
 package com.example.mongrammaire.courslist
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
+import com.example.mongrammaire.Data.LessonRepositoryImpl
 import com.example.mongrammaire.Quiz.MainGameActivity
 import com.example.mongrammaire.R
+import com.example.mongrammaire.Utils.ToastHelper
 import com.example.mongrammaire.databinding.ActivityDetailsBinding
 import com.example.mongrammaire.databinding.ItemLearningStepBinding
 import kotlinx.coroutines.launch
+import java.util.*
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivityDetailsBinding
-    private val viewModel: DetailsViewModel by viewModels()
+    private var tts: TextToSpeech? = null
+    private var isTtsReady = false
+
+    // Pillar 1: Initializing with real Repository
+    private val viewModel: DetailsViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return DetailsViewModel(LessonRepositoryImpl(applicationContext)) as T
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        tts = TextToSpeech(this, this)
+
+        val lessonId = intent.getIntExtra("iId", -1)
         val rawContent = intent.getStringExtra("iContent") ?: intent.getStringExtra("iDescTv")
-        viewModel.loadContent(rawContent)
+        
+        viewModel.initLesson(lessonId, rawContent)
 
         setupViewPager()
         setupListeners()
@@ -38,7 +63,6 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        // We use a transformer for Point 3 (Transitions)
         val transformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
             addTransformer { page, position ->
@@ -48,7 +72,7 @@ class DetailsActivity : AppCompatActivity() {
             }
         }
         binding.cardViewPager.setPageTransformer(transformer)
-        binding.cardViewPager.isUserInputEnabled = false // Force button usage for step-by-step
+        binding.cardViewPager.isUserInputEnabled = false
     }
 
     private fun setupListeners() {
@@ -70,6 +94,9 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Pillar 3: Reactive UI & Interaction Interlocking
+     */
     private fun renderUi(state: DetailsUiState) {
         if (state.isFinished) {
             startActivity(Intent(this, MainGameActivity::class.java))
@@ -77,11 +104,22 @@ class DetailsActivity : AppCompatActivity() {
             return
         }
 
-        // Point 4: Dynamic data rendering
-        if (binding.cardViewPager.adapter == null && state.steps.isNotEmpty()) {
-            binding.cardViewPager.adapter = LessonCardAdapter(state.steps)
+        if (state.errorEvent != null) {
+            ToastHelper.showCustomToast(this, state.errorEvent)
+            viewModel.clearError()
         }
 
+        // Atomic UI Reflection
+        if (binding.cardViewPager.adapter == null && state.steps.isNotEmpty()) {
+            binding.cardViewPager.adapter = LessonCardAdapter(state.steps) { text ->
+                if (isTtsReady) tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+            }
+        }
+
+        // Pillar 3: Component interlocking (Disable UI while saving)
+        binding.btnContinue.isEnabled = !state.isSaving
+        binding.btnContinue.alpha = if (state.isSaving) 0.5f else 1.0f
+        
         binding.cardViewPager.setCurrentItem(state.currentStepIndex, true)
         binding.learningProgress.setProgress(state.progress, true)
 
@@ -92,8 +130,10 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    class LessonCardAdapter(private val steps: List<LearningStep>) :
-        RecyclerView.Adapter<LessonCardAdapter.ViewHolder>() {
+    class LessonCardAdapter(
+        private val steps: List<LearningStep>,
+        private val onListen: (String) -> Unit
+    ) : RecyclerView.Adapter<LessonCardAdapter.ViewHolder>() {
 
         class ViewHolder(val binding: ItemLearningStepBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -105,23 +145,64 @@ class DetailsActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val step = steps[position]
             
-            val (title, icon) = when (step.type) {
-                "[EXAMPLE]" -> "Exemple" to R.drawable.ic_play
-                "[EXCEPTION]" -> "Attention !" to R.drawable.star
-                else -> "La Règle" to R.drawable.bookstack
+            val iconRes = when (step.type) {
+                "[EXAMPLE]" -> R.drawable.ic_play
+                "[EXCEPTION]" -> R.drawable.star
+                "[FINISH]" -> R.drawable.ic_check_circle
+                else -> R.drawable.bookstack
+            }
+
+            val title = when (step.type) {
+                "[EXAMPLE]" -> "Exemple"
+                "[EXCEPTION]" -> "Attention !"
+                "[FINISH]" -> "Terminé !"
+                else -> "La Règle"
             }
 
             holder.binding.tvStepTitle.text = title
-            holder.binding.ivStepIcon.setImageResource(icon)
+            holder.binding.ivStepIcon.setImageResource(iconRes)
             
             val formatted = step.content
                 .replace("->", " ➔ ")
                 .replace("\n", "<br/>")
             
             holder.binding.tvStepContent.text = HtmlCompat.fromHtml(formatted, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+            // Reveal logic
+            if (step.revealContent != null) {
+                holder.binding.revealCard.visibility = View.VISIBLE
+                holder.binding.tvRevealHint.text = "Appuyez pour voir la réponse"
+                holder.binding.revealCard.setOnClickListener {
+                    holder.binding.tvRevealHint.text = step.revealContent
+                    holder.binding.revealCard.setCardBackgroundColor(
+                        ContextCompat.getColor(it.context, R.color.primaryContainer)
+                    )
+                }
+            } else {
+                holder.binding.revealCard.visibility = View.GONE
+            }
+
+            holder.binding.btnListen.setOnClickListener {
+                onListen(step.content + (step.revealContent ?: ""))
+            }
         }
 
         override fun getItemCount() = steps.size
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts?.setLanguage(Locale.FRENCH)
+            if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
+                isTtsReady = true
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        tts?.stop()
+        tts?.shutdown()
+        super.onDestroy()
     }
 
     override fun onBackPressed() {
