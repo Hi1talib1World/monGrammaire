@@ -47,7 +47,28 @@
     <color name="green2">#34C759</color>
     <color name="primaryContainer_soft">#E8F0FE</color>
 
-    <!-- Missing Colors for Styles Compatibility -->
+    <!-- Legacy / Missing Colors -->
+    <color name="green">#34C759</color>
+    <color name="green_button">#2ECC71</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black_transparent">#80000000</color>
+    <color name="default_light_grey_bg">#F2F4F7</color>
+    <color name="white_text">#FFFFFF</color>
+    <color name="lightGreen">#90EE90</color>
+    <color name="bottomNavigationTextColor">#757575</color>
+    <color name="nav_bar_color">#2C3E50</color>
+    <color name="frutorial_title">#000000</color>
+    <color name="designMainColor">#2C3E50</color>
+    <color name="miniTitle">#757575</color>
+    <color name="miniDescription">#9E9E9E</color>
+    <color name="week_letter">#000000</color>
+    <color name="backgroundColor">#F8F9FA</color>
+    <color name="splashBackground">#2C3E50</color>
+    <color name="blue">#0000FF</color>
+    <color name="contact_name">#1A1C1E</color>
+    <color name="contact_number">#44474E</color>
+
+    <!-- Styles Compatibility -->
     <color name="about_background_color">#F8F9FA</color>
     <color name="about_description_text_color">#44474E</color>
     <color name="about_separator_color">#C4C6D0</color>
