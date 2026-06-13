@@ -4,4 +4,8 @@
         <item>#009688</item>
         <item>#80CBC4</item>
     </array>
+    <array name="gradient_colors">
+        <item>#2C3E50</item>
+        <item>#5D5F6D</item>
+    </array>
 </resources>
