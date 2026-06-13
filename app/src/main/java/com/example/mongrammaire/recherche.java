@@ -50,17 +50,17 @@ public class recherche extends AppCompatActivity {
 
     private void setupData() {
         allLessons = new ArrayList<>();
-        // These should ideally come from a common repository/database
-        allLessons.add(new Model("Accords au pluriel", "Règles d'accord du pluriel", "...", R.drawable.n1, "Grammaire", 45));
-        allLessons.add(new Model("Prépositions", "Utilisation des prépositions", "...", R.drawable.ufo, "Grammaire", 60));
-        allLessons.add(new Model("Adjectifs possessifs", "Mon, ton, son...", "...", R.drawable.n2, "Grammaire", 30));
-        allLessons.add(new Model("Articles", "Définis, indéfinis, partitifs", "...", R.drawable.satellite, "Grammaire", 100));
-        allLessons.add(new Model("Négation", "Ne... pas, ne... plus...", "...", R.drawable.n3, "Grammaire", 15));
-        allLessons.add(new Model("Passé composé", "Avec avoir et être", "...", R.drawable.n7, "Verbe", 50));
-        allLessons.add(new Model("Imparfait", "Description et habitude", "...", R.drawable.n8, "Verbe", 40));
-        allLessons.add(new Model("Futur simple", "Actions à venir", "...", R.drawable.n2, "Verbe", 90));
-        allLessons.add(new Model("Impératif", "Donner des ordres", "...", R.drawable.n6, "Verbe", 80));
-        allLessons.add(new Model("Verbes pronominaux", "Se laver, se lever...", "...", R.drawable.n5, "Verbe", 75));
+        // Pillar 1: Static data seeding with consistent IDs for SSOT
+        allLessons.add(new Model(1, "Accords au pluriel", "Règles d'accord du pluriel", "...", R.drawable.n1, "Grammaire", 45));
+        allLessons.add(new Model(2, "Prépositions", "Utilisation des prépositions", "...", R.drawable.ufo, "Grammaire", 60));
+        allLessons.add(new Model(3, "Adjectifs possessifs", "Mon, ton, son...", "...", R.drawable.n2, "Grammaire", 30));
+        allLessons.add(new Model(4, "Articles", "Définis, indéfinis, partitifs", "...", R.drawable.satellite, "Grammaire", 100));
+        allLessons.add(new Model(5, "Négation", "Ne... pas, ne... plus...", "...", R.drawable.n3, "Grammaire", 15));
+        allLessons.add(new Model(6, "Passé composé", "Avec avoir et être", "...", R.drawable.n7, "Verbe", 50));
+        allLessons.add(new Model(7, "Imparfait", "Description et habitude", "...", R.drawable.n8, "Verbe", 40));
+        allLessons.add(new Model(8, "Futur simple", "Actions à venir", "...", R.drawable.n2, "Verbe", 90));
+        allLessons.add(new Model(9, "Impératif", "Donner des ordres", "...", R.drawable.n6, "Verbe", 80));
+        allLessons.add(new Model(10, "Verbes pronominaux", "Se laver, se lever...", "...", R.drawable.n5, "Verbe", 75));
     }
 
     private void setupRecyclerView() {
