@@ -79,4 +79,13 @@
     <color name="miniTitleColor">#5D5F6D</color>
     <color name="whiteTextColor">#FFFFFF</color>
     <color name="default_bar_background_color">#E2E1EC</color>
+
+    <!-- About Page Specific Colors -->
+    <color name="about_item_icon_color">#5D5F6D</color>
+    <color name="about_facebook_color">#3b5998</color>
+    <color name="about_twitter_color">#1da1f2</color>
+    <color name="about_play_store_color">#000000</color>
+    <color name="about_youtube_color">#ff0000</color>
+    <color name="about_instagram_color">#e1306c</color>
+    <color name="about_github_color">#333333</color>
 </resources>
