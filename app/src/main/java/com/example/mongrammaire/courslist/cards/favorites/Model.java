@@ -3,32 +3,41 @@ package com.example.mongrammaire.courslist.cards.favorites;
 public class Model {
 
     private String Title,Description,category,content;
-    private int img ,heart, progress;
+    private int img ,heart, progress, id;
 
     public Model() {
         super();
     }
-    public Model(String Title, String Description, int img, int heart) {
+    public Model(int id, String Title, String Description, int img, int heart) {
         super();
+        this.id = id;
         this.Title = Title;
         this.Description = Description;
         this.img = img;
         this.heart = heart;
     }
 
-    public Model(String Title, String Description, int img, int heart, String category) {
-        this(Title, Description, img, heart);
+    public Model(int id, String Title, String Description, int img, int heart, String category) {
+        this(id, Title, Description, img, heart);
         this.category = category;
     }
 
-    public Model(String Title, String Description, int img, int heart, String category, int progress) {
-        this(Title, Description, img, heart, category);
+    public Model(int id, String Title, String Description, int img, int heart, String category, int progress) {
+        this(id, Title, Description, img, heart, category);
         this.progress = progress;
     }
 
-    public Model(String title, String description, String content, int img, String category, int progress) {
-        this(title, description, img, 0, category, progress);
+    public Model(int id, String title, String description, String content, int img, String category, int progress) {
+        this(id, title, description, img, 0, category, progress);
         this.content = content;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContent() {
