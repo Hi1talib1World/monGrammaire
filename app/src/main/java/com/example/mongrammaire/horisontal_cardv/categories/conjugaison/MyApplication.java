@@ -9,6 +9,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.color.DynamicColors;
+import com.google.firebase.FirebaseApp;
 
 public class MyApplication extends Application {
 
@@ -26,6 +27,13 @@ public class MyApplication extends Application {
         
         // Apply Material 3 Dynamic Colors
         DynamicColors.applyToActivitiesIfAvailable(this);
+
+        // Initialize Firebase
+        try {
+            FirebaseApp.initializeApp(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         // Initialize AdMob SDK
         new Thread(() -> {
