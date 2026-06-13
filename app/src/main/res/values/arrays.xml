@@ -8,4 +8,10 @@
         <item>#2C3E50</item>
         <item>#5D5F6D</item>
     </array>
+    <array name="array_dot_active">
+        <item>@color/primary</item>
+    </array>
+    <array name="array_dot_inactive">
+        <item>@color/outline</item>
+    </array>
 </resources>
