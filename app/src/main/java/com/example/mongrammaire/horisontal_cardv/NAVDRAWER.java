@@ -102,7 +102,7 @@ public class NAVDRAWER extends AppCompatActivity
     public void onBackPressed() {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.app_name)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.logo)
                 .setMessage("Voulez-vous sortir des cours ?")
                 .setCancelable(false)
                 .setPositiveButton("OUI", (dialog, id) -> finish())
