@@ -96,6 +96,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("iId", model.getId());
             intent.putExtra("iTitleTv", model.getTitle());
             intent.putExtra("iDescTv", model.getDescription());
             intent.putExtra("iContent", model.getContent());
