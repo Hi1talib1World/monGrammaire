@@ -14,7 +14,7 @@ import java.util.List;
 public class LessonDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Lessons.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     // Table Lessons
     private static final String TABLE_LESSONS = "lessons";
@@ -37,6 +37,12 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SYNC_ACTION = "action";
     private static final String COLUMN_SYNC_PAYLOAD = "payload";
     private static final String COLUMN_SYNC_TIMESTAMP = "timestamp";
+
+    // Table Lesson Progress (Pillar 1: Persistent Cache)
+    private static final String TABLE_PROGRESS = "lesson_progress";
+    private static final String COLUMN_PROG_LESSON_ID = "lesson_id";
+    private static final String COLUMN_PROG_STEP_INDEX = "current_step_index";
+    private static final String COLUMN_PROG_IS_COMPLETED = "is_completed";
 
     public LessonDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,6 +72,13 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SYNC_PAYLOAD + " TEXT,"
                 + COLUMN_SYNC_TIMESTAMP + " DATETIME DEFAULT CURRENT_TIMESTAMP" + ")";
         db.execSQL(CREATE_SYNC_TABLE);
+
+        String CREATE_PROGRESS_TABLE = "CREATE TABLE " + TABLE_PROGRESS + "("
+                + COLUMN_PROG_LESSON_ID + " INTEGER PRIMARY KEY,"
+                + COLUMN_PROG_STEP_INDEX + " INTEGER DEFAULT 0,"
+                + COLUMN_PROG_IS_COMPLETED + " INTEGER DEFAULT 0,"
+                + "FOREIGN KEY(" + COLUMN_PROG_LESSON_ID + ") REFERENCES " + TABLE_LESSONS + "(" + COLUMN_ID + "))";
+        db.execSQL(CREATE_PROGRESS_TABLE);
         
         seedLessons(db);
     }
@@ -77,6 +90,13 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SRS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SYNC);
             onCreate(db);
+        }
+        if (oldVersion < 6) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PROGRESS + "("
+                    + COLUMN_PROG_LESSON_ID + " INTEGER PRIMARY KEY,"
+                    + COLUMN_PROG_STEP_INDEX + " INTEGER DEFAULT 0,"
+                    + COLUMN_PROG_IS_COMPLETED + " INTEGER DEFAULT 0,"
+                    + "FOREIGN KEY(" + COLUMN_PROG_LESSON_ID + ") REFERENCES " + TABLE_LESSONS + "(" + COLUMN_ID + "))");
         }
     }
 
@@ -174,6 +194,33 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
     public void clearSyncQueue() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_SYNC, null, null);
+    }
+
+    // --- Progress Persistence Methods ---
+
+    public int getLessonProgress(int lessonId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_PROGRESS, new String[]{COLUMN_PROG_STEP_INDEX}, 
+                COLUMN_PROG_LESSON_ID + "=?", new String[]{String.valueOf(lessonId)}, null, null, null);
+        int index = 0;
+        if (cursor != null && cursor.moveToFirst()) {
+            index = cursor.getInt(0);
+            cursor.close();
+        }
+        return index;
+    }
+
+    public void saveLessonProgress(int lessonId, int stepIndex, boolean isCompleted) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROG_LESSON_ID, lessonId);
+        values.put(COLUMN_PROG_STEP_INDEX, stepIndex);
+        values.put(COLUMN_PROG_IS_COMPLETED, isCompleted ? 1 : 0);
+        
+        long result = db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        if (result == -1) {
+            throw new RuntimeException("Persistence failure: Could not save progress for lesson " + lessonId);
+        }
     }
 
     public static class SyncAction {
