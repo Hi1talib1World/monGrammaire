@@ -115,43 +115,43 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
         ArrayList<Model> models = new ArrayList<>();
 
         // Grammaire Category
-        models.add(new Model("Accords au pluriel", 
+        models.add(new Model(1, "Accords au pluriel", 
             "Règles d'accord du pluriel", 
             "[RULE] Le pluriel des noms se forme généralement en ajoutant un 's' à la fin du mot. [EXAMPLE] Comment dit-on 'des chats' au singulier ? -> [un chat] [EXCEPTION] Les noms en -au, -eau, -eu prennent un 'x' : un château -> [des châteaux].", 
             R.drawable.n1, "Grammaire", 45));
 
-        models.add(new Model("Prépositions", 
+        models.add(new Model(2, "Prépositions", 
             "Utilisation des prépositions", 
             "[RULE] Les prépositions de lieu servent à situer une personne ou un objet. [EXAMPLE] Je vais ____ Paris -> [à] [EXCEPTION] On utilise 'Dans' pour l'intérieur d'un espace fermé : Dans la boîte.", 
             R.drawable.ufo, "Grammaire", 60));
 
-        models.add(new Model("Adjectifs possessifs", 
+        models.add(new Model(3, "Adjectifs possessifs", 
             "Mon, ton, son...", 
             "[RULE] Ils s'accordent en genre et en nombre avec le nom possédé. [EXAMPLE] C'est la voiture de Marie. C'est ____ voiture -> [sa] [EXCEPTION] Devant une voyelle, ma/ta/sa deviennent mon/ton/son. Ex: Mon amie.", 
             R.drawable.n2, "Grammaire", 30));
 
-        models.add(new Model("Articles", 
+        models.add(new Model(4, "Articles", 
             "Définis, indéfinis, partitifs", 
             "[RULE] Il existe trois types d'articles en français. [EXAMPLE] Je mange ____ pain -> [du] [EXCEPTION] Note sur l'élision : 'le' ou 'la' deviennent 'l'' devant une voyelle. Ex: l'oiseau.", 
             R.drawable.satellite, "Grammaire", 100));
 
-        models.add(new Model("Négation", 
+        models.add(new Model(5, "Négation", 
             "Ne... pas, ne... plus...", 
             "[RULE] La structure de base est : Ne + Verbe + Pas. [EXAMPLE] Je ____ mange ____ -> [ne / pas] [EXCEPTION] Autres formes : Ne... plus (arrêt), Ne... jamais (fréquence nulle), Ne... rien (objet nul).", 
             R.drawable.n3, "Grammaire", 15));
 
         // Verbe Category
-        models.add(new Model("Passé composé", 
+        models.add(new Model(6, "Passé composé", 
             "Avec avoir et être", 
             "[RULE] Se forme avec l'auxiliaire au présent + Participe Passé. [EXAMPLE] Hier, j'____ (manger) une pomme -> [ai mangé] [EXCEPTION] Auxiliaire ÊTRE pour les 14 verbes de mouvement (aller, venir...) et les verbes pronominaux. Elle est partie.", 
             R.drawable.n7, "Verbe", 50));
 
-        models.add(new Model("Imparfait", 
+        models.add(new Model(7, "Imparfait", 
             "Description et habitude", 
             "[RULE] Radical de 'nous' au présent + terminaisons -ais, -ais, -ait, -ions, -iez, -aient. [EXAMPLE] Quand j'étais petit, je ____ (jouer) au parc -> [jouais] [EXCEPTION] L'imparfait exprime une action longue ou répétée dans le passé.", 
             R.drawable.n8, "Verbe", 40));
 
-        models.add(new Model("Futur simple", 
+        models.add(new Model(8, "Futur simple",
             "Actions à venir", 
             "[RULE] Formation : Infinitif + terminaisons -ai, -as, -a, -ons, -ez, -ont. [EXAMPLE] Demain, nous ____ (finir) le projet -> [finirons] [EXCEPTION] Radicaux irréguliers : être (ser-), avoir (aur-), aller (ir-).",
             R.drawable.n2, "Verbe", 90));
