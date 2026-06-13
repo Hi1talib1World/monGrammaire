@@ -2,104 +2,168 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".onboarding.OnboardingActivity">
+    android:background="@color/background"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
-    <TextView
-        android:id="@+id/btnSkip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:padding="8dp"
-        android:text="SKIP"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+    <!-- Design Token: Dynamic Background Surface -->
+    <View
+        android:id="@+id/bg_gradient_accent"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-200dp"
+        android:layout_marginEnd="-100dp"
+        android:alpha="0.1"
+        android:background="@drawable/bg_circle_gradient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgStep"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="60dp"
-        android:padding="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSkip"
-        tools:src="@drawable/ic_book" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSkip"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:letterSpacing="0.1"
+        android:text="SKIP"
+        android:textColor="@color/secondary"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgStep"
-        tools:text="Step Title" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/state_hover" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="0dp"
+    <!-- Semantic Breakpoint Guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:text="This is a description of the onboarding step." />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <!-- Glassmorphic Content Container -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        app:cardBackgroundColor="@color/glass_white_80"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutDots"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/btnSkip"
+        app:strokeColor="@color/glass_border"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/imgStep"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:src="@drawable/ic_book" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:textColor="@color/onSurface"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgStep"
+                tools:text="Design System" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:alpha="0.7"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/onSurfaceVariant"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="Refined typography and semantic variables for a consistent multi-device experience." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:id="@+id/layoutDots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <!-- Multi-State Interactive Primary CTA -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNext"
-        style="@style/Widget.MaterialComponents.Button"
+        style="@style/Widget.Material3.Button"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/black"
+        android:layout_height="64dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.05"
         android:text="NEXT"
-        android:textColor="@android:color/white"
-        app:cornerRadius="30dp"
+        android:textSize="16sp"
+        app:backgroundTint="@color/primary"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:rippleColor="@color/white" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:visibility="gone"
+        app:icon="@drawable/ic_back"
+        app:iconSize="24dp"
+        app:iconTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="@+id/btnNext"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/btnNext"
-        app:tint="@color/black" />
+        app:rippleColor="@color/state_hover"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
