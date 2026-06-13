@@ -3,10 +3,7 @@ package com.example.mongrammaire.onboarding;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,7 +36,15 @@ public class OnboardingActivity extends AppCompatActivity {
             binding.btnNext.setEnabled(!loading);
             binding.btnSkip.setEnabled(!loading);
             binding.btnBack.setEnabled(!loading);
-            binding.getRoot().setAlpha(loading ? 0.6f : 1.0f);
+            // Visual feedback during transition
+            binding.imgStep.animate().alpha(loading ? 0.3f : 1.0f).setDuration(200).start();
+            binding.tvTitle.animate().alpha(loading ? 0.3f : 1.0f).setDuration(200).start();
+            binding.tvDescription.animate().alpha(loading ? 0.3f : 1.0f).setDuration(200).start();
+        });
+        viewModel.getOnboardingFinished().observe(this, finished -> {
+            if (finished) {
+                navigateToMain();
+            }
         });
     }
 
@@ -50,12 +55,14 @@ public class OnboardingActivity extends AppCompatActivity {
     }
 
     private void setupDots(int count) {
+        binding.layoutDots.removeAllViews();
         for (int i = 0; i < count; i++) {
             View dot = new View(this);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(24, 24);
             params.setMargins(8, 0, 8, 0);
             dot.setLayoutParams(params);
-            dot.setBackgroundResource(R.drawable.circle); // Assuming circle drawable exists
+            dot.setBackgroundResource(R.drawable.circle); 
+            dot.setAlpha(0.3f);
             binding.layoutDots.addView(dot);
         }
     }
@@ -80,17 +87,14 @@ public class OnboardingActivity extends AppCompatActivity {
         }
 
         binding.btnBack.setVisibility(index > 0 ? View.VISIBLE : View.GONE);
-
-        // Handle navigation to main activity if completed
-        if (viewModel.isFirstRunCompleted()) {
-            navigateToMain();
-        }
     }
 
     private void updateDots(int activeIndex) {
         for (int i = 0; i < binding.layoutDots.getChildCount(); i++) {
             View dot = binding.layoutDots.getChildAt(i);
-            dot.setAlpha(i == activeIndex ? 1.0f : 0.3f);
+            dot.animate().alpha(i == activeIndex ? 1.0f : 0.3f).setDuration(300).start();
+            // Scale effect for active dot
+            dot.animate().scaleX(i == activeIndex ? 1.2f : 1.0f).scaleY(i == activeIndex ? 1.2f : 1.0f).setDuration(300).start();
         }
     }
 
