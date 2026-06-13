@@ -80,6 +80,9 @@
             android:label="@string/title_activity_level1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".onboarding.OnboardingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".splashScreen.SplashScreenActivity"
             android:label="@string/SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
