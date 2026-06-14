@@ -72,7 +72,13 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
         binding.cardViewPager.setPageTransformer(transformer)
-        binding.cardViewPager.isUserInputEnabled = false
+        binding.cardViewPager.isUserInputEnabled = true
+        
+        binding.cardViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                viewModel.updateStepIndex(position)
+            }
+        })
     }
 
     private fun setupListeners() {
