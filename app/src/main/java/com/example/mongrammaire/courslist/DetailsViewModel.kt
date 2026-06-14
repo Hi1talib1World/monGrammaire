@@ -137,4 +137,18 @@ class DetailsViewModel(private val repository: ILessonRepository) : ViewModel() 
     fun clearError() {
         _uiState.update { it.copy(errorEvent = null) }
     }
+
+    fun updateStepIndex(index: Int) {
+        val state = _uiState.value
+        if (index == state.currentStepIndex || index >= state.steps.size) return
+        
+        _uiState.update { it.copy(
+            currentStepIndex = index,
+            progress = calculateProgress(index, it.steps.size)
+        )}
+        
+        viewModelScope.launch {
+            repository.saveLessonProgress(state.lessonId, index, index == state.steps.size - 1)
+        }
+    }
 }
