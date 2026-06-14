@@ -105,7 +105,7 @@ class HomeFragment : Fragment() {
     private fun setupRecyclerView() {
         if (binding.recycler.adapter == null) {
             val list = ArrayList<Model>()
-            for (i in 0..6) {
+            for (i in 0 until myImageList.size) {
                 val m = Model()
                 m.name = myImageNameList[i]
                 m.image_drawable = myImageList[i]
