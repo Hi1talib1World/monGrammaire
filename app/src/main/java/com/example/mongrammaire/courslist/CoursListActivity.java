@@ -51,6 +51,10 @@ public class CoursListActivity extends AppCompatActivity implements LessonAdapte
         lessonList.add(new Lesson(6, "L'imparfait", "Formation et emplois de l'imparfait", 6));
         lessonList.add(new Lesson(7, "Le futur proche", "Exprimer des actions futures imminentes", 7));
         lessonList.add(new Lesson(8, "Le subjonctif", "Introduction au mode subjonctif", 8));
+        lessonList.add(new Lesson(9, "Les pronoms", "Compléments d'objet direct et indirect", 9));
+        lessonList.add(new Lesson(10, "L'adverbe", "Formation et place des adverbes", 10));
+        lessonList.add(new Lesson(11, "La voix passive", "Transformation passive et active", 11));
+        lessonList.add(new Lesson(12, "Le conditionnel", "Exprimer un souhait ou une hypothèse", 12));
     }
 
     @Override
