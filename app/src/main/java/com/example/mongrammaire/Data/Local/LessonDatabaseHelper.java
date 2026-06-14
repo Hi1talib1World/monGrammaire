@@ -14,7 +14,7 @@ import java.util.List;
 public class LessonDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Lessons.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     // Table Lessons
     private static final String TABLE_LESSONS = "lessons";
@@ -85,42 +85,43 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < 5) {
+        if (oldVersion < 7) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_LESSONS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SRS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SYNC);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROGRESS);
             onCreate(db);
-        }
-        if (oldVersion < 6) {
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PROGRESS + "("
-                    + COLUMN_PROG_LESSON_ID + " INTEGER PRIMARY KEY,"
-                    + COLUMN_PROG_STEP_INDEX + " INTEGER DEFAULT 0,"
-                    + COLUMN_PROG_IS_COMPLETED + " INTEGER DEFAULT 0,"
-                    + "FOREIGN KEY(" + COLUMN_PROG_LESSON_ID + ") REFERENCES " + TABLE_LESSONS + "(" + COLUMN_ID + "))");
         }
     }
 
     private void seedLessons(SQLiteDatabase db) {
-        insertLesson(db, "Les Noms", "Un nom désigne une personne, un lieu ou une chose. Ils ont un genre (masculin/féminin) et un nombre (singulier/pluriel). Ex: Le chat, une ville.", "basics", 1);
-        insertLesson(db, "Les Articles", "Les articles définis (le, la, les) désignent une chose précise. Les indéfinis (un, une, des) désignent une chose non précisée.", "basics", 1);
-        insertLesson(db, "Les Pronoms Sujets", "Ils remplacent le nom pour éviter les répétitions : Je, Tu, Il/Elle, Nous, Vous, Ils/Elles. Ex: 'Il mange' au lieu de 'Le garçon mange'.", "basics", 1);
-        insertLesson(db, "La Phrase Simple", "Une phrase se construit généralement ainsi : Sujet + Verbe + Complément. Ex: 'Marie regarde un film.'", "phrases", 1);
-        insertLesson(db, "La Négation", "Pour nier une action, on utilise 'ne' avant le verbe et 'pas' après. Ex: 'Je ne travaille pas.'", "phrases", 2);
-        insertLesson(db, "L'Interrogation", "Il existe trois façons : l'intonation (Tu viens ?), 'Est-ce que' (Est-ce que tu viens ?), ou l'inversion (Viens-tu ?).", "phrases", 2);
-        insertLesson(db, "Salutations de base", "Le matin, on dit 'Bonjour'. Le soir, 'Bonsoir'. 'Salut' est utilisé de manière informelle entre amis.", "greeting", 1);
-        insertLesson(db, "Se Présenter", "Pour dire son nom : 'Je m'appelle...'. Pour demander l'identité : 'Comment t'appelles-tu ?'. Enchanté de vous rencontrer !", "greeting", 1);
-        insertLesson(db, "Dire Au Revoir", "La formule classique est 'Au revoir'. On peut aussi dire 'À bientôt', 'À demain' ou 'Bonne journée'.", "greeting", 1);
-        insertLesson(db, "Fruits et Légumes", "Les fruits : pomme, banane, orange. Les légumes : carotte, courgette, haricot. Indispensables pour une bonne santé !", "food", 1);
-        insertLesson(db, "Boissons", "L'eau est la boisson essentielle. On boit aussi du lait, du jus de fruit, du café ou du thé.", "food", 1);
-        insertLesson(db, "Les Repas", "Il y a quatre moments : le petit-déjeuner (matin), le déjeuner (midi), le goûter (après-midi) et le dîner (soir).", "food", 1);
-        insertLesson(db, "Animaux Domestiques", "Le chien et le chat sont les plus populaires. On trouve aussi le lapin, le hamster et les poissons.", "animal", 1);
-        insertLesson(db, "Animaux de la Ferme", "La vache produit du lait, la poule pond des oeufs. On y trouve aussi le cochon, le canard et le mouton.", "animal", 2);
-        insertLesson(db, "Animaux Sauvages", "Le lion est le roi de la savane. L'éléphant est le plus gros animal terrestre. Le singe vit dans les arbres.", "animal", 2);
-        insertLesson(db, "Vêtements de base", "Le t-shirt, le pantalon (un jean), le pull, la chemise. On porte des chaussettes et des chaussures aux pieds.", "clothing", 1);
-        insertLesson(db, "Vêtements d'Hiver", "Quand il fait froid, on porte un manteau, une écharpe, un bonnet et des gants pour rester au chaud.", "clothing", 1);
-        insertLesson(db, "Les Accessoires", "La ceinture, la montre, les lunettes de soleil, le chapeau ou la casquette. Ils complètent votre tenue.", "clothing", 2);
-        insertLesson(db, "Le Passé Composé", "Utilisé pour des actions terminées. Se construit avec l'auxiliaire être ou avoir + le participe passé. Ex: 'J'ai mangé'.", "advanced", 3);
-        insertLesson(db, "Le Futur Simple", "Indique une action à venir. Ex: 'Je mangerai'. On ajoute les terminaisons -ai, -as, -a, -ons, -ez, -ont à l'infinitif.", "advanced", 3);
+        insertLesson(db, "Les Noms", "[RULE] Un nom désigne une personne, un lieu ou une chose.\nIls ont un genre (masculin/féminin) et un nombre (singulier/pluriel).\n\n[EXAMPLE] Le chat -> [Masculin]\n[EXAMPLE] La ville -> [Féminin]\n[EXCEPTION] Certains noms ont la même forme au masculin et au féminin. Ex: Un/Une enfant.", "basics", 1);
+        
+        insertLesson(db, "Les Articles", "[RULE] Les articles se placent devant le nom.\n[RULE] Les articles définis (le, la, l', les) désignent une chose précise.\n[EXAMPLE] Le livre de Paul -> [Spécifique]\n[RULE] Les articles indéfinis (un, une, des) désignent une chose non précisée.\n[EXAMPLE] Un livre -> [N'importe lequel]", "basics", 1);
+        
+        insertLesson(db, "Les Pronoms Sujets", "[RULE] Ils remplacent le nom pour éviter les répétitions.\n[RULE] Singulier : Je, Tu, Il, Elle, On.\n[RULE] Pluriel : Nous, Vous, Ils, Elles.\n[EXAMPLE] Marie mange -> [Elle mange]\n[EXAMPLE] Paul et moi -> [Nous]", "basics", 1);
+        
+        insertLesson(db, "La Phrase Simple", "[RULE] Une phrase commence par une majuscule et finit par un point.\n[RULE] Structure de base : Sujet + Verbe + Complément.\n[EXAMPLE] Le chat (Sujet) dort (Verbe).\n[EXAMPLE] Marie regarde la télé -> [S + V + C]", "phrases", 1);
+        
+        insertLesson(db, "La Négation", "[RULE] Pour transformer une phrase à la forme négative, on utilise 'ne' et 'pas'.\n[RULE] 'ne' se place avant le verbe et 'pas' après.\n[EXAMPLE] Je travaille -> [Je ne travaille pas]\n[EXCEPTION] Devant une voyelle, 'ne' devient 'n''.\n[EXAMPLE] J'aime -> [Je n'aime pas]", "phrases", 2);
+        
+        insertLesson(db, "L'Interrogation", "[RULE] Il y a trois niveaux de langue pour poser une question.\n[EXAMPLE] Langue familière (intonation) : Tu viens ?\n[EXAMPLE] Langue courante (Est-ce que) : Est-ce que tu viens ?\n[EXAMPLE] Langue soutenue (inversion) : Viens-tu ?", "phrases", 2);
+        
+        insertLesson(db, "Salutations", "[RULE] Dire bonjour selon le moment de la journée.\n[EXAMPLE] Matin : Bonjour !\n[EXAMPLE] Soir : Bonsoir !\n[RULE] Entre amis, on peut utiliser des formes plus simples.\n[EXAMPLE] Salut ! -> [Informel]", "greeting", 1);
+        
+        insertLesson(db, "Se Présenter", "[RULE] Pour donner son prénom ou son nom.\n[EXAMPLE] Je m'appelle Jean.\n[EXAMPLE] Mon nom est Dupont.\n[RULE] Pour demander le nom de quelqu'un.\n[EXAMPLE] Comment t'appelles-tu ?", "greeting", 1);
+        
+        insertLesson(db, "Les Repas", "[RULE] Les quatre moments de consommation en France.\n[EXAMPLE] 8h : Le petit-déjeuner\n[EXAMPLE] 12h : Le déjeuner\n[EXAMPLE] 16h : Le goûter\n[EXAMPLE] 20h : Le dîner", "food", 1);
+        
+        insertLesson(db, "Les Animaux", "[RULE] Vocabulaire des animaux domestiques courants.\n[EXAMPLE] Le chat -> [Miaou]\n[EXAMPLE] Le chien -> [Ouaf]\n[EXAMPLE] L'oiseau -> [Cui-cui]\n[RULE] Les animaux de la ferme.\n[EXAMPLE] La vache -> [Meuh]", "animal", 1);
+
+        insertLesson(db, "Le Passé Composé", "[RULE] Utilisé pour exprimer une action ponctuelle terminée dans le passé.\n[RULE] Formation : Auxiliaire (Être ou Avoir) au présent + Participe Passé.\n[EXAMPLE] J'ai fini mes devoirs.\n[EXCEPTION] 14 verbes de mouvement utilisent l'auxiliaire ÊTRE.\n[EXAMPLE] Il est allé au cinéma.", "advanced", 3);
+        
+        insertLesson(db, "Le Futur Simple", "[RULE] Le futur simple exprime une action qui aura lieu plus tard.\n[RULE] Pour les verbes en -er et -ir, on garde l'infinitif et on ajoute les terminaisons : -ai, -as, -a, -ons, -ez, -ont.\n[EXAMPLE] Je parlerai français.\n[EXAMPLE] Tu finiras ton travail.\n[EXCEPTION] Les verbes irréguliers changent de radical : Être -> ser-, Avoir -> aur-.", "advanced", 3);
+        
+        insertLesson(db, "Les Adverbes", "[RULE] Un adverbe modifie un verbe, un adjectif ou un autre adverbe.\n[RULE] Beaucoup d'adverbes se forment à partir de l'adjectif féminin + -ment.\n[EXAMPLE] Heureuse -> Heureusement\n[EXAMPLE] Lente -> Lentement\n[EXCEPTION] Certains sont irréguliers : Bon -> Bien, Mauvais -> Mal.", "advanced", 2);
+
+        insertLesson(db, "Le Conditionnel", "[RULE] Utilisé pour exprimer un souhait, un conseil ou une hypothèse.\n[RULE] Formation : Radical du futur + terminaisons de l'imparfait (-ais, -ais, -ait, -ions, -iez, -aient).\n[EXAMPLE] J'aimerais voyager.\n[EXAMPLE] Si j'avais le temps, je dormirais.\n[EXAMPLE] Pourriez-vous m'aider ? -> [Politesse]", "advanced", 3);
     }
 
     private void insertLesson(SQLiteDatabase db, String title, String content, String category, int difficulty) {
