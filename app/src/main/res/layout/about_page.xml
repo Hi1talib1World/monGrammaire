@@ -6,6 +6,16 @@
 
     <LinearLayout style="@style/about_About.wrapper">
 
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Retour"
+            android:layout_gravity="start" />
+
         <LinearLayout style="@style/about_sub_wrapper"
             android:background="#EAE8FF"
 
