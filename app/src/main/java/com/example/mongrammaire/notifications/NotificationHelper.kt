@@ -14,6 +14,7 @@ object NotificationHelper {
     private const val CHANNEL_ID = "daily_motivation"
     private const val PREF_NOTIFICATIONS_ENABLED = "notifications_enabled"
 
+    @JvmStatic
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Motivations Quotidiennes"
@@ -28,6 +29,7 @@ object NotificationHelper {
         }
     }
 
+    @JvmStatic
     fun scheduleDailyNotification(context: Context) {
         if (!isNotificationsEnabled()) return
 
@@ -62,6 +64,7 @@ object NotificationHelper {
         }
     }
 
+    @JvmStatic
     fun cancelNotification(context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, NotificationReceiver::class.java)
@@ -69,10 +72,12 @@ object NotificationHelper {
         alarmManager.cancel(pendingIntent)
     }
 
+    @JvmStatic
     fun setNotificationsEnabled(enabled: Boolean) {
         Hawk.put(PREF_NOTIFICATIONS_ENABLED, enabled)
     }
 
+    @JvmStatic
     fun isNotificationsEnabled(): Boolean {
         return Hawk.get(PREF_NOTIFICATIONS_ENABLED, true)
     }
