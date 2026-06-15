@@ -31,8 +31,8 @@ public class MyApplication extends Application {
         Hawk.init(this).build();
 
         // Initialize Notifications
-        NotificationHelper.INSTANCE.createNotificationChannel(this);
-        NotificationHelper.INSTANCE.scheduleDailyNotification(this);
+        NotificationHelper.createNotificationChannel(this);
+        NotificationHelper.scheduleDailyNotification(this);
 
         // Apply Material 3 Dynamic Colors
         DynamicColors.applyToActivitiesIfAvailable(this);
