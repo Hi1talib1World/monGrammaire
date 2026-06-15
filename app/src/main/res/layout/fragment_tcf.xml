@@ -27,9 +27,6 @@
                 app:icon="@drawable/ic_back"
                 app:iconSize="24dp"
                 app:iconTint="@color/primary"
-                android:backgroundTint="@color/white"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent"
-                android:elevation="2dp"
                 android:contentDescription="Retour" />
 
             <LinearLayout
@@ -124,12 +121,15 @@
 
                 <!-- Listening -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_listening"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="#E3F2FD">
+                    app:cardBackgroundColor="#E3F2FD"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -154,12 +154,15 @@
 
                 <!-- Structure -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_structure"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="#F1F8E9">
+                    app:cardBackgroundColor="#F1F8E9"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -184,12 +187,15 @@
 
                 <!-- Reading -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_reading"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="#FFF3E0">
+                    app:cardBackgroundColor="#FFF3E0"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -214,12 +220,15 @@
 
                 <!-- Writing -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_writing"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="#FCE4EC">
+                    app:cardBackgroundColor="#FCE4EC"
+                    android:clickable="true"
+                    android:focusable="true">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
