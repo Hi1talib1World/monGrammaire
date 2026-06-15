@@ -500,6 +500,16 @@ public class AboutPage {
     public View create() {
         TextView description = (TextView) mView.findViewById(R.id.description);
         ImageView image = (ImageView) mView.findViewById(R.id.image);
+        View btnBack = mView.findViewById(R.id.btn_back);
+
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> {
+                if (mContext instanceof android.app.Activity) {
+                    ((android.app.Activity) mContext).onBackPressed();
+                }
+            });
+        }
+
         if (mImage > 0) {
             image.setImageResource(mImage);
         }
