@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.mongrammaire.Utils.ToastHelper
 import com.example.mongrammaire.databinding.ActivitySettingsBinding
+import com.example.mongrammaire.notifications.NotificationHelper
 import kotlinx.coroutines.launch
 
 /**
@@ -42,6 +43,17 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onThemeToggled(isChecked)
+        }
+
+        binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
+            NotificationHelper.INSTANCE.setNotificationsEnabled(isChecked)
+            if (isChecked) {
+                NotificationHelper.INSTANCE.scheduleDailyNotification(this)
+                ToastHelper.showCustomToast(this, "Notifications activées")
+            } else {
+                NotificationHelper.INSTANCE.cancelNotification(this)
+                ToastHelper.showCustomToast(this, "Notifications désactivées")
+            }
         }
 
         binding.switchEnableUnits.setOnCheckedChangeListener { _, isChecked ->
@@ -81,6 +93,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Interactivity Guarding (Point 3)
         binding.switchDarkMode.isChecked = state.isDarkMode
+        binding.switchNotifications.isChecked = NotificationHelper.INSTANCE.isNotificationsEnabled()
         binding.switchEnableUnits.isChecked = state.isMasterUnitsEnabled
         
         binding.rgUnitSystem.isEnabled = state.isMasterUnitsEnabled
