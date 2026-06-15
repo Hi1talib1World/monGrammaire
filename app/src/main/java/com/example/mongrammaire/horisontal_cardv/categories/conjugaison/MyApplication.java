@@ -10,6 +10,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.color.DynamicColors;
 import com.google.firebase.FirebaseApp;
+import com.example.mongrammaire.notifications.NotificationHelper;
+import com.orhanobut.hawk.Hawk;
 
 public class MyApplication extends Application {
 
@@ -24,7 +26,14 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        
+
+        // Initialize Hawk for storage
+        Hawk.init(this).build();
+
+        // Initialize Notifications
+        NotificationHelper.INSTANCE.createNotificationChannel(this);
+        NotificationHelper.INSTANCE.scheduleDailyNotification(this);
+
         // Apply Material 3 Dynamic Colors
         DynamicColors.applyToActivitiesIfAvailable(this);
 
