@@ -15,25 +15,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:padding="24dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Préparation TCF"
-                android:textColor="@color/primary"
-                android:textSize="28sp"
-                android:fontFamily="sans-serif-black" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_back"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:icon="@drawable/ic_back"
+                app:iconSize="24dp"
+                app:iconTint="@color/primary"
+                android:backgroundTint="@color/white"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent"
+                android:elevation="2dp"
+                android:contentDescription="Retour" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Test de Connaissance du Français"
-                android:textColor="@color/onSurfaceVariant"
-                android:textSize="16sp"
-                android:alpha="0.7" />
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Préparation TCF"
+                    android:textColor="@color/primary"
+                    android:textSize="28sp"
+                    android:fontFamily="sans-serif-black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Test de Connaissance du Français"
+                    android:textColor="@color/onSurfaceVariant"
+                    android:textSize="14sp"
+                    android:alpha="0.7" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
