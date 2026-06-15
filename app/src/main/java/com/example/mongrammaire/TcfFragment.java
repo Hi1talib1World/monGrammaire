@@ -36,6 +36,8 @@ public class TcfFragment extends Fragment {
             );
         }
 
+        setupModuleClicks(v);
+
         View btnBack = v.findViewById(R.id.btn_back);
         if (btnBack != null) {
             btnBack.setOnClickListener(view -> {
@@ -46,5 +48,36 @@ public class TcfFragment extends Fragment {
         }
 
         return v;
+    }
+
+    private void setupModuleClicks(View v) {
+        View cardListening = v.findViewById(R.id.card_listening);
+        if (cardListening != null) {
+            cardListening.setOnClickListener(view -> startModuleTraining("Compréhension orale"));
+        }
+
+        View cardStructure = v.findViewById(R.id.card_structure);
+        if (cardStructure != null) {
+            cardStructure.setOnClickListener(view -> startModuleTraining("Structure de la langue"));
+        }
+
+        View cardReading = v.findViewById(R.id.card_reading);
+        if (cardReading != null) {
+            cardReading.setOnClickListener(view -> startModuleTraining("Compréhension écrite"));
+        }
+
+        View cardWriting = v.findViewById(R.id.card_writing);
+        if (cardWriting != null) {
+            cardWriting.setOnClickListener(view -> startModuleTraining("Expression écrite"));
+        }
+    }
+
+    private void startModuleTraining(String moduleName) {
+        android.content.Intent intent = new android.content.Intent(getActivity(), TcfModuleActivity.class);
+        intent.putExtra("MODULE_NAME", moduleName);
+        startActivity(intent);
+        if (getActivity() != null) {
+            getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
     }
 }
