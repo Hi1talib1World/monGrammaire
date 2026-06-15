@@ -20,6 +20,7 @@ public class Cours2ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cour2list);
 
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
