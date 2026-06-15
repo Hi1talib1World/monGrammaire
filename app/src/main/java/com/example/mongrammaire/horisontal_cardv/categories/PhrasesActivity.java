@@ -12,5 +12,9 @@ public class PhrasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases);
+
+        if (findViewById(R.id.btn_back) != null) {
+            findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
+        }
     }
 }
