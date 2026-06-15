@@ -31,7 +31,7 @@
 
     <style name="Widget.MonGrammaire.NavigationView" parent="Widget.Material3.NavigationView">
         <item name="itemShapeAppearance">@style/ShapeAppearance.MonGrammaire.MediumComponent</item>
-        <item name="itemShapeFillColor">@color/secondaryContainer</item>
+        <item name="itemShapeFillColor">@android:color/transparent</item>
     </style>
 
     <style name="ShapeAppearance.MonGrammaire.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
