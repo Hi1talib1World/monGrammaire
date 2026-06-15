@@ -36,6 +36,15 @@ public class TcfFragment extends Fragment {
             );
         }
 
+        View btnBack = v.findViewById(R.id.btn_back);
+        if (btnBack != null) {
+            btnBack.setOnClickListener(view -> {
+                if (getActivity() != null) {
+                    getActivity().onBackPressed();
+                }
+            });
+        }
+
         return v;
     }
 }
