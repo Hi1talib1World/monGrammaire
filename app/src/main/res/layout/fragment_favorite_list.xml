@@ -27,9 +27,6 @@
                 app:icon="@drawable/ic_back"
                 app:iconSize="24dp"
                 app:iconTint="@color/primary"
-                android:backgroundTint="@color/white"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent"
-                android:elevation="2dp"
                 android:contentDescription="Retour" />
 
             <TextView
