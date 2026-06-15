@@ -107,6 +107,9 @@
         <activity
             android:name=".FullSimulationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TcfModuleActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
             android:name=".GrammarWidgetProvider"
