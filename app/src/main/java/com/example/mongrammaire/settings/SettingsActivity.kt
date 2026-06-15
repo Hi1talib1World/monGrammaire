@@ -46,12 +46,12 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
-            NotificationHelper.INSTANCE.setNotificationsEnabled(isChecked)
+            NotificationHelper.setNotificationsEnabled(isChecked)
             if (isChecked) {
-                NotificationHelper.INSTANCE.scheduleDailyNotification(this)
+                NotificationHelper.scheduleDailyNotification(this)
                 ToastHelper.showCustomToast(this, "Notifications activées")
             } else {
-                NotificationHelper.INSTANCE.cancelNotification(this)
+                NotificationHelper.cancelNotification(this)
                 ToastHelper.showCustomToast(this, "Notifications désactivées")
             }
         }
@@ -93,7 +93,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Interactivity Guarding (Point 3)
         binding.switchDarkMode.isChecked = state.isDarkMode
-        binding.switchNotifications.isChecked = NotificationHelper.INSTANCE.isNotificationsEnabled()
+        binding.switchNotifications.isChecked = NotificationHelper.isNotificationsEnabled()
         binding.switchEnableUnits.isChecked = state.isMasterUnitsEnabled
         
         binding.rgUnitSystem.isEnabled = state.isMasterUnitsEnabled
