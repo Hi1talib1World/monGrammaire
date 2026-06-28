@@ -32,7 +32,7 @@
             android:text="Excellent !"
             android:textColor="#2E7D32"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             android:layout_marginBottom="8dp" />
 
         <TextView
