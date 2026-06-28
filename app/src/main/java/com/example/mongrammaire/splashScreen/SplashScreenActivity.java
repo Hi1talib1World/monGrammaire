@@ -11,6 +11,12 @@ import com.example.mongrammaire.R;
 import com.example.mongrammaire.home;
 import com.example.mongrammaire.onboarding.OnboardingActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 public class SplashScreenActivity extends AppCompatActivity {
     private static final String PREF_NAME = "onboarding_prefs";
     private static final String KEY_IS_FIRST_RUN_COMPLETED = "is_first_run_completed";
@@ -18,8 +24,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_splash_screen);
+
+        checkNotificationPermission();
 
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
