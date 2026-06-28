@@ -41,7 +41,7 @@
             android:layout_marginEnd="16dp"
             android:text="Titre du cours"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             android:textColor="@color/onSurface"
             app:layout_constraintTop_toTopOf="@+id/img1"
             app:layout_constraintStart_toEndOf="@+id/img1"
