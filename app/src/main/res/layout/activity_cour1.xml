@@ -7,11 +7,24 @@
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/ic_back"
+        app:iconSize="24dp"
+        app:iconTint="@color/onSurface"
+        android:contentDescription="Retour" />
+
     <LinearLayout
         android:id="@+id/linear_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_toEndOf="@id/btn_back"
+        android:layout_centerVertical="false"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp">
 
         <TextView
             android:layout_width="wrap_content"
