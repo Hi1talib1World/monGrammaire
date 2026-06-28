@@ -71,7 +71,7 @@
             android:text="CONTINUER"
             android:textAllCaps="true"
             android:textSize="16sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             app:cornerRadius="18dp" />
 
     </FrameLayout>
