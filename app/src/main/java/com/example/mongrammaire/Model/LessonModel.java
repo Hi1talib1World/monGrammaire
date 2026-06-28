@@ -3,14 +3,16 @@ package com.example.mongrammaire.Model;
 public class LessonModel {
     private int id;
     private String title;
+    private String description;
     private String content;
     private String category;
     private int difficulty; // 1: Easy, 2: Medium, 3: Hard
 
     public LessonModel() {}
 
-    public LessonModel(String title, String content, String category, int difficulty) {
+    public LessonModel(String title, String description, String content, String category, int difficulty) {
         this.title = title;
+        this.description = description;
         this.content = content;
         this.category = category;
         this.difficulty = difficulty;
@@ -30,6 +32,14 @@ public class LessonModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {
