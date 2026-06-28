@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.mongrammaire.Alphabets.acceuil;
+import com.example.mongrammaire.DictionnaireFragment;
 import com.example.mongrammaire.courslist.cards.favorites.FavoriteListFragment;
 import com.example.mongrammaire.HomeFragment;
 import com.example.mongrammaire.Quiz.MainGameActivity;
@@ -132,7 +132,7 @@ public class NAVDRAWER extends AppCompatActivity
             //home screen
             fragment = new HomeFragment();
         }else if (id == R.id.nav_home) {
-            fragment = new acceuil();
+            fragment = new DictionnaireFragment();
         } else if (id == R.id.nav_gallery) {
             fragment = new cours();
         } else if (id == R.id.nav_tcf) {
