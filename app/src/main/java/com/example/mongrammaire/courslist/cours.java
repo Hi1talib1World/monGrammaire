@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.courslist.cards.favorites.Model;
 
+import com.example.mongrammaire.Data.Local.LessonDatabaseHelper;
+import com.example.mongrammaire.Model.LessonModel;
+
 import com.example.mongrammaire.R;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 import com.google.android.material.button.MaterialButton;
@@ -34,6 +37,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     private String currentCategory = "Tous";
     private String currentSearchQuery = "";
     RecyclerView recyclerView;
+    private LessonDatabaseHelper dbHelper;
 
     public cours() {
         // Required empty public constructor
@@ -48,6 +52,8 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cours, container, false);
+        
+        dbHelper = new LessonDatabaseHelper(requireContext());
 
         recyclerView = v.findViewById(R.id.recycler_view1);
         recyclerView.setHasFixedSize(true);
@@ -69,6 +75,15 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
             popup.getMenu().add("Tous");
             popup.getMenu().add("Grammaire");
             popup.getMenu().add("Verbe");
+            popup.getMenu().add("Vocabulaire");
+            popup.getMenu().add("Orthographe");
+            popup.getMenu().add("Conjugaison");
+            popup.getMenu().add("Culture");
+            popup.getMenu().add("Expressions");
+            popup.getMenu().add("Phonétique");
+            popup.getMenu().add("Littérature");
+            popup.getMenu().add("Quotidien");
+            popup.getMenu().add("TCF/DELF");
             
             popup.setOnMenuItemClickListener(item -> {
                 String title = item.getTitle().toString();
@@ -101,7 +116,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
     private void applyFilters() {
         List<Model> filteredList = new ArrayList<>();
         for (Model model : allModels) {
-            boolean matchesCategory = currentCategory.equals("Tous") || model.getCategory().equals(currentCategory);
+            boolean matchesCategory = currentCategory.equals("Tous") || model.getCategory().equalsIgnoreCase(currentCategory);
             boolean matchesSearch = model.getTitle().toLowerCase().contains(currentSearchQuery.toLowerCase());
             
             if (matchesCategory && matchesSearch) {
@@ -113,50 +128,68 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
 
     private ArrayList<Model> getPlayers(){
         ArrayList<Model> models = new ArrayList<>();
+        List<LessonModel> dbLessons = dbHelper.getAllLessons();
 
-        // Grammaire Category
-        models.add(new Model(1, "Accords au pluriel", 
-            "Règles d'accord du pluriel", 
-            "[RULE] Le pluriel des noms se forme généralement en ajoutant un 's' à la fin du mot. [EXAMPLE] Comment dit-on 'des chats' au singulier ? -> [un chat] [EXCEPTION] Les noms en -au, -eau, -eu prennent un 'x' : un château -> [des châteaux].", 
-            R.drawable.n1, "Grammaire", 45));
+        for (LessonModel lesson : dbLessons) {
+            int imgRes = R.drawable.n1; // Default
+            switch (lesson.getCategory().toLowerCase()) {
+                case "basics": imgRes = R.drawable.n1; break;
+                case "phrases": imgRes = R.drawable.n2; break;
+                case "greeting": imgRes = R.drawable.n3; break;
+                case "food": imgRes = R.drawable.n4; break;
+                case "animal": imgRes = R.drawable.n5; break;
+                case "advanced": imgRes = R.drawable.n6; break;
+                case "grammaire": imgRes = R.drawable.n1; break;
+                case "verbe": imgRes = R.drawable.n7; break;
+                case "vocabulaire": imgRes = R.drawable.n3; break;
+                case "orthographe": imgRes = R.drawable.n5; break;
+                case "conjugaison": imgRes = R.drawable.n8; break;
+                case "culture": imgRes = R.drawable.n1; break;
+            }
 
-        models.add(new Model(2, "Prépositions", 
-            "Utilisation des prépositions", 
-            "[RULE] Les prépositions de lieu servent à situer une personne ou un objet. [EXAMPLE] Je vais ____ Paris -> [à] [EXCEPTION] On utilise 'Dans' pour l'intérieur d'un espace fermé : Dans la boîte.", 
-            R.drawable.ufo, "Grammaire", 60));
-
-        models.add(new Model(3, "Adjectifs possessifs", 
-            "Mon, ton, son...", 
-            "[RULE] Ils s'accordent en genre et en nombre avec le nom possédé. [EXAMPLE] C'est la voiture de Marie. C'est ____ voiture -> [sa] [EXCEPTION] Devant une voyelle, ma/ta/sa deviennent mon/ton/son. Ex: Mon amie.", 
-            R.drawable.n2, "Grammaire", 30));
-
-        models.add(new Model(4, "Articles", 
-            "Définis, indéfinis, partitifs", 
-            "[RULE] Il existe trois types d'articles en français. [EXAMPLE] Je mange ____ pain -> [du] [EXCEPTION] Note sur l'élision : 'le' ou 'la' deviennent 'l'' devant une voyelle. Ex: l'oiseau.", 
-            R.drawable.satellite, "Grammaire", 100));
-
-        models.add(new Model(5, "Négation", 
-            "Ne... pas, ne... plus...", 
-            "[RULE] La structure de base est : Ne + Verbe + Pas. [EXAMPLE] Je ____ mange ____ -> [ne / pas] [EXCEPTION] Autres formes : Ne... plus (arrêt), Ne... jamais (fréquence nulle), Ne... rien (objet nul).", 
-            R.drawable.n3, "Grammaire", 15));
-
-        // Verbe Category
-        models.add(new Model(6, "Passé composé", 
-            "Avec avoir et être", 
-            "[RULE] Se forme avec l'auxiliaire au présent + Participe Passé. [EXAMPLE] Hier, j'____ (manger) une pomme -> [ai mangé] [EXCEPTION] Auxiliaire ÊTRE pour les 14 verbes de mouvement (aller, venir...) et les verbes pronominaux. Elle est partie.", 
-            R.drawable.n7, "Verbe", 50));
-
-        models.add(new Model(7, "Imparfait", 
-            "Description et habitude", 
-            "[RULE] Radical de 'nous' au présent + terminaisons -ais, -ais, -ait, -ions, -iez, -aient. [EXAMPLE] Quand j'étais petit, je ____ (jouer) au parc -> [jouais] [EXCEPTION] L'imparfait exprime une action longue ou répétée dans le passé.", 
-            R.drawable.n8, "Verbe", 40));
-
-        models.add(new Model(8, "Futur simple",
-            "Actions à venir", 
-            "[RULE] Formation : Infinitif + terminaisons -ai, -as, -a, -ons, -ez, -ont. [EXAMPLE] Demain, nous ____ (finir) le projet -> [finirons] [EXCEPTION] Radicaux irréguliers : être (ser-), avoir (aur-), aller (ir-).",
-            R.drawable.n2, "Verbe", 90));
+            models.add(new Model(
+                lesson.getId(),
+                lesson.getTitle(),
+                lesson.getDescription(),
+                lesson.getContent(),
+                imgRes,
+                mapCategoryToUI(lesson.getCategory()),
+                0 // Initial progress
+            ));
+        }
 
         return models;
+    }
+
+    private String mapCategoryToUI(String dbCategory) {
+        if (dbCategory == null) return "Grammaire";
+        
+        // Use database names directly if they already match UI labels
+        switch (dbCategory) {
+            case "Grammaire":
+            case "Verbe":
+            case "Vocabulaire":
+            case "Orthographe":
+            case "Conjugaison":
+            case "Culture":
+            case "Expressions":
+            case "Phonétique":
+            case "Littérature":
+            case "Quotidien":
+            case "TCF/DELF":
+                return dbCategory;
+            default:
+                // Backward compatibility for legacy internal names
+                switch (dbCategory.toLowerCase()) {
+                    case "basics": return "Grammaire";
+                    case "phrases": return "Expressions";
+                    case "greeting": return "Vocabulaire";
+                    case "food": return "Vocabulaire";
+                    case "animal": return "Vocabulaire";
+                    case "advanced": return "Grammaire";
+                    default: return "Grammaire";
+                }
+        }
     }
 
     public void onButtonPressed(Uri uri) {
