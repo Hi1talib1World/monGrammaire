@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/calsans"
         android:text="Créer un compte"
         android:textColor="@color/primary"
         android:textSize="28sp"
@@ -128,7 +128,7 @@
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/calsans"
             android:text="Se connecter"
             android:textColor="@color/primary" />
     </LinearLayout>
