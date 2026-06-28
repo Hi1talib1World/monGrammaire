@@ -3,6 +3,6 @@
 
     <style name="MenuItems" parent="AppTheme">
         <item name="android:textSize">23sp</item>
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:fontFamily">@font/calsans</item>
     </style>
 </resources>
