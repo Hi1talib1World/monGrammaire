@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Subordonnés"
             android:textSize="22sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             android:textColor="@color/onSurface"
             android:layout_marginStart="8dp" />
 
