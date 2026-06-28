@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp"
-        android:background="@color/surface">
+        android:padding="16dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_back"
@@ -68,19 +67,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="16dp"
-        android:background="@color/surface">
+        android:paddingBottom="16dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_filter"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tous"
             android:textAllCaps="false"
+            android:textColor="@color/primary"
             app:cornerRadius="24dp"
             app:icon="@drawable/ic_menu"
             app:iconSize="18dp"
+            app:iconTint="@color/primary"
             app:iconGravity="textEnd"
             app:iconPadding="8dp" />
 
