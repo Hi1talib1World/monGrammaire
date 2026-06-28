@@ -22,12 +22,12 @@ public class TcfFragment extends Fragment {
         if (btnSimulate != null) {
             btnSimulate.setOnClickListener(view -> 
                 new com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
-                    .setTitle("Simulation d'examen TCF")
-                    .setMessage("Vous allez démarrer un examen blanc complet contenant les 4 modules.\n\n• Temps limité : 90 minutes\n• Aucun retour en arrière possible\n\nVoulez-vous commencer ?")
+                    .setTitle("Simulation Réelle des Cours")
+                    .setMessage("Vous allez démarrer une simulation basée sur les leçons de l'application.\n\n• Questions extraites des exemples\n• Temps limité : 45 minutes\n\nVoulez-vous commencer ?")
                     .setCancelable(false)
                     .setNegativeButton("Annuler", (dialog, which) -> dialog.dismiss())
                     .setPositiveButton("Commencer", (dialog, which) -> {
-                        android.content.Intent intent = new android.content.Intent(getActivity(), FullSimulationActivity.class);
+                        android.content.Intent intent = new android.content.Intent(getActivity(), LessonSimulationActivity.class);
                         intent.putExtra("IS_GLOBAL_SIMULATION", true);
                         startActivity(intent);
                         requireActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_out);
