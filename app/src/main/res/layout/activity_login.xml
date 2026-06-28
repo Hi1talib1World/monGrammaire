@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/calsans"
         android:text="Bon retour !"
         android:textColor="@color/primary"
         android:textSize="28sp"
@@ -123,7 +123,7 @@
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/calsans"
             android:text="S'inscrire"
             android:textColor="@color/primary" />
     </LinearLayout>
