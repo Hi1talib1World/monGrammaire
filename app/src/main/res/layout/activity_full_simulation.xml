@@ -50,7 +50,7 @@
                     android:paddingHorizontal="24dp"
                     android:paddingVertical="8dp"
                     android:text="01:30:00"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/calsans"
                     android:textSize="18sp"
                     android:textColor="@color/primary" />
             </com.google.android.material.card.MaterialCardView>
@@ -135,7 +135,7 @@
                     android:padding="24dp"
                     android:text="Question text goes here..."
                     android:textSize="20sp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/calsans"
                     android:textColor="@color/onSurface" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -232,7 +232,7 @@
                     android:layout_marginTop="24dp"
                     android:text="Résultats de l'Examen"
                     android:textSize="24sp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/calsans"
                     android:textColor="@color/onSurface" />
 
                 <com.google.android.material.card.MaterialCardView
@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:text="Score: 32 / 40"
                             android:textSize="32sp"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/calsans"
                             android:textColor="@color/primary" />
 
                         <TextView
@@ -265,7 +265,7 @@
                             android:layout_marginTop="8dp"
                             android:text="Niveau estimé : B2"
                             android:textSize="20sp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/calsans"
                             android:textColor="@color/onSurfaceVariant" />
 
                     </LinearLayout>
