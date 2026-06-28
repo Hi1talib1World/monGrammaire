@@ -31,7 +31,7 @@
             android:text="Pas tout à fait !"
             android:textColor="#C62828"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:text="Correct Answer"
             android:textColor="#B71C1C"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/calsans"
             android:layout_marginBottom="24dp"
             android:gravity="center" />
 
