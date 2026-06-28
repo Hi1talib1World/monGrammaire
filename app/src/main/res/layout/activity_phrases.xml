@@ -36,7 +36,7 @@
             android:layout_marginStart="16dp"
             android:text="Phrases"
             android:textSize="28sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             android:textColor="@color/primary" />
 
     </LinearLayout>
