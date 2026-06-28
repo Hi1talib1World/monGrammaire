@@ -20,6 +20,7 @@ class TcfModuleActivity : AppCompatActivity() {
     
     private var questions: List<TriviaQuestion> = emptyList()
     private var currentQuestionIndex = 0
+    private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +42,30 @@ class TcfModuleActivity : AppCompatActivity() {
             if (binding.optionsGroup.checkedRadioButtonId == -1) {
                 ToastHelper.showCustomToast(this, "Veuillez choisir une réponse")
             } else {
-                moveToNextQuestion()
+                checkAnswerAndMove()
             }
+        }
+    }
+
+    private fun checkAnswerAndMove() {
+        val selectedId = binding.optionsGroup.checkedRadioButtonId
+        val selectedText = when (selectedId) {
+            binding.rbOptA.id -> binding.rbOptA.text
+            binding.rbOptB.id -> binding.rbOptB.text
+            binding.rbOptC.id -> binding.rbOptC.text
+            binding.rbOptD.id -> binding.rbOptD.text
+            else -> ""
+        }
+
+        if (selectedText == questions[currentQuestionIndex].answer) {
+            score++
+        }
+
+        currentQuestionIndex++
+        if (currentQuestionIndex < questions.size) {
+            displayQuestion(currentQuestionIndex)
+        } else {
+            finishTraining()
         }
     }
 
@@ -59,8 +82,6 @@ class TcfModuleActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val loadedQuestions = withContext(Dispatchers.IO) {
                 val db = TriviaQuizHelper(this@TcfModuleActivity)
-                // Filter logic would go here if we had module-specific questions.
-                // For now, we take 10 random questions as a placeholder for the training module.
                 db.allOfTheQuestions.shuffled().take(10)
             }
 
@@ -91,18 +112,13 @@ class TcfModuleActivity : AppCompatActivity() {
         binding.tvProgress.text = "Question ${index + 1} / ${questions.size}"
     }
 
-    private fun moveToNextQuestion() {
-        currentQuestionIndex++
-        if (currentQuestionIndex < questions.size) {
-            displayQuestion(currentQuestionIndex)
-        } else {
-            finishTraining()
-        }
-    }
-
     private fun finishTraining() {
-        ToastHelper.showCustomToast(this, "Entraînement terminé !")
-        finish()
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Entraînement terminé")
+            .setMessage("Votre score : $score / ${questions.size}\n\nContinuez à vous entraîner pour améliorer votre niveau !")
+            .setCancelable(false)
+            .setPositiveButton("Terminer") { _, _ -> finish() }
+            .show()
     }
 
     override fun finish() {
