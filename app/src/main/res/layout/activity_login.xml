@@ -6,6 +6,18 @@
     android:background="@color/background"
     android:padding="24dp">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/ic_back"
+        app:iconSize="24dp"
+        app:iconTint="@color/primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Retour" />
+
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="120dp"
