@@ -34,7 +34,7 @@
             android:text="Associez les mots"
             android:textColor="@color/onSurface"
             android:textSize="20sp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/calsans"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
