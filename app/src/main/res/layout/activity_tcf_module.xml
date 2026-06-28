@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Entraînement"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/calsans"
                 android:textSize="20sp"
                 android:textColor="@color/primary"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -113,7 +113,7 @@
                     android:padding="24dp"
                     android:text="Question text..."
                     android:textSize="20sp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/calsans"
                     android:textColor="@color/onSurface" />
             </com.google.android.material.card.MaterialCardView>
 
