@@ -63,6 +63,7 @@ public class TriviaQuizHelper extends SQLiteOpenHelper {
     void allQuestion() {
         ArrayList<TriviaQuestion> arraylist = new ArrayList<>();
 
+        // Original Questions
         arraylist.add(new TriviaQuestion("Choisissez la forme correcte : 'Ils (manger) une pomme.'", "mange", "manges", "mangent", "mangez", "mangent"));
         arraylist.add(new TriviaQuestion("Quel est le pluriel correct de 'le ciel' ?", "les ciels", "les cielle", "les cieux", "les cieuxs", "les cieux"));
         arraylist.add(new TriviaQuestion("Complétez la phrase : 'Elle ____ partie tôt ce matin.'", "a", "est", "es", "as", "est"));
@@ -83,6 +84,51 @@ public class TriviaQuizHelper extends SQLiteOpenHelper {
         arraylist.add(new TriviaQuestion("Quel est le futur simple de 'je suis' ?", "je serai", "je serais", "j'étais", "je fus", "je serai"));
         arraylist.add(new TriviaQuestion("Accordez : 'Les filles sont (partir)'.", "parti", "partis", "partie", "parties", "partie"));
         arraylist.add(new TriviaQuestion("Complétez : 'L'homme ____ chante est mon oncle.'", "qui", "que", "dont", "où", "qui"));
+
+        // New TCF Simulation Questions (A1-C2)
+        arraylist.add(new TriviaQuestion("Niveau A1 : Quel jour vient après le mardi ?", "Lundi", "Mercredi", "Jeudi", "Vendredi", "Mercredi"));
+        arraylist.add(new TriviaQuestion("Niveau A1 : 'Je ____ un café, s'il vous plaît.'", "veux", "voudrais", "voulais", "voulu", "voudrais"));
+        arraylist.add(new TriviaQuestion("Niveau A2 : Il ____ froid hier soir.", "a fait", "fait", "faisait", "fera", "a fait"));
+        arraylist.add(new TriviaQuestion("Niveau A2 : Où est mon sac ? Je ne ____ trouve pas.", "le", "la", "lui", "en", "le"));
+        arraylist.add(new TriviaQuestion("Niveau B1 : Bien qu'il ____ tard, il continue de travailler.", "est", "soit", "sera", "était", "soit"));
+        arraylist.add(new TriviaQuestion("Niveau B1 : Si j'avais de l'argent, je ____ une voiture.", "achète", "achèterai", "achèterais", "avais acheté", "achèterais"));
+        arraylist.add(new TriviaQuestion("Niveau B2 : Il est impératif que vous ____ cette décision.", "prenez", "preniez", "prendrez", "prendrez", "preniez"));
+        arraylist.add(new TriviaQuestion("Niveau B2 : C'est le problème ____ tout le monde discute.", "que", "dont", "lequel", "où", "dont"));
+        arraylist.add(new TriviaQuestion("Niveau C1 : Sa réussite est due à son travail, ____ acharné.", "quoique", "sinon", "voire", "même", "voire"));
+        arraylist.add(new TriviaQuestion("Niveau C1 : ____ il soit intelligent, il a échoué.", "Malgré", "Quoiqu'", "Cependant", "Pourtant", "Quoiqu'"));
+        arraylist.add(new TriviaQuestion("Niveau C2 : Il a agi ____ de cause.", "en toute connaissance", "à cause", "parce que", "en raison", "en toute connaissance"));
+        arraylist.add(new TriviaQuestion("Niveau C2 : Quel est le synonyme de 'procrastiner' ?", "se hâter", "différer", "travailler", "avancer", "différer"));
+
+        arraylist.add(new TriviaQuestion("Structure : 'Je voudrais savoir si vous ____ demain.'", "venez", "viendrez", "êtes venu", "veniez", "viendrez"));
+        arraylist.add(new TriviaQuestion("Grammaire : 'Les personnes ____ j'ai rencontrées sont sympathiques.'", "que", "qui", "dont", "auxquelles", "que"));
+        arraylist.add(new TriviaQuestion("Vocabulaire : Un synonyme de 'bruyant' est ____.", "calme", "sonore", "silencieux", "tranquille", "sonore"));
+        arraylist.add(new TriviaQuestion("Orthographe : 'Il est ____ de partir maintenant.'", "temps", "tan", "tant", "tem", "temps"));
+        arraylist.add(new TriviaQuestion("TCF : Quel est l'antonyme de 'éphémère' ?", "court", "durable", "rapide", "bref", "durable"));
+        arraylist.add(new TriviaQuestion("TCF : 'Il s'en est fallu de peu ____ il ne tombe.'", "qu'", "pour qu'", "qu'à", "afin qu'", "qu'"));
+        arraylist.add(new TriviaQuestion("TCF : 'Je ne pense pas qu'il ____ raison.'", "a", "as", "ait", "aura", "ait"));
+        arraylist.add(new TriviaQuestion("TCF : 'Pourriez-vous me dire ____ se trouve la gare ?'", "que", "qui", "où", "quand", "où"));
+
+        arraylist.add(new TriviaQuestion("Niveau B1 : J'ai acheté ce livre ____ l'offrir à mon frère.", "pour", "par", "avec", "dans", "pour"));
+        arraylist.add(new TriviaQuestion("Niveau B2 : Il ne cesse de se plaindre ____ son travail.", "de", "sur", "pour", "avec", "de"));
+        arraylist.add(new TriviaQuestion("Niveau C1 : On ne peut ____ nier l'évidence.", "guère", "pas", "plus", "jamais", "guère"));
+        arraylist.add(new TriviaQuestion("Niveau A2 : Ma sœur est plus ____ que moi.", "grand", "grande", "grands", "grandes", "grande"));
+        arraylist.add(new TriviaQuestion("Niveau B1 : Il faut que nous ____ la vérité.", "sachons", "savons", "saurons", "sachent", "sachons"));
+        arraylist.add(new TriviaQuestion("Niveau B2 : C'est la raison ____ il est parti.", "pour laquelle", "dont", "laquelle", "que", "pour laquelle"));
+        arraylist.add(new TriviaQuestion("Niveau C1 : ____ il pleuve, la fête aura lieu.", "En dépit qu'", "Bien qu'", "Malgré", "Quoique", "Bien qu'"));
+        arraylist.add(new TriviaQuestion("Niveau A1 : Comment ____-tu ?", "vas", "va", "allez", "vont", "vas"));
+        arraylist.add(new TriviaQuestion("Niveau A2 : Nous ____ (finir) notre travail.", "finissons", "finis", "finissez", "finit", "finissons"));
+        arraylist.add(new TriviaQuestion("Niveau B1 : Je ne crois pas qu'il ____ (venir) ce soir.", "vient", "vienne", "viendra", "venait", "vienne"));
+
+        arraylist.add(new TriviaQuestion("TCF : 'Il a été ____ surpris par la nouvelle.'", "fort", "fortement", "très", "beaucoup", "fort"));
+        arraylist.add(new TriviaQuestion("TCF : '____ que vous fassiez, je vous soutiendrai.'", "Quoi", "Quoi que", "Quoique", "Quel que", "Quoi que"));
+        arraylist.add(new TriviaQuestion("TCF : 'Il a échoué ____ ses efforts.'", "malgré", "en dépit de", "pourtant", "cependant", "malgré"));
+        arraylist.add(new TriviaQuestion("TCF : 'C'est un travail de longue ____.'", "haleine", "durée", "temps", "vie", "haleine"));
+        arraylist.add(new TriviaQuestion("TCF : 'Il est indispensable ____ vous soyez présent.'", "que", "de", "pour que", "afin que", "que"));
+        arraylist.add(new TriviaQuestion("TCF : 'Elle a agi en ____ de cause.'", "connaissance", "raison", "vertu", "dépit", "connaissance"));
+        arraylist.add(new TriviaQuestion("TCF : 'Quel est le participe présent du verbe savoir ?'", "sachant", "savant", "savoirant", "su", "sachant"));
+        arraylist.add(new TriviaQuestion("TCF : 'Il s'est ____ (souvenir) de son enfance.'", "souvenu", "souvenue", "souvenus", "souvenues", "souvenu"));
+        arraylist.add(new TriviaQuestion("TCF : 'Je ____ (lire) ce livre le mois prochain.'", "lirai", "lirais", "lisais", "lus", "lirai"));
+        arraylist.add(new TriviaQuestion("TCF : 'Si j'____ (avoir) le temps, je viendrais.'", "avais", "ai", "aurai", "aurais", "avais"));
 
         this.addAllQuestions(arraylist);
     }
