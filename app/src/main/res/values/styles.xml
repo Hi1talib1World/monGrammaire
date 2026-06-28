@@ -16,6 +16,8 @@
         <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
         <item name="colorOutline">@color/outline</item>
 
+        <item name="android:fontFamily">@font/calsans</item>
+
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
