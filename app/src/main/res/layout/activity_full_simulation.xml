@@ -63,16 +63,23 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/examProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvModeStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Simulation Globale"
             android:textAllCaps="true"
             android:textSize="12sp"
             android:textColor="@color/onSurfaceVariant"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/examProgress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -84,7 +91,7 @@
             android:orientation="vertical"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/tvModeStatus"
-            app:layout_constraintBottom_toTopOf="@+id/btnQuit"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -196,6 +203,85 @@
                 app:cornerRadius="16dp" />
 
         </LinearLayout>
+
+        <!-- Results Container (Initially GONE) -->
+        <ScrollView
+            android:id="@+id/results_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="24dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/examProgress"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_trophy"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Résultats de l'Examen"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/onSurface" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="24dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvFinalScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Score: 32 / 40"
+                            android:textSize="32sp"
+                            android:fontFamily="sans-serif-black"
+                            android:textColor="@color/primary" />
+
+                        <TextView
+                            android:id="@+id/tvLevelEstimate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Niveau estimé : B2"
+                            android:textSize="20sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="@color/onSurfaceVariant" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFinish"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Terminer"
+                    app:cornerRadius="16dp" />
+
+            </LinearLayout>
+        </ScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnQuit"
