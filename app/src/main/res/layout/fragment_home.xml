@@ -50,7 +50,7 @@
                 android:text="Bonjour, Hicham !"
                 android:textColor="@color/onSurface"
                 android:textSize="28sp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/calsans"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnMenu" />
 
@@ -61,7 +61,7 @@
                 android:text="Prêt pour votre leçon du jour ?"
                 android:textColor="@color/onSurfaceVariant"
                 android:textSize="16sp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/calsans"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView" />
 
@@ -118,7 +118,7 @@
                             android:text="12"
                             android:textColor="@color/white"
                             android:textSize="20sp"
-                            android:fontFamily="sans-serif-black"/>
+                            android:fontFamily="@font/calsans"/>
                     </LinearLayout>
 
                     <View
@@ -155,7 +155,7 @@
                             android:text="450"
                             android:textColor="@color/white"
                             android:textSize="20sp"
-                            android:fontFamily="sans-serif-black"/>
+                            android:fontFamily="@font/calsans"/>
                     </LinearLayout>
 
                     <View
@@ -187,7 +187,7 @@
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:letterSpacing="0.1"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/calsans"
                             android:alpha="0.8"/>
 
                         <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -213,7 +213,7 @@
                 android:text="Modules de cours"
                 android:textColor="@color/onSurface"
                 android:textSize="20sp"
-                android:fontFamily="sans-serif-black" />
+                android:fontFamily="@font/calsans" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -249,7 +249,7 @@
                             android:layout_marginTop="8dp"
                             android:textColor="@color/onPrimaryContainer"
                             android:textSize="14sp"
-                            android:fontFamily="sans-serif-bold"/>
+                            android:fontFamily="@font/calsans"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -280,7 +280,7 @@
                             android:layout_marginTop="8dp"
                             android:textColor="@color/onSecondaryContainer"
                             android:textSize="14sp"
-                            android:fontFamily="sans-serif-bold"/>
+                            android:fontFamily="@font/calsans"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -294,7 +294,7 @@
                 android:text="Parcours recommandé"
                 android:textColor="@color/onSurface"
                 android:textSize="20sp"
-                android:fontFamily="sans-serif-black" />
+                android:fontFamily="@font/calsans" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -335,7 +335,7 @@
                             android:text="Défi Éclair"
                             android:textColor="@color/primary"
                             android:textSize="18sp"
-                            android:fontFamily="sans-serif-black" />
+                            android:fontFamily="@font/calsans" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
