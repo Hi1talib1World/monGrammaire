@@ -25,6 +25,7 @@ class FullSimulationActivity : AppCompatActivity() {
     
     private var questions: List<TriviaQuestion> = emptyList()
     private var currentQuestionIndex = 0
+    private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +44,36 @@ class FullSimulationActivity : AppCompatActivity() {
         
         binding.btnBack.setOnClickListener { showExitConfirmation() }
         binding.btnQuit.setOnClickListener { showExitConfirmation() }
+        binding.btnFinish.setOnClickListener { finish() }
         
         binding.btnNext.setOnClickListener {
             if (binding.optionsGroup.checkedRadioButtonId == -1) {
                 ToastHelper.showCustomToast(this, "Veuillez choisir une réponse")
             } else {
-                moveToNextQuestion()
+                checkAnswerAndMove()
             }
+        }
+    }
+
+    private fun checkAnswerAndMove() {
+        val selectedId = binding.optionsGroup.checkedRadioButtonId
+        val selectedText = when (selectedId) {
+            binding.rbOptA.id -> binding.rbOptA.text
+            binding.rbOptB.id -> binding.rbOptB.text
+            binding.rbOptC.id -> binding.rbOptC.text
+            binding.rbOptD.id -> binding.rbOptD.text
+            else -> ""
+        }
+
+        if (selectedText == questions[currentQuestionIndex].answer) {
+            score++
+        }
+
+        currentQuestionIndex++
+        if (currentQuestionIndex < questions.size) {
+            displayQuestion(currentQuestionIndex)
+        } else {
+            finishExam()
         }
     }
 
@@ -64,26 +88,23 @@ class FullSimulationActivity : AppCompatActivity() {
 
     private fun loadSimulationQuestions() {
         lifecycleScope.launch {
-            // Simulation d'un chargement asynchrone depuis la DB
             val loadedQuestions = withContext(Dispatchers.IO) {
                 val db = TriviaQuizHelper(this@FullSimulationActivity)
                 val all = db.allOfTheQuestions
                 
                 if (isGlobalSimulation) {
-                    // Pour une simulation globale, on prend 40 questions mixées
                     all.shuffled().take(40)
                 } else {
-                    // Sinon on en prend 10
                     all.shuffled().take(10)
                 }
             }
 
             questions = loadedQuestions
             
-            // Transition d'affichage
             binding.loadingContainer.visibility = View.GONE
             if (questions.isNotEmpty()) {
                 binding.quizContainer.visibility = View.VISIBLE
+                binding.examProgress.max = questions.size
                 displayQuestion(0)
             } else {
                 ToastHelper.showCustomToast(this@FullSimulationActivity, "Erreur : aucune question trouvée.")
@@ -103,24 +124,33 @@ class FullSimulationActivity : AppCompatActivity() {
         binding.rbOptD.text = q.optD
         
         binding.optionsGroup.clearCheck()
+        binding.examProgress.setProgress(index, true)
         
-        // Update header info (optionnel)
         val progressText = "${index + 1} / ${questions.size}"
         binding.tvModeStatus.text = if (isGlobalSimulation) "Simulation Globale • $progressText" else "Entraînement • $progressText"
     }
 
-    private fun moveToNextQuestion() {
-        currentQuestionIndex++
-        if (currentQuestionIndex < questions.size) {
-            displayQuestion(currentQuestionIndex)
-        } else {
-            finishExam()
-        }
+    private fun finishExam() {
+        timer?.cancel()
+        binding.quizContainer.visibility = View.GONE
+        binding.btnQuit.visibility = View.GONE
+        binding.examProgress.setProgress(questions.size, true)
+        
+        binding.resultsContainer.visibility = View.VISIBLE
+        binding.tvFinalScore.text = "Score: $score / ${questions.size}"
+        binding.tvLevelEstimate.text = "Niveau estimé : ${estimateLevel(score, questions.size)}"
     }
 
-    private fun finishExam() {
-        ToastHelper.showCustomToast(this, "Examen terminé ! Félicitations.")
-        finish()
+    private fun estimateLevel(score: Int, total: Int): String {
+        val percentage = (score.toFloat() / total.toFloat()) * 100
+        return when {
+            percentage >= 95 -> "C2 (Maîtrise)"
+            percentage >= 85 -> "C1 (Autonome)"
+            percentage >= 67 -> "B2 (Avancé)"
+            percentage >= 47 -> "B1 (Seuil)"
+            percentage >= 27 -> "A2 (Survie)"
+            else -> "A1 (Découverte)"
+        }
     }
 
     private fun startExamTimer() {
