@@ -44,6 +44,14 @@
                 android:icon="@drawable/star"
                 android:title="@string/quiz" />
             <item
+                android:id="@+id/nav_rate"
+                android:icon="@drawable/star"
+                android:title="Noter l'application" />
+            <item
+                android:id="@+id/nav_app_share"
+                android:icon="@drawable/info"
+                android:title="Partager l'application" />
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_close"
                 android:title="Déconnexion" />
