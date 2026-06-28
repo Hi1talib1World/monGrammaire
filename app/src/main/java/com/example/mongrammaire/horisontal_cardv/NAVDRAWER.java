@@ -147,6 +147,18 @@ public class NAVDRAWER extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent intent = new Intent(NAVDRAWER.this, MainGameActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_rate) {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            } catch (android.content.ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+            }
+        } else if (id == R.id.nav_app_share) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_TEXT, "Téléchargez " + getString(R.string.app_name) + " sur le Play Store : https://play.google.com/store/apps/details?id=" + getPackageName());
+            startActivity(Intent.createChooser(intent, "Partager via"));
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(NAVDRAWER.this, LoginActivity.class));
