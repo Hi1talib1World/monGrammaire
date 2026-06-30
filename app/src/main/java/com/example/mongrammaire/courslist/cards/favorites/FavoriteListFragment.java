@@ -11,8 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
 import com.example.mongrammaire.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteListFragment extends Fragment {
@@ -43,6 +47,12 @@ public class FavoriteListFragment extends Fragment {
         });
 
         sharedPreference = new SharedPreference();
+        
+        ChipGroup chipGroup = view.findViewById(R.id.filter_chip_group);
+        chipGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
+            refreshList();
+        });
+
         refreshList();
 
         view.findViewById(R.id.btn_explore).setOnClickListener(v -> {
@@ -57,17 +67,40 @@ public class FavoriteListFragment extends Fragment {
     }
 
     private void refreshList() {
+        if (getView() == null) return;
         List<Model> favorites = sharedPreference.getFavorites(activity);
-        recyclerView.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(activity, 1)); // Keeping 1 for now but with different card design maybe?
         
-        if (favorites == null || favorites.isEmpty()) {
+        ChipGroup chipGroup = getView().findViewById(R.id.filter_chip_group);
+        int checkedId = chipGroup.getCheckedChipId();
+        
+        List<Model> displayList = new ArrayList<>();
+        if (favorites != null) {
+            if (checkedId == R.id.chip_all) {
+                displayList.addAll(favorites);
+            } else {
+                String filter = "";
+                if (checkedId == R.id.chip_grammaire) filter = "Grammaire";
+                else if (checkedId == R.id.chip_verbe) filter = "Verbe";
+                else if (checkedId == R.id.chip_vocabulaire) filter = "Vocabulaire";
+                
+                for (Model m : favorites) {
+                    if (m.getCategory() != null && m.getCategory().equalsIgnoreCase(filter)) {
+                        displayList.add(m);
+                    }
+                }
+            }
+        }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        
+        if (displayList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptyState.setVisibility(View.VISIBLE);
         } else {
             recyclerView.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
             
-            MyAdapter adapter = new MyAdapter(favorites, true);
+            MyAdapter adapter = new MyAdapter(displayList, true);
             adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
                 @Override
                 public void onChanged() {
