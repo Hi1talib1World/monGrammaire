@@ -154,4 +154,33 @@ class DetailsViewModel(private val repository: ILessonRepository) : ViewModel() 
             repository.saveLessonProgress(state.lessonId, index, index == state.steps.size - 1)
         }
     }
+
+    fun updateTtsSpeed(speed: Float) {
+        viewModelScope.launch {
+            repository.saveSetting("tts_speed", speed.toString())
+            _uiState.update { it.copy(ttsSpeed = speed) }
+        }
+    }
+
+    fun toggleAutoNext() {
+        viewModelScope.launch {
+            val newState = !_uiState.value.isAutoNext
+            repository.saveSetting("auto_next", newState.toString())
+            _uiState.update { it.copy(isAutoNext = newState) }
+        }
+    }
+
+    fun toggleMastered() {
+        viewModelScope.launch {
+            val newState = !_uiState.value.isMastered
+            repository.setLessonMastered(_uiState.value.lessonId, newState)
+            _uiState.update { it.copy(isMastered = newState) }
+        }
+    }
+
+    fun bookmarkCurrentCard() {
+        viewModelScope.launch {
+            repository.setCardBookmarked(_uiState.value.lessonId, _uiState.value.currentStepIndex)
+        }
+    }
 }
