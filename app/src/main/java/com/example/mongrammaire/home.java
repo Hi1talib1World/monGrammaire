@@ -47,6 +47,11 @@ public class home extends AppCompatActivity {
         // Set click listeners using binding
         binding.buttonA.setOnClickListener(this::onButtonAClicked);
         binding.buttonB.setOnClickListener(this::onButtonBClicked);
+        binding.btnHomeSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.mongrammaire.horisontal_cardv.NAVDRAWER.class);
+            intent.putExtra("start_search", true);
+            startActivity(intent);
+        });
 
         startAnimations();
     }
