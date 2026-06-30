@@ -102,7 +102,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             intent.putExtra("iContent", model.getContent());
             intent.putExtra("iImgTv", model.getImg()); 
             context.startActivity(intent);
-            ToastHelper.showCustomToast(context, "Ouverture de : " + model.getTitle());
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            new com.google.android.material.dialog.MaterialAlertDialogBuilder(context)
+                .setTitle("Réinitialiser")
+                .setMessage("Voulez-vous réinitialiser votre progression pour cette leçon ?")
+                .setPositiveButton("Oui", (dialog, which) -> {
+                    com.example.mongrammaire.Data.Local.LessonDatabaseHelper db = 
+                        new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(context);
+                    db.resetLessonProgress(model.getId());
+                    model.setProgress(0);
+                    notifyItemChanged(position);
+                    com.example.mongrammaire.Utils.ToastHelper.showCustomToast(context, "Progression réinitialisée");
+                })
+                .setNegativeButton("Annuler", null)
+                .show();
+            return true;
         });
     }
 
