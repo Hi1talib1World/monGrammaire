@@ -84,7 +84,16 @@ public class NAVDRAWER extends AppCompatActivity
         }
         //make fragment in the opener
         if (savedInstanceState == null) {
-            Fragment newFragment = new HomeFragment();
+            String targetCategory = getIntent().getStringExtra("target_category");
+            Fragment newFragment;
+            if (targetCategory != null) {
+                newFragment = new com.example.mongrammaire.courslist.cours();
+                Bundle bundle = new Bundle();
+                bundle.putString("selected_category", targetCategory);
+                newFragment.setArguments(bundle);
+            } else {
+                newFragment = new HomeFragment();
+            }
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.screen_area, newFragment);
             ft.addToBackStack(null);
