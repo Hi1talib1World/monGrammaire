@@ -679,4 +679,15 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
             this.id = id; this.action = action; this.payload = payload;
         }
     }
+    public int getOverallCompletionPercentage() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_LESSONS;
+        long total = DatabaseUtils.longForQuery(db, query, null);
+        if (total == 0) return 0;
+
+        String progressQuery = "SELECT COUNT(*) FROM " + TABLE_PROGRESS + " WHERE " + COLUMN_PROG_IS_COMPLETED + "=1";
+        long completed = DatabaseUtils.longForQuery(db, progressQuery, null);
+        
+        return (int) ((completed * 100) / total);
+    }
 }
