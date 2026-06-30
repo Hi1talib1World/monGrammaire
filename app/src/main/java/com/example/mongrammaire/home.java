@@ -80,15 +80,15 @@ public class home extends AppCompatActivity {
     private void onButtonAClicked(View v) {
         playSound();
         Intent intent = new Intent(home.this, NAVDRAWER.class);
+        intent.putExtra("target_category", "Grammaire");
         startActivity(intent);
-        ToastHelper.showCustomToast(this, "Bienvenue !");
     }
 
     private void onButtonBClicked(View v) {
         playSound();
-        Intent intent = new Intent(home.this, MainGameActivity.class);
+        Intent intent = new Intent(home.this, NAVDRAWER.class);
+        intent.putExtra("target_category", "Verbe");
         startActivity(intent);
-        ToastHelper.showCustomToast(this, "Bonne chance pour le Quiz !");
     }
 
     private void playSound() {
