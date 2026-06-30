@@ -85,7 +85,15 @@ public class NAVDRAWER extends AppCompatActivity
         //make fragment in the opener
         if (savedInstanceState == null) {
             String targetCategory = getIntent().getStringExtra("target_category");
+            boolean startSearch = getIntent().getBooleanExtra("start_search", false);
+            
             Fragment newFragment;
+            if (startSearch) {
+                newFragment = new HomeFragment(); // Start at home but we might want to trigger search UI
+                // For now, let's just use the intent to switch to search if we had a dedicated search fragment
+                // But NAVDRAWER handles search via onNavigationItemSelected
+            }
+
             if (targetCategory != null) {
                 newFragment = new com.example.mongrammaire.courslist.cours();
                 Bundle bundle = new Bundle();
@@ -98,6 +106,12 @@ public class NAVDRAWER extends AppCompatActivity
             ft.add(R.id.screen_area, newFragment);
             ft.addToBackStack(null);
             ft.commit();
+            
+            if (startSearch) {
+                // If we came from Home Search icon, trigger the search intent or UI
+                Intent intent = new Intent(this, com.example.mongrammaire.recherche.class);
+                startActivity(intent);
+            }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
