@@ -178,9 +178,9 @@ class DetailsViewModel(private val repository: ILessonRepository) : ViewModel() 
         }
     }
 
-    fun bookmarkCurrentCard() {
+    fun bookmarkCard(cardIndex: Int) {
         viewModelScope.launch {
-            repository.setCardBookmarked(_uiState.value.lessonId, _uiState.value.currentStepIndex)
+            repository.setCardBookmarked(_uiState.value.lessonId, cardIndex)
         }
     }
 }
