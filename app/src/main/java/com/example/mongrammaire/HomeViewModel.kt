@@ -15,7 +15,8 @@ data class HomeUiState(
     val streak: Int = 0,
     val score: Int = 0,
     val level: Int = 1,
-    val isLoading: Boolean = true
+    val isLoading: Boolean = true,
+    val overallProgress: Int = 0
 )
 
 class HomeViewModel : ViewModel() {
