@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import android.view.MenuItem;
+import android.view.View;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -120,6 +121,24 @@ public class NAVDRAWER extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        
+        updateHeaderProgress(navigationView);
+    }
+
+    private void updateHeaderProgress(NavigationView navigationView) {
+        View headerView = navigationView.getHeaderView(0);
+        com.google.android.material.progressindicator.LinearProgressIndicator progressBar = 
+                headerView.findViewById(R.id.header_overall_progress);
+        TextView subtitle = headerView.findViewById(R.id.tv_header_subtitle);
+        
+        com.example.mongrammaire.Data.Local.LessonDatabaseHelper dbHelper = 
+                new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(this);
+        int grammaireProg = dbHelper.getCompletionPercentage("Grammaire");
+        int verbeProg = dbHelper.getCompletionPercentage("Verbe");
+        int overall = (grammaireProg + verbeProg) / 2;
+        
+        progressBar.setProgress(overall, true);
+        subtitle.setText("Progression globale : " + overall + "%");
     }
 
     @Override
