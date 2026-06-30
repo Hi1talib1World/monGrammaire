@@ -16,6 +16,16 @@
 -dontwarn com.google.firebase.**
 -dontwarn com.google.android.gms.**
 
+# --- Firebase Crashlytics ---
+-keepattributes SourceFile,LineNumberTable
+-keep public class com.google.firebase.crashlytics.** { *; }
+-dontwarn com.google.firebase.crashlytics.**
+
+# --- Firebase Performance ---
+-keep class com.google.firebase.perf.** { *; }
+-dontwarn com.google.firebase.perf.**
+
+
 # --- Glide ---
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
