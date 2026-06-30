@@ -88,6 +88,29 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
+        binding.btnOptions.setOnClickListener {
+            showOptionsDialog()
+        }
+    }
+
+    private fun showOptionsDialog() {
+        val options = arrayOf("Vitesse TTS (0.5x)", "Vitesse TTS (1.0x)", "Vitesse TTS (1.5x)", "Vitesse TTS (2.0x)", 
+                              "Auto-Suivant : ${if(viewModel.uiState.value.isAutoNext) "ON" else "OFF"}",
+                              "Marquer comme maîtrisé")
+        
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Options de la leçon")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> viewModel.updateTtsSpeed(0.5f)
+                    1 -> viewModel.updateTtsSpeed(1.0f)
+                    2 -> viewModel.updateTtsSpeed(1.5f)
+                    3 -> viewModel.updateTtsSpeed(2.0f)
+                    4 -> viewModel.toggleAutoNext()
+                    5 -> viewModel.toggleMastered()
+                }
+            }
+            .show()
     }
 
     private fun observeState() {
