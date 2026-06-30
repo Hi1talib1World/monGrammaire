@@ -133,9 +133,7 @@ public class NAVDRAWER extends AppCompatActivity
         
         com.example.mongrammaire.Data.Local.LessonDatabaseHelper dbHelper = 
                 new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(this);
-        int grammaireProg = dbHelper.getCompletionPercentage("Grammaire");
-        int verbeProg = dbHelper.getCompletionPercentage("Verbe");
-        int overall = (grammaireProg + verbeProg) / 2;
+        int overall = dbHelper.getOverallCompletionPercentage();
         
         progressBar.setProgress(overall, true);
         subtitle.setText("Progression globale : " + overall + "%");
