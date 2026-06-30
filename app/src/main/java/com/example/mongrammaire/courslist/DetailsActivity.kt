@@ -25,6 +25,9 @@ import com.example.mongrammaire.Data.LessonRepositoryImpl
 import com.example.mongrammaire.Quiz.MainGameActivity
 import com.example.mongrammaire.R
 import com.example.mongrammaire.Utils.ToastHelper
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import com.example.mongrammaire.databinding.ActivityDetailsBinding
 import com.example.mongrammaire.databinding.ItemLearningStepBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -240,6 +243,14 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             holder.binding.btnShareCard.setOnClickListener {
                 onShare("${title}: ${step.content}")
+            }
+
+            holder.binding.tvStepContent.setOnLongClickListener {
+                val clipboard = it.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("monGrammaire Rule", step.content)
+                clipboard.setPrimaryClip(clip)
+                ToastHelper.showCustomToast(it.context, "Copié dans le presse-papiers")
+                true
             }
         }
 
