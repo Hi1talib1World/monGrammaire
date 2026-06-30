@@ -95,6 +95,9 @@ class HomeFragment : Fragment() {
         binding.streakValue.text = state.streak.toString()
         binding.scoreValue.text = state.score.toString()
         binding.levelValue.text = "${state.level}/8"
+        
+        // Update header progress if we can find the bar (assuming it's in the layout)
+        // binding.progressIndicator.setProgress(state.overallProgress, true)
 
         if (!state.isLoading) {
             setupRecyclerView()
