@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.mongrammaire.Model.LessonModel;
 
+import android.database.DatabaseUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,14 +40,21 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SYNC_PAYLOAD = "payload";
     private static final String COLUMN_SYNC_TIMESTAMP = "timestamp";
 
-    // Table Lesson Progress (Pillar 1: Persistent Cache)
+    // Table Lesson Progress
     private static final String TABLE_PROGRESS = "lesson_progress";
     private static final String COLUMN_PROG_LESSON_ID = "lesson_id";
     private static final String COLUMN_PROG_STEP_INDEX = "current_step_index";
     private static final String COLUMN_PROG_IS_COMPLETED = "is_completed";
+    private static final String COLUMN_PROG_IS_MASTERED = "is_mastered";
+    private static final String COLUMN_PROG_BOOKMARKED_CARD = "bookmarked_card_index";
+
+    // Table App Settings
+    private static final String TABLE_SETTINGS = "app_settings";
+    private static final String COLUMN_SETTING_KEY = "setting_key";
+    private static final String COLUMN_SETTING_VALUE = "setting_value";
 
     public LessonDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, 13); // Incrementing to 13
     }
 
     @Override
@@ -79,8 +87,15 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_PROG_LESSON_ID + " INTEGER PRIMARY KEY,"
                 + COLUMN_PROG_STEP_INDEX + " INTEGER DEFAULT 0,"
                 + COLUMN_PROG_IS_COMPLETED + " INTEGER DEFAULT 0,"
+                + COLUMN_PROG_IS_MASTERED + " INTEGER DEFAULT 0,"
+                + COLUMN_PROG_BOOKMARKED_CARD + " INTEGER DEFAULT -1,"
                 + "FOREIGN KEY(" + COLUMN_PROG_LESSON_ID + ") REFERENCES " + TABLE_LESSONS + "(" + COLUMN_ID + "))";
         db.execSQL(CREATE_PROGRESS_TABLE);
+
+        String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
+                + COLUMN_SETTING_KEY + " TEXT PRIMARY KEY,"
+                + COLUMN_SETTING_VALUE + " TEXT)";
+        db.execSQL(CREATE_SETTINGS_TABLE);
         
         seedLessons(db);
     }
@@ -597,11 +612,64 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_PROG_STEP_INDEX, stepIndex);
         values.put(COLUMN_PROG_IS_COMPLETED, isCompleted ? 1 : 0);
         
-        long result = db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
-        if (result == -1) {
-            throw new RuntimeException("Persistence failure: Could not save progress for lesson " + lessonId);
-        }
+        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
+
+    public void setLessonMastered(int lessonId, boolean isMastered) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROG_LESSON_ID, lessonId);
+        values.put(COLUMN_PROG_IS_MASTERED, isMastered ? 1 : 0);
+        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    public void setCardBookmarked(int lessonId, int cardIndex) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROG_LESSON_ID, lessonId);
+        values.put(COLUMN_PROG_BOOKMARKED_CARD, cardIndex);
+        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    public void resetLessonProgress(int lessonId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PROGRESS, COLUMN_PROG_LESSON_ID + "=?", new String[]{String.valueOf(lessonId)});
+    }
+
+    public void saveSetting(String key, String value) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SETTING_KEY, key);
+        values.put(COLUMN_SETTING_VALUE, value);
+        db.insertWithOnConflict(TABLE_SETTINGS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    public String getSetting(String key, String defaultValue) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SETTINGS, new String[]{COLUMN_SETTING_VALUE},
+                COLUMN_SETTING_KEY + "=?", new String[]{key}, null, null, null);
+        String value = defaultValue;
+        if (cursor != null && cursor.moveToFirst()) {
+            value = cursor.getString(0);
+            cursor.close();
+        }
+        return value;
+    }
+
+    public int getCompletionPercentage(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_LESSONS + " WHERE " + COLUMN_CATEGORY + "=?";
+        long total = DatabaseUtils.longForQuery(db, query, new String[]{category});
+        if (total == 0) return 0;
+
+        String progressQuery = "SELECT COUNT(*) FROM " + TABLE_PROGRESS + " p " +
+                "JOIN " + TABLE_LESSONS + " l ON p." + COLUMN_PROG_LESSON_ID + " = l." + COLUMN_ID + " " +
+                "WHERE l." + COLUMN_CATEGORY + "=? AND p." + COLUMN_PROG_IS_COMPLETED + "=1";
+        long completed = DatabaseUtils.longForQuery(db, progressQuery, new String[]{category});
+        
+        return (int) ((completed * 100) / total);
+    }
+
 
     public static class SyncAction {
         public int id;
