@@ -18,7 +18,10 @@ data class DetailsUiState(
     val progress: Int = 0,
     val isFinished: Boolean = false,
     val isSaving: Boolean = false, // Pillar 3: Component interlocking
-    val errorEvent: String? = null
+    val errorEvent: String? = null,
+    val ttsSpeed: Float = 1.0f,
+    val isAutoNext: Boolean = false,
+    val isMastered: Boolean = false
 )
 
 data class LearningStep(
