@@ -27,6 +27,7 @@ import com.example.mongrammaire.R
 import com.example.mongrammaire.Utils.ToastHelper
 import com.example.mongrammaire.databinding.ActivityDetailsBinding
 import com.example.mongrammaire.databinding.ItemLearningStepBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -140,9 +141,16 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         // Atomic UI Reflection
         if (binding.cardViewPager.adapter == null && state.steps.isNotEmpty()) {
-            binding.cardViewPager.adapter = LessonCardAdapter(state.steps) { text ->
-                if (isTtsReady) tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
-            }
+            binding.cardViewPager.adapter = LessonCardAdapter(state.steps, { text ->
+                if (isTtsReady) {
+                    tts?.setSpeechRate(state.ttsSpeed)
+                    tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+                }
+            }, { cardIndex ->
+                viewModel.bookmarkCard(cardIndex)
+            }, { text ->
+                shareContent(text)
+            })
         }
 
         // Pillar 3: Component interlocking (Disable UI while saving)
@@ -159,9 +167,19 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
+    private fun shareContent(text: String) {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        startActivity(Intent.createChooser(intent, "Partager avec"))
+    }
+
     class LessonCardAdapter(
         private val steps: List<LearningStep>,
-        private val onListen: (String) -> Unit
+        private val onListen: (String) -> Unit,
+        private val onBookmark: (Int) -> Unit,
+        private val onShare: (String) -> Unit
     ) : RecyclerView.Adapter<LessonCardAdapter.ViewHolder>() {
 
         class ViewHolder(val binding: ItemLearningStepBinding) : RecyclerView.ViewHolder(binding.root)
@@ -213,6 +231,15 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             holder.binding.btnListen.setOnClickListener {
                 onListen(step.content + (step.revealContent ?: ""))
+            }
+
+            holder.binding.btnBookmarkCard.setOnClickListener {
+                onBookmark(position)
+                ToastHelper.showCustomToast(it.context, "Carte épinglée !")
+            }
+
+            holder.binding.btnShareCard.setOnClickListener {
+                onShare("${title}: ${step.content}")
             }
         }
 
