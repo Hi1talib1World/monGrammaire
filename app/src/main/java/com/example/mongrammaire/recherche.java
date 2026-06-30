@@ -8,6 +8,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mongrammaire.Data.Local.LessonDatabaseHelper;
+import com.example.mongrammaire.Model.LessonModel;
 import com.example.mongrammaire.courslist.cards.favorites.Model;
 import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
 
@@ -50,17 +52,22 @@ public class recherche extends AppCompatActivity {
 
     private void setupData() {
         allLessons = new ArrayList<>();
-        // Pillar 1: Static data seeding with consistent IDs for SSOT
-        allLessons.add(new Model(1, "Accords au pluriel", "Règles d'accord du pluriel", "...", R.drawable.n1, "Grammaire", 45));
-        allLessons.add(new Model(2, "Prépositions", "Utilisation des prépositions", "...", R.drawable.ufo, "Grammaire", 60));
-        allLessons.add(new Model(3, "Adjectifs possessifs", "Mon, ton, son...", "...", R.drawable.n2, "Grammaire", 30));
-        allLessons.add(new Model(4, "Articles", "Définis, indéfinis, partitifs", "...", R.drawable.satellite, "Grammaire", 100));
-        allLessons.add(new Model(5, "Négation", "Ne... pas, ne... plus...", "...", R.drawable.n3, "Grammaire", 15));
-        allLessons.add(new Model(6, "Passé composé", "Avec avoir et être", "...", R.drawable.n7, "Verbe", 50));
-        allLessons.add(new Model(7, "Imparfait", "Description et habitude", "...", R.drawable.n8, "Verbe", 40));
-        allLessons.add(new Model(8, "Futur simple", "Actions à venir", "...", R.drawable.n2, "Verbe", 90));
-        allLessons.add(new Model(9, "Impératif", "Donner des ordres", "...", R.drawable.n6, "Verbe", 80));
-        allLessons.add(new Model(10, "Verbes pronominaux", "Se laver, se lever...", "...", R.drawable.n5, "Verbe", 75));
+        LessonDatabaseHelper dbHelper = new LessonDatabaseHelper(this);
+        List<LessonModel> lessons = dbHelper.getAllLessons();
+
+        for (LessonModel lesson : lessons) {
+            // Map LessonDatabaseHelper model to Search/Favorites adapter model
+            // Defaulting some UI fields like heart and progress for search
+            allLessons.add(new Model(
+                    lesson.getId(),
+                    lesson.getTitle(),
+                    lesson.getDescription(),
+                    lesson.getContent(),
+                    R.drawable.logo, // Default icon for unified search
+                    lesson.getCategory(),
+                    0 // progress
+            ));
+        }
     }
 
     private void setupRecyclerView() {
