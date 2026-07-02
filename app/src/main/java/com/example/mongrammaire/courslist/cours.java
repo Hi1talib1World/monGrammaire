@@ -154,7 +154,7 @@ public class cours extends Fragment implements AdapterView.OnItemClickListener, 
                 lesson.getContent(),
                 imgRes,
                 mapCategoryToUI(lesson.getCategory()),
-                0 // Initial progress
+                dbHelper.getLessonProgressPercentage(lesson.getId(), lesson.getContent())
             ));
         }
 
