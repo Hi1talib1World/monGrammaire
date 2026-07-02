@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="Mon Grammaire"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         android:textColor="@color/onPrimaryContainer" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Apprenez le français"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         android:textColor="@color/onPrimaryContainer"
         android:alpha="0.8" />
 
@@ -39,5 +39,15 @@
         android:progress="0"
         app:trackCornerRadius="4dp"
         app:trackThickness="4dp" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/theme_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Mode Sombre"
+        android:textSize="12sp"
+        android:textColor="@color/onPrimaryContainer"
+        app:thumbIcon="@drawable/red_heart" />
 
 </LinearLayout>
