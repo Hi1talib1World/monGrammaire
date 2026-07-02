@@ -1,9 +1,9 @@
 package com.example.mongrammaire;
 
 public class DictionaryWord {
-    private String word;
-    private String definition;
-    private String partOfSpeech;
+    private final String word;
+    private final String definition;
+    private final String partOfSpeech;
 
     public DictionaryWord(String word, String definition, String partOfSpeech) {
         this.word = word;
