@@ -13,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.button.MaterialButton;
+import android.content.Intent;
 
+import java.util.Collections;
+import java.util.Comparator;
 import com.example.mongrammaire.R;
 
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class FavoriteListFragment extends Fragment {
     private View emptyState;
     private SharedPreference sharedPreference;
     private Activity activity;
+    private boolean sortAZ = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,19 @@ public class FavoriteListFragment extends Fragment {
         ChipGroup chipGroup = view.findViewById(R.id.filter_chip_group);
         chipGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
             refreshList();
+        });
+
+        view.findViewById(R.id.btn_sort).setOnClickListener(v -> {
+            sortAZ = !sortAZ;
+            ((com.google.android.material.button.MaterialButton)v).setText(sortAZ ? "Récent" : "A - Z");
+            refreshList();
+        });
+
+        MaterialButton btnQuickQuiz = view.findViewById(R.id.btn_quick_quiz);
+        btnQuickQuiz.setOnClickListener(v -> {
+            Intent intent = new Intent(activity, com.example.mongrammaire.Quiz.MainGameActivity.class);
+            intent.putExtra("favorites_only", true);
+            startActivity(intent);
         });
 
         refreshList();
@@ -91,14 +109,20 @@ public class FavoriteListFragment extends Fragment {
             }
         }
 
+        if (sortAZ) {
+            Collections.sort(displayList, (o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()));
+        }
+
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         
         if (displayList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptyState.setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.btn_quick_quiz).setVisibility(View.GONE);
         } else {
             recyclerView.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
+            getView().findViewById(R.id.btn_quick_quiz).setVisibility(View.VISIBLE);
             
             MyAdapter adapter = new MyAdapter(displayList, true);
             adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
