@@ -1,13 +1,13 @@
 package com.example.mongrammaire.horisontal_cardv;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 
 import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.app.AppCompatDelegate;
+import com.google.android.material.materialswitch.MaterialSwitch;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -46,55 +46,27 @@ public class NAVDRAWER extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public Adapter adapter;
-    private cours.OnFragmentInteractionListener mListener;
-    //the recyclerview
-    private boolean viewIsAtHome;
-    private static ViewPager mPager;
-    private static int currentPage = 0;
-    private static int NUM_PAGES = 0;
-
-    private RecyclerView recyclerView;
-    private ArrayList<Model> imageModelArrayList;
-
-    private int[] myImageList = new int[]{R.drawable.play, R.drawable.play,R.drawable.play, R.drawable.play,R.drawable.play,R.drawable.play,R.drawable.play};
-    private String[] myImageNameList = new String[]{
-            "Sujet", // Subject
-            "Verbe", // Verb
-            "Complément d'objet direct", // Direct Object
-            "Complément d'objet indirect", // Indirect Object
-            "Adverbe", // Adverb
-            "Préposition", // Preposition
-            "Conjonction" // Conjunction
-    };
-
-
-    ProgressBar androidProgressBar;
-    int progressStatusCounter = 0;
-    TextView textView;
-    Handler progressHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
         //make fragment in the opener
         if (savedInstanceState == null) {
             String targetCategory = getIntent().getStringExtra("target_category");
             boolean startSearch = getIntent().getBooleanExtra("start_search", false);
             
             Fragment newFragment;
-            if (startSearch) {
-                newFragment = new HomeFragment(); // Start at home but we might want to trigger search UI
-                // For now, let's just use the intent to switch to search if we had a dedicated search fragment
-                // But NAVDRAWER handles search via onNavigationItemSelected
-            }
-
             if (targetCategory != null) {
                 newFragment = new com.example.mongrammaire.courslist.cours();
                 Bundle bundle = new Bundle();
@@ -105,7 +77,6 @@ public class NAVDRAWER extends AppCompatActivity
             }
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.screen_area, newFragment);
-            ft.addToBackStack(null);
             ft.commit();
             
             if (startSearch) {
@@ -114,13 +85,16 @@ public class NAVDRAWER extends AppCompatActivity
                 startActivity(intent);
             }
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        
+        if (getIntent().getBooleanExtra("open_drawer", false)) {
+            drawer.openDrawer(androidx.core.view.GravityCompat.START);
+        }
         
         updateHeaderProgress(navigationView);
     }
@@ -137,18 +111,28 @@ public class NAVDRAWER extends AppCompatActivity
         
         progressBar.setProgress(overall, true);
         subtitle.setText("Progression globale : " + overall + "%");
+
+        MaterialSwitch themeSwitch = headerView.findViewById(R.id.theme_switch);
+        boolean isDark = dbHelper.getSetting("theme", "light").equals("dark");
+        themeSwitch.setChecked(isDark);
+        
+        themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            dbHelper.saveSetting("theme", isChecked ? "dark" : "light");
+            AppCompatDelegate.setDefaultNightMode(isChecked ? 
+                    AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+        });
     }
 
     @Override
     public void onBackPressed() {
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.app_name)
-                .setIcon(R.drawable.logo)
-                .setMessage("Voulez-vous sortir des cours ?")
-                .setCancelable(false)
-                .setPositiveButton("OUI", (dialog, id) -> finish())
-                .setNegativeButton("NON", (dialog, id) -> dialog.cancel())
-                .show();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -162,13 +146,11 @@ public class NAVDRAWER extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        Bundle bundle = new Bundle();
         if (id == R.id.nav_ac) {
             //home screen
             fragment = new HomeFragment();
@@ -210,6 +192,7 @@ public class NAVDRAWER extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
             ft.replace(R.id.screen_area, fragment);
+            ft.addToBackStack(null);
             ft.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
