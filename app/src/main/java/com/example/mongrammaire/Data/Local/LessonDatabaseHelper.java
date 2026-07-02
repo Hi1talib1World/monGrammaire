@@ -607,28 +607,51 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
 
     public void saveLessonProgress(int lessonId, int stepIndex, boolean isCompleted) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_PROG_LESSON_ID, lessonId);
-        values.put(COLUMN_PROG_STEP_INDEX, stepIndex);
-        values.put(COLUMN_PROG_IS_COMPLETED, isCompleted ? 1 : 0);
         
-        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        // First check if the record exists to preserve other columns
+        Cursor cursor = db.query(TABLE_PROGRESS, null, COLUMN_PROG_LESSON_ID + "=?", 
+                new String[]{String.valueOf(lessonId)}, null, null, null);
+        
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROG_STEP_INDEX, stepIndex);
+        
+        if (cursor != null && cursor.moveToFirst()) {
+            // Record exists, update it
+            boolean alreadyCompleted = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PROG_IS_COMPLETED)) == 1;
+            values.put(COLUMN_PROG_IS_COMPLETED, (isCompleted || alreadyCompleted) ? 1 : 0);
+            db.update(TABLE_PROGRESS, values, COLUMN_PROG_LESSON_ID + "=?", new String[]{String.valueOf(lessonId)});
+            cursor.close();
+        } else {
+            // New record, insert it
+            values.put(COLUMN_PROG_LESSON_ID, lessonId);
+            values.put(COLUMN_PROG_IS_COMPLETED, isCompleted ? 1 : 0);
+            db.insert(TABLE_PROGRESS, null, values);
+            if (cursor != null) cursor.close();
+        }
     }
 
     public void setLessonMastered(int lessonId, boolean isMastered) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PROG_LESSON_ID, lessonId);
         values.put(COLUMN_PROG_IS_MASTERED, isMastered ? 1 : 0);
-        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        
+        int rows = db.update(TABLE_PROGRESS, values, COLUMN_PROG_LESSON_ID + "=?", new String[]{String.valueOf(lessonId)});
+        if (rows == 0) {
+            values.put(COLUMN_PROG_LESSON_ID, lessonId);
+            db.insert(TABLE_PROGRESS, null, values);
+        }
     }
 
     public void setCardBookmarked(int lessonId, int cardIndex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PROG_LESSON_ID, lessonId);
         values.put(COLUMN_PROG_BOOKMARKED_CARD, cardIndex);
-        db.insertWithOnConflict(TABLE_PROGRESS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        
+        int rows = db.update(TABLE_PROGRESS, values, COLUMN_PROG_LESSON_ID + "=?", new String[]{String.valueOf(lessonId)});
+        if (rows == 0) {
+            values.put(COLUMN_PROG_LESSON_ID, lessonId);
+            db.insert(TABLE_PROGRESS, null, values);
+        }
     }
 
     public void resetLessonProgress(int lessonId) {
@@ -668,6 +691,21 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
         long completed = DatabaseUtils.longForQuery(db, progressQuery, new String[]{category});
         
         return (int) ((completed * 100) / total);
+    }
+
+    public int getLessonProgressPercentage(int lessonId, String content) {
+        if (content == null || content.isEmpty()) return 0;
+        
+        // Count steps (tags + 1 for finish)
+        int steps = 1;
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\[(RULE|EXAMPLE|EXCEPTION)]");
+        java.util.regex.Matcher matcher = pattern.matcher(content);
+        while (matcher.find()) {
+            steps++;
+        }
+        
+        int currentStep = getLessonProgress(lessonId);
+        return ((currentStep + 1) * 100) / steps;
     }
 
 
