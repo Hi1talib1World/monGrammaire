@@ -52,10 +52,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         Model model = models.get(position);
         holder.mTitleTV.setText(model.getTitle());
         holder.mDescrTV.setText(isFavoriteList ? model.getCategory() : model.getDescription());
-        holder.mImageIv.setImageResource(model.getImg());
         
         if (!isFavoriteList) {
-            holder.progressIndicator.setProgress(model.getProgress());
             holder.categoryChip.setText(model.getCategory());
         }
 
@@ -140,23 +138,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView mImageIv;
         public TextView mTitleTV, mDescrTV;
         public ImageView favoriteImg;
-        public com.google.android.material.progressindicator.LinearProgressIndicator progressIndicator;
         public com.google.android.material.chip.Chip categoryChip;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.mImageIv = itemView.findViewById(R.id.img1);
             this.mTitleTV = itemView.findViewById(R.id.txt1);
             this.mDescrTV = itemView.findViewById(R.id.txt2);
             this.favoriteImg = itemView.findViewById(R.id.heart);
-            
-            View progressView = itemView.findViewById(R.id.horizontal_progress_bar);
-            if (progressView instanceof com.google.android.material.progressindicator.LinearProgressIndicator) {
-                this.progressIndicator = (com.google.android.material.progressindicator.LinearProgressIndicator) progressView;
-            }
             
             View chipView = itemView.findViewById(R.id.chip_category);
             if (chipView instanceof com.google.android.material.chip.Chip) {
