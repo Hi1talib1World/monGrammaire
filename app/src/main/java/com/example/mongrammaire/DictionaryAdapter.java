@@ -14,9 +14,15 @@ import java.util.List;
 
 public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.ViewHolder> {
     private List<DictionaryWord> words;
+    private OnWordClickListener listener;
 
-    public DictionaryAdapter(List<DictionaryWord> words) {
+    public interface OnWordClickListener {
+        void onWordClick(DictionaryWord word);
+    }
+
+    public DictionaryAdapter(List<DictionaryWord> words, OnWordClickListener listener) {
         this.words = words;
+        this.listener = listener;
     }
 
     public void updateList(List<DictionaryWord> newWords) {
@@ -42,6 +48,12 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Vi
         } else {
             holder.chipPartOfSpeech.setVisibility(View.GONE);
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onWordClick(word);
+            }
+        });
     }
 
     @Override
