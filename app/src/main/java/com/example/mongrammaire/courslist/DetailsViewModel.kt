@@ -19,7 +19,6 @@ data class DetailsUiState(
     val isFinished: Boolean = false,
     val isSaving: Boolean = false, // Pillar 3: Component interlocking
     val errorEvent: String? = null,
-    val ttsSpeed: Float = 1.0f,
     val isAutoNext: Boolean = false,
     val isMastered: Boolean = false
 )
@@ -50,6 +49,7 @@ class DetailsViewModel(private val repository: ILessonRepository) : ViewModel() 
                     progress = calculateProgress(savedIndex, steps.size)
                 )}
             }
+            repository.saveSetting("last_lesson_id", lessonId.toString())
         }
     }
 
@@ -152,13 +152,6 @@ class DetailsViewModel(private val repository: ILessonRepository) : ViewModel() 
         
         viewModelScope.launch {
             repository.saveLessonProgress(state.lessonId, index, index == state.steps.size - 1)
-        }
-    }
-
-    fun updateTtsSpeed(speed: Float) {
-        viewModelScope.launch {
-            repository.saveSetting("tts_speed", speed.toString())
-            _uiState.update { it.copy(ttsSpeed = speed) }
         }
     }
 
