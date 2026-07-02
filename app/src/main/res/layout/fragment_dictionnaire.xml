@@ -24,18 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnMenu"
-                    style="@style/Widget.Material3.Button.IconButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    app:icon="@drawable/ic_menu"
-                    app:iconSize="24dp"
-                    app:iconTint="@color/primary"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,10 +31,9 @@
                     android:textSize="22sp"
                     android:fontFamily="@font/calsans"
                     android:textColor="@color/onSurface"
-                    app:layout_constraintStart_toEndOf="@+id/btnMenu"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="8dp" />
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -80,7 +67,14 @@
         android:clipToPadding="false"
         android:paddingVertical="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/card_layout" />
+        tools:listitem="@layout/item_dictionary_word" />
+
+    <ProgressBar
+        android:id="@+id/dictionary_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/empty_search_state"
