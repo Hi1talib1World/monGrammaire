@@ -1,9 +1,11 @@
 package com.example.mongrammaire;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,17 +16,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mongrammaire.courslist.cards.favorites.Model;
-import com.example.mongrammaire.courslist.cards.favorites.MyAdapter;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DictionnaireFragment extends Fragment {
-    private MyAdapter adapter;
+    private DictionaryAdapter adapter;
     private RecyclerView recyclerView;
     private View emptyState;
-    private List<Model> allLessons;
+    private ProgressBar progressBar;
+    private RequestQueue requestQueue;
 
     public DictionnaireFragment() {
         // Required empty public constructor
@@ -42,75 +52,136 @@ public class DictionnaireFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_results);
         emptyState = view.findViewById(R.id.empty_search_state);
+        progressBar = view.findViewById(R.id.dictionary_progress_bar);
         SearchView searchBar = view.findViewById(R.id.search_bar);
-        View btnMenu = view.findViewById(R.id.btnMenu);
 
-        if (btnMenu != null) {
-            btnMenu.setOnClickListener(v -> {
-                if (getActivity() != null) {
-                    DrawerLayout drawer = getActivity().findViewById(R.id.drawer_layout);
-                    if (drawer != null) {
-                        drawer.openDrawer(GravityCompat.START);
-                    }
-                }
-            });
-        }
+        requestQueue = Volley.newRequestQueue(requireContext());
 
-        setupData();
         setupRecyclerView();
+        loadInitialWords();
 
+        searchBar.setQueryHint("Rechercher un mot...");
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                searchWord(query);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filter(newText);
+                if (newText.isEmpty()) {
+                    loadInitialWords();
+                    emptyState.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
                 return true;
             }
         });
     }
 
-    private void setupData() {
-        allLessons = new ArrayList<>();
-        // Using same data as recherche.java for consistency
-        allLessons.add(new Model(1, "Accords au pluriel", "Règles d'accord du pluriel", "...", R.drawable.n1, "Grammaire", 45));
-        allLessons.add(new Model(2, "Prépositions", "Utilisation des prépositions", "...", R.drawable.ufo, "Grammaire", 60));
-        allLessons.add(new Model(3, "Adjectifs possessifs", "Mon, ton, son...", "...", R.drawable.n2, "Grammaire", 30));
-        allLessons.add(new Model(4, "Articles", "Définis, indéfinis, partitifs", "...", R.drawable.satellite, "Grammaire", 100));
-        allLessons.add(new Model(5, "Négation", "Ne... pas, ne... plus...", "...", R.drawable.n3, "Grammaire", 15));
-        allLessons.add(new Model(6, "Passé composé", "Avec avoir et être", "...", R.drawable.n7, "Verbe", 50));
-        allLessons.add(new Model(7, "Imparfait", "Description et habitude", "...", R.drawable.n8, "Verbe", 40));
-        allLessons.add(new Model(8, "Futur simple", "Actions à venir", "...", R.drawable.n2, "Verbe", 90));
-        allLessons.add(new Model(9, "Impératif", "Donner des ordres", "...", R.drawable.n6, "Verbe", 80));
-        allLessons.add(new Model(10, "Verbes pronominaux", "Se laver, se lever...", "...", R.drawable.n5, "Verbe", 75));
+    private void loadInitialWords() {
+        List<DictionaryWord> initialWords = new ArrayList<>();
+        initialWords.add(new DictionaryWord("Grammaire", "Ensemble des règles qui régissent une langue.", "nom"));
+        initialWords.add(new DictionaryWord("Verbe", "Mot qui exprime une action ou un état.", "nom"));
+        initialWords.add(new DictionaryWord("Adjectif", "Mot qui qualifie un nom.", "nom"));
+        initialWords.add(new DictionaryWord("Apprendre", "Acquérir la connaissance de quelque chose par l'étude ou l'expérience.", "verbe"));
+        initialWords.add(new DictionaryWord("Français", "Langue romane parlée en France et dans de nombreux pays.", "nom/adjectif"));
+        adapter.updateList(initialWords);
     }
 
     private void setupRecyclerView() {
-        adapter = new MyAdapter(new ArrayList<>(allLessons));
+        adapter = new DictionaryAdapter(new ArrayList<>(), this::showWordDetails);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
     }
 
-    private void filter(String text) {
-        List<Model> filteredList = new ArrayList<>();
-        for (Model model : allLessons) {
-            if (model.getTitle().toLowerCase().contains(text.toLowerCase()) ||
-                model.getDescription().toLowerCase().contains(text.toLowerCase()) ||
-                model.getCategory().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(model);
-            }
-        }
+    private void showWordDetails(DictionaryWord word) {
+        new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(word.getWord())
+                .setMessage(word.getDefinition())
+                .setPositiveButton("Fermer", null)
+                .show();
+    }
 
-        if (filteredList.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptyState.setVisibility(View.VISIBLE);
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyState.setVisibility(View.GONE);
-            adapter.updateList(filteredList);
-        }
+    private void searchWord(String word) {
+        if (word == null || word.trim().isEmpty()) return;
+
+        String searchWord = word.trim();
+
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+        emptyState.setVisibility(View.GONE);
+
+        // Removed exintro=1 as it is often empty for Wiktionary entries.
+        // Added exsentences=5 to get a concise summary instead.
+        String url = "https://fr.wiktionary.org/w/api.php?action=query&format=json&prop=extracts&explaintext=1&exsentences=5&redirects=1&titles=" + searchWord;
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                response -> {
+                    progressBar.setVisibility(View.GONE);
+                    try {
+                        if (!response.has("query")) {
+                            showEmptyState();
+                            return;
+                        }
+                        JSONObject query = response.getJSONObject("query");
+                        JSONObject pages = query.getJSONObject("pages");
+                        Iterator<String> keys = pages.keys();
+                        
+                        List<DictionaryWord> results = new ArrayList<>();
+                        while (keys.hasNext()) {
+                            String key = keys.next();
+                            if (key.equals("-1")) continue; // Word not found
+
+                            JSONObject page = pages.getJSONObject(key);
+                            String title = page.getString("title");
+                            String extract = "";
+                            
+                            if (page.has("extract")) {
+                                extract = page.getString("extract").trim();
+                            }
+                            
+                            if (extract.isEmpty()) {
+                                // Fallback: if extract is empty, maybe it's just a title
+                                extract = "Aucune définition courte disponible. Cliquez pour voir plus de détails sur Wiktionary.";
+                            }
+
+                            if (extract.length() > 600) {
+                                extract = extract.substring(0, 600) + "...";
+                                int lastSpace = extract.lastIndexOf(' ');
+                                if (lastSpace > 500) extract = extract.substring(0, lastSpace) + "...";
+                            }
+                            results.add(new DictionaryWord(title, extract, "Définition"));
+                        }
+
+                        if (results.isEmpty()) {
+                            showEmptyState();
+                        } else {
+                            showResults(results);
+                        }
+                    } catch (JSONException e) {
+                        Log.e("Dictionary", "JSON Error", e);
+                        showEmptyState();
+                    }
+                },
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    Log.e("Dictionary", "Volley Error", error);
+                    showEmptyState();
+                });
+
+        requestQueue.add(request);
+    }
+
+    private void showResults(List<DictionaryWord> results) {
+        recyclerView.setVisibility(View.VISIBLE);
+        emptyState.setVisibility(View.GONE);
+        adapter.updateList(results);
+    }
+
+    private void showEmptyState() {
+        recyclerView.setVisibility(View.GONE);
+        emptyState.setVisibility(View.VISIBLE);
     }
 }
