@@ -56,6 +56,7 @@ public class home extends AppCompatActivity {
         startAnimations();
     }
 
+
     private void startAnimations() {
         // Initial state
         binding.logo.setAlpha(0f);
@@ -85,7 +86,6 @@ public class home extends AppCompatActivity {
     private void onButtonAClicked(View v) {
         playSound();
         Intent intent = new Intent(home.this, NAVDRAWER.class);
-        intent.putExtra("target_category", "Grammaire");
         startActivity(intent);
     }
 
