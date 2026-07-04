@@ -194,15 +194,58 @@
                             android:id="@+id/mainProgress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="16dp"
                             android:progress="65"
-                            app:trackThickness="8dp"
-                            app:trackCornerRadius="4dp"
-                            app:indicatorColor="@color/accent_green"
-                            app:trackColor="#33FFFFFF"/>
+                            app:trackThickness="4dp"
+                            app:trackCornerRadius="4dp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Daily Lesson Spotlight -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDailyLesson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/outline"
+                app:cardBackgroundColor="@color/surface">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LEÇON DU JOUR"
+                        android:textColor="@color/accent_gold"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.2"
+                        android:fontFamily="@font/calsans"/>
+                    <TextView
+                        android:id="@+id/tvDailyLessonTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Le Passé Composé"
+                        android:textColor="@color/onSurface"
+                        android:textSize="18sp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/calsans"/>
+                    <TextView
+                        android:id="@+id/tvDailyLessonDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maîtrisez les auxiliaires être et avoir."
+                        android:textColor="@color/onSurfaceVariant"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -286,6 +329,77 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDictionary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/tertiaryContainer">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/search"
+                            app:tint="@color/onTertiaryContainer"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dictionnaire"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/onTertiaryContainer"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/calsans"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardFavorites"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/red_heart"
+                            app:tint="@color/red"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Favoris"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/onSurfaceVariant"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/calsans"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -352,6 +466,114 @@
                         android:layout_height="wrap_content"
                         android:text="Jouer"
                         app:cornerRadius="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- More Features Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:text="Analyses &amp; Statistiques"
+                android:textColor="@color/onSurface"
+                android:textSize="20sp"
+                android:fontFamily="@font/calsans" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/surfaceVariant">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_check_circle"
+                            app:tint="@color/accent_green"
+                            android:padding="8dp"
+                            android:background="@drawable/bg_circle_gradient"
+                            android:backgroundTint="@color/accent_green"
+                            android:alpha="0.2"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Leçons maîtrisées"
+                                android:textColor="@color/onSurface"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/calsans"/>
+                            <TextView
+                                android:id="@+id/tvMasteredCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14 leçons complétées"
+                                android:textColor="@color/onSurfaceVariant"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:alpha="0.2"
+                        android:layout_marginVertical="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_quiz"
+                            app:tint="@color/primary"
+                            android:padding="8dp"
+                            android:background="@drawable/bg_circle_gradient"
+                            android:backgroundTint="@color/primary"
+                            android:alpha="0.2"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Score de précision"
+                                android:textColor="@color/onSurface"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/calsans"/>
+                            <TextView
+                                android:id="@+id/tvAccuracyScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="85% de bonnes réponses"
+                                android:textColor="@color/onSurfaceVariant"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
