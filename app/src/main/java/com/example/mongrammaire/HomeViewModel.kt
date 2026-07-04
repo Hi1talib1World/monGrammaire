@@ -16,7 +16,10 @@ data class HomeUiState(
     val score: Int = 0,
     val level: Int = 1,
     val isLoading: Boolean = true,
-    val overallProgress: Int = 0
+    val overallProgress: Int = 0,
+    val masteredLessons: Int = 0,
+    val accuracy: Int = 0,
+    val dailyLessonTitle: String = "Le Passé Composé"
 )
 
 class HomeViewModel : ViewModel() {
@@ -43,8 +46,18 @@ class HomeViewModel : ViewModel() {
                 streak = ProgressionManager.getStreak(),
                 score = ProgressionManager.getUserScore(),
                 level = ProgressionManager.getUnlockedLevel(),
-                isLoading = false
+                isLoading = false,
+                overallProgress = 0,
+                masteredLessons = 0,
+                accuracy = 85 // Mocking for now
             )
         }
+    }
+
+    fun updateStats(progress: Int, mastered: Int) {
+        _uiState.value = _uiState.value.copy(
+            overallProgress = progress,
+            masteredLessons = mastered
+        )
     }
 }
