@@ -728,4 +728,10 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
         
         return (int) ((completed * 100) / total);
     }
+
+    public int getMasteredLessonCount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_PROGRESS + " WHERE " + COLUMN_PROG_IS_COMPLETED + "=1";
+        return (int) DatabaseUtils.longForQuery(db, query, null);
+    }
 }
