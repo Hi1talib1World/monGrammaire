@@ -46,6 +46,12 @@ class HomeFragment : Fragment() {
         setupListeners()
         observeState()
         
+        val dbHelper = com.example.mongrammaire.Data.Local.LessonDatabaseHelper(requireContext())
+        viewModel.updateStats(
+            dbHelper.overallCompletionPercentage,
+            dbHelper.masteredLessonCount
+        )
+
         viewModel.loadUserData()
     }
 
@@ -65,8 +71,33 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, CoursListActivity::class.java))
         }
 
+        binding.cardDailyLesson.setOnClickListener {
+            val intent = Intent(context, com.example.mongrammaire.courslist.DetailsActivity::class.java)
+            intent.putExtra("iId", 6) // Passé Composé ID
+            intent.putExtra("iTitleTv", "Le Passé Composé")
+            startActivity(intent)
+        }
+
         binding.listView2.setOnClickListener {
             startActivity(Intent(context, Cours2ListActivity::class.java))
+        }
+
+        binding.cardDictionary.setOnClickListener {
+            (requireActivity() as? NAVDRAWER)?.onNavigationItemSelected(
+                (requireActivity().findViewById<View>(R.id.nav_view) as com.google.android.material.navigation.NavigationView)
+                    .menu.findItem(R.id.nav_home)
+            )
+        }
+
+        binding.cardFavorites.setOnClickListener {
+            (requireActivity() as? NAVDRAWER)?.onNavigationItemSelected(
+                (requireActivity().findViewById<View>(R.id.nav_view) as com.google.android.material.navigation.NavigationView)
+                    .menu.findItem(R.id.nav_slideshow)
+            )
+        }
+        
+        binding.profileImage.setOnClickListener {
+            com.example.mongrammaire.Utils.ToastHelper.showCustomToast(requireContext(), "Profil bientôt disponible !")
         }
 
         binding.btnStartQuiz.setOnClickListener {
@@ -96,8 +127,10 @@ class HomeFragment : Fragment() {
         binding.scoreValue.text = state.score.toString()
         binding.levelValue.text = "${state.level}/8"
         
-        // Update header progress if we can find the bar (assuming it's in the layout)
-        // binding.progressIndicator.setProgress(state.overallProgress, true)
+        binding.mainProgress.setProgress(state.overallProgress, true)
+        
+        binding.tvMasteredCount.text = "${state.masteredLessons} leçons complétées"
+        binding.tvAccuracyScore.text = "${state.accuracy}% de bonnes réponses"
 
         if (!state.isLoading) {
             setupRecyclerView()
