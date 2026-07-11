@@ -6,22 +6,22 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
+import java.util.Objects;
 import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.materialswitch.MaterialSwitch;
 
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.activity.OnBackPressedCallback;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mongrammaire.DictionnaireFragment;
@@ -41,6 +41,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class NAVDRAWER extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -97,6 +98,21 @@ public class NAVDRAWER extends AppCompatActivity
         }
         
         updateHeaderProgress(navigationView);
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportFragmentManager().popBackStack();
+                } else {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                }
+            }
+        });
     }
 
     private void updateHeaderProgress(NavigationView navigationView) {
@@ -105,43 +121,32 @@ public class NAVDRAWER extends AppCompatActivity
                 headerView.findViewById(R.id.header_overall_progress);
         TextView subtitle = headerView.findViewById(R.id.tv_header_subtitle);
         
-        com.example.mongrammaire.Data.Local.LessonDatabaseHelper dbHelper = 
-                new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(this);
-        int overall = dbHelper.getOverallCompletionPercentage();
-        
-        progressBar.setProgress(overall, true);
-        subtitle.setText("Progression globale : " + overall + "%");
+        try (com.example.mongrammaire.Data.Local.LessonDatabaseHelper dbHelper = 
+                new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(this)) {
+            int overall = dbHelper.getOverallCompletionPercentage();
+            
+            progressBar.setProgress(overall, true);
+            subtitle.setText(getString(R.string.overall_progress, overall));
 
-        MaterialSwitch themeSwitch = headerView.findViewById(R.id.theme_switch);
-        boolean isDark = dbHelper.getSetting("theme", "light").equals("dark");
-        themeSwitch.setChecked(isDark);
-        
-        themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            dbHelper.saveSetting("theme", isChecked ? "dark" : "light");
-            AppCompatDelegate.setDefaultNightMode(isChecked ? 
-                    AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-        });
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
+            MaterialSwitch themeSwitch = headerView.findViewById(R.id.theme_switch);
+            boolean isDark = Objects.equals(dbHelper.getSetting("theme", "light"), "dark");
+            themeSwitch.setChecked(isDark);
+            
+            themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                dbHelper.saveSetting("theme", isChecked ? "dark" : "light");
+                AppCompatDelegate.setDefaultNightMode(isChecked ? 
+                        AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+            });
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, Translatetool.class);
             startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -151,10 +156,10 @@ public class NAVDRAWER extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
+
         if (id == R.id.nav_ac) {
-            //home screen
             fragment = new HomeFragment();
-        }else if (id == R.id.nav_home) {
+        } else if (id == R.id.nav_home) {
             fragment = new DictionnaireFragment();
         } else if (id == R.id.nav_gallery) {
             fragment = new cours();
@@ -195,7 +200,7 @@ public class NAVDRAWER extends AppCompatActivity
             ft.addToBackStack(null);
             ft.commit();
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
