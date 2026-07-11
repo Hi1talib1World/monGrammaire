@@ -1,7 +1,6 @@
 package com.example.mongrammaire.aboutpage;
 
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import androidx.activity.ComponentActivity;
 import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -35,7 +35,7 @@ import com.example.mongrammaire.R;
 /**
  * The main class of this library with many predefined methods to add Elements for common items in
  * an About page. This class creates a {@link android.view.View} that can be passed as the root view
- * in {@link Fragment#onCreateView(LayoutInflater, ViewGroup, Bundle)} or passed to the {@link android.app.Activity#setContentView(View)}
+ * in {@link androidx.fragment.app.Fragment#onCreateView(LayoutInflater, ViewGroup, Bundle)} or passed to the {@link android.app.Activity#setContentView(View)}
  * <p>
  * To create a custom item in the about page, pass an instance of {@link com.example.mongrammaire.Element}
  * to the {@link AboutPage#addItem(Element)} method.
@@ -504,7 +504,9 @@ public class AboutPage {
 
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> {
-                if (mContext instanceof android.app.Activity) {
+                if (mContext instanceof ComponentActivity) {
+                    ((ComponentActivity) mContext).getOnBackPressedDispatcher().onBackPressed();
+                } else if (mContext instanceof android.app.Activity) {
                     ((android.app.Activity) mContext).onBackPressed();
                 }
             });
