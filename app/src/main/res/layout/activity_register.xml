@@ -16,7 +16,7 @@
         app:iconTint="@color/primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Retour" />
+        android:contentDescription="@string/retour" />
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Logo" />
+        android:contentDescription="@string/logo" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/calsans"
-        android:text="Créer un compte"
+        android:text="@string/create_account"
         android:textColor="@color/primary"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="Nom complet"
+        android:hint="@string/full_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Email"
+        android:hint="@string/email"
         app:layout_constraintTop_toBottomOf="@+id/til_name">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Mot de passe"
+        android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@+id/til_email">
 
@@ -96,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="32dp"
-        android:text="S'inscrire"
+        android:text="@string/register"
         app:cornerRadius="12dp"
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
@@ -122,14 +122,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Déjà un compte ? " />
+            android:text="@string/already_have_account" />
 
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/calsans"
-            android:text="Se connecter"
+            android:text="@string/login"
             android:textColor="@color/primary" />
     </LinearLayout>
 
