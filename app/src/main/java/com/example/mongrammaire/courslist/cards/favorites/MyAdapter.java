@@ -16,6 +16,7 @@ import com.example.mongrammaire.Utils.ToastHelper;
 import com.example.mongrammaire.courslist.DetailsActivity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     private Context context;
@@ -69,14 +70,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         holder.favoriteImg.setOnClickListener(v -> {
             String tag = (String) holder.favoriteImg.getTag();
-            if (tag.equalsIgnoreCase("grey")) {
+            if ("grey".equalsIgnoreCase(tag)) {
                 sharedPreference.addFavorite(context, model);
-                ToastHelper.showCustomToast(context, "Ajouté aux favoris");
+                ToastHelper.showCustomToast(context, context.getString(R.string.added_to_favorites));
                 holder.favoriteImg.setTag("red");
                 holder.favoriteImg.setImageResource(R.drawable.red_heart);
             } else {
                 sharedPreference.removeFavorite(context, model);
-                ToastHelper.showCustomToast(context, "Retiré des favoris");
+                ToastHelper.showCustomToast(context, context.getString(R.string.removed_from_favorites));
                 
                 if (isFavoriteList) {
                     models.remove(position);
@@ -104,17 +105,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         holder.itemView.setOnLongClickListener(v -> {
             new com.google.android.material.dialog.MaterialAlertDialogBuilder(context)
-                .setTitle("Réinitialiser")
-                .setMessage("Voulez-vous réinitialiser votre progression pour cette leçon ?")
-                .setPositiveButton("Oui", (dialog, which) -> {
-                    com.example.mongrammaire.Data.Local.LessonDatabaseHelper db = 
-                        new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(context);
-                    db.resetLessonProgress(model.getId());
+                .setTitle(R.string.reset_progress_title)
+                .setMessage(R.string.reset_progress_msg)
+                .setPositiveButton(R.string.oui, (dialog, which) -> {
+                    try (com.example.mongrammaire.Data.Local.LessonDatabaseHelper db = 
+                        new com.example.mongrammaire.Data.Local.LessonDatabaseHelper(context)) {
+                        db.resetLessonProgress(model.getId());
+                    }
                     model.setProgress(0);
                     notifyItemChanged(position);
-                    com.example.mongrammaire.Utils.ToastHelper.showCustomToast(context, "Progression réinitialisée");
+                    com.example.mongrammaire.Utils.ToastHelper.showCustomToast(context, context.getString(R.string.progress_reset));
                 })
-                .setNegativeButton("Annuler", null)
+                .setNegativeButton(R.string.annuler, null)
                 .show();
             return true;
         });
@@ -124,7 +126,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         List<Model> favorites = sharedPreference.getFavorites(context);
         if (favorites != null) {
             for (Model product : favorites) {
-                if (product.getTitle().equals(checkProduct.getTitle())) {
+                if (Objects.equals(product.getTitle(), checkProduct.getTitle())) {
                     return true;
                 }
             }
