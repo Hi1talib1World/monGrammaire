@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.OnBackPressedCallback;
 
 import com.example.mongrammaire.Quiz.TriviaQuestion;
 import com.example.mongrammaire.Quiz.TriviaQuizHelper;
@@ -17,6 +18,7 @@ import com.orhanobut.hawk.Hawk;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class TimeAttackActivity extends AppCompatActivity {
 
@@ -46,10 +48,17 @@ public class TimeAttackActivity extends AppCompatActivity {
         btnOpt3 = findViewById(R.id.btnOpt3);
         btnOpt4 = findViewById(R.id.btnOpt4);
 
-        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
+        });
+        findViewById(R.id.btn_back).setOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
-        TriviaQuizHelper db = new TriviaQuizHelper(this);
-        questions = db.getAllOfTheQuestions();
+        try (TriviaQuizHelper db = new TriviaQuizHelper(this)) {
+            questions = db.getAllOfTheQuestions();
+        }
         Collections.shuffle(questions);
 
         loadNextQuestion();
@@ -65,7 +74,7 @@ public class TimeAttackActivity extends AppCompatActivity {
         timer = new CountDownTimer(60000, 1000) {
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);
-                tvTimer.setText(seconds + "s");
+                tvTimer.setText(getString(R.string.time_format, seconds));
                 if (seconds <= 10) {
                     timerCard.setStrokeColor(Color.RED);
                     tvTimer.setTextColor(Color.RED);
@@ -93,7 +102,7 @@ public class TimeAttackActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(String selected) {
-        boolean isCorrect = selected.equals(currentQuestion.getAnswer());
+        boolean isCorrect = Objects.equals(selected, currentQuestion.getAnswer());
         int flashColor = isCorrect ? 0x8800FF00 : 0x88FF0000;
         
         questionCard.setCardBackgroundColor(flashColor);
@@ -103,7 +112,7 @@ public class TimeAttackActivity extends AppCompatActivity {
         } else {
             score = Math.max(0, score - 5);
         }
-        tvScore.setText("Score: " + score);
+        tvScore.setText(getString(R.string.score_format, score));
 
         new Handler().postDelayed(() -> {
             questionCard.setCardBackgroundColor(Color.WHITE);
@@ -114,20 +123,20 @@ public class TimeAttackActivity extends AppCompatActivity {
     private void showEndGameDialog() {
         int highScore = Hawk.get("time_attack_high", 0);
         StringBuilder message = new StringBuilder();
-        message.append("Score : ").append(score).append(" XP\n");
-        message.append("Précision : ").append(correctAnswers).append(" bonnes réponses");
+        message.append(getString(R.string.xp_format, score)).append("\n");
+        message.append(getString(R.string.accuracy_correct_format, correctAnswers));
         
         if (score > highScore) {
             Hawk.put("time_attack_high", score);
-            message.append("\n\nNOUVEAU RECORD ! 🏆");
+            message.append("\n\n").append(getString(R.string.new_high_score));
         }
 
         new MaterialAlertDialogBuilder(this)
-            .setTitle("Temps écoulé !")
+            .setTitle(R.string.time_attack_end_title)
             .setMessage(message.toString())
             .setCancelable(false)
-            .setPositiveButton("Rejouer", (d, w) -> recreate())
-            .setNegativeButton("Quitter", (d, w) -> finish())
+            .setPositiveButton(R.string.play_again, (d, w) -> recreate())
+            .setNegativeButton(R.string.quit, (d, w) -> finish())
             .show();
     }
 
