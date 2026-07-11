@@ -13,8 +13,8 @@ import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
 
-    private List<Lesson> lessons;
-    private OnLessonClickListener listener;
+    private final List<Lesson> lessons;
+    private final OnLessonClickListener listener;
 
     public interface OnLessonClickListener {
         void onLessonClick(Lesson lesson);
@@ -54,7 +54,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         return lessons.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, description;
         ImageView lockIcon;
 
