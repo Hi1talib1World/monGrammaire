@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Bonjour, Hicham !"
+                android:text="@string/hello_user"
                 android:textColor="@color/onSurface"
                 android:textSize="28sp"
                 android:fontFamily="@font/calsans"
@@ -58,7 +58,7 @@
                 android:id="@+id/subWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prêt pour votre leçon du jour ?"
+                android:text="@string/ready_for_lesson"
                 android:textColor="@color/onSurfaceVariant"
                 android:textSize="16sp"
                 android:fontFamily="@font/calsans"
@@ -223,7 +223,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LEÇON DU JOUR"
+                        android:text="@string/lecon_du_jour"
                         android:textColor="@color/accent_gold"
                         android:textSize="11sp"
                         android:letterSpacing="0.2"
@@ -253,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="32dp"
-                android:text="Modules de cours"
+                android:text="@string/modules_cours"
                 android:textColor="@color/onSurface"
                 android:textSize="20sp"
                 android:fontFamily="@font/calsans" />
@@ -301,7 +301,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginHorizontal="8dp"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/secondaryContainer">
@@ -322,6 +322,38 @@
                             android:text="Vocabulaire"
                             android:layout_marginTop="8dp"
                             android:textColor="@color/onSecondaryContainer"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/calsans"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnConjugaison"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/primaryContainer_soft">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_play"
+                            app:tint="@color/primary"
+                            android:rotation="45"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/verbes"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/primary"
                             android:textSize="14sp"
                             android:fontFamily="@font/calsans"/>
                     </LinearLayout>
@@ -359,7 +391,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dictionnaire"
+                            android:text="@string/dictionnaire"
                             android:layout_marginTop="8dp"
                             android:textColor="@color/onTertiaryContainer"
                             android:textSize="14sp"
@@ -390,7 +422,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Favoris"
+                            android:text="@string/favoris"
                             android:layout_marginTop="8dp"
                             android:textColor="@color/onSurfaceVariant"
                             android:textSize="14sp"
@@ -405,7 +437,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="32dp"
-                android:text="Parcours recommandé"
+                android:text="@string/parcours_recommande"
                 android:textColor="@color/onSurface"
                 android:textSize="20sp"
                 android:fontFamily="@font/calsans" />
@@ -446,14 +478,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Défi Éclair"
+                            android:text="@string/defi_eclair"
                             android:textColor="@color/primary"
                             android:textSize="18sp"
                             android:fontFamily="@font/calsans" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="60 secondes pour tester vos réflexes."
+                            android:text="@string/defi_eclair_desc"
                             android:textColor="@color/onSurfaceVariant"
                             android:textSize="14sp"
                             android:layout_marginTop="2dp" />
@@ -464,8 +496,65 @@
                         style="@style/Widget.Material3.Button.TonalButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jouer"
+                        android:text="@string/play_game"
                         app:cornerRadius="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action Card: SRS Reviews -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardReviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/primaryContainer">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_book"
+                        app:tint="@color/primary"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_circle_gradient"
+                        android:backgroundTint="@color/primary"
+                        android:alpha="0.2"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/revisions_du_jour"
+                            android:textColor="@color/onPrimaryContainer"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/calsans"/>
+                        <TextView
+                            android:id="@+id/tvDueReviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 leçons à réviser"
+                            android:textColor="@color/onPrimaryContainer"
+                            android:textSize="13sp"
+                            android:alpha="0.7"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnStartReviews"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reviser"
+                        android:textColor="@color/primary" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -475,7 +564,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="32dp"
-                android:text="Analyses &amp; Statistiques"
+                android:text="@string/analyses_stats"
                 android:textColor="@color/onSurface"
                 android:textSize="20sp"
                 android:fontFamily="@font/calsans" />
@@ -517,7 +606,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Leçons maîtrisées"
+                                android:text="@string/lecons_maitrisees"
                                 android:textColor="@color/onSurface"
                                 android:textSize="16sp"
                                 android:fontFamily="@font/calsans"/>
@@ -561,7 +650,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Score de précision"
+                                android:text="@string/score_precision"
                                 android:textColor="@color/onSurface"
                                 android:textSize="16sp"
                                 android:fontFamily="@font/calsans"/>
