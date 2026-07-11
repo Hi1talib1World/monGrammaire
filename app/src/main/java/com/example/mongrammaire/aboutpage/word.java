@@ -24,16 +24,16 @@ public class word extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_word, container, false);
         Element versionElement = new Element();
-        versionElement.setTitle("Version 6.2");
+        versionElement.setTitle(getString(R.string.version_format, "6.2"));
 
         Element adsElement = new Element();
-        adsElement.setTitle("Advertise with us");
+        adsElement.setTitle(getString(R.string.advertise_with_us));
 
         View aboutPage = new AboutPage(getActivity())
                 .isRTL(false)
                 .addItem(versionElement)
                 .addItem(adsElement)
-                .addGroup("Connecte-toi avec nous")
+                .addGroup(getString(R.string.connect_with_us))
                 .addEmail("hichamoutaleb7@gmail.com")
                 .addFacebook("hichamtalib8")
                 .addTwitter("hicham_talib")
