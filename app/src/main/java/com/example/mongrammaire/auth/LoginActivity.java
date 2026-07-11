@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             mAuth = FirebaseAuth.getInstance();
         } catch (Exception e) {
-            Toast.makeText(this, "Erreur d'initialisation Firebase. Vérifiez google-services.json", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.firebase_init_error, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -56,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
-            etEmail.setError("Email requis");
+            etEmail.setError(getString(R.string.email_required));
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            etPassword.setError("Mot de passe requis");
+            etPassword.setError(getString(R.string.password_required));
             return;
         }
 
@@ -74,11 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                     btnLogin.setVisibility(View.VISIBLE);
 
                     if (task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, home.class));
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Échec de la connexion: " + (task.getException() != null ? task.getException().getMessage() : "Erreur inconnue"),
+                        String errorMsg = task.getException() != null ? task.getException().getMessage() : getString(R.string.unknown_error);
+                        Toast.makeText(LoginActivity.this, getString(R.string.login_failed_prefix) + errorMsg,
                                 Toast.LENGTH_LONG).show();
                     }
                 });
