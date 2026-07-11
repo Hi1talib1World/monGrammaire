@@ -21,6 +21,7 @@ import com.example.mongrammaire.courslist.CoursListActivity
 import com.example.mongrammaire.databinding.FragmentHomeBinding
 import com.example.mongrammaire.horisontal_cardv.Adapter
 import com.example.mongrammaire.horisontal_cardv.Model
+import com.example.mongrammaire.horisontal_cardv.NAVDRAWER
 import com.google.android.gms.ads.AdRequest
 import kotlinx.coroutines.launch
 
@@ -49,7 +50,8 @@ class HomeFragment : Fragment() {
         val dbHelper = com.example.mongrammaire.Data.Local.LessonDatabaseHelper(requireContext())
         viewModel.updateStats(
             dbHelper.overallCompletionPercentage,
-            dbHelper.masteredLessonCount
+            dbHelper.masteredLessonCount,
+            dbHelper.dueReviewsCount
         )
 
         viewModel.loadUserData()
@@ -82,6 +84,14 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, Cours2ListActivity::class.java))
         }
 
+        binding.btnConjugaison.setOnClickListener {
+            (requireActivity() as? NAVDRAWER)?.onNavigationItemSelected(
+                (requireActivity().findViewById<View>(R.id.nav_view) as com.google.android.material.navigation.NavigationView)
+                    .menu.findItem(R.id.nav_gallery)
+            )
+            // Ideally should filter by "Verbe" but for now just navigate to cours
+        }
+
         binding.cardDictionary.setOnClickListener {
             (requireActivity() as? NAVDRAWER)?.onNavigationItemSelected(
                 (requireActivity().findViewById<View>(R.id.nav_view) as com.google.android.material.navigation.NavigationView)
@@ -97,13 +107,17 @@ class HomeFragment : Fragment() {
         }
         
         binding.profileImage.setOnClickListener {
-            com.example.mongrammaire.Utils.ToastHelper.showCustomToast(requireContext(), "Profil bientôt disponible !")
+            com.example.mongrammaire.Utils.ToastHelper.showCustomToast(requireContext(), getString(R.string.profil_bientot))
         }
 
         binding.btnStartQuiz.setOnClickListener {
             AdManager.showInterstitial(requireActivity()) {
                 startActivity(Intent(context, MainGameActivity::class.java))
             }
+        }
+
+        binding.btnStartReviews.setOnClickListener {
+            com.example.mongrammaire.Utils.ToastHelper.showCustomToast(requireContext(), getString(R.string.revisions_bientot))
         }
     }
 
@@ -122,15 +136,18 @@ class HomeFragment : Fragment() {
         binding.root.alpha = if (state.isLoading) 0.6f else 1.0f
         
         // Point 4: Dynamic rendering
-        binding.textView.text = "Bonjour, ${state.userName} !"
+        binding.textView.text = getString(R.string.hello_user, state.userName)
         binding.streakValue.text = state.streak.toString()
         binding.scoreValue.text = state.score.toString()
-        binding.levelValue.text = "${state.level}/8"
+        binding.levelValue.text = getString(R.string.level_format, state.level)
         
         binding.mainProgress.setProgress(state.overallProgress, true)
         
-        binding.tvMasteredCount.text = "${state.masteredLessons} leçons complétées"
-        binding.tvAccuracyScore.text = "${state.accuracy}% de bonnes réponses"
+        binding.tvMasteredCount.text = getString(R.string.lessons_completed, state.masteredLessons)
+        binding.tvAccuracyScore.text = getString(R.string.accuracy_format, state.accuracy)
+        
+        binding.tvDueReviews.text = getString(R.string.lecons_a_reviser, state.dueReviews)
+        binding.cardReviews.visibility = if (state.dueReviews > 0) View.VISIBLE else View.GONE
 
         if (!state.isLoading) {
             setupRecyclerView()
@@ -140,14 +157,13 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         if (binding.recycler.adapter == null) {
-            val list = ArrayList<Model>()
-            for (i in 0 until myImageList.size) {
-                val m = Model()
-                m.name = myImageNameList[i]
-                m.image_drawable = myImageList[i]
-                list.add(m)
+            val list = myImageList.indices.map { i ->
+                Model().apply {
+                    name = myImageNameList[i]
+                    image_drawable = myImageList[i]
+                }
             }
-            binding.recycler.adapter = Adapter(context, list)
+            binding.recycler.adapter = Adapter(context, ArrayList(list))
             binding.recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
