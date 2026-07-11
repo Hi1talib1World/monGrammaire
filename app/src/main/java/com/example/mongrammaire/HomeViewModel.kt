@@ -19,6 +19,7 @@ data class HomeUiState(
     val overallProgress: Int = 0,
     val masteredLessons: Int = 0,
     val accuracy: Int = 0,
+    val dueReviews: Int = 0,
     val dailyLessonTitle: String = "Le Passé Composé"
 )
 
@@ -54,10 +55,11 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun updateStats(progress: Int, mastered: Int) {
+    fun updateStats(progress: Int, mastered: Int, reviews: Int) {
         _uiState.value = _uiState.value.copy(
             overallProgress = progress,
-            masteredLessons = mastered
+            masteredLessons = mastered,
+            dueReviews = reviews
         )
     }
 }
