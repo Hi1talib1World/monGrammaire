@@ -34,13 +34,13 @@ class TcfModuleActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.tvModuleTitle.text = moduleName ?: "Entraînement TCF"
+        binding.tvModuleTitle.text = moduleName ?: getString(R.string.tcf_simulation_title)
         
         binding.btnBack.setOnClickListener { showExitConfirmation() }
         
         binding.btnNext.setOnClickListener {
             if (binding.optionsGroup.checkedRadioButtonId == -1) {
-                ToastHelper.showCustomToast(this, "Veuillez choisir une réponse")
+                ToastHelper.showCustomToast(this, getString(R.string.choose_answer))
             } else {
                 checkAnswerAndMove()
             }
@@ -71,10 +71,10 @@ class TcfModuleActivity : AppCompatActivity() {
 
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Quitter l'entraînement ?")
-            .setMessage("Voulez-vous vraiment quitter cette session d'entraînement ?")
-            .setNegativeButton("Continuer") { d, _ -> d.dismiss() }
-            .setPositiveButton("Quitter") { _, _ -> finish() }
+            .setTitle(R.string.quitter_training_title)
+            .setMessage(R.string.quitter_training_msg)
+            .setNegativeButton(R.string.continuer) { d, _ -> d.dismiss() }
+            .setPositiveButton(R.string.quit) { _, _ -> finish() }
             .show()
     }
 
@@ -92,7 +92,7 @@ class TcfModuleActivity : AppCompatActivity() {
                 binding.quizContainer.visibility = View.VISIBLE
                 displayQuestion(0)
             } else {
-                ToastHelper.showCustomToast(this@TcfModuleActivity, "Aucune question disponible pour ce module.")
+                ToastHelper.showCustomToast(this@TcfModuleActivity, getString(R.string.no_questions_available))
                 finish()
             }
         }
@@ -109,15 +109,15 @@ class TcfModuleActivity : AppCompatActivity() {
         binding.rbOptD.text = q.optD
         
         binding.optionsGroup.clearCheck()
-        binding.tvProgress.text = "Question ${index + 1} / ${questions.size}"
+        binding.tvProgress.text = getString(R.string.question_progress, index + 1, questions.size)
     }
 
     private fun finishTraining() {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Entraînement terminé")
-            .setMessage("Votre score : $score / ${questions.size}\n\nContinuez à vous entraîner pour améliorer votre niveau !")
+            .setTitle(R.string.training_finished)
+            .setMessage(getString(R.string.training_finished_msg, score, questions.size))
             .setCancelable(false)
-            .setPositiveButton("Terminer") { _, _ -> finish() }
+            .setPositiveButton(R.string.terminer) { _, _ -> finish() }
             .show()
     }
 
