@@ -45,7 +45,7 @@ class LessonSimulationActivity : AppCompatActivity() {
         
         binding.btnNext.setOnClickListener {
             if (binding.optionsGroup.checkedRadioButtonId == -1) {
-                ToastHelper.showCustomToast(this, "Veuillez choisir une réponse")
+                ToastHelper.showCustomToast(this, getString(R.string.choose_answer))
             } else {
                 checkAnswerAndMove()
             }
@@ -76,10 +76,10 @@ class LessonSimulationActivity : AppCompatActivity() {
 
     private fun showExitConfirmation() {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Quitter la simulation ?")
-            .setMessage("Votre progression sera perdue. Voulez-vous vraiment quitter ?")
-            .setNegativeButton("Continuer") { d, _ -> d.dismiss() }
-            .setPositiveButton("Quitter") { _, _ -> finish() }
+            .setTitle(R.string.quitter_simulation_title)
+            .setMessage(R.string.quitter_simulation_msg)
+            .setNegativeButton(R.string.continuer) { d, _ -> d.dismiss() }
+            .setPositiveButton(R.string.quit) { _, _ -> finish() }
             .show()
     }
 
@@ -121,7 +121,7 @@ class LessonSimulationActivity : AppCompatActivity() {
                 binding.examProgress.max = simulationQuestions.size
                 displayQuestion(0)
             } else {
-                ToastHelper.showCustomToast(this@LessonSimulationActivity, "Erreur : pas assez de contenu pour générer une simulation.")
+                ToastHelper.showCustomToast(this@LessonSimulationActivity, getString(R.string.error_no_content))
                 finish()
             }
         }
@@ -161,7 +161,7 @@ class LessonSimulationActivity : AppCompatActivity() {
         binding.optionsGroup.clearCheck()
         binding.examProgress.setProgress(index, true)
         
-        binding.tvModeStatus.text = "SIMULATION • ${index + 1} / ${simulationQuestions.size}"
+        binding.tvModeStatus.text = getString(R.string.simulation_status, index + 1, simulationQuestions.size)
     }
 
     private fun finishSimulation() {
@@ -171,8 +171,8 @@ class LessonSimulationActivity : AppCompatActivity() {
         binding.examProgress.setProgress(simulationQuestions.size, true)
         
         binding.resultsContainer.visibility = View.VISIBLE
-        binding.tvFinalScore.text = "Score: $score / ${simulationQuestions.size}"
-        binding.tvLevelEstimate.text = "Niveau estimé : ${estimateLevel(score, simulationQuestions.size)}"
+        binding.tvFinalScore.text = getString(R.string.final_score, score, simulationQuestions.size)
+        binding.tvLevelEstimate.text = getString(R.string.level_estimate, estimateLevel(score, simulationQuestions.size))
     }
 
     private fun estimateLevel(score: Int, total: Int): String {
@@ -202,7 +202,7 @@ class LessonSimulationActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                ToastHelper.showCustomToast(this@LessonSimulationActivity, "Temps écoulé !")
+                ToastHelper.showCustomToast(this@LessonSimulationActivity, getString(R.string.time_up_msg))
                 finishSimulation()
             }
         }.start()
