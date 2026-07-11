@@ -111,5 +111,101 @@
     <string name="SplashScreenActivity">Mon Grammaire</string>
     <string name="action_example_with_sliding_list">Search ...</string>
     <string name="tous_les_cours">Tous les cours</string>
+    <string name="hello_user">Bonjour, %1$s !</string>
+    <string name="overall_progress">Progression globale : %1$d%%</string>
+    <string name="lessons_completed">%1$d leçons complétées</string>
+    <string name="accuracy_format">%1$d%% de bonnes réponses</string>
+
+    <!-- TCF and Simulation -->
+    <string name="tcf_simulation_title">Simulation Réelle des Cours</string>
+    <string name="tcf_simulation_msg">Vous allez démarrer une simulation basée sur les leçons de l\'application.\n\n• Questions extraites des exemples\n• Temps limité : 45 minutes\n\nVoulez-vous commencer ?</string>
+    <string name="commencer">Commencer</string>
+    <string name="annuler">Annuler</string>
+    <string name="quitter_simulation_title">Quitter la simulation ?</string>
+    <string name="quitter_simulation_msg">Votre progression sera perdue. Voulez-vous vraiment quitter ?</string>
+    <string name="continuer">Continuer</string>
+    <string name="error_no_content">Erreur : pas assez de contenu pour générer une simulation.</string>
+    <string name="simulation_status">SIMULATION • %1$d / %2$d</string>
+    <string name="final_score">Score: %1$d / %2$d</string>
+    <string name="level_estimate">Niveau estimé : %1$s</string>
+    <string name="time_up_msg">Temps écoulé !</string>
+    <string name="choose_answer">Veuillez choisir une réponse</string>
+    <string name="training_finished">Entraînement terminé</string>
+    <string name="training_finished_msg">Votre score : %1$d / %2$d\n\nContinuez à vous entraîner pour améliorer votre niveau !</string>
+    <string name="no_questions_available">Aucune question disponible pour ce module.</string>
+    <string name="question_progress">Question %1$d / %2$d</string>
+    <string name="quitter_training_title">Quitter l\'entraînement ?</string>
+    <string name="quitter_training_msg">Voulez-vous vraiment quitter cette session d\'entraînement ?</string>
+    <string name="terminer">Terminer</string>
+    <string name="version_format">Version %1$s</string>
+    <string name="advertise_with_us">Annoncer avec nous</string>
+    <string name="connect_with_us">Connecte-toi avec nous</string>
+    <string name="email_required">Email requis</string>
+    <string name="password_required">Mot de passe requis</string>
+    <string name="login_success">Connexion réussie</string>
+    <string name="login_failed_prefix">Échec de la connexion: </string>
+    <string name="unknown_error">Erreur inconnue</string>
+    <string name="firebase_init_error">Erreur d\'initialisation Firebase. Vérifiez google-services.json</string>
+
+    <!-- UI Enhancements -->
+    <string name="dictionnaire">Dictionnaire</string>
+    <string name="favoris">Favoris</string>
+    <string name="analyses_stats">Analyses &amp; Statistiques</string>
+    <string name="lecons_maitrisees">Leçons maîtrisées</string>
+    <string name="score_precision">Score de précision</string>
+    <string name="lecon_du_jour">LEÇON DU JOUR</string>
+    <string name="ready_for_lesson">Prêt pour votre leçon du jour ?</string>
+    <string name="reprendre_lecon">Reprendre la leçon</string>
+    <string name="modules_cours">Modules de cours</string>
+    <string name="parcours_recommande">Parcours recommandé</string>
+    <string name="defi_eclair">Défi Éclair</string>
+    <string name="defi_eclair_desc">60 secondes pour tester vos réflexes.</string>
+    <string name="attention">Attention !</string>
+    <string name="exemple">Exemple</string>
+    <string name="regle">La Règle</string>
+    <string name="appuyez_voir_reponse">Appuyez pour voir la réponse</string>
+    <string name="carte_epinglee">Carte épinglée !</string>
+    <string name="copie_presse_papiers">Copié dans le presse-papiers</string>
+    <string name="rechercher_mot">Rechercher un mot...</string>
+    <string name="aucun_resultat">Aucun résultat trouvé</string>
+    <string name="essayez_autres_mots">Essayez d\'autres mots-clés</string>
+    <string name="fermer">Fermer</string>
+    <string name="profil_bientot">Profil bientôt disponible !</string>
+    <string name="dark_mode">Mode Sombre</string>
+    <string name="progression_format">Progression : %1$d%%</string>
+
+    <!-- Favorites & Actions -->
+    <string name="added_to_favorites">Ajouté aux favoris</string>
+    <string name="removed_from_favorites">Retiré des favoris</string>
+    <string name="reset_progress_title">Réinitialiser</string>
+    <string name="reset_progress_msg">Voulez-vous réinitialiser votre progression pour cette leçon ?</string>
+    <string name="oui">Oui</string>
+    <string name="progress_reset">Progression réinitialisée</string>
+
+    <!-- Registration & Auth -->
+    <string name="create_account">Créer un compte</string>
+    <string name="full_name">Nom complet</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="register">S\'inscrire</string>
+    <string name="already_have_account">Déjà un compte ? </string>
+    <string name="login">Se connecter</string>
+    <string name="retour">Retour</string>
+    <string name="logo">Logo</string>
+
+    <!-- Time Attack -->
+    <string name="time_format">%1$ds</string>
+    <string name="score_format">Score: %1$d</string>
+    <string name="xp_format">Score : %1$d XP</string>
+    <string name="accuracy_correct_format">Précision : %1$d bonnes réponses</string>
+    <string name="new_high_score">NOUVEAU RECORD ! 🏆</string>
+    <string name="time_attack_end_title">Temps écoulé !</string>
+
+    <!-- New Dashboard Strings -->
+    <string name="revisions_du_jour">Révisions du jour</string>
+    <string name="lecons_a_reviser">%1$d leçons à réviser</string>
+    <string name="reviser">Réviser</string>
+    <string name="verbes">Verbes</string>
+    <string name="revisions_bientot">Révisions SRS bientôt disponibles !</string>
 
 </resources>
