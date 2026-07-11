@@ -22,11 +22,11 @@ public class TcfFragment extends Fragment {
         if (btnSimulate != null) {
             btnSimulate.setOnClickListener(view -> 
                 new com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
-                    .setTitle("Simulation Réelle des Cours")
-                    .setMessage("Vous allez démarrer une simulation basée sur les leçons de l'application.\n\n• Questions extraites des exemples\n• Temps limité : 45 minutes\n\nVoulez-vous commencer ?")
+                    .setTitle(R.string.tcf_simulation_title)
+                    .setMessage(R.string.tcf_simulation_msg)
                     .setCancelable(false)
-                    .setNegativeButton("Annuler", (dialog, which) -> dialog.dismiss())
-                    .setPositiveButton("Commencer", (dialog, which) -> {
+                    .setNegativeButton(R.string.annuler, (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton(R.string.commencer, (dialog, which) -> {
                         android.content.Intent intent = new android.content.Intent(getActivity(), LessonSimulationActivity.class);
                         intent.putExtra("IS_GLOBAL_SIMULATION", true);
                         startActivity(intent);
@@ -42,7 +42,7 @@ public class TcfFragment extends Fragment {
         if (btnBack != null) {
             btnBack.setOnClickListener(view -> {
                 if (getActivity() != null) {
-                    getActivity().onBackPressed();
+                    requireActivity().getOnBackPressedDispatcher().onBackPressed();
                 }
             });
         }
