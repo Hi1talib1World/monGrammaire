@@ -403,4 +403,32 @@ public class LessonDatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT COUNT(*) FROM " + TABLE_SRS + " WHERE " + COLUMN_SRS_NEXT_REVIEW + " <= ?";
         return (int) DatabaseUtils.longForQuery(db, query, new String[]{String.valueOf(now)});
     }
+
+    public int getRecommendedLessonId() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        
+        // Strategy 1: Find the first lesson with progress > 0 but < 100
+        String inProgressQuery = "SELECT " + COLUMN_PROG_LESSON_ID + " FROM " + TABLE_PROGRESS + 
+                " WHERE " + COLUMN_PROG_IS_COMPLETED + "=0 AND " + COLUMN_PROG_STEP_INDEX + ">0 LIMIT 1";
+        Cursor cursor = db.rawQuery(inProgressQuery, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            cursor.close();
+            return id;
+        }
+        if (cursor != null) cursor.close();
+
+        // Strategy 2: Find the first lesson not started yet
+        String notStartedQuery = "SELECT " + COLUMN_ID + " FROM " + TABLE_LESSONS + 
+                " WHERE " + COLUMN_ID + " NOT IN (SELECT " + COLUMN_PROG_LESSON_ID + " FROM " + TABLE_PROGRESS + " WHERE " + COLUMN_PROG_IS_COMPLETED + "=1) LIMIT 1";
+        cursor = db.rawQuery(notStartedQuery, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            cursor.close();
+            return id;
+        }
+        if (cursor != null) cursor.close();
+
+        return 6; // Default to Passé Composé if everything else fails
+    }
 }
