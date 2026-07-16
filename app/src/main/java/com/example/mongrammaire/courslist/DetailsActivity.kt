@@ -217,6 +217,21 @@ class DetailsActivity : AppCompatActivity() {
 
             val color = ContextCompat.getColor(holder.itemView.context, colorRes)
 
+            // Logic to change card background alpha based on content type
+            if (step.type == "[EXCEPTION]") {
+                holder.binding.cardContainer.setCardBackgroundColor(
+                    ColorStateList.valueOf(color).withAlpha(20).defaultColor
+                )
+            } else if (step.type == "[FINISH]") {
+                holder.binding.cardContainer.setCardBackgroundColor(
+                    ContextCompat.getColor(holder.itemView.context, R.color.green1)
+                )
+            } else {
+                holder.binding.cardContainer.setCardBackgroundColor(
+                    ContextCompat.getColor(holder.itemView.context, R.color.surface)
+                )
+            }
+
             holder.binding.tvStepTitle.text = title
             holder.binding.tvStepTitle.setTextColor(color)
             holder.binding.ivStepIcon.setImageResource(iconRes)
