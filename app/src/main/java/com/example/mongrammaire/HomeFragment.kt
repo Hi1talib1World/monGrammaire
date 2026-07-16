@@ -1,10 +1,12 @@
 package com.example.mongrammaire
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -48,6 +50,15 @@ class HomeFragment : Fragment() {
         observeState()
         
         val dbHelper = com.example.mongrammaire.Data.Local.LessonDatabaseHelper(requireContext())
+        val recommendedId = dbHelper.recommendedLessonId
+        
+        // Update click listener with recommended ID
+        binding.cardDailyLesson.setOnClickListener {
+            val intent = Intent(context, com.example.mongrammaire.courslist.DetailsActivity::class.java)
+            intent.putExtra("iId", recommendedId)
+            startActivity(intent)
+        }
+
         viewModel.updateStats(
             dbHelper.overallCompletionPercentage,
             dbHelper.masteredLessonCount,
@@ -71,13 +82,6 @@ class HomeFragment : Fragment() {
 
         binding.listView.setOnClickListener {
             startActivity(Intent(context, CoursListActivity::class.java))
-        }
-
-        binding.cardDailyLesson.setOnClickListener {
-            val intent = Intent(context, com.example.mongrammaire.courslist.DetailsActivity::class.java)
-            intent.putExtra("iId", 6) // Passé Composé ID
-            intent.putExtra("iTitleTv", "Le Passé Composé")
-            startActivity(intent)
         }
 
         binding.listView2.setOnClickListener {
@@ -135,19 +139,143 @@ class HomeFragment : Fragment() {
         // Point 3: Feedback via alpha/loading
         binding.root.alpha = if (state.isLoading) 0.6f else 1.0f
         
-        // Point 4: Dynamic rendering
-        binding.textView.text = getString(R.string.hello_user, state.userName)
+        binding.root.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.background))
+        
+        // Point 4: Dynamic rendering with more if-else logic
+        if (state.seasonalMessage != null) {
+            binding.textView.text = "${state.seasonalMessage}\n${state.greeting}, ${state.userName} ! (${state.userTitle})"
+        } else {
+            binding.textView.text = "${state.greeting}, ${state.userName} ! (${state.userTitle})"
+        }
+        binding.subWelcome.text = "${state.encouragement} • ${state.learningVelocity}"
+        
         binding.streakValue.text = state.streak.toString()
         binding.scoreValue.text = state.score.toString()
-        binding.levelValue.text = getString(R.string.level_format, state.level)
         
+        // Dynamic level description
+        val levelName = if (state.level >= 7) "EXPERT" 
+                       else if (state.level >= 4) "INTERMÉDIAIRE"
+                       else "DÉBUTANT"
+        binding.levelValue.text = "NIVEAU ${state.level} • $levelName (${state.performanceTier})"
+        
+        // Apply logic-based color to the level label
+        try {
+            binding.levelValue.setTextColor(android.graphics.Color.parseColor(state.statusColor))
+        } catch (e: Exception) {
+            binding.levelValue.setTextColor(android.graphics.Color.WHITE)
+        }
+
         binding.mainProgress.setProgress(state.overallProgress, true)
         
+        // Logic for progress bar color
+        if (state.overallProgress > 80) {
+            binding.mainProgress.setIndicatorColor(ContextCompat.getColor(requireContext(), R.color.accent_green))
+        } else if (state.overallProgress > 40) {
+            binding.mainProgress.setIndicatorColor(android.graphics.Color.YELLOW)
+        } else {
+            binding.mainProgress.setIndicatorColor(android.graphics.Color.WHITE)
+        }
+
+        // Logic for Ranking and XP Multiplier
+        if (state.ranking != "En attente") {
+            binding.tvRanking.visibility = View.VISIBLE
+            binding.tvRanking.text = "Classement : ${state.ranking}"
+        } else {
+            binding.tvRanking.visibility = View.GONE
+        }
+
+        if (state.xpMultiplier > 1.0f) {
+            binding.chipMultiplier.visibility = View.VISIBLE
+            binding.chipMultiplier.text = "x${state.xpMultiplier} XP"
+        } else {
+            binding.chipMultiplier.visibility = View.GONE
+        }
+        
+        // Fetch and show the actual recommended lesson title
+        val dbHelper = com.example.mongrammaire.Data.Local.LessonDatabaseHelper(requireContext())
+        val recommendedId = dbHelper.recommendedLessonId
+        val lessons = dbHelper.allLessons
+        val recommendedLesson = lessons.find { it.id == recommendedId }
+        
+        if (recommendedLesson != null) {
+            binding.tvDailyLessonTitle.text = recommendedLesson.title
+            binding.tvDailyLessonDesc.text = recommendedLesson.description
+        }
+
+        // Toggle card visibility based on completion
+        if (state.overallProgress >= 100) {
+            binding.cardDailyLesson.visibility = View.GONE
+            binding.subWelcome.text = "Félicitations ! Vous avez tout terminé ! 🎓"
+        } else {
+            binding.cardDailyLesson.visibility = View.VISIBLE
+        }
+
         binding.tvMasteredCount.text = getString(R.string.lessons_completed, state.masteredLessons)
         binding.tvAccuracyScore.text = getString(R.string.accuracy_format, state.accuracy)
         
-        binding.tvDueReviews.text = getString(R.string.lecons_a_reviser, state.dueReviews)
-        binding.cardReviews.visibility = if (state.dueReviews > 0) View.VISIBLE else View.GONE
+        // Show completion forecast if progress > 0
+        if (state.overallProgress > 0 && state.overallProgress < 100) {
+            binding.tvAccuracyWarning.visibility = View.VISIBLE
+            binding.tvAccuracyWarning.text = state.completionForecast
+            binding.tvAccuracyWarning.setTextColor(ContextCompat.getColor(requireContext(), R.color.accent_gold))
+        } else {
+            // Re-apply normal accuracy logic if forecast isn't shown
+            if (state.accuracy < 60 && state.accuracy > 0) {
+                binding.tvAccuracyWarning.visibility = View.VISIBLE
+                binding.tvAccuracyWarning.text = "Pensez à réviser vos leçons !"
+                binding.tvAccuracyWarning.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            } else {
+                binding.tvAccuracyWarning.visibility = View.GONE
+            }
+        }
+
+        // Added logic for Study Tip visibility
+        if (state.studyTip.isNotEmpty()) {
+            binding.cardStudyTip.visibility = View.VISIBLE
+            binding.tvStudyTip.text = state.studyTip
+        } else {
+            binding.cardStudyTip.visibility = View.GONE
+        }
+
+        // Recommended activity highlighting logic
+        if (state.recommendedActivity == "Quiz") {
+            binding.cardDailyQuiz.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.accent_gold)))
+            binding.cardDailyQuiz.setStrokeWidth(4)
+        } else if (state.recommendedActivity == "Dictionnaire") {
+            binding.cardDictionary.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.accent_gold)))
+            binding.cardDictionary.setStrokeWidth(4)
+        } else {
+            binding.cardDailyQuiz.setStrokeWidth(0)
+            binding.cardDictionary.setStrokeWidth(0)
+        }
+
+        // Logic for weekend specific styling
+        if (state.isWeekend) {
+            binding.statsCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.tertiary))
+        } else {
+            binding.statsCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary))
+        }
+
+        // Added logic for Rating Prompt
+        if (state.showRatingPrompt) {
+            binding.cardRating.visibility = View.VISIBLE
+            binding.btnRate.setOnClickListener {
+                try {
+                    startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=" + requireContext().packageName)))
+                } catch (e: Exception) {
+                    startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + requireContext().packageName)))
+                }
+            }
+        } else {
+            binding.cardRating.visibility = View.GONE
+        }
+
+        // Logic for Next Reward message
+        if (state.level < 8) {
+            binding.tvAccuracyWarning.visibility = View.VISIBLE
+            binding.tvAccuracyWarning.text = "Prochaine récompense : ${state.nextReward}"
+            binding.tvAccuracyWarning.setTextColor(ContextCompat.getColor(requireContext(), R.color.accent_gold))
+        }
 
         if (!state.isLoading) {
             setupRecyclerView()
