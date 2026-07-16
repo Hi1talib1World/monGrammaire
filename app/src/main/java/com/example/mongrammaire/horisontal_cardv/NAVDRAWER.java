@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import java.util.Objects;
-import androidx.appcompat.app.AppCompatDelegate;
-import com.google.android.material.materialswitch.MaterialSwitch;
-
 import android.widget.TextView;
 
 
@@ -127,16 +124,6 @@ public class NAVDRAWER extends AppCompatActivity
             
             progressBar.setProgress(overall, true);
             subtitle.setText(getString(R.string.overall_progress, overall));
-
-            MaterialSwitch themeSwitch = headerView.findViewById(R.id.theme_switch);
-            boolean isDark = Objects.equals(dbHelper.getSetting("theme", "light"), "dark");
-            themeSwitch.setChecked(isDark);
-            
-            themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                dbHelper.saveSetting("theme", isChecked ? "dark" : "light");
-                AppCompatDelegate.setDefaultNightMode(isChecked ? 
-                        AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-            });
         }
     }
 
