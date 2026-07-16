@@ -2,7 +2,6 @@ package com.example.mongrammaire.settings
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -40,10 +39,6 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupUI() {
         binding.toolbar.setNavigationOnClickListener { finish() }
-
-        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onThemeToggled(isChecked)
-        }
 
         binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
             NotificationHelper.setNotificationsEnabled(isChecked)
@@ -85,14 +80,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun updateUi(state: SettingsUiState) {
-        // Immediate Edge-Effect: Theme Switching
-        val targetMode = if (state.isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-        if (AppCompatDelegate.getDefaultNightMode() != targetMode) {
-            AppCompatDelegate.setDefaultNightMode(targetMode)
-        }
-
         // Interactivity Guarding (Point 3)
-        binding.switchDarkMode.isChecked = state.isDarkMode
         binding.switchNotifications.isChecked = NotificationHelper.isNotificationsEnabled()
         binding.switchEnableUnits.isChecked = state.isMasterUnitsEnabled
         
