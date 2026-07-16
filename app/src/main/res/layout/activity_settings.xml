@@ -29,59 +29,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                style="@style/TextAppearance.Material3.LabelLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="APPARENCE"
-                android:textColor="?attr/colorPrimary" />
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.Material3.CardView.Elevated"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvThemeTitle"
-                        style="@style/TextAppearance.Material3.BodyLarge"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Mode Sombre"
-                        app:layout_constraintBottom_toTopOf="@+id/tvThemeDesc"
-                        app:layout_constraintEnd_toStartOf="@+id/switchDarkMode"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvThemeDesc"
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:text="Activer le thème visuel sombre pour l'application"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/switchDarkMode"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvThemeTitle" />
-
-                    <com.google.android.material.materialswitch.MaterialSwitch
-                        android:id="@+id/switchDarkMode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 style="@style/TextAppearance.Material3.LabelLarge"
